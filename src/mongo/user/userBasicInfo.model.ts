@@ -34,7 +34,7 @@ const NumberSchema: Schema<NumberType> = new Schema({
   },
   visibility: {
     type: String,
-    enum: ["CLAN", "FRIEND", "PUBLIC", "PRIVATE"],
+    enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
     required: true,
   },
   number_type: {
@@ -56,7 +56,7 @@ const SocialLinkSchema: Schema<SocialLinkType> = new Schema({
   },
   visibility: {
     type: String,
-    enum: ["CLAN", "FRIEND", "PUBLIC", "PRIVATE"],
+    enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
     required: true,
   },
 });
@@ -101,7 +101,7 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
     },
     visibility: {
       type: String,
-      enum: ["CLAN", "FRIEND", "PUBLIC", "PRIVATE"],
+      enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
       required: true,
     },
   },
@@ -111,3 +111,4 @@ const UserBasicInfo =
   (mongoose.models.UserBasicInfo as mongoose.Model<UserBasicInfoType>) ||
   mongoose.model<UserBasicInfoType>("UserBasicInfo", UserBasicInfoSchema);
 export default UserBasicInfo;
+ 

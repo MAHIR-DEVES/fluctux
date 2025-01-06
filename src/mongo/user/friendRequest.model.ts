@@ -7,7 +7,7 @@ export interface FriendRequestType extends Document {
     status: string;
 }
 
-const friendRequest_schema: Schema<FriendRequestType> = new Schema({
+const friendRequestSchema: Schema<FriendRequestType> = new Schema({
     sender_id: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -27,5 +27,5 @@ const friendRequest_schema: Schema<FriendRequestType> = new Schema({
     timestamps: true,
 })
 
-const FriendRequest = (mongoose.models.FriendRequest as mongoose.Model<FriendRequestType>) || mongoose.model<FriendRequestType>("FriendRequest", friendRequest_schema);
+const FriendRequest = (mongoose.models.FriendRequest as mongoose.Model<FriendRequestType>) || mongoose.model<FriendRequestType>("FriendRequest", friendRequestSchema);
 export default FriendRequest;

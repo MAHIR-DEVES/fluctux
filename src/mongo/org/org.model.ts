@@ -7,7 +7,7 @@ export interface OrgType extends Document {
   org_description: string;
   org_visibility: string;
   org_uname: string;
-  owner: UserType;
+  admin: UserType;
   tags: string[];
   category: string;
   country: string;
@@ -41,7 +41,7 @@ const org_schema: Schema<OrgType> = new Schema(
       unique: true,
       index: true,
     },
-    owner: {
+    admin: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,

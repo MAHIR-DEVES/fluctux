@@ -1,5 +1,5 @@
 # FlucTux
-A wave of electronic users and clans where many users perform, manage, and scale their tasks together.
+A dynamic ecosystem of interconnected users and digital communities, where individuals and groups collaborate seamlessly to perform, manage, and scale their tasks efficiently.
 
 # Installed packages
 
@@ -11,4 +11,7 @@ pnpm i --save-dev @types/bcryptjs
 ```
 ```shell
 pnpm i axios
+```
+```shell
+pnpm i -D prettier
 ```

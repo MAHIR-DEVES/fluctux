@@ -2,6 +2,7 @@ import { NextAuthOptions, User as NextAuthUser } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
+import CredentialsProvider from "next-auth/providers/credentials";
 import connDb from "@/lib/db.conn";
 import User from "@/mongo/user/user.model";
 import { JWT } from "next-auth/jwt";
@@ -10,6 +11,51 @@ import mongoose from "mongoose";
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
+    CredentialsProvider({
+      id: "credentials",
+      name: "Credentials",
+      credentials: {
+        identifier: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(
+        credentials: Record<"identifier" | "password", string> | undefined
+      ): Promise<NextAuthUser> {
+        if (!credentials) {
+          throw new Error("Invalid credentials");
+        }
+
+        try {
+          await connDb();
+          const user = await User.findOne({
+            $or: [
+              { email: credentials.identifier },
+              { username: credentials.identifier },
+            ],
+          });
+          if (!user) {
+            throw new Error("Invalid credentials");
+          }
+
+          if (!user.isVerified) {
+            throw new Error("User is not verified");
+          }
+
+          const nextAuthUser: NextAuthUser = {
+            _id: (user._id as mongoose.Types.ObjectId).toString(),
+            email: user.email,
+            image: user.avatar,
+            name: user.name,
+            role: user.role,
+            username: user.username,
+          };
+
+          return nextAuthUser;
+        } catch (error) {
+          throw new Error("Something went wrong");
+        }
+      },
+    }),
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
@@ -36,7 +82,7 @@ export const authOptions: NextAuthOptions = {
           const user_existed = await User.findOne({ email: user.email });
 
           if (!(user.image || user.name || user.username || user.email)) {
-            throw new Error("Something went wrong invalid data");
+            throw new Error("Invalid data");
           }
 
           if (!user_existed) {
@@ -63,28 +109,13 @@ export const authOptions: NextAuthOptions = {
             if (user_existed.provider !== account.provider) {
               throw new Error("Email already exists with another provider");
             }
-
-            user_existed.avatar = user.image || "";
-            user_existed.name = user.name || "";
-            user_existed.username = user.username || "";
-            await user_existed.save();
             user._id =
               (user_existed._id as mongoose.Types.ObjectId).toString() || "";
           }
-
-          user.username =
-            user.username ||
-            user.email
-              ?.split("@")[0]
-              .replace(/[^a-zA-Z0-9]/g, "")
-              .trim();
-
-          user.role = "USER";
         } catch (error) {
           throw new Error("Something went wrong");
         }
       }
-
       return true;
     },
     async jwt({ token, user }: { token: JWT; user: NextAuthUser }) {
@@ -98,7 +129,7 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async session({ session, user, token }) {
+    async session({ session, token }) {
       if (token) {
         session.user.username = token.username;
         session.user.name = token.name;
@@ -108,11 +139,23 @@ export const authOptions: NextAuthOptions = {
         session.user._id = token._id;
       }
       return session;
-    }
+    },
   },
   pages: {
     error: "/auth/error",
+    verifyRequest: "/auth/verify-request",
   },
+  // cookies: {
+  //   sessionToken: {
+  //     name: `__Secure-next-auth.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "none",
+  //       secure: true, // ensure this is true in production
+  //       path: "/",
+  //     },
+  //   },
+  // },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days for token expiration

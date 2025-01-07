@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@arcjet/next": "1.0.0-alpha.34",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "mongoose": "^8.9.3",

@@ -21,3 +21,6 @@ pnpm i next-themes
 ```shell
 pnpm add next-auth
 ```
+```shell
+pnpm add @arcjet/next
+```

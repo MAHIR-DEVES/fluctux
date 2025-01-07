@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcryptjs";
 
 export interface UserType extends Document {
+  avatar: string;
   name: string;
   email: string;
   username: string;
@@ -16,6 +17,10 @@ export interface UserType extends Document {
 
 const user_schema: Schema<UserType> = new Schema(
   {
+    avatar: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

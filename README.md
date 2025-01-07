@@ -15,3 +15,9 @@ pnpm i axios
 ```shell
 pnpm i -D prettier
 ```
+```shell
+pnpm i next-themes
+```
+```shell
+pnpm add next-auth
+```

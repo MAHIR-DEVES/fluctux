@@ -1,10 +1,11 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
+import { RequestStatusType } from "@/types/user-types";
 
 export interface FriendRequestType extends Document {
     sender_id: UserType;
     receiver_id: UserType;
-    status: string;
+    status: RequestStatusType;
 }
 
 const friendRequestSchema: Schema<FriendRequestType> = new Schema({
@@ -20,8 +21,8 @@ const friendRequestSchema: Schema<FriendRequestType> = new Schema({
     },
     status: {
         type: String,
-        enum: ["PENDING", "ACCEPTED", "REJECTED"],
-        default: "PENDING",
+        enum: RequestStatusType,
+        default: RequestStatusType.PENDING,
     },        
 }, {
     timestamps: true,

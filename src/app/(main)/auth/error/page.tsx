@@ -1,11 +1,13 @@
+
 import React from 'react'
 
-export default function Testing(){
+const page = async () => {
+
   return (
     <div>
-      error in login
+      auth error
     </div>
   )
 }
 
-
+export default page

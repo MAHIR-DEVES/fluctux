@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { OrgType } from "./org.model";
 import { UserType } from "../user/user.model";
+import { VisibilityType } from "@/types/user-types";
 
 export interface ExcelProjectType extends Document {
     org: OrgType;
@@ -9,7 +10,7 @@ export interface ExcelProjectType extends Document {
     desc: string;
     content: string;
     isPublished: boolean;
-    status: string;
+    status: VisibilityType;
     isLocked: boolean;
 }
 
@@ -42,7 +43,8 @@ const excelDataSchema: Schema<ExcelProjectType> = new Schema({
     },
     status: {
         type: String,
-        enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
+        enum: VisibilityType,
+        default: VisibilityType.ORG,
         required: true,
     },
     isLocked: {

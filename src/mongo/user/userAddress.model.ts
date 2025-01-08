@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
+import { VisibilityType } from "@/types/user-types";
 
 export interface AddressType extends Document {
   user: UserType;
@@ -11,7 +12,7 @@ export interface AddressType extends Document {
   postal_code: string;
   state: string;
   street: string;
-  visibility: string;
+  visibility: VisibilityType;
 }
 
 const address_schema: Schema<AddressType> = new Schema(
@@ -63,13 +64,15 @@ const address_schema: Schema<AddressType> = new Schema(
 
     visibility: {
       type: String,
+      enum: VisibilityType,
+      default: VisibilityType.PUBLIC,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-const Address =
-  (mongoose.models.Address as mongoose.Model<AddressType>) ||
-  mongoose.model<AddressType>("Address", address_schema);
-export default Address;
+const UserAddress =
+  (mongoose.models.UserAddress as mongoose.Model<AddressType>) ||
+  mongoose.model<AddressType>("UserAddress", address_schema);
+export default UserAddress;

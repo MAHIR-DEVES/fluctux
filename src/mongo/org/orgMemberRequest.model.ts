@@ -1,13 +1,15 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { OrgType } from "./org.model";
 import { UserType } from "../user/user.model";
+import { OrgMemberRoleType } from "@/types/org-types";
+import { RequestStatusType } from "@/types/user-types";
 
 export interface OrgMemberRequestType extends Document {
     requested_to: OrgType;
     sender_id: UserType;
     receiver_id: UserType;
-    status: string;
-    requested_role: string;
+    status: RequestStatusType;
+    requested_role: OrgMemberRoleType;
 }
 
 const orgMemberRequestSchema: Schema<OrgMemberRequestType> = new Schema({
@@ -28,13 +30,13 @@ const orgMemberRequestSchema: Schema<OrgMemberRequestType> = new Schema({
     },
     status: {
         type: String,
-        enum: ["PENDING", "ACCEPTED", "REJECTED"],
-        default: "PENDING",
+        enum: RequestStatusType,
+        default: RequestStatusType.PENDING,
     },
     requested_role: {
         type: String,
-        enum: ["OWNER", "MODERATOR", "MEMBER"],
-        default: "MEMBER",
+        enum: OrgMemberRoleType,
+        default: OrgMemberRoleType.MEMBER,
     },
 }, {
     timestamps: true,

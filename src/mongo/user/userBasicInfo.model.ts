@@ -1,65 +1,62 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
-
-type NumberType = {
-  number: string;
-  visibility: string;
-  number_type: string;
-};
-
-type SocialLinkType = {
-  link: string;
-  social_media: string;
-  visibility: string;
-};
-
-type DateOfBirthType = {
-  day_month: string;
-  year: string;
-  visibility: string;
-};
+import { DateOfBirthType, GenderType, NumberType, SocialLinkType, SocialMediaType, VisibilityType } from "@/types/user-types";
 
 export interface UserBasicInfoType extends Document {
   user: UserType;
   numbers: NumberType[];
   socialLinks: SocialLinkType[];
-  gender: string;
+  gender: GenderType;
   date_of_birth: DateOfBirthType;
 }
 
-const NumberSchema: Schema<NumberType> = new Schema({
+const numberSchema: Schema<NumberType> = new Schema({
   number: {
     type: String,
     required: true,
   },
   visibility: {
     type: String,
-    enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
-    required: true,
-  },
-  number_type: {
-    type: String,
-    enum: ["PRIMARY", "LOCAL"],
+    enum: VisibilityType,
+    default: VisibilityType.PUBLIC,
     required: true,
   },
 });
 
-const SocialLinkSchema: Schema<SocialLinkType> = new Schema({
+const socialLinkSchema: Schema<SocialLinkType> = new Schema({
   link: {
     type: String,
     required: true,
   },
   social_media: {
     type: String,
-    enum: ["FACEBOOK", "TWITTER", "INSTAGRAM", "LINKEDIN", "GITHUB"],
+    enum: SocialMediaType,
     required: true,
   },
   visibility: {
     type: String,
-    enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
+    enum: VisibilityType,
+    default: VisibilityType.PUBLIC,
     required: true,
   },
 });
+
+const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
+  day_month: {
+    type: String,
+    required: true,
+  },
+  year: {
+    type: String,
+    required: true,
+  },
+  visibility: {
+    type: String,
+    enum: VisibilityType,
+    default: VisibilityType.PUBLIC,
+    required: true,
+  },
+})
 
 const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
   user: {
@@ -68,7 +65,7 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
     required: true,
   },
   numbers: {
-    type: [NumberSchema],
+    type: [numberSchema],
     validate: {
       validator: function (array: NumberType[]) {
         return array.length <= 5; // Maximum of 5 numbers allowed
@@ -77,7 +74,7 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
     },
   },
   socialLinks: {
-    type: [SocialLinkSchema],
+    type: [socialLinkSchema],
     validate: {
       validator: function (array: SocialLinkType[]) {
         return array.length <= 5; // Maximum of 5 social links allowed
@@ -87,23 +84,11 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
   },
   gender: {
     type: String,
-    enum: ["MALE", "FEMALE", "CUSTOM"],
+    enum: GenderType,
     required: true,
   },
   date_of_birth: {
-    day_month: {
-      type: String,
-      required: true,
-    },
-    year: {
-      type: String,
-      required: true,
-    },
-    visibility: {
-      type: String,
-      enum: ["ORG", "FRIEND", "PUBLIC", "PRIVATE"],
-      required: true,
-    },
+    type: dateOfBirthSchema
   },
 });
 

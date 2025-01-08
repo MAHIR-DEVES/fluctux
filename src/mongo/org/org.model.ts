@@ -1,18 +1,19 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "../user/user.model";
+import { OrgStatusType, OrgVisibilityType } from "@/types/org-types";
 
 export interface OrgType extends Document {
   org_thumbnail: string;
   org_name: string;
   org_description: string;
-  org_visibility: string;
+  org_visibility: OrgVisibilityType;
   org_uname: string;
   admin: UserType;
   tags: string[];
   category: string;
   country: string;
   city: string;
-  status: string;
+  status: OrgStatusType;
   isVerified: boolean;
 }
 
@@ -31,8 +32,8 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     org_visibility: {
       type: String,
-      enum: ["PUBLIC", "PRIVATE"],
-      default: "PUBLIC",
+      enum: OrgVisibilityType,
+      default: OrgVisibilityType.PUBLIC,
       required: true,
     },
     org_uname: {
@@ -64,8 +65,8 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     status: {
       type: String,
-      enum: ["NORMAL", "SUSPENDED", "RESTRICTED"],
-      default: "NORMAL",
+      enum: OrgStatusType,
+      default: OrgStatusType.NORMAL,
     },
     isVerified: {
       type: Boolean,

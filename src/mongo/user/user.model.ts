@@ -1,5 +1,8 @@
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcryptjs";
+import UserBasicInfo from "./userBasicInfo.model";
+import UserAddress from "./userAddress.model";
+import { AuthProviderType, UserRoleType, UserStatusType } from "@/types/user-types";
 
 export interface UserType extends Document {
   avatar: string;
@@ -7,10 +10,10 @@ export interface UserType extends Document {
   email: string;
   username: string;
   password: string;
-  role: string;
-  status: string;
+  role: UserRoleType;
+  status: UserStatusType;
   isVerified: boolean;
-  provider: string;
+  provider: AuthProviderType;
   verify_code: string;
   verify_expiry: Date;
 }
@@ -46,13 +49,13 @@ const user_schema: Schema<UserType> = new Schema(
     },
     role: {
       type: String,
-      enum: ["ADMIN", "USER"],
-      default: "USER",
+      enum: UserRoleType,
+      default: UserRoleType.USER,
     },
     status: {
       type: String,
-      enum: ["SUSPENDED", "RESTRICTED", "NORMAL"],
-      default: "NORMAL",
+      enum: UserStatusType,
+      default: UserStatusType.NORMAL,
     },
     isVerified: {
       type: Boolean,
@@ -61,8 +64,8 @@ const user_schema: Schema<UserType> = new Schema(
     },
     provider: {
       type: String,
-      enum: ["GITHUB", "DISCORD", "GOOGLE", "CUSTOM"],
-      default: "CUSTOM",
+      enum: AuthProviderType,
+      default: AuthProviderType.CUSTOM,
     },
     verify_code: {
       type: String,
@@ -83,6 +86,33 @@ user_schema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+user_schema.post("save", async function (user: UserType, next) {
+  const userBasicInfo = await UserBasicInfo.findOne({ user: user._id });
+  const userAddress = await UserAddress.findOne({ user: user._id });
+
+  if (!userBasicInfo) {
+    const newUserInfo = await new UserBasicInfo({
+      user: user._id,
+    });
+
+    await newUserInfo.save({
+      validateBeforeSave: false,
+    });
+  }
+
+  if (!userAddress) {
+    const newUserAddress = await new UserAddress({
+      user: user._id,
+    });
+
+    await newUserAddress.save({
+      validateBeforeSave: false,
+    });
+  }
+
   next();
 });
 

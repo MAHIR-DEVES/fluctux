@@ -1,14 +1,16 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { OrgType } from "./org.model";
 import { UserType } from "../user/user.model";
+import { OrgMemberRoleType, OrgMemberStatusType } from "@/types/org-types";
 
 
 export interface OrgMemberType extends Document {
   org: OrgType;
   user: UserType;
-  role: string;
-  status: string;
+  role: OrgMemberRoleType;
+  status: OrgMemberStatusType;
 }
+
 
 
 const orgMemberSchema: Schema<OrgMemberType> = new Schema({
@@ -24,15 +26,16 @@ const orgMemberSchema: Schema<OrgMemberType> = new Schema({
     },
     role: {
         type: String,
-        enum: ["OWNER", "MODERATOR", "MEMBER"],
-        default: "MEMBER",
+        enum: OrgMemberRoleType,
+        default: OrgMemberRoleType.MEMBER,
     },
     status: {
         type: String,
-        enum: ["NORMAL", "RESTRICTED", "BLOCKED", "PENDING", "REJECTED"],
-        default: "NORMAL", 
-        // in default, org is public, so user is normal
+        enum: OrgMemberStatusType,
+        default: OrgMemberStatusType.NORMAL,
     },
+}, {
+    timestamps: true
 })
 
 const OrgMember = (mongoose.models.OrgMember as mongoose.Model<OrgMemberType>) || mongoose.model<OrgMemberType>("OrgMember", orgMemberSchema);

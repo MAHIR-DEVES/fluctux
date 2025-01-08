@@ -116,7 +116,7 @@ user_schema.post("save", async function (user: UserType, next) {
   next();
 });
 
-// custom method
+// custom method for password validation
 user_schema.methods.isPasswordCorrect = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };

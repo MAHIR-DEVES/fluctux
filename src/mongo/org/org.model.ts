@@ -7,7 +7,6 @@ export interface OrgType extends Document {
   org_name: string;
   org_description: string;
   org_visibility: OrgVisibilityType;
-  org_uname: string;
   admin: UserType;
   tags: string[];
   category: string;
@@ -36,12 +35,6 @@ const org_schema: Schema<OrgType> = new Schema(
       default: OrgVisibilityType.PUBLIC,
       required: true,
     },
-    org_uname: {
-      type: String,
-      required: true,
-      unique: true,
-      index: true,
-    },
     admin: {
       type: Schema.Types.ObjectId,
       ref: "User",
@@ -57,11 +50,9 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     country: {
       type: String,
-      required: true,
     },
     city: {
       type: String,
-      required: true,
     },
     status: {
       type: String,

@@ -16,7 +16,7 @@ class ApiResponse implements ApiResponseType {
         status: number,
         message: string,
         data: unknown,
-        success: boolean = true
+        success: boolean = status < 400
     ){
         this.status = status;
         this.message = message;

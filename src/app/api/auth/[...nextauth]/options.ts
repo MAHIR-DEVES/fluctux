@@ -106,7 +106,7 @@ export const authOptions: NextAuthOptions = {
             user._id =
               (againUser?._id as mongoose.Types.ObjectId).toString() || "";
           } else {
-            if (user_existed.provider !== account.provider) {
+            if (user_existed.provider.toLowerCase() !== account.provider) {
               throw new Error("Email already exists with another provider");
             }
             user._id =

@@ -24,3 +24,6 @@ pnpm add next-auth
 ```shell
 pnpm add @arcjet/next
 ```
+```shell
+pnpm i uuid
+```

@@ -20,11 +20,41 @@ body {
 }
 
 @layer utilities {
-  .inner-shadow-green {
-    box-shadow: inset 0px 20px 30px #6aeeae73;
-  }
-
   .input-outline {
     outline: 2px solid var(--primary-border-color);
+  }
+
+  .gradient-new-text {
+    background-image: linear-gradient(
+      50deg,
+      var(--primary-green-color),
+      #0482f7
+    );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+
+  .three-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .two-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .one-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

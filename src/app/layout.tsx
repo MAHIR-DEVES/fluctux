@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./styles/app.style.css"
 import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";

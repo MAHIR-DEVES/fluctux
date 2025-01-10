@@ -15,23 +15,23 @@ export default function LoginPage() {
     <div className=" w-full mt-5">
       <div className="fixed top-8 right-8 flex justify-end items-center gap-2">
         <p className="text-[16px]">
-          New <span className="text-[var(--label-text-color)]">/</span>
+          New <span className="fx-label-color">/</span>
         </p>
-        <Link href={""}>
+        <Link href={"/signup"}>
           <FxButton variant="secondary" size="sm" className="create-acc-btn">
             <p className="gradient-new-text font-medium">Create Account</p>
           </FxButton>
         </Link>
       </div>
       <>
-        <p className="text-[var(--label-text-color)]">Email</p>
+        <p className="fx-label-color">Email</p>
         <FxInput
           className="w-full"
           variant="primary"
           size="md"
           placeholder="youremail@gmail.com"
         />
-        <p className="text-[var(--label-text-color)] mt-3">Password</p>
+        <p className="fx-label-color mt-3">Password</p>
         <FxInput
           className="w-full"
           type="password"
@@ -40,7 +40,7 @@ export default function LoginPage() {
           placeholder="********"
         />
         <div className="mt-1">
-        <Link href={""} className="text-[var(--link-color)] hover:underline text-[14px]">Forget Password?</Link>
+        <Link href={""} className="fx-link-color hover:underline text-[14px]">Forget Password?</Link>
 
         </div>
 
@@ -54,7 +54,7 @@ export default function LoginPage() {
       </>
 
       <FxSeparator orientation="horizontal" gap="xl">
-        <p className="text-[var(--label-text-color)] bg-[var(--background)] pl-2 pr-2">
+        <p className="fx-label-color fx-primary-bg pl-2 pr-2">
           Or
         </p>
       </FxSeparator>
@@ -88,13 +88,13 @@ export default function LoginPage() {
         </div>
       </>
 
-      <p className="text-[var(--label-text-color)] text-[14px] mt-8">
+      <p className="fx-label-color text-[14px] mt-8">
         By signing in, you agree to our{" "}
-        <Link href={""} className="text-[var(--link-color)] hover:underline">
+        <Link href={""} className="fx-link-color hover:underline">
           Terms of Service
         </Link>{" "}
         and{" "}
-        <Link href={""} className="text-[var(--link-color)] hover:underline">
+        <Link href={""} className="fx-link-color hover:underline">
           Privacy Policy.
         </Link>
       </p>

@@ -12,13 +12,13 @@ type ButtonVariantType = "primary" | "secondary" | "glossy" | "glassy";
 
 const buttonVariants: { [key in ButtonVariantType]: string } = {
   primary:
-    "border rounded-[var(--primary-radius)] border-[var(--primary-border-color)] bg-[var(--primary-green-color)] hover:bg-[#59d69a] active:scale-[0.95]",
+    "border fx-rounded fx-border-color fx-primary-green-bg hover:bg-[#59d69a] active:scale-[0.95]",
   secondary:
-    "border rounded-[var(--primary-radius)] border-[var(--primary-border-color)] bg-[var(--primary-light-bg-alter)] hover:bg-[#1b1b1b] active:scale-[0.95]",
+    "border fx-rounded fx-border-color fx-secondary-bg fx-hover-primary-bg active:scale-[0.95]",
   glossy:
-    "border rounded-[var(--primary-radius)] bg-gradient-to-b from-[#6aeeae6e] to-[#6aeeae22] border-[#6aeeaeca] hover:bg-[#6aeeae11] active:scale-[0.95]",
+    "border fx-rounded bg-gradient-to-b from-[#6aeeae6e] to-[#6aeeae22] border-[#6aeeaeca] hover:bg-[#6aeeae11] active:scale-[0.95]",
   glassy:
-    "border rounded-[var(--primary-radius)] bg-[#6aeeae3b] border-[#6aeeaeae] hover:bg-[#6aeeae2f]  active:scale-[0.95]",
+    "border fx-rounded bg-[#6aeeae3b] border-[#6aeeaeae] hover:bg-[#6aeeae2f]  active:scale-[0.95]",
 };
 
 const buttonSizes: { [key in SizeType]: string } = {

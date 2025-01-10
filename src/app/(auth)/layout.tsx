@@ -1,15 +1,22 @@
+"use client"
 import Logo from "@/components/ui/logo";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const path_name = usePathname()
+  const current_path = path_name.split("/")[1]
+
+  const h1Title = current_path.charAt(0).toUpperCase() + current_path.slice(1);
+
   return (
     <section className="flex justify-center items-center h-screen w-full">
       <div className="fixed top-8 left-8">
         <Logo color="WHITE" />
       </div>
 
-      <div className="max-w-[400px] w-full">
-        <h1 className="text-[25px] font-medium">Login to Fluctux</h1>
+      <div className="max-w-[420px] w-full p-3">
+        <h1 className="text-[25px] font-medium">{h1Title} to Fluctux</h1>
         {children}
       </div>
 

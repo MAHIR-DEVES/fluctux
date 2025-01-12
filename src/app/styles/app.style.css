@@ -13,5 +13,13 @@
 
 
 .app-side-nav{
-  height: calc(100% - 134px);
+  height: calc(100% - 120px);
+}
+
+.app-main{
+  width: calc(100% - 260px);
+}
+
+.app-r-main-w{
+  height: calc(100vh - 50px);
 }

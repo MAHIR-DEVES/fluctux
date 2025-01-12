@@ -1,12 +1,12 @@
 "use client";
-import FxButton from "@/components/ui/button";
+import FxButton from "@/components/ui/fxbutton";
 import {
   svg_auth_discord,
   svg_auth_github,
   svg_auth_google,
-} from "@/components/ui/icons";
-import FxInput from "@/components/ui/input";
-import FxSeparator from "@/components/ui/separator";
+} from "@/components/ui/fxicons";
+import FxInput from "@/components/ui/fxinput";
+import FxSeparator from "@/components/ui/fxseparator";
 import Link from "next/link";
 import React from "react";
 

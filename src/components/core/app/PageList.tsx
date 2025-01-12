@@ -1,0 +1,387 @@
+"use client";
+import FxButton from "@/components/ui/fxbutton";
+import React, { useEffect, useState } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  svg_assign,
+  svg_assigned_user,
+  svg_delete,
+  svg_draft,
+  svg_lock,
+  svg_page,
+  svg_public,
+  svg_star,
+  svg_three_dot,
+  svg_thumb,
+} from "@/components/ui/fxicons";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { Check } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface Assign {
+  value: string;
+  label: string;
+  image: string;
+}
+
+interface Project {
+  title: string;
+  assigns?: Assign;
+  status: string;
+}
+
+const statusOptions = [
+  {
+    value: "PUBLIC",
+    label: "Public",
+    icon: svg_public(20, 20),
+  },
+  {
+    value: "PRIVATE",
+    label: "Private",
+    icon: svg_lock(20, 20),
+  },
+];
+
+const allAssigns: Assign[] = [
+  {
+    value: "halima-khatun",
+    label: "Ni Mahin Org's",
+    image:
+      "https://st2.depositphotos.com/3867453/9096/v/450/depositphotos_90960358-stock-illustration-letter-m-logo-icon-design.jpg",
+  },
+  {
+    value: "mehena-khatun",
+    label: "M Org's",
+    image:
+      "https://i.pinimg.com/474x/b6/74/f5/b674f5c59532b8f0e6efeb17bf6f75bc.jpg",
+  },
+];
+
+export default function PageList({ data }: { data: Project[] }) {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [assignStates, setAssignStates] = useState<
+    Record<string, { value: string; open: boolean }>
+  >({});
+  const [statusStates, setStatusStates] = useState<
+    Record<string, { value: string; open: boolean }>
+  >({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setProjects(data);
+
+      const initialAssignStates: Record<
+        string,
+        { value: string; open: boolean }
+      > = {};
+      const initialStatusStates: Record<
+        string,
+        { value: string; open: boolean }
+      > = {};
+      data.forEach((item, index) => {
+        const id = `id-${index}`;
+        initialAssignStates[id] = {
+          value: item.assigns?.value || "",
+          open: false,
+        };
+        initialStatusStates[id] = { value: item.status, open: false };
+      });
+      setAssignStates(initialAssignStates);
+      setStatusStates(initialStatusStates);
+    };
+
+    fetchData();
+  }, [data]);
+
+  const handleAssignSelect = (id: string, value: string) => {
+    setAssignStates((prevState) => ({
+      ...prevState,
+      [id]: { ...prevState[id], value, open: false },
+    }));
+  };
+
+  const handleStatusSelect = (id: string, value: string) => {
+    setStatusStates((prevState) => ({
+      ...prevState,
+      [id]: { ...prevState[id], value, open: false },
+    }));
+  };
+
+  return (
+    <>
+      <div className="app-page-header mb-3 overflow-x-auto overflow-y-hidden shborder w-full h-[100px]  flex justify-start items-center ">
+        <div className="p-3 min-w-[200px] shborder w-full max-w-[200px] h-full flex flex-col justify-between items-start">
+          <div className="flex justify-start items-center gap-1">
+            <p className="fx-label-color font-medium">Pages</p>
+            {svg_page(20, 20)}
+          </div>
+          <p className="text-[30px] text-white">23</p>
+        </div>
+        <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer  w-full max-w-[200px] h-full flex flex-col justify-between items-start">
+          <div className="flex justify-start items-center gap-1">
+            <p className="fx-label-color font-medium">Likes</p>
+            {svg_thumb(20, 20)}
+          </div>
+          <p className="text-[30px] text-white">2358</p>
+        </div>
+        <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer  w-full max-w-[200px] h-full flex flex-col justify-between items-start">
+          <div className="flex justify-start items-center gap-1">
+            <p className="fx-label-color font-medium">Stars</p>
+            {svg_star(20, 20)}
+          </div>
+          <p className="text-[30px] text-white">132</p>
+        </div>
+        <div className="p-3 min-w-[250px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[250px] h-full flex flex-col justify-between items-start">
+          <div className="flex justify-start items-center gap-3">
+            <p className="fx-label-color font-medium">Contributors</p>
+            <div className="flex justify-start items-center relative flex-shrink-0 w-[80px]">
+              <img
+                src="a"
+                alt=""
+                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[4] bg-red-600 absolute`}
+              />
+              <img
+                src="a"
+                alt=""
+                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[3] bg-yellow-400 absolute left-[15px]`}
+              />
+              <img
+                src="a"
+                alt=""
+                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[2] bg-green-500 absolute left-[30px]`}
+              />
+              <img
+                src="a"
+                alt=""
+                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[1] bg-blue-700 absolute left-[45px]`}
+              />
+            </div>
+          </div>
+          <p className="text-[30px] text-white">238</p>
+        </div>
+        <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[200px] h-full flex flex-col justify-between items-start">
+          <div className="flex justify-start items-center gap-1">
+            <p className="fx-label-color font-medium">Assigns</p>
+            {svg_assign(20, 20)}
+          </div>
+          <p className="text-[30px] text-white">58</p>
+        </div>
+      </div>
+      <div className="flex justify-between items-center p-3 pt-0 pr-0 pb-0 sticky top-[59px] fx-secondary-bg">
+        <div className="w-full min-w-[300px] font-medium text-[16px]">Title</div>
+        <div className="flex justify-end items-center">
+          <div className="w-[170px] p-3 font-medium text-[16px]">Assignees</div>
+          <div className="w-[100px] p-3 font-medium text-[16px]">Status</div>
+          <div className="w-[50px]"></div>
+        </div>
+      </div>
+      <div className="app-page-main w-full h-[1000px]">
+        {projects.map((item, index) => {
+          const id = `id-${index}`;
+          const assignState = assignStates[id] || { value: "", open: false };
+          const statusState = statusStates[id] || { value: "", open: false };
+          return (
+            <div
+              key={index}
+              className="app-page-list-box shborder w-full h-[70px] flex justify-between items-center"
+            >
+              <div className="w-full h-[70px] flex justify-start items-center p-3 fx-hover-primary-bg">
+                <h2 className="text-[18px] font-medium fx-label-color min-w-[300px] one-line-ellipsis w-full cursor-pointer">
+                  {item.title}
+                </h2>
+              </div>
+              <div className="flex justify-end items-center h-full">
+                <Popover
+                  open={assignState.open}
+                  onOpenChange={(open) =>
+                    setAssignStates((prevState) => ({
+                      ...prevState,
+                      [id]: { ...assignState, open },
+                    }))
+                  }
+                >
+                  <PopoverTrigger asChild>
+                    <div className="flex w-[170px] h-[70px] flex-shrink-0 justify-center items-center p-3 fx-hover-primary-bg cursor-pointer ">
+                      <button className="flex justify-center items-center w-full">
+                        {assignState.value ? (
+                          <div className="flex justify-start items-center gap-2 w-full">
+                            <img
+                              src={
+                                allAssigns.find(
+                                  (assign) => assign.value === assignState.value
+                                )?.image
+                              }
+                              className="w-[25px] h-[25px] rounded-[50%] border fx-border-color object-cover object-center"
+                            />
+                            <p className="font-medium text-[14px] fx-label-color one-line-ellipsis">
+                              {
+                                allAssigns.find(
+                                  (assign) => assign.value === assignState.value
+                                )?.label
+                              }
+                            </p>
+                          </div>
+                        ) : (
+                          <div>{svg_assigned_user(20, 20)}</div>
+                        )}
+                      </button>
+                    </div>
+                  </PopoverTrigger>
+                  <PopoverContent className="p-0 org-combo fx-border-color fx-secondary-bg w-[220px]">
+                    <Command className="fx-secondary-bg org-combo-command">
+                      <p className="fx-sec-label-color font-medium p-2 pb-0 text-[16px]">
+                        Assign to
+                      </p>
+                      <CommandInput
+                        placeholder="Search Contributors"
+                        className="text-white"
+                      />
+                      <CommandList className="fx-border-color">
+                        <CommandEmpty className="fx-sec-label-color text-center">
+                          No contributor found
+                        </CommandEmpty>
+                        <CommandGroup className="fx-border-color">
+                          {allAssigns.map((assign) => (
+                            <CommandItem
+                              key={assign.value}
+                              value={assign.value}
+                              onSelect={() =>
+                                handleAssignSelect(id, assign.value)
+                              }
+                            >
+                              <div className="flex justify-start items-center gap-2 w-full">
+                                <img
+                                  src={assign.image}
+                                  alt=""
+                                  className="w-[25px] h-[25px] rounded-[50%] border fx-border-color object-cover object-center"
+                                />
+                                <p className="font-medium text-[14px] fx-label-color">
+                                  {assign.label}
+                                </p>
+                              </div>
+                              <Check
+                                className={cn(
+                                  "ml-auto",
+                                  assignState.value === assign.value
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                )}
+                              />
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+
+                <Popover
+                  open={statusState.open}
+                  onOpenChange={(open) =>
+                    setStatusStates((prevState) => ({
+                      ...prevState,
+                      [id]: { ...statusState, open },
+                    }))
+                  }
+                >
+                  <PopoverTrigger asChild>
+                    {item.status && (
+                      <div className="flex fx-hover-primary-bg flex-shrink-0 justify-between items-center h-[70px] w-[100px] p-3 cursor-pointer">
+                        <button className="flex justify-center items-center w-full">
+                          <div className="flex justify-start items-center gap-1 w-full">
+                            {statusOptions.find(
+                              (s) => s.value === statusState.value
+                            )?.icon ||
+                              statusOptions.find((s) => s.value === item.status)
+                                ?.icon}
+                            <p className="font-medium text-[14px] one-line-ellipsis fx-label-color">
+                              {statusState.value.charAt(0).toUpperCase() +
+                                statusState.value.slice(1).toLowerCase() ||
+                                statusOptions.find(
+                                  (s) => s.value === item.status
+                                )?.label}
+                            </p>
+                          </div>
+                        </button>
+                      </div>
+                    )}
+                  </PopoverTrigger>
+                  <PopoverContent className="p-0 org-combo fx-border-color fx-secondary-bg w-[150px]">
+                    <Command className="fx-secondary-bg org-combo-command">
+                      <CommandList className="fx-border-color">
+                        <CommandGroup className="fx-border-color">
+                          {statusOptions.map((s) => (
+                            <CommandItem
+                              key={s.value}
+                              value={s.value}
+                              onSelect={() => handleStatusSelect(id, s.value)}
+                            >
+                              <div className="flex justify-start items-center gap-2 w-full">
+                                {s.icon}
+                                <p className="font-medium text-[14px] one-line-ellipsis fx-label-color">
+                                  {s.label}
+                                </p>
+                              </div>
+                              <Check
+                                className={cn(
+                                  "ml-auto",
+                                  statusState.value === s.value
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                )}
+                              />
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <div className="w-[50px] h-[70px] flex justify-center items-center fx-hover-primary-bg cursor-pointer">
+                      <FxButton className="rounded-[50%] p-[5px] border fx-border-color active:scale-[0.97]">
+                        {svg_three_dot(20, 20)}
+                      </FxButton>
+                    </div>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[200px] fx-secondary-bg fx-rounded fx-border-color p-1">
+                    <ul>
+                      <li className="fx-sec-label-color p-1">
+                        Created: 27 Jan, 2024
+                      </li>
+                      <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
+                        {svg_lock(20, 20)}
+                        <p className="fx-label-color">Lock</p>
+                      </li>
+                      <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
+                        {svg_draft(20, 20)}
+                        <p className="fx-label-color">Move to draft</p>
+                      </li>
+                      <li className="w-full p-1 rounded-[6px] fx-hover-tred-bg flex justify-start items-center gap-2 cursor-pointer">
+                        {svg_delete(20, 20)}
+                        <p className="fx-text-red">Delete</p>
+                      </li>
+                    </ul>
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+}

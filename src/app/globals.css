@@ -4,16 +4,40 @@
 
 :root {
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #ffffff;
   --primary-secondary-bg: #131313;
   --primary-input-bg: #131313;
   --primary-border-color: #2a2a2a;
   --primary-radius: 8px;
   --primary-green-color: #6aeeaf;
   --label-text-color: #b1b1b1;
+  --secondary-label-text-color: #717171;
   --link-color: #2ba0ff;
-  --primary-hover-color: #1b1b1b ;
+  --primary-hover-color: #1b1b1b;
   --primary-hover-trans-green-color: #6aeeae13;
+  --hover-trans-red-bg: #ff00001c;
+
+  /* badge colors */
+  --badge-green-border: #6aeeae79;
+  --badge-green-bg: #6aeeae2e;
+  --badge-green-fg: #6aeeaf;
+
+  --badge-purple-border: #b700ff90;
+  --badge-purple-bg: #b700ff32;
+  --badge-purple-fg: #c567fb;
+
+  --badge-pink-border: #ff00cc90;
+  --badge-pink-bg: #ff00cc3d;
+  --badge-pink-fg: #ff32d6;
+
+  /* org projects colors */
+  --project-green: #6aeeae3b;
+  --project-purple: #b700ff39;
+  --project-pink: #ff00b336;
+  --project-yellow: #eeff002f;
+  --project-blue: #0091ff2f;
+  --project-red: #ff00002f;
+  --project-orange: #ff6f002f;
 }
 
 body {
@@ -28,43 +52,63 @@ body {
   }
 
   .fx-hover-primary-bg {
-    @apply hover:bg-[var(--primary-hover-color)]
+    @apply hover:bg-[var(--primary-hover-color)];
   }
 
   .fx-hover-greentext-bgpr {
-    @apply hover:bg-[var(--primary-hover-color)] hover:text-[var(--primary-green-color)]
+    @apply hover:bg-[var(--primary-hover-color)] hover:text-[var(--primary-green-color)];
+  }
+
+  .fx-hover-tred-bg {
+    @apply hover:bg-[var(--hover-trans-red-bg)];
+  }
+
+  .fx-text-red {
+    @apply text-red-600
+  }
+
+  .fx-hover-whitetext-bgpr {
+    @apply hover:bg-[var(--primary-hover-color)] hover:text-white;
   }
 
   .fx-border-color {
-    @apply border-[var(--primary-border-color)]
+    @apply border-[var(--primary-border-color)];
   }
-  
+
+  .fx-border-color-green {
+    @apply border-[var(--primary-green-color)];
+  }
+
   .fx-rounded {
-    @apply rounded-[8px]
+    @apply rounded-[8px];
   }
 
   .fx-secondary-bg {
-    @apply bg-[var(--primary-secondary-bg)]
+    @apply bg-[var(--primary-secondary-bg)];
   }
 
   .fx-primary-green-bg {
-    @apply bg-[var(--primary-green-color)]
+    @apply bg-[var(--primary-green-color)];
   }
 
   .fx-label-color {
-    @apply text-[var(--label-text-color)]
+    @apply text-[var(--label-text-color)];
+  }
+
+  .fx-sec-label-color {
+    @apply text-[var(--secondary-label-text-color)];
   }
 
   .fx-input-bg {
-    @apply bg-[var(--primary-input-bg)]
+    @apply bg-[var(--primary-input-bg)];
   }
 
   .fx-link-color {
-    @apply text-[var(--link-color)]
+    @apply text-[var(--link-color)];
   }
 
   .fx-primary-bg {
-    @apply bg-[var(--background)]
+    @apply bg-[var(--background)];
   }
 
   .gradient-new-text {
@@ -99,6 +143,11 @@ body {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .shborder {
+    box-shadow: 0 0 0 1px var(--primary-border-color), inset 0 0 0 1px var(--background);
+
   }
 }
 
@@ -153,4 +202,3 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
-

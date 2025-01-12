@@ -5,9 +5,10 @@ type OrientationType = "vertical" | "horizontal";
 
 interface FxSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  orientation?: keyof typeof sepOrnAttributes;
+  orientation: keyof typeof sepOrnAttributes;
   color?: string;
   gap?: keyof typeof GapAttributes;
+  size?: string
 }
 
 const sepOrnAttributes: { [key in OrientationType]: string } = {
@@ -16,7 +17,7 @@ const sepOrnAttributes: { [key in OrientationType]: string } = {
 };
 
 const GapAttributes: { [key in SizeType]: string } = {
-  sm: "3px",
+  sm: "10px",
   md: "20px",
   lg: "30px",
   xl: "40px",
@@ -26,13 +27,14 @@ export default function FxSeparator({
   orientation,
   color,
   gap,
+  size,
   children,
 }: FxSeparatorProps) {
   const selectedOrientation = orientation
     ? sepOrnAttributes[orientation]
     : sepOrnAttributes.horizontal;
 
-  const givenGap = gap ? GapAttributes[gap] : GapAttributes.sm;
+  const givenGap = gap ? GapAttributes[gap] : "";
 
   return (
     <div
@@ -43,9 +45,10 @@ export default function FxSeparator({
       }}
     >
       <hr
-        className={`${selectedOrientation}`}
+        className={`${selectedOrientation} absolute`}
         style={{
           borderColor: color || "var(--primary-border-color)",
+          width: size && `${size}`
         }}
       />
       <div className="absolute bg-transparent z-[1]">{children}</div>

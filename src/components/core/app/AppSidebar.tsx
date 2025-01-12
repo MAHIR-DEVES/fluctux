@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -15,8 +15,25 @@ import {
 } from "@/components/ui/popover";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import FxButton from "@/components/ui/button";
-import { svg_activity, svg_analytics, svg_friends, svg_home, svg_issue, svg_page, svg_sheet, svg_task } from "@/components/ui/icons";
+import {
+  Collapsible,
+  CollapsibleContent,
+} from "@/components/ui/collapsible";
+import {
+  svg_activity,
+  svg_analytics,
+  svg_friends,
+  svg_home,
+  svg_issue,
+  svg_page,
+  svg_sheet,
+  svg_task,
+} from "@/components/ui/fxicons";
+import FxButton from "@/components/ui/fxbutton";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import FxSeparator from "@/components/ui/fxseparator";
+import FxBadge from "@/components/ui/fxbadge";
 
 const frameworks = [
   {
@@ -36,8 +53,37 @@ const frameworks = [
 ];
 
 export default function AppSidebar() {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const router = useRouter();
+  const path_name = usePathname();
+
+  const [openCollapsible, setOpenCollapsible] = useState<{
+    [key: number]: boolean;
+  }>({});
+
+  const toggleCollapsible = (id: number) => {
+    setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
+  const openProject = (id: number, path: string) => {
+    const isProject = openCollapsible[id];
+    if (!isProject) {
+      setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
+        ...prevState,
+        [id]: !prevState[id],
+      }));
+      return router.push(`${path}`);
+    }
+
+    if (path_name !== path) {
+      return router.push(`${path}`);
+    }
+  };
+
   return (
     <aside className="w-[260px] h-full fixed top-0 left-0 fx-secondary-bg border-r fx-border-color">
       <div className="w-full">
@@ -137,51 +183,114 @@ export default function AppSidebar() {
         </div>
       </div>
       <nav className="app-side-nav overflow-y-auto p-3">
-        <ul className="pb-2">
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_home(20, 20)}
-            <p>Home</p>
-          </li>
+        <ul>
+          <Link href={"/app/org"}>
+            <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
+              {svg_home(18, 18)}
+              <p>Home</p>
+            </li>
+          </Link>
 
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_friends(20, 20)}
+            {svg_friends(18, 18)}
             <p>Friends</p>
           </li>
-          
         </ul>
-        <ul className="pt-2 pb-2 border-t fx-border-color">
-          <p className="text-[17px] font-medium">Workspace</p>
+        <FxSeparator orientation="horizontal" gap="sm" />
+        <ul>
+          <p className="text-[16px] font-medium uppercase fx-sec-label-color mb-1">
+            Workspace
+          </p>
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_activity(20, 20)}
+            {svg_activity(18, 18)}
             <p>Activity</p>
           </li>
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_analytics(20, 20)}
+            {svg_analytics(18, 18)}
             <p>Analytics</p>
           </li>
         </ul>
-        <ul className="pt-2 border-t fx-border-color">
-          <p className="text-[17px] font-medium">Projects</p>
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_task(20, 20)}
-            <p>Tasks</p>
-          </li>
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_sheet(20, 20)}
-            <p>Sheets</p>
-          </li>
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_issue(20, 20)}
-            <p>Issues</p>
-          </li>
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_page(20, 20)}
-            <p>Pages</p>
-          </li>
-          
+        <FxSeparator orientation="horizontal" gap="sm" />
+        <ul>
+          <div className="mb-1 flex justify-start items-center gap-2">
+            <p className="text-[16px] font-medium uppercase fx-sec-label-color ">
+              Projects
+            </p>
+            <FxBadge variant="lolipop">32</FxBadge>
+          </div>
+          <div className="space-y-2">
+            {Array.from({ length: 20 }).map((_, i) => {
+              return (
+                <Collapsible
+                  key={i + 1}
+                  open={openCollapsible[i + 1] || false}
+                  onOpenChange={() => toggleCollapsible(i + 1)}
+                  className="w-full space-y-2"
+                >
+                  <div className="flex items-center justify-start">
+                    <FxButton
+                      size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openProject(i + 1, "/app/my-org/projects/sdgsdg");
+                      }}
+                      className="w-full flex justify-between items-center fx-rounded active:scale-[0.99] pr-[5px] bg-[var(--project-blue)]"
+                    >
+                      <p className={`text-left ${openCollapsible[i + 1] ? "text-white" : "fx-label-color"}  font-medium`}>
+                        My Project -1
+                      </p>
+                      <div
+                        className={`p-1 border ${openCollapsible[i + 1] ? "border-none bg-[#6aeeae30]" : "border-[#6aeeae30]"}   fx-rounded`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleCollapsible(i + 1);
+                        }}
+                      >
+                        <ChevronsUpDown className="h-4 w-4" />
+                      </div>
+                    </FxButton>
+                  </div>
+                  <CollapsibleContent className="pl-3">
+                    <Link href={"/app/my-org/projects/sgsdg/tasks"}>
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                        {svg_task(18, 18)}
+                        <p>Tasks</p>
+                      </li>
+                    </Link>
+                    <Link href={"/app/my-org/projects/sgsdg/sheets"}>
+                    <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      {svg_sheet(18, 18)}
+                      <p>Sheets</p>
+                    </li>
+                    </Link>
+                    <Link href={"/app/my-org/projects/sgsdg/issues"}>
+                    <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      {svg_issue(18, 18)}
+                      <p>Issues</p>
+                    </li>
+                    </Link>
+                    <Link href={"/app/my-org/projects/sgsdg/pages"}>
+                    <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      {svg_page(18, 18)}
+                      <p>Pages</p>
+                    </li>
+                    </Link>
+                  </CollapsibleContent>
+                </Collapsible>
+              );
+            })}
+          </div>
         </ul>
       </nav>
-      <div className="w-full h-[64px] border-t fx-border-color"></div>
+
+      <div className="w-full h-[50px] border-t cursor-pointer fx-border-color flex justify-center items-center p-3 gap-3 fx-hover-primary-bg">
+
+        <img
+          src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg"
+          alt=""
+          className="w-[35px] h-[35px] rounded-[50%] fx-border-color border"
+        />
+      </div>
     </aside>
   );
 }

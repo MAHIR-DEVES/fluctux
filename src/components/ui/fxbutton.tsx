@@ -1,3 +1,4 @@
+"use client"
 import { SizeType } from "@/types/element-default-size-types";
 import React from "react";
 
@@ -39,7 +40,7 @@ export default function FxButton({
   const buttonSize = size ? buttonSizes[size] : "";
   return (
     <button
-      className={`${buttonVariant} ${buttonSize} ${className} `}
+      className={`${buttonVariant} ${buttonSize} ${className}`}
       {...props}
     >
       {children}

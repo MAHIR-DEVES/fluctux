@@ -1,5 +1,5 @@
 "use client"
-import Logo from "@/components/ui/logo";
+import Logo from "@/components/ui/fxlogo";
 import { usePathname } from "next/navigation";
 import React from "react";
 

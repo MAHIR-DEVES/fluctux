@@ -182,13 +182,13 @@ export default function AppSidebar() {
       <nav className="app-side-nav overflow-y-auto p-3">
         <ul>
           <Link href={"/app/org"}>
-            <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
+            <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-primary-fg fx-hover-primary-bg">
               <HomeIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
               <p>Home</p>
             </li>
           </Link>
 
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
+          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-primary-fg fx-hover-primary-bg">
             <TwoPeopleIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
             <p>Friends</p>
           </li>
@@ -198,11 +198,11 @@ export default function AppSidebar() {
           <p className="text-[16px] font-medium uppercase fx-sec-label-color mb-1">
             Workspace
           </p>
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
+          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-primary-fg fx-hover-primary-bg">
             <ActivityIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
             <p>Activity</p>
           </li>
-          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
+          <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-primary-fg fx-hover-primary-bg">
             <AnalyticsIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
             <p>Analytics</p>
           </li>
@@ -213,7 +213,7 @@ export default function AppSidebar() {
             <p className="text-[16px] font-medium uppercase fx-sec-label-color ">
               Projects
             </p>
-            <FxBadge variant="lolipop">32</FxBadge>
+            <FxBadge variant="purple">32</FxBadge>
           </div>
           <div className="space-y-2">
             {Array.from({ length: 20 }).map((_, i) => {
@@ -245,31 +245,31 @@ export default function AppSidebar() {
                           toggleCollapsible(i + 1);
                         }}
                       >
-                        <ChevronsUpDown className="h-4 w-4" />
+                        <ChevronsUpDown className="h-4 w-4 opacity-50" />
                       </div>
                     </FxButton>
                   </div>
                   <CollapsibleContent className="pl-3">
                     <Link href={"/app/my-org/projects/sgsdg/tasks"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
                         <TaskIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
                         <p>Tasks</p>
                       </li>
                     </Link>
                     <Link href={"/app/my-org/projects/sgsdg/sheets"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
                         <SheetIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
                         <p>Sheets</p>
                       </li>
                     </Link>
                     <Link href={"/app/my-org/projects/sgsdg/issues"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
                         <IssueIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
                         <p>Issues</p>
                       </li>
                     </Link>
                     <Link href={"/app/my-org/projects/sgsdg/pages"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
                         <PageIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
                         <p>Pages</p>
                       </li>

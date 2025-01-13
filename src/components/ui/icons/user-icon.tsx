@@ -9,25 +9,25 @@ export const UserIcon: React.FC<SvgType> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
     width={width}
     height={height}
+    viewBox="0 0 24 24"
+    fill="none"
     className={className}
-    color={"#b1b1b1"}
-    fill={"none"}
+    color="#b1b1b1"
     {...props}
   >
     <path
-      d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M3.25 21C3.25 16.7198 6.71979 13.25 11 13.25H13C17.2802 13.25 20.75 16.7198 20.75 21C20.75 21.4142 20.4142 21.75 20 21.75H4C3.58579 21.75 3.25 21.4142 3.25 21Z"
+      fill="#b1b1b1"
+    ></path>
     <path
-      d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M7.25 7C7.25 4.37665 9.37665 2.25 12 2.25C14.6234 2.25 16.75 4.37665 16.75 7C16.75 9.62335 14.6234 11.75 12 11.75C9.37665 11.75 7.25 9.62335 7.25 7Z"
+      fill="#b1b1b1"
+    ></path>
   </svg>
 );

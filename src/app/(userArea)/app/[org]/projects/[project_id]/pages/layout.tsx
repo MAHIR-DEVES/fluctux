@@ -37,7 +37,7 @@ export default function Layout({ children }: LayoutProps) {
               Draft
             </FxButton>
             <FxButton
-              variant="glassy"
+              variant="primary"
               size="sm"
               className="flex-shrink-0 font-medium"
             >

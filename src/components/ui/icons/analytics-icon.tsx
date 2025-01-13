@@ -8,36 +8,44 @@ export const AnalyticsIcon: React.FC<SvgType> = ({
   ...props
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
+    viewBox="0 0 24 24"
+    fill="none"
     className={className}
-    viewBox="0 0 1920 1920"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="#b1b1b1"
+    color="#b1b1b1"
     {...props}
   >
-    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-    <g
-      id="SVGRepo_tracerCarrier"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    ></g>
-    <g id="SVGRepo_iconCarrier">
-      {" "}
-      <g fillRule="evenodd" clipRule="evenodd" stroke="none" strokeWidth="1">
-        {" "}
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M746.667 106.667V1493.33H1173.33V106.667H746.667ZM1056 224H864V1376H1056V224ZM106.667 533.333H533.333V1493.33H106.667V533.333ZM224 650.667H416V1376H224V650.667Z"
-        ></path>{" "}
-        <path d="M1920 1706.67H0V1824H1920V1706.67Z"></path>{" "}
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M1386.67 746.667H1813.33V1493.33H1386.67V746.667ZM1504 864H1696V1376H1504V864Z"
-        ></path>{" "}
-      </g>{" "}
-    </g>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M4 8C4.55228 8 5 8.44772 5 9V20C5 20.5523 4.55228 21 4 21C3.44772 21 3 20.5523 3 20V9C3 8.44772 3.44772 8 4 8Z"
+      fill="#b1b1b1"
+    ></path>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M8 3C8.55228 3 9 3.44772 9 4V20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20V4C7 3.44772 7.44772 3 8 3Z"
+      fill="#b1b1b1"
+    ></path>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M12 10C12.5523 10 13 10.4477 13 11V20C13 20.5523 12.5523 21 12 21C11.4477 21 11 20.5523 11 20V11C11 10.4477 11.4477 10 12 10Z"
+      fill="#b1b1b1"
+    ></path>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M16 6C16.5523 6 17 6.44772 17 7V20C17 20.5523 16.5523 21 16 21C15.4477 21 15 20.5523 15 20V7C15 6.44772 15.4477 6 16 6Z"
+      fill="#b1b1b1"
+    ></path>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M20 13C20.5523 13 21 13.4477 21 14V20C21 20.5523 20.5523 21 20 21C19.4477 21 19 20.5523 19 20V14C19 13.4477 19.4477 13 20 13Z"
+      fill="#b1b1b1"
+    ></path>
   </svg>
 );

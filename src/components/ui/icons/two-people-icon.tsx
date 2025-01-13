@@ -8,22 +8,45 @@ export const TwoPeopleIcon: React.FC<SvgType> = ({
   ...props
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
+    viewBox="0 0 24 24"
+    fill="none"
     className={className}
-    fill="#b1b1b1"
-    viewBox="0 -64 640 640"
-    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    color="#b1b1b1"
     {...props}
   >
-    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-    <g
-      id="SVGRepo_tracerCarrier"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    ></g>
-    <g id="SVGRepo_iconCarrier">
-      <path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"></path>
-    </g>
+    <path
+      d="M9.875 14H8.125C4.74226 14 2 16.9101 2 20.5H16C16 16.9101 13.2577 14 9.875 14Z"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M19 20.5H22C22 17.1341 19.5892 14.3323 16.5 14"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+    <circle
+      cx="9"
+      cy="7"
+      r="3.5"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></circle>
+    <path
+      d="M15 10.5C16.933 10.5 18.5 8.933 18.5 7C18.5 5.067 16.933 3.5 15 3.5"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
   </svg>
 );

@@ -1,15 +1,23 @@
-import FxButton from '@/components/ui/fxbutton'
-import { svg_auth_discord, svg_auth_github, svg_auth_google } from '@/components/ui/fxicons'
-import FxInput from '@/components/ui/fxinput'
-import FxSeparator from '@/components/ui/fxseparator'
-import Link from 'next/link'
-import React from 'react'
+import FxButton from "@/components/ui/fxbutton";
+import FxInput from "@/components/ui/fxinput";
+import FxSeparator from "@/components/ui/fxseparator";
+import { DiscordIcon } from "@/components/ui/icons/discord-icon";
+import { GithubIcon } from "@/components/ui/icons/github-icon";
+import { GoogleIcon } from "@/components/ui/icons/google-icon";
+import Link from "next/link";
+import React from "react";
 
-export default function SignUpPage(){
+export default function SignUpPage() {
   return (
     <div className=" w-full mt-5">
-      <h3 className='mb-5 font-medium text-[16px]'>
-        Already have an account? <Link href="/login" className="text-[var(--link-color)] hover:underline">Log in</Link>
+      <h3 className="mb-5 font-medium text-[16px]">
+        Already have an account?{" "}
+        <Link
+          href="/login"
+          className="text-[var(--link-color)] hover:underline"
+        >
+          Log in
+        </Link>
       </h3>
       <>
         <p className="text-[var(--label-text-color)]">Email</p>
@@ -30,7 +38,7 @@ export default function SignUpPage(){
 
         <FxButton
           className="w-full mt-5 active:scale-[0.98]"
-          variant="glassy"
+          variant="primary"
           size="md"
         >
           <p className="font-medium">Create Account</p>
@@ -46,28 +54,28 @@ export default function SignUpPage(){
       <>
         <FxButton
           className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
-          variant="glassy"
+          variant="secondary"
           size="md"
         >
-          <p className="font-medium">Google</p>
-          {svg_auth_google}
+          <p className="font-medium fx-label-color">Google</p>
+          <GoogleIcon />
         </FxButton>
         <div className="flex justify-center items-center gap-3 mt-3">
           <FxButton
             className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
-            variant="glassy"
+            variant="secondary"
             size="md"
           >
-            <p className="font-medium">Github</p>
-            {svg_auth_github}
+            <p className="font-medium fx-label-color">Github</p>
+            <GithubIcon />
           </FxButton>
           <FxButton
             className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
-            variant="glassy"
+            variant="secondary"
             size="md"
           >
-            <p className="font-medium">Discord</p>
-            {svg_auth_discord}
+            <p className="font-medium fx-label-color">Discord</p>
+            <DiscordIcon width={25} height={25} />
           </FxButton>
         </div>
       </>
@@ -83,7 +91,5 @@ export default function SignUpPage(){
         </Link>
       </p>
     </div>
-  )
+  );
 }
-
-

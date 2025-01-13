@@ -8,33 +8,34 @@ export const SheetIcon: React.FC<SvgType> = ({
   ...props
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
+    viewBox="0 0 24 24"
+    fill="none"
     className={className}
-    viewBox="0 0 14 14"
-    role="img"
-    focusable="false"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="#b1b1b1"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    color="#b1b1b1"
     {...props}
   >
-    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-    <g
-      id="SVGRepo_tracerCarrier"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    ></g>
-    <g id="SVGRepo_iconCarrier">
-      <path
-        fill="gray"
-        d="M12.29411772 4.17647058v2.47058826h-2.11764708V4.17647058h-.70588236v2.47058826H7.3529412V4.17647058h-.70588236v2.47058826H4.17647058v.70588236h2.47058826v2.11764708H4.17647058v.70588236h2.47058826v2.11764708H4.17647058v.70588236h8.8235295v-8.8235295h-.70588236zm0 3.17647062v2.11764708h-2.11764708V7.3529412h2.11764708zm-4.94117652 0h2.11764708v2.11764708H7.3529412V7.3529412zm0 2.82352944h2.11764708v2.11764708H7.3529412v-2.11764708zm2.82352944 2.11764708v-2.11764708h2.11764708v2.11764708h-2.11764708z"
-      ></path>
-      <path
-        fill="#8f8f8f"
-        d="M4.17647058 12.6470589V4.17647058h8.47058832V1.35294114H1.35294114V12.6470589z"
-      ></path>
-      <path d="M.99999996.99999996v12.00000012h3.5294118V4.52941176h8.47058832V.99999996H.99999996zm.70588236 5.64705888V4.52941176H3.8235294v2.11764708H1.70588232zm2.11764708.70588236v2.11764708H1.70588232V7.3529412H3.8235294zm.70588236-5.64705888h2.11764708V3.8235294H4.52941176V1.70588232zm2.82352944 0h2.11764708V3.8235294H7.3529412V1.70588232zm-3.5294118 0V3.8235294H1.70588232V1.70588232H3.8235294zm-2.11764708 10.5882354v-2.11764708H3.8235294v2.11764708H1.70588232zm10.5882354-8.47058832h-2.11764708V1.70588232h2.11764708V3.8235294z"></path>
-    </g>
+    <path
+      d="M12 12V15M12 15V18M12 15H7.5M12 15H16.5M7.5 18H16.5V12H7.5V18Z"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M15 2.5V6C15 6.55228 15.4477 7 16 7H19.5"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M4 20V4C4 2.89543 4.89543 2 6 2H14.1716C14.702 2 15.2107 2.21071 15.5858 2.58579L19.4142 6.41421C19.7893 6.78929 20 7.29799 20 7.82843V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20Z"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    ></path>
   </svg>
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
-export const PageIcon: React.FC<SvgType> = ({
+export const FileImportIcon: React.FC<SvgType> = ({
   width = SvgSizeInSQR.PRIMARY,
   height = SvgSizeInSQR.PRIMARY,
   className,
@@ -19,29 +19,23 @@ export const PageIcon: React.FC<SvgType> = ({
     {...props}
   >
     <path
-      d="M8 17H16"
+      d="M19 15V9L12 2H5C3.89543 2 3 2.89543 3 4V20C3 21.1046 3.89543 22 5 22H9"
       stroke="#b1b1b1"
       stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"
     ></path>
     <path
-      d="M8 13H12"
+      d="M12 2V7C12 8.10457 12.8954 9 14 9H19"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M14 22L11 19L14 16M19 19H11.6088"
       stroke="#b1b1b1"
       stroke-width="1.5"
       stroke-linecap="round"
-      stroke-linejoin="round"
-    ></path>
-    <path
-      d="M20 20V9L13 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20Z"
-      stroke="#b1b1b1"
-      stroke-width="1.5"
-      stroke-linejoin="round"
-    ></path>
-    <path
-      d="M13 2V7C13 8.10457 13.8954 9 15 9H20"
-      stroke="#b1b1b1"
-      stroke-width="1.5"
       stroke-linejoin="round"
     ></path>
   </svg>

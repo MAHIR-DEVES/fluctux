@@ -1,5 +1,4 @@
 "use client";
-import FxButton from "@/components/ui/fxbutton";
 import React, { useEffect, useState } from "react";
 import {
   Popover,
@@ -21,11 +20,11 @@ import { ThumbsUpIcon } from "@/components/ui/icons/thumbs-up-icon";
 import { StarIcon } from "@/components/ui/icons/star-icon";
 import { ThreeDotIcon } from "@/components/ui/icons/three-dot-icon";
 import { LockIcon } from "@/components/ui/icons/lock-icon";
-import { FileMoveIcon } from "@/components/ui/icons/file-move-icon";
+import { FileImportIcon } from "@/components/ui/icons/file-import-icon";
 import { DeleteIcon } from "@/components/ui/icons/delete-icon";
-import { PublicIcon } from "@/components/ui/icons/public-icon";
+import { GlobeIcon } from "@/components/ui/icons/globe-icon";
 import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
-import { UserIcon } from "@/components/ui/icons/user-icon";
+import { CircleUserIcon } from "@/components/ui/icons/circle-user-icon";
 
 interface Assign {
   value: string;
@@ -43,7 +42,7 @@ const statusOptions = [
   {
     value: "PUBLIC",
     label: "Public",
-    icon: <PublicIcon/>,
+    icon: <GlobeIcon/>,
   },
   {
     value: "PRIVATE",
@@ -232,7 +231,7 @@ export default function PageList({ data }: { data: Project[] }) {
                             </p>
                           </div>
                         ) : (
-                          <div><UserIcon/></div>
+                          <div><CircleUserIcon/></div>
                         )}
                       </button>
                     </div>
@@ -350,9 +349,7 @@ export default function PageList({ data }: { data: Project[] }) {
                 <Popover>
                   <PopoverTrigger asChild>
                     <div className="w-[50px] h-[70px] flex justify-center items-center fx-hover-primary-bg cursor-pointer">
-                      <FxButton className="rounded-[50%] p-[5px] border fx-border-color active:scale-[0.97]">
-                        <ThreeDotIcon/>
-                      </FxButton>
+                        <ThreeDotIcon/>     
                     </div>
                   </PopoverTrigger>
                   <PopoverContent className="w-[200px] fx-secondary-bg fx-rounded fx-border-color p-1">
@@ -365,7 +362,7 @@ export default function PageList({ data }: { data: Project[] }) {
                         <p className="fx-label-color">Lock</p>
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
-                        <FileMoveIcon/>
+                        <FileImportIcon/>
                         <p className="fx-label-color">Move to draft</p>
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-tred-bg flex justify-start items-center gap-2 cursor-pointer">

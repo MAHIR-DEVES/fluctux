@@ -9,17 +9,13 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: keyof typeof buttonSizes;
 }
 
-type ButtonVariantType = "primary" | "secondary" | "glossy" | "glassy";
+type ButtonVariantType = "primary" | "secondary"
 
 const buttonVariants: { [key in ButtonVariantType]: string } = {
   primary:
-    "border fx-rounded fx-border-color fx-primary-green-bg hover:bg-[#59d69a] active:scale-[0.95]",
+    "border fx-rounded border-none fx-primary-purple-bg fx-hover-primary-purple-bg active:scale-[0.95]",
   secondary:
-    "border fx-rounded fx-border-color fx-secondary-bg fx-hover-primary-bg active:scale-[0.95]",
-  glossy:
-    "border fx-rounded bg-gradient-to-b from-[#6aeeae6e] to-[#6aeeae22] border-[#6aeeaeca] hover:bg-[#6aeeae11] active:scale-[0.95]",
-  glassy:
-    "border fx-rounded bg-[#6aeeae3b] border-[#6aeeaeae] hover:bg-[#6aeeae2f]  active:scale-[0.95]",
+    "border fx-rounded fx-border-color fx-secondary-bg fx-hover-primary-bg active:scale-[0.95]"
 };
 
 const buttonSizes: { [key in SizeType]: string } = {
@@ -40,7 +36,7 @@ export default function FxButton({
   const buttonSize = size ? buttonSizes[size] : "";
   return (
     <button
-      className={`${buttonVariant} ${buttonSize} ${className}`}
+      className={`${buttonVariant} ${buttonSize} ${className} `}
       {...props}
     >
       {children}

@@ -9,6 +9,7 @@ interface FxBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 type BadgeVariantTypes =
   | "primary"
   | "secondary"
+  | "purple"
   | "lolipop"
   | "lolipopPurple"
   | "lolipopPink"
@@ -18,9 +19,11 @@ type BadgeVariantTypes =
 
 const badgeVariants: { [key in BadgeVariantTypes]: string } = {
   primary:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] border-none bg-[var(--primary-green-color)] text-black font-medium",
+    "pl-2 pr-2 rounded-[20px] border text-[12px] border-none bg-[var(--primary-color)] text-white font-medium",
   secondary:
     "pl-2 pr-2 rounded-[20px] border text-[12px] fx-border-color fx-label-color",
+  purple:
+    "pl-2 pr-2 rounded-[20px] border text-[12px] border-[var(--badge-primary-purple-border)] bg-[var(--badge-primary-purple-bg)] text-[var(--badge-primary-purple-fg)] font-medium",
   lolipop:
     "pl-2 pr-2 rounded-[20px] border text-[12px] border-[var(--badge-green-border)] bg-[var(--badge-green-bg)] text-[var(--badge-green-fg)]",
   lolipopPurple:

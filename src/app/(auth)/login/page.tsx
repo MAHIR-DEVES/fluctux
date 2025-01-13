@@ -1,12 +1,10 @@
 "use client";
 import FxButton from "@/components/ui/fxbutton";
-import {
-  svg_auth_discord,
-  svg_auth_github,
-  svg_auth_google,
-} from "@/components/ui/fxicons";
 import FxInput from "@/components/ui/fxinput";
 import FxSeparator from "@/components/ui/fxseparator";
+import { DiscordIcon } from "@/components/ui/icons/discord-icon";
+import { GithubIcon } from "@/components/ui/icons/github-icon";
+import { GoogleIcon } from "@/components/ui/icons/google-icon";
 import Link from "next/link";
 import React from "react";
 
@@ -19,7 +17,7 @@ export default function LoginPage() {
         </p>
         <Link href={"/signup"}>
           <FxButton variant="secondary" size="sm" className="create-acc-btn">
-            <p className="gradient-new-text font-medium">Create Account</p>
+            <p className="fx-primary-purple-text font-medium">Create Account</p>
           </FxButton>
         </Link>
       </div>
@@ -46,7 +44,7 @@ export default function LoginPage() {
 
         <FxButton
           className="w-full mt-5 active:scale-[0.98]"
-          variant="glassy"
+          variant="primary"
           size="md"
         >
           <p className="font-medium">Continue</p>
@@ -62,28 +60,28 @@ export default function LoginPage() {
       <>
         <FxButton
           className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
-          variant="glassy"
+          variant="secondary"
           size="md"
         >
-          <p className="font-medium">Google</p>
-          {svg_auth_google}
+          <p className="font-medium fx-label-color">Google</p>
+          <GoogleIcon/>
         </FxButton>
         <div className="flex justify-center items-center gap-3 mt-3">
           <FxButton
             className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
-            variant="glassy"
+            variant="secondary"
             size="md"
           >
-            <p className="font-medium">Github</p>
-            {svg_auth_github}
+            <p className="font-medium fx-label-color">Github</p>
+            <GithubIcon/>
           </FxButton>
           <FxButton
             className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
-            variant="glassy"
+            variant="secondary"
             size="md"
           >
-            <p className="font-medium">Discord</p>
-            {svg_auth_discord}
+            <p className="font-medium fx-label-color">Discord</p>
+            <DiscordIcon width={25} height={25}/>
           </FxButton>
         </div>
       </>

@@ -3,3 +3,7 @@ export interface SvgType extends React.SVGAttributes<SVGElement> {
     height?: number,
     className?: string 
 }
+
+export enum SvgSizeInSQR {
+    PRIMARY = 20
+}

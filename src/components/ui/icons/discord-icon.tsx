@@ -1,9 +1,9 @@
 import React from "react";
-import { SvgType } from "./type";
+import { SvgSizeInSQR, SvgType } from "./type";
 
 export const DiscordIcon: React.FC<SvgType> = ({
-  width = 24,
-  height = 24,
+  width = SvgSizeInSQR.PRIMARY,
+  height = SvgSizeInSQR.PRIMARY,
   className,
   ...props
 }) => (

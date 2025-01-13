@@ -1,9 +1,9 @@
 import React from "react";
-import { SvgType } from "./type";
+import { SvgSizeInSQR, SvgType } from "./type";
 
 export const DropDownIcon: React.FC<SvgType> = ({
-  width,
-  height,
+  width = SvgSizeInSQR.PRIMARY,
+  height = SvgSizeInSQR.PRIMARY,
   className,
   ...props
 }) => (

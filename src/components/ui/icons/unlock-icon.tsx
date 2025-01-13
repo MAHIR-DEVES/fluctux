@@ -1,9 +1,9 @@
 import React from "react";
-import { SvgType } from "./type";
+import { SvgSizeInSQR, SvgType } from "./type";
 
 export const UnlockIcon: React.FC<SvgType> = ({
-  width = 20,
-  height = 20,
+  width = SvgSizeInSQR.PRIMARY,
+  height = SvgSizeInSQR.PRIMARY,
   className,
   ...props
 }) => (

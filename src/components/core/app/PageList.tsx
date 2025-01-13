@@ -7,18 +7,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {
-  svg_assign,
-  svg_assigned_user,
-  svg_delete,
-  svg_draft,
-  svg_lock,
-  svg_page,
-  svg_public,
-  svg_star,
-  svg_three_dot,
-  svg_thumb,
-} from "@/components/ui/fxicons";
-import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -28,6 +16,16 @@ import {
 } from "@/components/ui/command";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageIcon } from "@/components/ui/icons/page-icon";
+import { ThumbsUpIcon } from "@/components/ui/icons/thumbs-up-icon";
+import { StarIcon } from "@/components/ui/icons/star-icon";
+import { ThreeDotIcon } from "@/components/ui/icons/three-dot-icon";
+import { LockIcon } from "@/components/ui/icons/lock-icon";
+import { FileMoveIcon } from "@/components/ui/icons/file-move-icon";
+import { DeleteIcon } from "@/components/ui/icons/delete-icon";
+import { PublicIcon } from "@/components/ui/icons/public-icon";
+import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
+import { UserIcon } from "@/components/ui/icons/user-icon";
 
 interface Assign {
   value: string;
@@ -45,12 +43,12 @@ const statusOptions = [
   {
     value: "PUBLIC",
     label: "Public",
-    icon: svg_public(20, 20),
+    icon: <PublicIcon/>,
   },
   {
     value: "PRIVATE",
     label: "Private",
-    icon: svg_lock(20, 20),
+    icon: <LockIcon/>,
   },
 ];
 
@@ -125,21 +123,21 @@ export default function PageList({ data }: { data: Project[] }) {
         <div className="p-3 min-w-[200px] shborder w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Pages</p>
-            {svg_page(20, 20)}
+            <PageIcon/>
           </div>
           <p className="text-[30px] text-white">23</p>
         </div>
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer  w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Likes</p>
-            {svg_thumb(20, 20)}
+            <ThumbsUpIcon/>
           </div>
           <p className="text-[30px] text-white">2358</p>
         </div>
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer  w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Stars</p>
-            {svg_star(20, 20)}
+            <StarIcon/>
           </div>
           <p className="text-[30px] text-white">132</p>
         </div>
@@ -173,8 +171,8 @@ export default function PageList({ data }: { data: Project[] }) {
         </div>
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
-            <p className="fx-label-color font-medium">Assigns</p>
-            {svg_assign(20, 20)}
+            <p className="fx-label-color font-medium">Assignees</p>
+            <TwoPeopleIcon/>
           </div>
           <p className="text-[30px] text-white">58</p>
         </div>
@@ -234,7 +232,7 @@ export default function PageList({ data }: { data: Project[] }) {
                             </p>
                           </div>
                         ) : (
-                          <div>{svg_assigned_user(20, 20)}</div>
+                          <div><UserIcon/></div>
                         )}
                       </button>
                     </div>
@@ -353,7 +351,7 @@ export default function PageList({ data }: { data: Project[] }) {
                   <PopoverTrigger asChild>
                     <div className="w-[50px] h-[70px] flex justify-center items-center fx-hover-primary-bg cursor-pointer">
                       <FxButton className="rounded-[50%] p-[5px] border fx-border-color active:scale-[0.97]">
-                        {svg_three_dot(20, 20)}
+                        <ThreeDotIcon/>
                       </FxButton>
                     </div>
                   </PopoverTrigger>
@@ -363,15 +361,15 @@ export default function PageList({ data }: { data: Project[] }) {
                         Created: 27 Jan, 2024
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
-                        {svg_lock(20, 20)}
+                        <LockIcon/>
                         <p className="fx-label-color">Lock</p>
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
-                        {svg_draft(20, 20)}
+                        <FileMoveIcon/>
                         <p className="fx-label-color">Move to draft</p>
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-tred-bg flex justify-start items-center gap-2 cursor-pointer">
-                        {svg_delete(20, 20)}
+                        <DeleteIcon/>
                         <p className="fx-text-red">Delete</p>
                       </li>
                     </ul>

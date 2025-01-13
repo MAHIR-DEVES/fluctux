@@ -15,25 +15,20 @@ import {
 } from "@/components/ui/popover";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {
-  Collapsible,
-  CollapsibleContent,
-} from "@/components/ui/collapsible";
-import {
-  svg_activity,
-  svg_analytics,
-  svg_friends,
-  svg_home,
-  svg_issue,
-  svg_page,
-  svg_sheet,
-  svg_task,
-} from "@/components/ui/fxicons";
+import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import FxButton from "@/components/ui/fxbutton";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import FxSeparator from "@/components/ui/fxseparator";
 import FxBadge from "@/components/ui/fxbadge";
+import { HomeIcon } from "@/components/ui/icons/home-icon";
+import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
+import { ActivityIcon } from "@/components/ui/icons/activity-icon";
+import { AnalyticsIcon } from "@/components/ui/icons/analytics-icon";
+import { TaskIcon } from "@/components/ui/icons/task-icon";
+import { SheetIcon } from "@/components/ui/icons/sheet-icon";
+import { IssueIcon } from "@/components/ui/icons/issue-icon";
+import { PageIcon } from "@/components/ui/icons/page-icon";
 
 const frameworks = [
   {
@@ -83,6 +78,8 @@ export default function AppSidebar() {
       return router.push(`${path}`);
     }
   };
+
+  const ICON_SIZE_IN_SQR = 18
 
   return (
     <aside className="w-[260px] h-full fixed top-0 left-0 fx-secondary-bg border-r fx-border-color">
@@ -186,13 +183,13 @@ export default function AppSidebar() {
         <ul>
           <Link href={"/app/org"}>
             <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-              {svg_home(18, 18)}
+              <HomeIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
               <p>Home</p>
             </li>
           </Link>
 
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_friends(18, 18)}
+            <TwoPeopleIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
             <p>Friends</p>
           </li>
         </ul>
@@ -202,11 +199,11 @@ export default function AppSidebar() {
             Workspace
           </p>
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_activity(18, 18)}
+            <ActivityIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
             <p>Activity</p>
           </li>
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-greentext-bgpr">
-            {svg_analytics(18, 18)}
+            <AnalyticsIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
             <p>Analytics</p>
           </li>
         </ul>
@@ -236,7 +233,9 @@ export default function AppSidebar() {
                       }}
                       className="w-full flex justify-between items-center fx-rounded active:scale-[0.99] pr-[5px] bg-[var(--project-blue)]"
                     >
-                      <p className={`text-left ${openCollapsible[i + 1] ? "text-white" : "fx-label-color"}  font-medium`}>
+                      <p
+                        className={`text-left ${openCollapsible[i + 1] ? "text-white" : "fx-label-color"}  font-medium`}
+                      >
                         My Project -1
                       </p>
                       <div
@@ -253,27 +252,27 @@ export default function AppSidebar() {
                   <CollapsibleContent className="pl-3">
                     <Link href={"/app/my-org/projects/sgsdg/tasks"}>
                       <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
-                        {svg_task(18, 18)}
+                        <TaskIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
                         <p>Tasks</p>
                       </li>
                     </Link>
                     <Link href={"/app/my-org/projects/sgsdg/sheets"}>
-                    <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
-                      {svg_sheet(18, 18)}
-                      <p>Sheets</p>
-                    </li>
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                        <SheetIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                        <p>Sheets</p>
+                      </li>
                     </Link>
                     <Link href={"/app/my-org/projects/sgsdg/issues"}>
-                    <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
-                      {svg_issue(18, 18)}
-                      <p>Issues</p>
-                    </li>
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                        <IssueIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                        <p>Issues</p>
+                      </li>
                     </Link>
                     <Link href={"/app/my-org/projects/sgsdg/pages"}>
-                    <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
-                      {svg_page(18, 18)}
-                      <p>Pages</p>
-                    </li>
+                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-whitetext-bgpr">
+                        <PageIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                        <p>Pages</p>
+                      </li>
                     </Link>
                   </CollapsibleContent>
                 </Collapsible>
@@ -284,7 +283,6 @@ export default function AppSidebar() {
       </nav>
 
       <div className="w-full h-[50px] border-t cursor-pointer fx-border-color flex justify-center items-center p-3 gap-3 fx-hover-primary-bg">
-
         <img
           src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg"
           alt=""

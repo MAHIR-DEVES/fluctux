@@ -23,7 +23,7 @@ export default function AppHeader() {
                     <React.Fragment key={i}>
                         <Link href={item.href}>
                             <div>
-                                <p className={` ${arrOfPathname.includes(`${item.label.toLowerCase()}`) ? "text-white": "fx-label-color"} hover:text-white`}>{item.label}</p>
+                                <p className={`font-normal ${arrOfPathname.includes(`${item.label.toLowerCase()}`) ? "text-white": "fx-label-color"} hover:text-white`}>{item.label}</p>
                             </div>
                         </Link>
                         {i < breadcrumbs.length - 1 && <span className='p-0 pl-2 pr-2 fx-sec-label-color'>/</span>}

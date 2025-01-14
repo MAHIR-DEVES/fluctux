@@ -25,6 +25,8 @@ import { DeleteIcon } from "@/components/ui/icons/delete-icon";
 import { GlobeIcon } from "@/components/ui/icons/globe-icon";
 import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
 import { CircleUserIcon } from "@/components/ui/icons/circle-user-icon";
+import FxButton from "@/components/ui/fxbutton";
+import FxInput from "@/components/ui/fxinput";
 
 interface Assign {
   value: string;
@@ -118,6 +120,43 @@ export default function PageList({ data }: { data: Project[] }) {
 
   return (
     <>
+    <div className="page-nav p-3 sticky top-0 backdrop-blur-3xl shborder flex justify-between items-center">
+        <div className="flex justify-start items-center gap-3">
+          <FxButton variant="secondary" size="sm" className="fx-label-color font-medium">
+            All
+          </FxButton>
+          <FxButton variant="secondary" size="sm" className="fx-label-color font-medium">
+            Public
+          </FxButton>
+          <FxButton variant="secondary" size="sm" className="fx-label-color font-medium">
+            Private
+          </FxButton>
+        </div>
+        <div>
+          <div className="w-full flex justify-center items-center gap-3 ">
+            <FxInput
+              variant="primary"
+              size="sm"
+              placeholder="Search pages..."
+              className="w-full"
+            />
+            <FxButton
+              variant="secondary"
+              size="sm"
+              className="flex-shrink-0 font-medium text-yellow-400"
+            >
+              Draft
+            </FxButton>
+            <FxButton
+              variant="primary"
+              size="sm"
+              className="flex-shrink-0 font-medium"
+            >
+              New page
+            </FxButton>
+          </div>
+        </div>
+      </div>
       <div className="app-page-header mb-3 overflow-x-auto overflow-y-hidden shborder w-full h-[100px]  flex justify-start items-center ">
         <div className="p-3 min-w-[200px] shborder w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">

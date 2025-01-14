@@ -1,0 +1,240 @@
+.cdx-block {
+  /* background-color: #141414; */
+}
+
+#editorjs svg {
+  color: var(--secondary-label-text-color) !important;
+  width: 18px;
+  height: 18px;
+}
+
+#editorjs * {
+  outline: none;
+}
+
+.ce-popover-item-separator__line {
+  background-color: var(--secondary-label-text-color);
+}
+
+.ce-inline-tool {
+  background-color: var(--primary-hover-color);
+}
+.ce-inline-tool--active {
+  background-color: var(--primary-hover-color);
+  border: 1px solid var(--primary-border-color) !important;
+}
+
+.ce-inline-tool:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.cdx-button {
+  background-color: blue;
+}
+
+.ce-toolbar__settings-btn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.ce-toolbar__settings-btn svg {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.ce-toolbar__plus svg {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.ce-toolbar__plus:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.change-case-tool {
+  color: var(--label-text-color);
+  border-radius: 5px;
+}
+
+.change-case-tool:hover {
+  background-color: var(--primary-hover-color) !important;
+}
+
+.ce-popover__container {
+  background-color: var(--primary-secondary-bg);
+  border: 1px solid var(--primary-border-color) !important;
+}
+
+.ce-popover__container button {
+  background-color: transparent;
+}
+
+.ce-popover-item {
+  color: var(--label-text-color);
+}
+
+.ce-popover-item:hover {
+  background-color: var(--primary-hover-color) !important;
+}
+
+.ce-popover__items {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-border-color) #00000000;
+  scrollbar-gutter: stable;
+  gap: 3px;
+}
+
+.cdx-search-field {
+  border: 1px solid var(--primary-border-color);
+  background-color: transparent;
+}
+
+.ce-popover-item--active {
+  background-color: var(--primary-hover-color);
+  border: 1px solid var(--primary-border-color) !important;
+}
+
+.ce-popover-item-html svg {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+[data-item-name="changeCase"] svg {
+  fill: var(--label-text-color);
+}
+
+[data-item-name="convert-to"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: var(--label-text-color);
+}
+
+[data-item-name="convert-to"] svg path {
+  width: 20px !important;
+  height: 20px !important;
+  fill: var(--label-text-color);
+  stroke: none;
+}
+
+#editorjs h1 {
+  font-size: 2em; /* Largest heading */
+}
+
+#editorjs h2 {
+  font-size: 1.75em; /* Second largest heading */
+}
+
+#editorjs h3 {
+  font-size: 1.5em; /* Third largest heading */
+}
+
+#editorjs h4 {
+  font-size: 1.25em; /* Fourth largest heading */
+}
+
+#editorjs h5 {
+  font-size: 1em; /* Fifth largest heading */
+}
+
+#editorjs h6 {
+  font-size: 0.875em; /* Smallest heading */
+}
+
+.ce-block--selected .ce-block__content {
+  background-color: #141414;
+}
+
+.ce-block__content {
+  max-width: 1000px !important;
+}
+
+[data-item-name="bold"] svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+[data-item-name="annotation"] svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+[data-item-name="header"] svg {
+  fill: var(--label-text-color);
+}
+
+[data-item-name="header"] svg path {
+  stroke: none;
+}
+
+[data-item-name="title"] svg {
+  width: 28px !important;
+  height: 28px !important;
+  fill: var(--label-text-color);
+}
+
+[data-item-name="title"] svg path {
+  stroke: none;
+}
+
+[data-item-name="paragraph"] svg {
+  fill: var(--label-text-color);
+}
+[data-item-name="paragraph"] svg path {
+  stroke: none;
+}
+
+.cdx-annotation_popup-form {
+  border: 1px solid var(--primary-border-color) !important;
+  background-color: var(--primary-secondary-bg) !important;
+}
+
+.cdx-annotation_popup-footer {
+  border-top: 1px solid var(--primary-border-color) !important;
+}
+
+.cdx-annotation_popup-header {
+  border-bottom: 1px solid var(--primary-border-color) !important;
+}
+
+.cdx-annotation_popup-btn-close svg {
+  color: var(--label-text-color) !important;
+  fill: var(--label-text-color) !important;
+}
+
+.cdx-annotation_popup-btn-save {
+  border-radius: 8px;
+  border: none;
+  color: white !important;
+  background-color: var(--primary-color) !important;
+}
+
+.cdx-annotation_popup-btn-remove {
+  border-radius: 8px;
+  border: 1px solid var(--primary-border-color) !important;
+  color: white !important;
+  background-color: var(--primary-secondary-bg) !important;
+}
+
+.cdx-annotation_popup-btn-remove:hover {
+  background-color: var(--hover-trans-red-bg) !important;
+}
+
+.ce-inline-tool-input {
+  background-color: transparent;
+  border: none;
+}
+
+.ce-code__textarea {
+  background-color: var(--primary-secondary-bg) !important;
+  border: 1px solid var(--primary-border-color) !important;
+  color: var(--label-text-color) !important;
+}
+
+.ce-toolbar__content{
+max-width: 100%;
+}
+
+.ce-inline-toolbar {
+  position: absolute;
+  left: -150px !important;
+
+}

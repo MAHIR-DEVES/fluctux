@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "./styles/app.style.css"
+import "./styles/app.style.css";
+import "./styles/editor.style.css"
 import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";
+import EditorContextProvider from "@/context/EditorContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +37,9 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class">
           <Suspense>
-            <SessionClientProvider>{children}</SessionClientProvider>
+            <SessionClientProvider>
+              <EditorContextProvider>{children}</EditorContextProvider>
+            </SessionClientProvider>
           </Suspense>
         </ThemeProvider>
       </body>

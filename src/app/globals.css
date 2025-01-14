@@ -41,7 +41,7 @@
   --badge-pink-fg: #ff32d6;
 
   --badge-primary-purple-border: #5865f28e;
-  --badge-primary-purple-bg: #5865f246;
+  --badge-primary-purple-bg: #5865f223;
   --badge-primary-purple-fg: #5865f2;
 
   /* org projects colors */
@@ -68,6 +68,10 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans);
+}
+
+::selection {
+  background: #5865f27c !important;
 }
 
 @layer utilities {

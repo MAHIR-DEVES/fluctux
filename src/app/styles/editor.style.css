@@ -13,7 +13,7 @@
 }
 
 .ce-popover-item-separator__line {
-  background-color: var(--secondary-label-text-color);
+  background-color: var(--primary-border-color);
 }
 
 .ce-inline-tool {

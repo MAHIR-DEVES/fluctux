@@ -62,12 +62,17 @@
   /* buttons */
 
   --primary-button-hover-bg: #5865f2e4;
+
+  /* content color */
+  --content-color: #eaeaea;
+ 
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans);
+  overflow: hidden;
 }
 
 ::selection {

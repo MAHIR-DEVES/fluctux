@@ -21,21 +21,21 @@ export const TaskIcon: React.FC<SvgType> = ({
     <path
       d="M8 16H11.4286M8 11H16"
       stroke="#b1b1b1"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     ></path>
     <path
       d="M16 3.5H18.5C19.6046 3.5 20.5 4.39543 20.5 5.5V20C20.5 21.1046 19.6046 22 18.5 22L5.5 22C4.39543 22 3.5 21.1046 3.5 20V5.5C3.5 4.39543 4.39543 3.5 5.5 3.5H8"
       stroke="#b1b1b1"
-      stroke-width="1.5"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
     ></path>
     <path
       d="M14.5 2H9.5C8.67157 2 8 2.67157 8 3.5C8 4.32843 8.67157 5 9.5 5H14.5C15.3284 5 16 4.32843 16 3.5C16 2.67157 15.3284 2 14.5 2Z"
       stroke="#b1b1b1"
-      stroke-width="1.5"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
     ></path>
   </svg>
 );

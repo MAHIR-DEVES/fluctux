@@ -22,15 +22,15 @@ export const ThumbsUpIcon: React.FC<SvgType> = ({
     <path
       d="M7 20.5L3 20.5C2.44771 20.5 2 20.0522 2 19.5V11.5C2 10.9477 2.44772 10.5 3 10.5H7"
       stroke="#b1b1b1"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     ></path>
     <path
       d="M17.9477 20.5H7V10.5L13.9158 3.49997L13.9867 3.57177C15.432 5.03467 15.8379 7.24745 15.0078 9.13799L14.4098 10.5H20.0224C21.3836 10.5 22.3371 11.8603 21.8874 13.1607L19.8127 19.1607C19.5353 19.9628 18.7874 20.5 17.9477 20.5Z"
       stroke="#b1b1b1"
-      stroke-width="1.5"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
     ></path>
   </svg>
 );

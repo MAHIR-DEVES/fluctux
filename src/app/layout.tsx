@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./styles/app.style.css";
-import "./styles/editor.style.css"
+import "./styles/editor.style.css";
 import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";
-import EditorContextProvider from "@/context/EditorContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +36,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class">
           <Suspense>
-            <SessionClientProvider>
-              <EditorContextProvider>{children}</EditorContextProvider>
-            </SessionClientProvider>
+            <SessionClientProvider>{children}</SessionClientProvider>
           </Suspense>
         </ThemeProvider>
       </body>

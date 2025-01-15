@@ -1,31 +1,32 @@
 "use client";
-import { EditorContext } from "@/context/EditorContext";
-import React, { useContext, useEffect, useRef } from "react";
+import TextareaAutosize from "react-textarea-autosize";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
 
 export default function ManagePage() {
-  const editorContext = useContext(EditorContext);
-  const initEditor = editorContext?.initEditor;
-  const editorRef = useRef<boolean | null>(null);
-
-  useEffect(() => {
-    if (!editorRef.current) {
-      initEditor?.();
-      editorRef.current = true;
-    }
-  }, [initEditor]);
+  const Editor = useMemo(
+    () =>
+      dynamic(() => import("@/components/core/text-editor/BlockNote"), {
+        ssr: false,
+      }),
+    []
+  );
 
   return (
-    <div className="flex justify-center items-start h-full w-full">
-      <section className="max-w-[1000px] w-full mt-14">
-        <h1 className="ml-[68px] font-medium text-[32px]">
-          Heading
-        </h1>
-      <div
-        id="editorjs"
-        className=" p-3 ml-14 w-full h-fit mt-5"
-        >
+    <section className="pb-14 h-full w-full">
+      <div className="w-full shborder p-5">
+      <TextareaAutosize
+          placeholder="Untitled"
+          className="resize-none w-full appearance-none overflow-hidden outline-none bg-transparent text-[30px] text-white font-medium"
+        />
       </div>
-        </section>
-    </div>
+      <div className="flex justify-center items-start w-full">
+
+      <div className="max-w-[1000px] w-full mt-0">
+
+        <Editor />
+      </div>
+      </div>
+    </section>
   );
 }

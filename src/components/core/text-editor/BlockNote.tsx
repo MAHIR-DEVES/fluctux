@@ -76,64 +76,55 @@ export default function BlockNote({
       formattingToolbar={false}
       data-theming-css-custom
     >
-    
-      <FormattingToolbar>
-        <BlockTypeSelect
-          key={"blockTypeSelect"}
-          items={[
-            ...blockTypeSelectItems(editor.dictionary),
-            {
-              name: "Alert",
-              type: "alert",
-              icon: RiAlertFill,
-              isSelected: (block) => block.type === "alert",
-            } satisfies BlockTypeSelectItem,
-          ]}
-        />
-
-        <FileCaptionButton key={"fileCaptionButton"} />
-        <FileReplaceButton key={"replaceFileButton"} />
-
-        <BasicTextStyleButton basicTextStyle={"bold"} key={"boldStyleButton"} />
-        <BasicTextStyleButton
-          basicTextStyle={"italic"}
-          key={"italicStyleButton"}
-        />
-        <BasicTextStyleButton
-          basicTextStyle={"underline"}
-          key={"underlineStyleButton"}
-        />
-        <BasicTextStyleButton
-          basicTextStyle={"strike"}
-          key={"strikeStyleButton"}
-        />
-        {/* Extra button to toggle code styles */}
-        <BasicTextStyleButton key={"codeStyleButton"} basicTextStyle={"code"} />
-
-        <TextAlignButton textAlignment={"left"} key={"textAlignLeftButton"} />
-        <TextAlignButton
-          textAlignment={"center"}
-          key={"textAlignCenterButton"}
-        />
-        <TextAlignButton textAlignment={"right"} key={"textAlignRightButton"} />
-
-        <ColorStyleButton key={"colorStyleButton"} />
-
-        <NestBlockButton key={"nestBlockButton"} />
-        <UnnestBlockButton key={"unnestBlockButton"} />
-
-        <CreateLinkButton key={"createLinkButton"} />
-      </FormattingToolbar>
       <FormattingToolbarController
         formattingToolbar={() => (
           <FormattingToolbar>
-            <ColorStyleButton key={"colorStyleButton"} />
-
-            <NestBlockButton key={"nestBlockButton"} />
-            <UnnestBlockButton key={"unnestBlockButton"} />
-
-            <CreateLinkButton key={"createLinkButton"} />
-          </FormattingToolbar>
+          <BlockTypeSelect
+            key={"blockTypeSelect"}
+            items={[
+              ...blockTypeSelectItems(editor.dictionary),
+              {
+                name: "Alert",
+                type: "alert",
+                icon: RiAlertFill,
+                isSelected: (block) => block.type === "alert",
+              } satisfies BlockTypeSelectItem,
+            ]}
+          />
+  
+          <FileCaptionButton key={"fileCaptionButton"} />
+          <FileReplaceButton key={"replaceFileButton"} />
+  
+          <BasicTextStyleButton basicTextStyle={"bold"} key={"boldStyleButton"} />
+          <BasicTextStyleButton
+            basicTextStyle={"italic"}
+            key={"italicStyleButton"}
+          />
+          <BasicTextStyleButton
+            basicTextStyle={"underline"}
+            key={"underlineStyleButton"}
+          />
+          <BasicTextStyleButton
+            basicTextStyle={"strike"}
+            key={"strikeStyleButton"}
+          />
+          {/* Extra button to toggle code styles */}
+          <BasicTextStyleButton key={"codeStyleButton"} basicTextStyle={"code"} />
+  
+          <TextAlignButton textAlignment={"left"} key={"textAlignLeftButton"} />
+          <TextAlignButton
+            textAlignment={"center"}
+            key={"textAlignCenterButton"}
+          />
+          <TextAlignButton textAlignment={"right"} key={"textAlignRightButton"} />
+  
+          <ColorStyleButton key={"colorStyleButton"} />
+  
+          <NestBlockButton key={"nestBlockButton"} />
+          <UnnestBlockButton key={"unnestBlockButton"} />
+  
+          <CreateLinkButton key={"createLinkButton"} />
+        </FormattingToolbar>
         )}
       />
     </BlockNoteView>

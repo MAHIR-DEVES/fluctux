@@ -1,0 +1,29 @@
+import React from "react";
+import { SvgSizeInSQR, SvgType } from "./type";
+
+export const ForwardIcon: React.FC<SvgType> = ({
+  width = SvgSizeInSQR.PRIMARY,
+  height = SvgSizeInSQR.PRIMARY,
+  className,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    color="#b1b1b1"
+    {...props}
+  >
+    <path
+      d="M21 12L14 5V9.5H9C5.68629 9.5 3 12.1863 3 15.5V19L3.3282 18.5077C4.99739 16.0039 7.80748 14.5 10.8167 14.5H14V19L21 12Z"
+      stroke="#b1b1b1"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+  </svg>
+);

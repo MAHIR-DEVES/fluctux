@@ -1,0 +1,7 @@
+.yellow-star-active {
+  fill: yellow;
+}
+
+.yellow-star-active path {
+  stroke: yellow;
+}

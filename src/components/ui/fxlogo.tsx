@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import white_logo from "../../../public/fluctux-white.png";
-import { SizeType } from "@/types/element-default-size-types";
+import { SizeType } from "@/components/ui/type";
 
 type LogoType = "WHITE" | "DARK";
 

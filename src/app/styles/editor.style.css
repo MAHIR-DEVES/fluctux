@@ -86,13 +86,30 @@
 
 .bn-editor {
     background-color: transparent !important;
-    overflow-y: auto;
-    height: calc(100vh - 208px);
+    /* overflow-y: auto; */
+    /* height: calc(100vh - 208px);
     scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    /* -ms-overflow-style: none;  For Internet Explorer and Edge */
 }
 
-.bn-editor::-webkit-scrollbar {
+/* .bn-editor::-webkit-scrollbar {
+    display: none; For Chrome, Safari, and Opera 
+} */
+
+.bn-block-content select{
+    background-color: var(--primary-secondary-bg) !important;
+    border: 1px solid var(--primary-border-color) !important;
+    padding: 0px 20px !important;
+    border-radius: 5px !important;
+    scrollbar-width: none ; /* For Firefox */
+    -ms-overflow-style: none ;  /* For Internet Explorer and Edge */
+}
+
+.bn-block-content select::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera */
 }
 
+.bn-block-content select option {
+    padding: 5px !important;
+    color: var(--label-text-color) !important;
+}

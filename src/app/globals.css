@@ -65,7 +65,6 @@
 
   /* content color */
   --content-color: #eaeaea;
- 
 }
 
 body {
@@ -159,6 +158,38 @@ body {
   .fx-border-color {
     @apply border-[var(--primary-border-color)];
   }
+
+  .fx-flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .fx-flex-cr {
+    @apply flex justify-end items-center;
+  }
+
+  .fx-flex-cl {
+    @apply flex justify-start items-center;
+  }
+
+  .fx-flex-tl {
+    @apply flex justify-start items-start;
+  }
+
+  .fx-flex-tr {
+    @apply flex justify-end items-start;
+  }
+
+  .fx-flex-bl {
+    @apply flex justify-start items-end;
+  }
+
+  .fx-flex-br {
+    @apply flex justify-end items-end;
+  }
+
+  .fx-flex-between-ic{
+    @apply flex justify-between items-center;
+  } 
 
   .three-line-ellipsis {
     display: -webkit-box;

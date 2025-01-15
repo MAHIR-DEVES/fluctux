@@ -1,4 +1,4 @@
-import { SizeType } from "@/types/element-default-size-types";
+import { SizeType } from "@/components/ui/type";
 import React from "react";
 
 type OrientationType = "vertical" | "horizontal";

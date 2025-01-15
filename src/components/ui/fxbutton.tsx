@@ -1,11 +1,13 @@
 "use client"
-import { SizeType } from "@/types/element-default-size-types";
+import { SizeType } from "@/components/ui/type";
 import React from "react";
+import { ROUNDED_VARIANTS } from "./constant";
 
 interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
   variant?: keyof typeof buttonVariants; // Optional `variant` prop for predefined styles
+  radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof buttonSizes;
 }
 
@@ -13,9 +15,9 @@ type ButtonVariantType = "primary" | "secondary"
 
 const buttonVariants: { [key in ButtonVariantType]: string } = {
   primary:
-    "border fx-rounded border-none fx-primary-purple-bg fx-hover-primary-purple-bg active:scale-[0.95]",
+    "border border-none fx-primary-purple-bg fx-hover-primary-purple-bg",
   secondary:
-    "border fx-rounded fx-border-color fx-secondary-bg fx-hover-primary-bg active:scale-[0.95]"
+    "border fx-border-color fx-secondary-bg fx-hover-primary-bg"
 };
 
 const buttonSizes: { [key in SizeType]: string } = {
@@ -30,13 +32,15 @@ export default function FxButton({
   children,
   variant,
   size,
+  radius,
   ...props
 }: FxButtonProps) {
   const buttonVariant = variant ? buttonVariants[variant] : "";
   const buttonSize = size ? buttonSizes[size] : "";
+  const roundedVariant = radius ? ROUNDED_VARIANTS[radius]: ""
   return (
     <button
-      className={`${buttonVariant} ${buttonSize} ${className} `}
+      className={`${buttonVariant} ${buttonSize} ${roundedVariant} ${className} `}
       {...props}
     >
       {children}

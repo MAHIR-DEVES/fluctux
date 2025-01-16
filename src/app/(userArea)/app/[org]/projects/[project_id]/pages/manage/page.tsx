@@ -3,7 +3,6 @@ import TextareaAutosize from "react-textarea-autosize";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import { StarIcon } from "@/components/ui/icons/star-icon";
-import { DownloadIcon } from "@/components/ui/icons/download-icon";
 import FxButton from "@/components/ui/fxbutton";
 import { ForwardIcon } from "@/components/ui/icons/forward-icon";
 import { LockIcon } from "@/components/ui/icons/lock-icon";
@@ -49,13 +48,17 @@ export default function ManagePage() {
             <ForwardIcon />
           </FxButton>
           <FxButton
-            variant={isPublished ? "secondary": "primary"}
+            variant={isPublished ? "secondary" : "primary"}
             className={`p-2 h-[30px] fx-flex-center gap-1 ${isPublished && "hover:bg-red-500"}`}
             radius="tiny"
             onClick={() => setIsPublished(!isPublished)}
           >
             {isPublished ? (
-              <p className={`font-medium fx-label-color ${isPublished && "hover:text-white"}`}>Switch to draft</p>
+              <p
+                className={`font-medium fx-label-color ${isPublished && "hover:text-white"}`}
+              >
+                Switch to draft
+              </p>
             ) : (
               <>
                 <p className="font-medium">Publish</p>

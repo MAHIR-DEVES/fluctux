@@ -27,6 +27,7 @@ import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
 import { CircleUserIcon } from "@/components/ui/icons/circle-user-icon";
 import FxButton from "@/components/ui/fxbutton";
 import FxInput from "@/components/ui/fxinput";
+import SelectAssignees from "./SelectAssignees";
 
 interface Assign {
   value: string;
@@ -44,12 +45,12 @@ const statusOptions = [
   {
     value: "PUBLIC",
     label: "Public",
-    icon: <GlobeIcon/>,
+    icon: <GlobeIcon />,
   },
   {
     value: "PRIVATE",
     label: "Private",
-    icon: <LockIcon/>,
+    icon: <LockIcon />,
   },
 ];
 
@@ -120,15 +121,30 @@ export default function PageList({ data }: { data: Project[] }) {
 
   return (
     <>
-    <div className="page-nav p-3 sticky top-0 backdrop-blur-3xl shborder flex justify-between items-center">
+      <div className="page-nav p-3 sticky top-0 backdrop-blur-3xl shborder flex justify-between items-center">
         <div className="flex justify-start items-center gap-3">
-          <FxButton variant="secondary" size="sm" className="fx-label-color font-medium">
+          <FxButton
+            variant="secondary"
+            size="sm"
+            className="fx-label-color font-medium"
+            radius="tiny"
+          >
             All
           </FxButton>
-          <FxButton variant="secondary" size="sm" className="fx-label-color font-medium">
+          <FxButton
+            variant="secondary"
+            size="sm"
+            className="fx-label-color font-medium"
+            radius="tiny"
+          >
             Public
           </FxButton>
-          <FxButton variant="secondary" size="sm" className="fx-label-color font-medium">
+          <FxButton
+            variant="secondary"
+            size="sm"
+            className="fx-label-color font-medium"
+            radius="tiny"
+          >
             Private
           </FxButton>
         </div>
@@ -139,11 +155,13 @@ export default function PageList({ data }: { data: Project[] }) {
               size="sm"
               placeholder="Search pages..."
               className="w-full"
+              radius="tiny"
             />
             <FxButton
               variant="secondary"
               size="sm"
               className="flex-shrink-0 font-medium text-yellow-400"
+              radius="tiny"
             >
               Draft
             </FxButton>
@@ -151,6 +169,7 @@ export default function PageList({ data }: { data: Project[] }) {
               variant="primary"
               size="sm"
               className="flex-shrink-0 font-medium"
+              radius="tiny"
             >
               New page
             </FxButton>
@@ -161,21 +180,21 @@ export default function PageList({ data }: { data: Project[] }) {
         <div className="p-3 min-w-[200px] shborder w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Pages</p>
-            <PageIcon/>
+            <PageIcon />
           </div>
           <p className="text-[30px] text-white">23</p>
         </div>
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer  w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Likes</p>
-            <ThumbsUpIcon/>
+            <ThumbsUpIcon />
           </div>
           <p className="text-[30px] text-white">2358</p>
         </div>
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer  w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Stars</p>
-            <StarIcon/>
+            <StarIcon />
           </div>
           <p className="text-[30px] text-white">132</p>
         </div>
@@ -210,13 +229,15 @@ export default function PageList({ data }: { data: Project[] }) {
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Assignees</p>
-            <TwoPeopleIcon/>
+            <TwoPeopleIcon />
           </div>
           <p className="text-[30px] text-white">58</p>
         </div>
       </div>
       <div className="flex justify-between items-center p-3 pt-0 pr-0 pb-0 sticky top-[59px] fx-secondary-bg">
-        <div className="w-full min-w-[300px] font-medium text-[16px]">Title</div>
+        <div className="w-full min-w-[300px] font-medium text-[16px]">
+          Title
+        </div>
         <div className="flex justify-end items-center">
           <div className="w-[170px] p-3 font-medium text-[16px]">Assignees</div>
           <div className="w-[100px] p-3 font-medium text-[16px]">Status</div>
@@ -233,6 +254,23 @@ export default function PageList({ data }: { data: Project[] }) {
               key={index}
               className="app-page-list-box shborder w-full h-[70px] flex justify-between items-center"
             >
+              {/* experimental */}
+              <Popover
+     
+              >
+               
+                  <PopoverTrigger asChild>
+                    <FxButton variant="secondary" size="sm">
+                      select assignees
+                    </FxButton>
+               
+                </PopoverTrigger>
+                <PopoverContent className="p-0 org-combo fx-border-color fx-secondary-bg w-[220px]">
+                  <div>
+                    <SelectAssignees />
+                  </div>
+                </PopoverContent>
+              </Popover>
               <div className="w-full h-[70px] flex justify-start items-center p-3 fx-hover-primary-bg">
                 <h2 className="text-[18px] font-medium fx-label-color min-w-[300px] one-line-ellipsis w-full cursor-pointer">
                   {item.title}
@@ -270,7 +308,9 @@ export default function PageList({ data }: { data: Project[] }) {
                             </p>
                           </div>
                         ) : (
-                          <div><CircleUserIcon/></div>
+                          <div className="fx-flex-bl w-full">
+                            <CircleUserIcon />
+                          </div>
                         )}
                       </button>
                     </div>
@@ -294,7 +334,12 @@ export default function PageList({ data }: { data: Project[] }) {
                               key={assign.value}
                               value={assign.value}
                               onSelect={() =>
-                                handleAssignSelect(id, assign.value)
+                                handleAssignSelect(
+                                  id,
+                                  assign.value === assignState.value
+                                    ? ""
+                                    : assign.value
+                                )
                               }
                             >
                               <div className="flex justify-start items-center gap-2 w-full">
@@ -388,7 +433,7 @@ export default function PageList({ data }: { data: Project[] }) {
                 <Popover>
                   <PopoverTrigger asChild>
                     <div className="w-[50px] h-[70px] flex justify-center items-center fx-hover-primary-bg cursor-pointer">
-                        <ThreeDotIcon/>     
+                      <ThreeDotIcon />
                     </div>
                   </PopoverTrigger>
                   <PopoverContent className="w-[200px] fx-secondary-bg fx-rounded fx-border-color p-1">
@@ -397,15 +442,15 @@ export default function PageList({ data }: { data: Project[] }) {
                         Created: 27 Jan, 2024
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
-                        <LockIcon/>
+                        <LockIcon />
                         <p className="fx-label-color">Lock</p>
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-primary-bg flex justify-start items-center gap-2 cursor-pointer">
-                        <FileImportIcon/>
+                        <FileImportIcon />
                         <p className="fx-label-color">Move to draft</p>
                       </li>
                       <li className="w-full p-1 rounded-[6px] fx-hover-tred-bg flex justify-start items-center gap-2 cursor-pointer">
-                        <DeleteIcon/>
+                        <DeleteIcon />
                         <p className="fx-text-red">Delete</p>
                       </li>
                     </ul>

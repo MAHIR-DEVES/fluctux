@@ -198,34 +198,7 @@ export default function PageList({ data }: { data: Project[] }) {
           </div>
           <p className="text-[30px] text-white">132</p>
         </div>
-        <div className="p-3 min-w-[250px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[250px] h-full flex flex-col justify-between items-start">
-          <div className="flex justify-start items-center gap-3">
-            <p className="fx-label-color font-medium">Contributors</p>
-            <div className="flex justify-start items-center relative flex-shrink-0 w-[80px]">
-              <img
-                src="a"
-                alt=""
-                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[4] bg-red-600 absolute`}
-              />
-              <img
-                src="a"
-                alt=""
-                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[3] bg-yellow-400 absolute left-[15px]`}
-              />
-              <img
-                src="a"
-                alt=""
-                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[2] bg-green-500 absolute left-[30px]`}
-              />
-              <img
-                src="a"
-                alt=""
-                className={`w-[30px] h-[30px] rounded-[50%] flex-shrink-0 border fx-border-color z-[1] bg-blue-700 absolute left-[45px]`}
-              />
-            </div>
-          </div>
-          <p className="text-[30px] text-white">238</p>
-        </div>
+        
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Assignees</p>

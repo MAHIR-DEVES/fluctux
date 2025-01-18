@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/popover";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
-import FxButton from "@/components/ui/fxbutton";
-import { usePathname, useRouter } from "next/navigation";
+// import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
+// import FxButton from "@/components/ui/fxbutton";
+// import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import FxSeparator from "@/components/ui/fxseparator";
 import FxBadge from "@/components/ui/fxbadge";
@@ -50,34 +50,35 @@ const frameworks = [
 export default function AppSidebar() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
-  const router = useRouter();
-  const path_name = usePathname();
 
-  const [openCollapsible, setOpenCollapsible] = useState<{
-    [key: number]: boolean;
-  }>({});
+  // const router = useRouter();
+  // const path_name = usePathname();
 
-  const toggleCollapsible = (id: number) => {
-    setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
-      ...prevState,
-      [id]: !prevState[id],
-    }));
-  };
+  // const [openCollapsible, setOpenCollapsible] = useState<{
+  //   [key: number]: boolean;
+  // }>({});
 
-  const openProject = (id: number, path: string) => {
-    const isProject = openCollapsible[id];
-    if (!isProject) {
-      setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
-        ...prevState,
-        [id]: !prevState[id],
-      }));
-      return router.push(`${path}`);
-    }
+  // const toggleCollapsible = (id: number) => {
+  //   setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
+  //     ...prevState,
+  //     [id]: !prevState[id],
+  //   }));
+  // };
 
-    if (path_name !== path) {
-      return router.push(`${path}`);
-    }
-  };
+  // const openProject = (id: number, path: string) => {
+  //   const isProject = openCollapsible[id];
+  //   if (!isProject) {
+  //     setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
+  //       ...prevState,
+  //       [id]: !prevState[id],
+  //     }));
+  //     return router.push(`${path}`);
+  //   }
+
+  //   if (path_name !== path) {
+  //     return router.push(`${path}`);
+  //   }
+  // };
 
   const ICON_SIZE_IN_SQR = 18
 
@@ -91,11 +92,10 @@ export default function AppSidebar() {
                 {value ? (
                   <div className="flex justify-center items-center gap-2 w-full">
                     <img
-                      src={`${
-                        frameworks.find(
-                          (framework) => framework.value === value
-                        )?.image
-                      }`}
+                      src={`${frameworks.find(
+                        (framework) => framework.value === value
+                      )?.image
+                        }`}
                       alt=""
                       className="w-[40px] h-[40px] fx-rounded border fx-border-color object-cover object-center"
                     />
@@ -195,7 +195,7 @@ export default function AppSidebar() {
         </ul>
         <FxSeparator orientation="horizontal" gap="sm" />
         <ul>
-          <p className="text-[16px] font-medium uppercase fx-sec-label-color mb-1">
+          <p className="text-[16px] font-medium fx-sec-label-color mb-1">
             Workspace
           </p>
           <li className="p-1 font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color fx-hover-primary-fg fx-hover-primary-bg">
@@ -210,74 +210,38 @@ export default function AppSidebar() {
         <FxSeparator orientation="horizontal" gap="sm" />
         <ul>
           <div className="mb-1 flex justify-start items-center gap-2">
-            <p className="text-[16px] font-medium uppercase fx-sec-label-color ">
-              Projects
+            <p className="text-[16px] font-medium fx-sec-label-color ">
+              Workspace
             </p>
             <FxBadge variant="purple">32</FxBadge>
           </div>
           <div className="space-y-2">
-            {Array.from({ length: 20 }).map((_, i) => {
-              return (
-                <Collapsible
-                  key={i + 1}
-                  open={openCollapsible[i + 1] || false}
-                  onOpenChange={() => toggleCollapsible(i + 1)}
-                  className="w-full space-y-2"
-                >
-                  <div className="flex items-center justify-start">
-                    <FxButton
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openProject(i + 1, "/app/my-org/projects/sdgsdg");
-                      }}
-                      className="w-full flex justify-between items-center fx-rounded active:scale-[0.99] pr-[5px] bg-[var(--project-blue)]"
-                    >
-                      <p
-                        className={`text-left ${openCollapsible[i + 1] ? "text-white" : "fx-label-color"}  font-medium`}
-                      >
-                        My Project -1
-                      </p>
-                      <div
-                        className={`p-1 border ${openCollapsible[i + 1] ? "border-none bg-[#6aeeae30]" : "border-[#6aeeae30]"}   fx-rounded`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleCollapsible(i + 1);
-                        }}
-                      >
-                        <ChevronsUpDown className="h-4 w-4 opacity-50" />
-                      </div>
-                    </FxButton>
-                  </div>
-                  <CollapsibleContent className="pl-3">
-                    <Link href={"/app/my-org/projects/sgsdg/tasks"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
-                        <TaskIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
-                        <p>Tasks</p>
-                      </li>
-                    </Link>
-                    <Link href={"/app/my-org/projects/sgsdg/sheets"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
-                        <SheetIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
-                        <p>Sheets</p>
-                      </li>
-                    </Link>
-                    <Link href={"/app/my-org/projects/sgsdg/issues"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
-                        <IssueIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
-                        <p>Issues</p>
-                      </li>
-                    </Link>
-                    <Link href={"/app/my-org/projects/sgsdg/pages"}>
-                      <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
-                        <PageIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
-                        <p>Pages</p>
-                      </li>
-                    </Link>
-                  </CollapsibleContent>
-                </Collapsible>
-              );
-            })}
+
+            <Link href={"/app/my-org/projects/tasks"}>
+              <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
+                <TaskIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                <p>Tasks</p>
+              </li>
+            </Link>
+            <Link href={"/app/my-org/projects/tables/tables-id"}>
+              <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
+                <SheetIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                <p>Tables</p>
+              </li>
+            </Link>
+            <Link href={"/app/my-org/projects/issues"}>
+              <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
+                <IssueIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                <p>Issues</p>
+              </li>
+            </Link>
+            <Link href={"/app/my-org/projects/pages"}>
+              <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
+                <PageIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
+                <p>Pages</p>
+              </li>
+            </Link>
+
           </div>
         </ul>
       </nav>

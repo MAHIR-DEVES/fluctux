@@ -4,6 +4,8 @@ import "./globals.css";
 import "./styles/app.style.css";
 import "./styles/editor.style.css";
 import "./styles/svg.style.css";
+import 'handsontable/styles/handsontable.min.css';
+import 'handsontable/styles/ht-theme-main.min.css';
 import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";

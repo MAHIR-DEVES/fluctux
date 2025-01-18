@@ -2,15 +2,14 @@
 import TextareaAutosize from "react-textarea-autosize";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
-import { StarIcon } from "@/components/ui/icons/star-icon";
 import FxButton from "@/components/ui/fxbutton";
 import { ForwardIcon } from "@/components/ui/icons/forward-icon";
 import { LockIcon } from "@/components/ui/icons/lock-icon";
 import { UnlockIcon } from "@/components/ui/icons/unlock-icon";
 import { NavigationIcon } from "@/components/ui/icons/navigation-icon";
+import AddToFavourite from "@/components/core/app/AddToFavourite";
 
 export default function ManagePage() {
-  const [starClicked, setStarClicked] = useState(false);
   const [locked, setLocked] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
 
@@ -25,11 +24,7 @@ export default function ManagePage() {
   return (
     <section className="pb-14 w-full">
       <div className="w-full shborder p-3 flex justify-between items-center sticky top-0 backdrop-blur-xl z-[300]">
-        <div onClick={() => setStarClicked(!starClicked)}>
-          <StarIcon
-            className={`cursor-pointer active:scale-[0.5] transition ${starClicked ? "yellow-star-active" : ""}`}
-          />
-        </div>
+        <AddToFavourite/>
         <div className="fx-flex-cr gap-2">
           <FxButton
             variant="secondary"
@@ -44,7 +39,7 @@ export default function ManagePage() {
             className="p-2 h-[30px] fx-flex-center gap-1"
             radius="tiny"
           >
-            <p>Share</p>
+            <p className="fx-label-color">Share</p>
             <ForwardIcon />
           </FxButton>
           <FxButton

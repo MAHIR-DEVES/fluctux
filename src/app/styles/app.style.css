@@ -11,15 +11,6 @@
   border-color: var(--primary-border-color);
 }
 
-
-.app-side-nav{
-  height: calc(100% - 120px);
-}
-
-.app-main{
+.app-children-layout{
   width: calc(100% - 260px);
-}
-
-.app-r-main-w{
-  height: calc(100vh - 50px);
 }

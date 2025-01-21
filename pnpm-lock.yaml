@@ -26,9 +26,6 @@ importers:
       '@handsontable/react':
         specifier: ^15.0.0
         version: 15.0.0(handsontable@15.0.0)
-      '@handsontable/react-wrapper':
-        specifier: ^15.0.0
-        version: 15.0.0(handsontable@15.0.0)
       '@mantine/core':
         specifier: ^7.16.0
         version: 7.16.0(@mantine/hooks@7.16.0(react@19.0.0))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -59,9 +56,6 @@ importers:
       cmdk:
         specifier: 1.0.0
         version: 1.0.0(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      handsontable:
-        specifier: ^15.0.0
-        version: 15.0.0
       lucide-react:
         specifier: ^0.471.0
         version: 0.471.0(react@19.0.0)
@@ -292,11 +286,6 @@ packages:
 
   '@handsontable/pikaday@1.0.0':
     resolution: {integrity: sha512-1VN6N38t5/DcjJ7y7XUYrDx1LuzvvzlrFdBdMG90Qo1xc8+LXHqbWbsTEm5Ec5gXTEbDEO53vUT35R+2COmOyg==}
-
-  '@handsontable/react-wrapper@15.0.0':
-    resolution: {integrity: sha512-78uCgcVBM5JjIVYb9stShbKQ126RCEnpjojYMNVF+EqIhc0KzvlKoVKonDm6k6PoQz2b1aMkHL17BEBxumsU/w==}
-    peerDependencies:
-      handsontable: '>=15.0.0'
 
   '@handsontable/react@15.0.0':
     resolution: {integrity: sha512-1sKrOuP4xSN9k1sRfuFuHn57igQClCZGORbRVEgBNISnLKn9q7Z6tLGnJKjbuGhpl1uWRdAaZosR2S7pNEC6Kg==}
@@ -3736,10 +3725,6 @@ snapshots:
   '@floating-ui/utils@0.2.9': {}
 
   '@handsontable/pikaday@1.0.0': {}
-
-  '@handsontable/react-wrapper@15.0.0(handsontable@15.0.0)':
-    dependencies:
-      handsontable: 15.0.0
 
   '@handsontable/react@15.0.0(handsontable@15.0.0)':
     dependencies:

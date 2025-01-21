@@ -83,7 +83,7 @@ export default function AppSidebar() {
   const ICON_SIZE_IN_SQR = 18
 
   return (
-    <aside className="w-[260px] h-full fixed top-0 left-0 fx-secondary-bg border-r fx-border-color">
+    <>
       <div className="w-full">
         <div>
           <Popover open={open} onOpenChange={setOpen}>
@@ -217,7 +217,7 @@ export default function AppSidebar() {
           </div>
           <div className="space-y-2">
 
-            <Link href={"/app/my-org/projects/tasks"}>
+            <Link href={"/app/org/my-org"}>
               <li className="p-1 text-[15px] font-medium pl-2 pr-2 cursor-pointer flex justify-start items-center gap-2 fx-rounded fx-label-color hover:text-white fx-hover-primary-bg">
                 <TaskIcon width={ICON_SIZE_IN_SQR} height={ICON_SIZE_IN_SQR} />
                 <p>Tasks</p>
@@ -245,14 +245,6 @@ export default function AppSidebar() {
           </div>
         </ul>
       </nav>
-
-      <div className="w-full h-[50px] border-t cursor-pointer fx-border-color flex justify-center items-center p-3 gap-3 fx-hover-primary-bg">
-        <img
-          src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg"
-          alt=""
-          className="w-[35px] h-[35px] rounded-[50%] fx-border-color border"
-        />
-      </div>
-    </aside>
+    </>
   );
 }

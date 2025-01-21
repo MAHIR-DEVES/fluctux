@@ -1,12 +1,19 @@
 import AppHeader from "@/components/core/app/AppHeader";
-import AppSidebar from "@/components/core/app/AppSidebar";
+import AppSidebar from "@/components/core/app/sidebars/AppSidebar";
 import React from "react";
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  params: Promise<{
+    org: string
+  }>
 }
 
-export default function Layout({ children }: AppLayoutProps) {
+export default async function Layout({ children, params }: AppLayoutProps) {
+  const { org } = await params
+
+  console.log(org);
+
   return (
     <section className="flex justify-end items-center">
       <AppSidebar />
@@ -14,7 +21,7 @@ export default function Layout({ children }: AppLayoutProps) {
         <AppHeader />
         <div className="border-l border-r fx-border-color app-r-main-w overflow-y-auto">
           {children}
-          </div>
+        </div>
       </main>
     </section>
   );

@@ -79,6 +79,13 @@ body {
 }
 
 @layer utilities {
+  .fx-default-layout {
+    @apply max-w-[1531px] w-full 
+  }
+
+  .fx-dlayout-padding {
+    @apply p-3
+  }
   /* background */
   .fx-primary-bg {
     @apply bg-[var(--background)];
@@ -159,6 +166,7 @@ body {
     @apply border-[var(--primary-border-color)];
   }
 
+  /* flex */
   .fx-flex-center {
     @apply flex justify-center items-center;
   }
@@ -217,6 +225,11 @@ body {
       0 0 0 1px var(--primary-border-color),
       inset 0 0 0 1px var(--background);
   }
+
+  .fx-layout-h-exc-hdr-app{
+    height: calc(100vh - 61px);
+  }
+  
 }
 
 @layer base {
@@ -269,4 +282,13 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+
+.hide-scrollbar{
+  scrollbar-width: none ; /* For Firefox */
+  -ms-overflow-style: none ;  /* For Internet Explorer and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }

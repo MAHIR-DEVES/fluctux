@@ -10,15 +10,6 @@ import React from "react";
 export default function SignUpPage() {
   return (
     <div className=" w-full mt-5">
-      <h3 className="mb-5 font-medium text-[16px]">
-        Already have an account?{" "}
-        <Link
-          href="/login"
-          className="text-[var(--link-color)] hover:underline"
-        >
-          Log in
-        </Link>
-      </h3>
       <>
         <p className="text-[var(--label-text-color)]">Email</p>
         <FxInput
@@ -26,6 +17,7 @@ export default function SignUpPage() {
           variant="primary"
           size="md"
           placeholder="youremail@gmail.com"
+          radius="primary"
         />
         <p className="text-[var(--label-text-color)] mt-3">Password</p>
         <FxInput
@@ -34,12 +26,14 @@ export default function SignUpPage() {
           variant="primary"
           size="md"
           placeholder="********"
+          radius="primary"
         />
 
         <FxButton
-          className="w-full mt-5 active:scale-[0.98]"
+          className="w-full mt-5"
           variant="primary"
           size="md"
+          radius="primary"
         >
           <p className="font-medium">Create Account</p>
         </FxButton>
@@ -53,26 +47,29 @@ export default function SignUpPage() {
 
       <>
         <FxButton
-          className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
+          className="w-full  flex justify-center items-center gap-2"
           variant="secondary"
           size="md"
+          radius="primary"
         >
           <p className="font-medium fx-label-color">Google</p>
           <GoogleIcon />
         </FxButton>
         <div className="flex justify-center items-center gap-3 mt-3">
           <FxButton
-            className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
+            className="w-full flex justify-center items-center gap-2"
             variant="secondary"
             size="md"
+            radius="primary"
           >
             <p className="font-medium fx-label-color">Github</p>
             <GithubIcon />
           </FxButton>
           <FxButton
-            className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
+            className="w-full flex justify-center items-center gap-2"
             variant="secondary"
             size="md"
+            radius="primary"
           >
             <p className="font-medium fx-label-color">Discord</p>
             <DiscordIcon width={25} height={25} />

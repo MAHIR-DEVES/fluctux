@@ -11,16 +11,6 @@ import React from "react";
 export default function LoginPage() {
   return (
     <div className=" w-full mt-5">
-      <div className="fixed top-8 right-8 flex justify-end items-center gap-2">
-        <p className="text-[16px]">
-          New <span className="fx-label-color">/</span>
-        </p>
-        <Link href={"/signup"}>
-          <FxButton variant="secondary" size="sm" className="create-acc-btn">
-            <p className="fx-primary-purple-text font-medium">Create Account</p>
-          </FxButton>
-        </Link>
-      </div>
       <>
         <p className="fx-label-color">Email</p>
         <FxInput
@@ -28,6 +18,7 @@ export default function LoginPage() {
           variant="primary"
           size="md"
           placeholder="youremail@gmail.com"
+          radius="primary"
         />
         <p className="fx-label-color mt-3">Password</p>
         <FxInput
@@ -36,16 +27,18 @@ export default function LoginPage() {
           variant="primary"
           size="md"
           placeholder="********"
+          radius="primary"
         />
         <div className="mt-1">
-        <Link href={""} className="fx-link-color hover:underline text-[14px]">Forget Password?</Link>
+          <Link href={""} className="fx-link-color hover:underline text-[14px]">Forget Password?</Link>
 
         </div>
 
         <FxButton
-          className="w-full mt-5 active:scale-[0.98]"
+          className="w-full mt-5"
           variant="primary"
           size="md"
+          radius="primary"
         >
           <p className="font-medium">Continue</p>
         </FxButton>
@@ -59,29 +52,32 @@ export default function LoginPage() {
 
       <>
         <FxButton
-          className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
+          className="w-full  flex justify-center items-center gap-2"
           variant="secondary"
           size="md"
+          radius="primary"
         >
           <p className="font-medium fx-label-color">Google</p>
-          <GoogleIcon/>
+          <GoogleIcon />
         </FxButton>
         <div className="flex justify-center items-center gap-3 mt-3">
           <FxButton
-            className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
+            className="w-full  flex justify-center items-center gap-2"
             variant="secondary"
             size="md"
+            radius="primary"
           >
             <p className="font-medium fx-label-color">Github</p>
-            <GithubIcon/>
+            <GithubIcon />
           </FxButton>
           <FxButton
-            className="w-full active:scale-[0.98] flex justify-center items-center gap-2"
+            className="w-full  flex justify-center items-center gap-2"
             variant="secondary"
             size="md"
+            radius="primary"
           >
             <p className="font-medium fx-label-color">Discord</p>
-            <DiscordIcon width={25} height={25}/>
+            <DiscordIcon width={25} height={25} />
           </FxButton>
         </div>
       </>

@@ -34,7 +34,7 @@ export default function Logo({ color, size }: LogoPropsType) {
       src={white_logo}
       width={500}
       height={500}
-      className={`${imageColor} ${imageSize} object-contain`}
+      className={`${imageColor} ${imageSize} object-contain select-none`}
       alt="fluctux"
       priority
     />

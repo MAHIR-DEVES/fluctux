@@ -1,5 +1,7 @@
 "use client"
+import FxButton from "@/components/ui/fxbutton";
 import Logo from "@/components/ui/fxlogo";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -10,14 +12,37 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const h1Title = current_path.charAt(0).toUpperCase() + current_path.slice(1);
 
   return (
-    <section className="flex justify-center items-center h-screen w-full">
-      <div className="fixed top-8 left-8">
-        <Logo color="WHITE" />
-      </div>
+    <section className="flex justify-center items-center w-full h-screen overflow-y-auto">
 
-      <div className="max-w-[420px] w-full p-3">
+      <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
+        <div className="fixed top-0 left-0 bg-gradient-to-t from-transparent to-[var(--background)] w-full h-[50px] fx-flex-cl p-3 backdrop-blur-xl">
+          <Logo color="WHITE" size="sm" />
+
+        </div>
         <h1 className="text-[25px] font-medium">{h1Title} to Fluctux</h1>
         {children}
+      </div>
+      <div className="fixed bottom-0 left-0 w-full h-[60px] fx-secondary-bg fx-flex-center">
+        {
+          current_path === "login" ?
+
+        <div className="flex justify-center items-center gap-2">
+          <p className="fx-label-color font-medium">New to Fluctux?</p>
+          <Link href={"/signup"}>
+            <FxButton variant="secondary" radius="tablet" size="sm" className="relative rgb-animation font-medium">
+              Create Account
+            </FxButton>
+          </Link>
+        </div>: <div className="flex justify-center items-center gap-2">
+        <p className="fx-label-color font-medium">Already have an account?</p>
+        <Link href={"/login"}>
+            <FxButton variant="primary" radius="tablet" size="sm" className="font-medium">
+              Login
+            </FxButton>
+          </Link>
+        </div>
+        }
+
       </div>
 
       {/* <div className="absolute inset-0 -z-10 h-full w-full bg-[var(--background)] [background:radial-gradient(125%_125%_at_50%_10%,var(--background)_40%,#6aeeae1b_100%)]"></div> */}

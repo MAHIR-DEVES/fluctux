@@ -2,7 +2,7 @@
 import FxButton from '@/components/ui/fxbutton'
 import { AddIcon } from '@/components/ui/icons/add-icon'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 import { ChevronsUpDown } from "lucide-react";
 
@@ -10,17 +10,17 @@ import {
     Collapsible,
     CollapsibleContent,
 } from "@/components/ui/collapsible";
-import { AddOneIcon } from '@/components/ui/icons/add-one-icon'
 import { SettingsIcon } from '@/components/ui/icons/settings-icon'
+import useToggleOpen from '@/app/hooks/useToggleOpen'
+import FxCommandBox from '@/components/ui/fxcommandbox'
+import FxInput from '@/components/ui/fxinput'
+import FxTextArea from '@/components/ui/fxtextarea'
+
 
 export default function Sidebar() {
     const path_name = usePathname()
     const org_path = path_name.split("/")[2]
-
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState("");
-
-    const router = useRouter();
+    const {open, setOpen} = useToggleOpen({shortcutKey: "p"})
 
     const [openCollapsible, setOpenCollapsible] = useState<{
         [key: number]: boolean;
@@ -33,26 +33,53 @@ export default function Sidebar() {
         }));
     };
 
-    const openProject = (id: number, path: string) => {
+    const openProject = (id: number) => {
         const isProject = openCollapsible[id];
         if (!isProject) {
             setOpenCollapsible((prevState: { [key: number]: boolean }) => ({
                 ...prevState,
                 [id]: !prevState[id],
             }));
-            return router.push(`${path}`);
-        }
-
-        if (path_name !== path) {
-            return router.push(`${path}`);
         }
     };
 
     if (org_path === "org") {
-        return <aside className="w-[260px] overflow-y-auto  fx-layout-h-exc-hdr-app fixed bottom-0 left-0 fx-secondary-bg border-r fx-border-color ">
+        return <>
+        <FxCommandBox open={open} className='p-3' >
+            <div>
+                
+                <FxInput variant='primary' size='md' radius='primary' className='w-full ' placeholder='Project Name' />
+                <FxTextArea className='w-full' variant='primary' radius='primary' size='md' />
+            </div>
+        </FxCommandBox>
+        <aside className="w-[260px] overflow-y-auto  fx-layout-h-exc-hdr-app fixed bottom-0 left-0 fx-secondary-bg border-r fx-border-color ">
             <div className='w-full fx-dlayout-padding sticky top-0 backdrop-blur-xl'>
 
-                <FxButton variant='primary' size='sm' className='w-full text-center font-medium fx-flex-center gap-2 ' radius='tiny'>
+                <div className="flex justify-between items-center w-full h-fit mb-3">
+                    <div className="flex justify-between items-center w-full cursor-default ">
+
+                        <div className="flex justify-center items-center gap-2 w-full">
+                            <img
+                                src={"https://st2.depositphotos.com/3867453/9096/v/450/depositphotos_90960358-stock-illustration-letter-m-logo-icon-design.jpg"}
+                                alt=""
+                                className="w-[40px] h-[40px] fx-rounded border fx-border-color object-cover object-center"
+                            />
+
+                            <div className="w-full text-left">
+                                <h1 className="font-medium text-[17px] one-line-ellipsis">
+                                    Ni Mahin Org's
+                                </h1>
+                                <p className="text-[14px] fx-label-color">
+                                    Business
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <FxButton onClick={() => setOpen(true)} variant='primary' size='sm' className='w-full text-center font-medium fx-flex-center gap-2 ' radius='tiny'>
                     <AddIcon />
                     <p className='font-medium'>
                         Create New Project
@@ -76,27 +103,30 @@ export default function Sidebar() {
                                         size="sm"
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            openProject(i + 1, "/app/my-org/projects/sdgsdg");
+                                            openProject(i + 1);
                                         }}
+                                        draggable={true}
                                         radius='tiny'
-                                        className="w-full flex justify-between items-center pr-[5px] bg-[var(--project-blue)]"
+                                        className="w-full h-[35px] flex justify-between items-center pr-[5px] bg-[var(--project-blue)]"
                                     >
                                         <p className={`text-left ${openCollapsible[i + 1] ? "text-white" : "fx-label-color"}  font-medium one-line-ellipsis`}>
                                             My Project -1
                                         </p>
                                         <div className='fx-flex-cr gap-1'>
                                             <div
-                                                className={`p-1 border ${openCollapsible[i + 1] ? "border-none bg-[#6aeeae30]" : "border-[#6aeeae30]"}   rounded-[5px]`}
+                                                className={`p-1 border ${openCollapsible[i + 1] ? "border-none bg-[#0091ff2f]" : "border-[#0091ff2f]"}   rounded-[5px]`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     toggleCollapsible(i + 1);
                                                 }}
                                             >
-                                                <ChevronsUpDown className="h-4 w-4" />
+                                                <ChevronsUpDown className="h-4 w-4" color='#b1b1b1' />
                                             </div>
-                                            <FxButton className='p-1 hover:bg-[#6aeeae30] bg-transparent w-[25px] h-[25px] fx-flex-center' radius='tiny'>
-                                                <SettingsIcon width={15} height={15}/>
-                                            </FxButton>
+                                            <div onClick={(e) => {
+                                                e.stopPropagation();
+                                            }} className='p-1 hover:bg-[#0091ff2f] bg-transparent w-[25px] h-[25px] fx-flex-center rounded-[5px]'>
+                                                <SettingsIcon width={15} height={15} />
+                                            </div>
                                         </div>
                                     </FxButton>
                                 </div>
@@ -132,6 +162,7 @@ export default function Sidebar() {
                 </div>
             </nav>
         </aside>
+        </>
     }
 
     return <aside className="w-[260px] fx-layout-h-exc-hdr-app fixed bottom-0 left-0 fx-secondary-bg border-r fx-border-color">

@@ -10,8 +10,8 @@ export enum OrgVisibilityType {
 }
 
 export enum OrgMemberRoleType {
-    OWNER = "OWNER",
-    MODERATOR = "MODERATOR",
+    MANAGER = "MANAGER",
+    TEAM = "TEAM",
     MEMBER = "MEMBER",
 }
 

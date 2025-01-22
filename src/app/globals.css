@@ -229,6 +229,10 @@ body {
   .fx-layout-h-exc-hdr-app{
     height: calc(100vh - 61px);
   }
+
+  .fx-shadow-t{
+    box-shadow: 0 -10px 20px  var(--background);
+  }
   
 }
 

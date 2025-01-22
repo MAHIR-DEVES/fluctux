@@ -14,7 +14,7 @@ interface FxCommandBoxProps {
 export default function FxCommandBox({children, open, className}: FxCommandBoxProps) {
     return (<div>
         <CommandDialog open={open}>
-            <div className={`h-[400px] fx-primary-bg border fx-border-color w-full rounded-[10px] ${className}`}>
+            <div className={`h-[400px] fx-primary-bg border fx-border-color w-full rounded-[10px] overflow-hidden ${className}`}>
                 {children}
             </div>
         </CommandDialog>

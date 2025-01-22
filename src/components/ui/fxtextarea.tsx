@@ -3,7 +3,7 @@ import { ROUNDED_VARIANTS } from './constant'
 import { SizeType } from './type'
 
 
-interface FxTextAreaProps {
+interface FxTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     className?: string,
     resize?: boolean
     radius?: keyof typeof ROUNDED_VARIANTS

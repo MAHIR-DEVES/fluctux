@@ -7,9 +7,10 @@ import {
 } from "@/components/ui/popover"
 import FxButton from './fxbutton';
 import useToggleOpen from '@/app/hooks/useToggleOpen';
+import { ROUNDED_VARIANTS } from './constant';
 
 interface ItemType {
-    label: string,
+    label?: string,
     desc?: string,
     id: string,
     value: string,
@@ -28,6 +29,8 @@ interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     alignItems?: keyof typeof alignItemsVariant,
     labelStyles?: string
     onValueChange?: (value: string) => void;
+    radius?: keyof typeof ROUNDED_VARIANTS
+    buttonStyles?: string
 }
 
 type RadioButtonType = "custom" | "modern"
@@ -54,7 +57,9 @@ export default function FxRadio({
     closeMenuOnSelect = false,
     alignItems = 'vertical',
     labelStyles,
-    onValueChange
+    onValueChange,
+    radius = 'tiny',
+    buttonStyles
 }: FxRadioProps) {
     const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +91,7 @@ export default function FxRadio({
                         <div onClick={() => setOpen(true)}>
                             {children}
                         </div> : items ?
-                            <FxButton onClick={() => setOpen(true)} variant='secondary' className='fx-flex-center gap-2 p-[5px] w-[120px]' radius='tiny'>
+                            <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${buttonStyles}`} radius={radius}>
                                 {
                                     items.find(item => item.value === selectedValue)?.svg
                                 }
@@ -117,18 +122,23 @@ export default function FxRadio({
                                             {item.svg}
                                         </div>
                                     }
-                                    <div className='flex justify-center items-start flex-col'>
-                                        {
-                                            item.label &&
-                                            <span className={`font-medium ${selectedValue === item.value ? 'text-white' : 'fx-label-color'} fx-hover-primary-bg`}>{item.label}</span>
-                                        }
+                                    {
+                                        item.label &&
 
-                                        {
-                                            item.desc &&
-                                            <span className='text-[14px] fx-sec-label-color radio-description leading-[1.2rem]'>{item.desc}</span>
+                                        <div className='flex justify-center items-start flex-col'>
 
-                                        }
-                                    </div>
+                                            {
+                                                item.label &&
+                                                <span className={`font-medium ${selectedValue === item.value ? 'text-white' : 'fx-label-color'} fx-hover-primary-bg`}>{item.label}</span>
+                                            }
+
+                                            {
+                                                item.desc &&
+                                                <span className='text-[14px] fx-sec-label-color radio-description leading-[1.2rem]'>{item.desc}</span>
+
+                                            }
+                                        </div>
+                                    }
                                 </label>
                                 <input type="radio" name='radio' id={`radio-${item.id}`} value={item.value} checked={selectedValue === item.value} onChange={handleChange} className={`hidden ${className}`} />
                             </React.Fragment>

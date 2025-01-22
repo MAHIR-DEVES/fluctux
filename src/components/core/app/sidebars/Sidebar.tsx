@@ -16,6 +16,8 @@ import FxCommandBox from '@/components/ui/fxcommandbox'
 import FxInput from '@/components/ui/fxinput'
 import FxTextArea from '@/components/ui/fxtextarea'
 import FxRadio from '@/components/ui/fxradio'
+import { PROJECT_STATUS_ITEMS } from '@/components/ui/constant'
+import { CancelIcon } from '@/components/ui/icons/cancle-icon'
 
 
 export default function Sidebar() {
@@ -44,6 +46,10 @@ export default function Sidebar() {
         }
     };
 
+    const handleValueChange = (value: string) => {
+        console.log('Selected value:', value);
+    };
+
     if (org_path === "org") {
         return <>
             <FxCommandBox open={isCPOpen} className='relative' >
@@ -51,7 +57,9 @@ export default function Sidebar() {
                 <div className='overflow-y-auto h-full hide-scrollbar p-3 pb-24 pt-[64px]'>
                     <div className='w-full absolute fx-secondary-bg top-0 left-0 p-3'>
                         <h2 className=' text-[17px] font-medium'>Create New Project</h2>
-
+                        <FxButton onClick={() => setCPOpen(false)} variant='secondary' className='rounded-[50%] w-[35px] h-[35px] fx-flex-center border fx-border-color absolute top-[7px] right-[5px] z-10 hover:bg-red-600 hover:border-red-600'>
+                            <CancelIcon />
+                        </FxButton>
                     </div>
                     <FxInput variant='primary' size='md' radius='primary' className='w-full font-semibold ' placeholder='Project Name' />
                     <FxTextArea placeholder='Project Description' className='w-full mt-2' variant='primary' radius='primary' size='md' />
@@ -60,10 +68,9 @@ export default function Sidebar() {
                 </div>
                 <div className='h-[45px] w-full border-t fx-border-color bottom-0 absolute left-0 fx-secondary-bg fx-shadow-t fx-flex-between-ic p-1 z-10'>
                     <div className=''>
-                    
+                        <FxRadio onValueChange={handleValueChange} align='start' alignItems='vertical' buttonType='modern' items={PROJECT_STATUS_ITEMS} layoutStyle='max-w-[250px] w-full' labelStyles='w-full' initialValue={"public"} closeMenuOnSelect={true} />
                     </div>
-                    <div className='fx-flex-cr gap-2'>
-                        <FxRadio align='start' buttonType='modern' />
+                    <div >
                         <FxButton variant='primary' className='p-[5px] pl-[30px] pr-[30px] font-medium' radius='tiny'>
                             Create
                         </FxButton>

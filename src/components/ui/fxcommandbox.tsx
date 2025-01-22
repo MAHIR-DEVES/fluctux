@@ -17,7 +17,6 @@ export default function FxCommandBox({ children, open, className }: FxCommandBox
             <div className={`h-[450px] fx-primary-bg border fx-border-color w-full rounded-[10px] overflow-hidden ${className}`}>
                 {children}
             </div>
-
         </CommandDialog>
     </div>
     )

@@ -36,7 +36,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>: <div className="flex justify-center items-center gap-2">
         <p className="fx-label-color font-medium">Already have an account?</p>
         <Link href={"/login"}>
-            <FxButton variant="primary" radius="tablet" size="sm" className="font-medium">
+            <FxButton variant="primary" radius="tablet" size="sm" className="font-medium pl-[20px] pr-[20px]">
               Login
             </FxButton>
           </Link>

@@ -21,7 +21,7 @@ import FxRadio from '@/components/ui/fxradio'
 export default function Sidebar() {
     const path_name = usePathname()
     const org_path = path_name.split("/")[2]
-    const { isOpen: isCPOpen, setOpen: setCPOpen} = useToggleOpen({ id: "create-project", shortcutKey: "p" })
+    const { isOpen: isCPOpen, setOpen: setCPOpen } = useToggleOpen({ id: "create-project", shortcutKey: "p" })
 
     const [openCollapsible, setOpenCollapsible] = useState<{
         [key: number]: boolean;
@@ -46,20 +46,25 @@ export default function Sidebar() {
 
     if (org_path === "org") {
         return <>
-            <FxCommandBox open={isCPOpen} className=' relative' >
-                <div className='overflow-y-auto h-full hide-scrollbar p-3 pb-24'>
-                    <h2 className='mb-3 text-[17px] font-medium'>Create New Project</h2>
-                    <FxInput variant='primary' size='md' radius='primary' className='w-full font-semibold ' placeholder='Project Name' />
-                    <FxTextArea placeholder='Project Description' className='w-full mt-2' variant='primary' radius='primary' size='md' />
-                    <FxRadio />
+            <FxCommandBox open={isCPOpen} className='relative' >
 
-                </div>
-                <div className='h-[50px] w-full border-t fx-border-color bottom-0 absolute left-0 fx-secondary-bg fx-shadow-t fx-flex-between-ic p-1 z-10'>
-                    <div className=''>
+                <div className='overflow-y-auto h-full hide-scrollbar p-3 pb-24 pt-[64px]'>
+                    <div className='w-full absolute fx-secondary-bg top-0 left-0 p-3'>
+                        <h2 className=' text-[17px] font-medium'>Create New Project</h2>
 
                     </div>
-                    <div>
-                        <FxButton variant='primary' className='pl-11 pr-11' size='md' radius='tiny'>
+                    <FxInput variant='primary' size='md' radius='primary' className='w-full font-semibold ' placeholder='Project Name' />
+                    <FxTextArea placeholder='Project Description' className='w-full mt-2' variant='primary' radius='primary' size='md' />
+
+
+                </div>
+                <div className='h-[45px] w-full border-t fx-border-color bottom-0 absolute left-0 fx-secondary-bg fx-shadow-t fx-flex-between-ic p-1 z-10'>
+                    <div className=''>
+                    
+                    </div>
+                    <div className='fx-flex-cr gap-2'>
+                        <FxRadio align='start' buttonType='modern' />
+                        <FxButton variant='primary' className='p-[5px] pl-[30px] pr-[30px] font-medium' radius='tiny'>
                             Create
                         </FxButton>
                     </div>
@@ -98,7 +103,7 @@ export default function Sidebar() {
                             Create New Project
                         </p>
                     </FxButton>
-                   
+
                 </div>
 
                 <nav className=' fx-dlayout-padding mb-24'>

@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { type DialogProps } from "@radix-ui/react-dialog"
 import { Command as CommandPrimitive } from "cmdk"
 import { Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog"
+import { DialogProps } from "./type"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,

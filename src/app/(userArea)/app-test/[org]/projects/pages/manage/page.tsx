@@ -70,7 +70,7 @@ export default function ManagePage() {
             className="resize-none w-full ml-[53px] appearance-none overflow-hidden outline-none bg-transparent text-[30px] text-white font-medium"
           />
           <div className="mt-3">
-            <Editor />
+            <Editor onChange={() => console.log('Editor content changed')} />
           </div>
         </div>
       </div>

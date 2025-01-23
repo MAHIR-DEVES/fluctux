@@ -1,6 +1,5 @@
 "use client";
 import {
-  BlockNoteEditor,
   BlockNoteSchema,
   PartialBlock,
   defaultBlockSpecs,
@@ -50,7 +49,7 @@ export default function BlockNote({
 }: EditorProps) {
   // Creates a new editor instance.
   const locale = locales["en"];
-  const editor: BlockNoteEditor = useCreateBlockNote({
+  const editor = useCreateBlockNote({
     schema,
     dictionary: {
       ...locale,

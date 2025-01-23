@@ -1,6 +1,5 @@
 'use client'
 import AddToFavourite from '@/components/core/app/AddToFavourite';
-import HSTable from '@/components/core/app/HSTable';
 import FxButton from '@/components/ui/fxbutton';
 import { ForwardIcon } from '@/components/ui/icons/forward-icon';
 import React from 'react'
@@ -24,7 +23,6 @@ export default function TablePage() {
         </div>
       </div>
       <div className='w-full'>
-        <HSTable/>
       </div>
     </section>
   )

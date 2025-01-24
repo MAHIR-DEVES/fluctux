@@ -38,7 +38,15 @@ export const authOptions: NextAuthOptions = {
           }
 
           if (!user.isVerified) {
-            throw new Error("User is not verified");
+            throw new Error("Invalid user");
+          }
+
+          const passwordCorrect = await user.isPasswordCorrect(
+            credentials.password
+          );
+
+          if (!passwordCorrect) {
+            throw new Error("Invalid credentials");
           }
 
           const nextAuthUser: NextAuthUser = {
@@ -79,11 +87,11 @@ export const authOptions: NextAuthOptions = {
       ) {
         await connDb();
         try {
-          const user_existed = await User.findOne({ email: user.email });
-
           if (!(user.image || user.name || user.username || user.email)) {
             throw new Error("Invalid data");
           }
+
+          const user_existed = await User.findOne({ email: user.email });
 
           if (!user_existed) {
             const newUser = new User({
@@ -95,9 +103,7 @@ export const authOptions: NextAuthOptions = {
               isVerified: true,
             });
 
-            await newUser.save({
-              validateBeforeSave: true,
-            });
+            await newUser.save();
 
             const againUser = await User.findOne({ email: user.email });
             if (!againUser) {
@@ -145,17 +151,17 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error",
     verifyRequest: "/auth/verify-request",
   },
-  // cookies: {
-  //   sessionToken: {
-  //     name: `__Secure-next-auth.session-token`,
-  //     options: {
-  //       httpOnly: true,
-  //       sameSite: "none",
-  //       secure: true, // ensure this is true in production
-  //       path: "/",
-  //     },
-  //   },
-  // },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true, // ensure this is true in production
+        path: "/",
+      },
+    },
+  },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days for token expiration

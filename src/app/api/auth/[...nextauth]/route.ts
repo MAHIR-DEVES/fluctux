@@ -1,32 +1,23 @@
 // This example is for NextAuth 4, the current stable version
-import arcjet, { detectBot, slidingWindow } from "@arcjet/next";
 import NextAuth from "next-auth";
 import { authOptions } from "./options";
+import ArcjetHandler from "@/utils/ArcjetHandler";
 
 const handler = NextAuth(authOptions);
-
-const aj = arcjet({
-  key: process.env.ARCJET_KEY!,
-  rules: [
-    slidingWindow({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-      interval: 300, // tracks requests across a 5min sliding window,
-      max: 5, // allow a maximum of 10 requests
-    }),
-    detectBot({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-      allow: [], // "allow none" will block all detected bots
-    }),
-  ],
-});
 
 type RouteContext = {
   params: Promise<Record<string, string>>;
 };
 
+const arcjetHandler = new ArcjetHandler({
+  SLIDING_WINDOW: true,
+  DETECT_BOT: true,
+})
+
 const ajProtectedPOST = async (req: Request, context: RouteContext) => {
   // Protect with Arcjet
-  const decision = await aj.protect(req);
+  const decision = await arcjetHandler.protect(req)
+  
   console.log("Arcjet decision", decision);
 
   if (decision.ip.isVpn() || decision.ip.isProxy()) {

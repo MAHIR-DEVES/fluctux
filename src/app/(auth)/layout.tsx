@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <h1 className="text-[25px] font-medium">{h1Title} to Fluctux</h1>
         {children}
       </div>
-      <div className="fixed bottom-0 left-0 w-full h-[60px] fx-secondary-bg fx-flex-center">
+      <div className="fixed bottom-0 left-0 w-full h-[60px] fx-secondary-bg fx-flex-center z-10">
         {
           current_path === "login" ?
 

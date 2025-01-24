@@ -16,6 +16,7 @@ export interface UserType extends Document {
   provider: AuthProviderType;
   verify_code: string;
   verify_expiry: Date;
+  isPasswordCorrect(password: string): Promise<boolean>;
 }
 
 const user_schema: Schema<UserType> = new Schema(

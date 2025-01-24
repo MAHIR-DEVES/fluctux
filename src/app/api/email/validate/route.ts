@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
   if (decision.isDenied()) {
     return NextResponse.json(
-      new ApiError(403, "Invalid Email", false, `${decision.reason}`)
+      new ApiError(403, `${decision.reason}`, false)
     );
   }
 

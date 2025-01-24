@@ -74,9 +74,9 @@ body {
   overflow: hidden;
 }
 
-::selection {
+/* ::selection {
   background: #5865f27c !important;
-}
+} */
 
 @layer utilities {
   .fx-default-layout {

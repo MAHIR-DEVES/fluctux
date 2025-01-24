@@ -11,21 +11,37 @@ export default function SignUpPage() {
   return (
     <div className=" w-full mt-5">
       <>
-        <p className="text-[var(--label-text-color)]">Email</p>
+        <div className="fx-flex-between-ic gap-3">
+          <div>
+
+            <p className="text-[var(--label-text-color)]">First Name</p>
+            <FxInput
+              className="w-full"
+              variant="primary"
+              size="md"
+              placeholder="Jhon"
+              radius="primary"
+            />
+          </div>
+          <div>
+            <p className="text-[var(--label-text-color)]">Last Name</p>
+            <FxInput
+              className="w-full"
+              variant="primary"
+              size="md"
+              placeholder="Doe"
+              radius="primary"
+            />
+
+          </div>
+
+        </div>
+        <p className="text-[var(--label-text-color)] mt-3">Email</p>
         <FxInput
           className="w-full"
           variant="primary"
           size="md"
           placeholder="youremail@gmail.com"
-          radius="primary"
-        />
-        <p className="text-[var(--label-text-color)] mt-3">Password</p>
-        <FxInput
-          className="w-full"
-          type="password"
-          variant="primary"
-          size="md"
-          placeholder="********"
           radius="primary"
         />
 
@@ -35,7 +51,7 @@ export default function SignUpPage() {
           size="md"
           radius="primary"
         >
-          <p className="font-medium">Create Account</p>
+          <p className="font-medium">Continue</p>
         </FxButton>
       </>
 

@@ -7,9 +7,9 @@
   --primary-color: #5865f2;
 
   /* backgrounds */
-  --background: #0a0a0a;
-  --primary-secondary-bg: #131313;
-  --primary-input-bg: #131313;
+  --background: #ffffff;
+  --secondary-bg: #131313;
+  --third-bg: #131313;
 
   /* text & labels */
   --foreground: #ffffff;
@@ -21,11 +21,6 @@
 
   /* links */
   --link-color: #2ba0ff;
-
-  /* hover */
-  --primary-hover-color: #1b1b1b;
-  --primary-hover-trans-green-color: #6aeeae13;
-  --hover-trans-red-bg: #ff00001c;
 
   /* badge colors */
   --badge-green-border: #6aeeae79;
@@ -53,18 +48,42 @@
   --project-red: #ff00002f;
   --project-orange: #ff6f002f;
 
-  /* transparent colors */
-
   /* border color */
-
   --primary-border-color: #2a2a2a;
-  --primary-hover-red: #ff000024;
-  /* buttons */
 
-  --primary-button-hover-bg: #5865f2e4;
+  /* hover */
+  --primary-purple-hover-bg: #5865f2e4;
+  --primary-hover-bg: #ffffff0f;
 
   /* content color */
   --content-color: #eaeaea;
+
+  /* active colors */
+  --active-secondary: #ffffff0f;
+
+  /* overlay */
+  --overlay-bg-dialog: red;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --secondary-bg: #0a0a0a;
+    --third-bg: #111111;
+
+    /* border */
+    --primary-border-color: #2a2a2a;
+
+    /* hover */
+    --secondary-hover-bg: #191919;
+
+    /* active colors */
+    --active-secondary: #191919;
+
+    /* overlay */
+    --overlay-bg-dialog: #000000b6;
+  }
 }
 
 body {
@@ -92,7 +111,11 @@ body {
   }
 
   .fx-secondary-bg {
-    @apply bg-[var(--primary-secondary-bg)];
+    @apply bg-[var(--secondary-bg)];
+  }
+
+  .fx-third-bg {
+    @apply bg-[var(--third-bg)];
   }
 
   .fx-primary-purple-bg {
@@ -118,25 +141,21 @@ body {
   }
 
   /* hover */
-
-  .fx-hover-primary-bg {
-    @apply hover:bg-[var(--primary-hover-color)];
+  .fx-secondary-hover-bg {
+    @apply hover:bg-[var(--secondary-hover-bg)];
   }
 
   .fx-hover-primary-fg {
     @apply hover:text-[var(--primary-color)];
   }
 
-  .fx-hover-trans-red-bg {
-    @apply hover:bg-[var(--hover-trans-red-bg)];
-  }
-
   .fx-hover-primary-purple-bg {
-    @apply hover:bg-[var(--primary-button-hover-bg)];
+    @apply hover:bg-[var(--primary-purple-hover-bg)];
   }
 
-  .fx-hover-tred-bg {
-    @apply hover:bg-[var(--primary-hover-red)];
+  /* active bg */
+  .fx-secondary-active-bg {
+    @apply bg-[var(--active-secondary)];
   }
 
   /* radius */
@@ -199,6 +218,10 @@ body {
     @apply flex justify-between items-center;
   }
 
+  .fx-flex-between-it {
+    @apply flex justify-between items-start;
+  }
+
   .three-line-ellipsis {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -230,8 +253,8 @@ body {
     height: calc(100vh - 61px);
   }
 
-  .fx-shadow-t {
-    box-shadow: 0 -10px 20px var(--background);
+  .fx-secondary-shadow-t {
+    box-shadow: 0 -10px 20px var(--secondary-bg);
   }
 }
 
@@ -311,10 +334,9 @@ body {
   }
 }
 
-.spinner-loading{
+.spinner-loading {
   animation: spinnerLoading 1s linear infinite;
 }
-
 
 @keyframes spinnerLoading {
   0% {

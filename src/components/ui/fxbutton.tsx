@@ -17,7 +17,7 @@ const buttonVariants: { [key in ButtonVariantType]: string } = {
   primary:
     "border border-none fx-primary-purple-bg fx-hover-primary-purple-bg",
   secondary:
-    "border fx-border-color fx-secondary-bg fx-hover-primary-bg"
+    "border fx-border-color fx-secondary-bg fx-secondary-hover-bg"
 };
 
 const buttonSizes: { [key in SizeType]: string } = {

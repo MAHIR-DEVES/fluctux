@@ -115,7 +115,7 @@ export default function FxRadio({
 
                         items ? items.map((item, i) => {
                             return <React.Fragment key={i}>
-                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value ? 'bg-[var(--primary-hover-color)]' : ''} fx-flex-cl gap-2 p-1 pl-3 pr-3 cursor-pointer  group hover:fx-hover-primary-bg transition-all  ${labelStyles}`}>
+                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value ? 'fx-secondary-active-bg' : ''} fx-flex-cl gap-2 p-1 pl-3 pr-3 cursor-pointer  group hover:fx-secondary-hover-bg transition-all  ${labelStyles}`}>
                                     {
                                         item.svg &&
                                         <div className='w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0'>
@@ -129,7 +129,7 @@ export default function FxRadio({
 
                                             {
                                                 item.label &&
-                                                <span className={`font-medium ${selectedValue === item.value ? 'text-white' : 'fx-label-color'} fx-hover-primary-bg`}>{item.label}</span>
+                                                <span className={`font-medium ${selectedValue === item.value ? 'text-white' : 'fx-label-color'} `}>{item.label}</span>
                                             }
 
                                             {

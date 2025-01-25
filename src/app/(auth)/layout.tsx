@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const h1Title = current_path.charAt(0).toUpperCase() + current_path.slice(1);
 
   return (
-    <section className="flex justify-center items-center w-full h-screen overflow-y-auto">
+    <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">
 
       <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
         <div className="fixed top-0 left-0 bg-gradient-to-t from-transparent to-[var(--background)] w-full h-[50px] fx-flex-cl p-3 backdrop-blur-xl">

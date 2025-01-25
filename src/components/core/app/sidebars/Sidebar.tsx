@@ -59,21 +59,20 @@ export default function Sidebar() {
             <FxCommandBox open={isCPOpen} className='h-[400px] max-w-[600px] w-full' >
 
                 <div className='overflow-y-auto h-full hide-scrollbar p-2 pb-16 pt-[60px]'>
-                    <div className='w-full absolute backdrop-blur-lg top-0 left-0 p-3'>
-                        <h2 className=' text-[17px] font-medium'>Create New Project</h2>
-                        <FxButton onClick={() => setCPOpen(false)} variant='secondary' className='rounded-[50%] w-[35px] h-[35px] fx-flex-center border fx-border-color absolute top-[7px] right-[5px] z-10 hover:bg-red-600 hover:border-red-600'>
+                    <div className='w-full absolute backdrop-blur-lg top-0 left-0 h-[50px] fx-flex-between-ic p-2 pl-4 border-b fx-border-color'>
+                        <h2 className=' text-[18px] font-medium'>Create New Project</h2>
+                        <FxButton onClick={() => setCPOpen(false)} variant='secondary' className='fx-third-bg rounded-[50%] w-[35px] h-[35px] fx-flex-center border fx-border-color hover:bg-red-600 hover:border-red-600'>
                             <CancelIcon />
                         </FxButton>
                     </div>
-                    <FxInput variant='primary' size='md' radius='primary' className='w-full font-semibold ' placeholder='Project Name' />
-                    <FxTextArea placeholder='Project Description' className='w-full mt-2' variant='primary' radius='primary' size='md' />
-                 
-
+                    <FxInput variant='primary' size='md' radius='primary' className='w-full border-none font-semibold fx-third-bg' placeholder='Project Name' />
+                    <FxTextArea placeholder='Project Description' className='w-full mt-2 fx-third-bg border-none' variant='primary' radius='primary' size='md' />
+                    
                 </div>
-                <div className='h-[45px] w-full border-t fx-border-color bottom-0 absolute left-0 fx-secondary-bg fx-shadow-t fx-flex-between-ic p-1 z-10'>
-                    <div className='fx-flex-cl gap-2'>
-                        <FxRadio onValueChange={handleValueChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-center gap-2 p-[5px] w-[120px]' items={PROJECT_STATUS_ITEMS} layoutStyle='max-w-[250px] w-full' labelStyles='w-full rounded-[5px]' initialValue={"public"} closeMenuOnSelect={true} />
-                        <FxRadio onValueChange={handleColorValue} align='start' alignItems='horizontal' buttonType='modern' buttonStyles='w-[35px] h-[35px] rounded-[5px] fx-flex-center' radius='tablet' items={PROJECT_COLORS} layoutStyle='max-w-[250px] w-full gap-2' labelStyles='w-fit rounded-[50px] p-[0px] pl-[0px] pr-[0px]' initialValue={"--project-purple"} closeMenuOnSelect={true} />
+                <div className='h-[45px] w-full border-t fx-border-color bottom-0 absolute left-0 fx-secondary-bg fx-secondary-shadow-t fx-flex-between-ic p-1 z-10'>
+                    <div className='fx-flex-cl gap-1'>
+                        <FxRadio onValueChange={handleValueChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-center gap-2 p-[5px] w-[120px] fx-third-bg' items={PROJECT_STATUS_ITEMS} layoutStyle='max-w-[250px] w-full' labelStyles='w-full rounded-[5px]' initialValue={"public"} closeMenuOnSelect={true} />
+                        <FxRadio onValueChange={handleColorValue} align='start' alignItems='horizontal' buttonType='modern' buttonStyles='w-[35px] h-[35px] rounded-[5px] fx-flex-center fx-third-bg' radius='tablet' items={PROJECT_COLORS} layoutStyle='max-w-[250px] w-full gap-2' labelStyles='w-fit rounded-[50px] p-[0px] pl-[0px] pr-[0px]' initialValue={"--project-purple"} closeMenuOnSelect={true} />
                     </div>
                     <div >
                         <FxButton variant='primary' className='p-[5px] pl-[30px] pr-[30px] font-medium' radius='tiny'>

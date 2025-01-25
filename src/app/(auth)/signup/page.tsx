@@ -1,19 +1,33 @@
+"use client"
+import useReactForm from "@/app/hooks/useReactForm";
 import FxButton from "@/components/ui/fxbutton";
 import FxInput from "@/components/ui/fxinput";
 import FxSeparator from "@/components/ui/fxseparator";
 import { DiscordIcon } from "@/components/ui/icons/discord-icon";
 import { GithubIcon } from "@/components/ui/icons/github-icon";
 import { GoogleIcon } from "@/components/ui/icons/google-icon";
+import { userZodSchema } from "@/zod/user/user.zod";
 import Link from "next/link";
 import React from "react";
+import { z } from "zod";
 
 export default function SignUpPage() {
+
+  const { register, handleSubmit, errors } = useReactForm({ ZOD_SCHEMA: userZodSchema })
+
+  const onSubmit = (data: z.infer<typeof userZodSchema>) => {
+    console.log(data.fname);
+    console.log(data.lname);
+    console.log(data.email);
+
+
+  }
+
   return (
-    <div className=" w-full mt-5">
-      <>
+    <div className="w-full mt-5 ">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="fx-flex-between-ic gap-3">
           <div>
-
             <p className="text-[var(--label-text-color)]">First Name</p>
             <FxInput
               className="w-full"
@@ -21,7 +35,10 @@ export default function SignUpPage() {
               size="md"
               placeholder="Jhon"
               radius="primary"
+              {...register("fname")}
+              required
             />
+            {errors.fname && <p>{errors.fname.message}</p>}
           </div>
           <div>
             <p className="text-[var(--label-text-color)]">Last Name</p>
@@ -31,8 +48,10 @@ export default function SignUpPage() {
               size="md"
               placeholder="Doe"
               radius="primary"
+              {...register("lname")}
             />
 
+            {errors.lname && <p>{errors.lname.message}</p>}
           </div>
 
         </div>
@@ -43,17 +62,21 @@ export default function SignUpPage() {
           size="md"
           placeholder="youremail@gmail.com"
           radius="primary"
+          {...register("email")}
+          required
         />
+        {errors.email && <p>{errors.email.message}</p>}
 
         <FxButton
           className="w-full mt-5"
           variant="primary"
           size="md"
           radius="primary"
+          type="submit"
         >
           <p className="font-medium">Continue</p>
         </FxButton>
-      </>
+      </form>
 
       <FxSeparator orientation="horizontal" gap="xl">
         <p className="text-[var(--label-text-color)] bg-[var(--background)] pl-2 pr-2">

@@ -21,7 +21,7 @@ const textAreaSizes:{[key in SizeType]: string} = {
 }
 
 const textAreaVariants: {[key in TextAreaVariantType]: string} = {
-    primary: "border fx-border-color fx-input-bg focus:fx-input-outline",
+    primary: "border fx-border-color fx-secondary-bg focus:fx-input-outline",
     secondary: "border fx-border-color bg-transparent",
 }
 

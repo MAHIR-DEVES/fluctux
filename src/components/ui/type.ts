@@ -9,3 +9,5 @@ export interface DialogProps {
     modal?: boolean;
     className?: string;
 }
+
+export type ThemeType = 'dark' | 'light'

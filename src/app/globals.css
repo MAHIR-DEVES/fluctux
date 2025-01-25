@@ -63,6 +63,9 @@
 
   /* overlay */
   --overlay-bg-dialog: red;
+
+  /* separator color */
+  --secondary-separator-color: white;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,12 +80,16 @@
 
     /* hover */
     --secondary-hover-bg: #191919;
+    --primary-hover-bg: #ffffff0f;
 
     /* active colors */
     --active-secondary: #191919;
 
     /* overlay */
     --overlay-bg-dialog: #000000b6;
+
+    /* separator color */
+    --secondary-separator-color: #2a2a2a;
   }
 }
 
@@ -98,6 +105,11 @@ body {
 } */
 
 @layer utilities {
+
+  .fx-org-layout-width{
+    @apply max-w-[1500px] w-full
+  }
+
   .fx-default-layout {
     @apply max-w-[1531px] w-full;
   }
@@ -183,6 +195,11 @@ body {
 
   .fx-border-color {
     @apply border-[var(--primary-border-color)];
+  }
+
+  /* separator color */
+  .fx-sec-separator-text-color{
+    @apply text-[var(--secondary-separator-color)]
   }
 
   /* flex */

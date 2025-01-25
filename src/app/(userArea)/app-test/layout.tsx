@@ -9,10 +9,7 @@ interface AppLayoutProps {
   }>
 }
 
-export default async function Layout({ children, params }: AppLayoutProps) {
-  const { org } = await params
-
-  console.log(org);
+export default async function Layout({ children }: AppLayoutProps) {
 
   return (
     <section className="flex justify-end items-center">

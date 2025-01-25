@@ -1,0 +1,9 @@
+.profile-image:hover{
+    outline: 3px solid var(--primary-hover-bg);
+    cursor: pointer;
+    
+}
+
+.profile-image:active{
+    outline: 3px solid var(--primary-color);
+}

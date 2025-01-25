@@ -7,3 +7,9 @@
 .profile-image:active{
     outline: 3px solid var(--primary-color);
 }
+
+.team-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}

@@ -90,6 +90,10 @@
 
     /* separator color */
     --secondary-separator-color: #2a2a2a;
+
+    /* gradient colors */
+    --gradient-team-header: #5865f232;
+    --gradient-grid-team-header: #5865f232;
   }
 }
 
@@ -97,7 +101,6 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-geist-sans);
-  overflow: hidden;
 }
 
 /* ::selection {

@@ -9,7 +9,7 @@ export default function FxOverlayImages({ images }: FxOverlayImagesPropsType) {
     const defaultImages = images && images.length && images;
 
     return (
-        <div className="relative w-[75px] h-[30px]">
+        <div className="relative w-[75px] h-[30px] select-none">
             {defaultImages ? defaultImages.slice(0, 3).map((image, index) => (
                 <Image
                     key={index}

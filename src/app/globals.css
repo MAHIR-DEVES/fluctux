@@ -276,6 +276,7 @@ body {
   .fx-secondary-shadow-t {
     box-shadow: 0 -10px 20px var(--secondary-bg);
   }
+
 }
 
 @layer base {

@@ -115,7 +115,7 @@ body {
   }
 
   .fx-default-layout {
-    @apply max-w-[1531px] w-full;
+    @apply max-w-[1500px] w-full;
   }
 
   .fx-dlayout-padding {

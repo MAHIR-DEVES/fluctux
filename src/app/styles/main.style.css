@@ -2,3 +2,21 @@
     background-image: linear-gradient(to bottom, transparent, var(--background));
     
 }
+
+/* .hero-bg-animation::after{
+    content: "";
+    height: 100%;
+    width: 100px;
+    background-image: linear-gradient(to left, transparent, var(--background));
+    position: absolute;
+}
+
+.hero-bg-animation::before{
+    content: "";
+    height: 100%;
+    width: 100px;
+    background-image: linear-gradient(to right, transparent, var(--background));
+    position: absolute;
+    right: 0;
+ 
+} */

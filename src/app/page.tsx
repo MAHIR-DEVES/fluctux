@@ -57,24 +57,27 @@ export default function Home() {
 
       <Header />
 
-      <section className="w-full">
-        <div className="w-full fx-flex-center">
-          <div className="hero-bg-animation relative z-10 h-[700px] fx-default-layout ">
-          </div>
+
+      <div className="w-full fx-flex-center flex-col absolute top-0">
+       
+        <div className="hero-bg-animation relative z-10 h-[700px] fx-default-layout ">
         </div>
 
-        <div className="w-full fx-flex-center ">
-          <div className="fx-default-layout overflow-hidden h-[700px] absolute top-0">
+        <div className="fx-default-layout overflow-hidden h-[700px] absolute top-0">
 
-            <div className="absolute inset-0 top-0 z-[-1] h-[700px] bg-transparent bg-[linear-gradient(to_right,var(--gradient-grid-main-header)_1px,transparent_1px),linear-gradient(to_bottom,var(--gradient-grid-main-header)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-          </div>
+          <div className="absolute inset-0 top-0 z-[-1] h-[700px] bg-transparent bg-[linear-gradient(to_right,var(--gradient-grid-main-header)_1px,transparent_1px),linear-gradient(to_bottom,var(--gradient-grid-main-header)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
         </div>
-        <div className="w-full overflow-hidden fx-flex-center">
-          <div className="PZLPMy fx-default-layout h-[700px] overflow-hidden absolute top-0">
-            <canvas ref={canvasRef} className="w-full h-[700px] absolute -z-10 top-0 left-0" /> {/* Use canvas tag */}
-          </div>
+
+        <div className="PZLPMy fx-default-layout h-[700px] overflow-hidden absolute top-0">
+          <canvas ref={canvasRef} className="w-full h-[700px] absolute -z-10 top-0 left-0" /> {/* Use canvas tag */}
         </div>
-      </section>
+      </div>
+
+      <div className="pt-[64px]">
+        <h1>Hello world</h1>
+      </div>
+
+
 
     </>
   );

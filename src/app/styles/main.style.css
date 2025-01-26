@@ -1,0 +1,4 @@
+.hero-bg-animation{
+    background-image: linear-gradient(to bottom, transparent, var(--background));
+    
+}

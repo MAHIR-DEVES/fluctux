@@ -94,6 +94,7 @@
     /* gradient colors */
     --gradient-team-header: #5865f232;
     --gradient-grid-team-header: #5865f232;
+    --gradient-grid-main-header: #ffffff15 ;
   }
 }
 
@@ -367,3 +368,9 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.PZLPMy a{
+  display: none !important;
+}
+
+

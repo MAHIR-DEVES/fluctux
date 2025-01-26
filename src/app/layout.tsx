@@ -6,6 +6,7 @@ import "./styles/editor.style.css";
 import "./styles/svg.style.css";
 import "./styles/auth.style.css";
 import "./styles/org.style.css";
+import "./styles/main.style.css";
 import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";

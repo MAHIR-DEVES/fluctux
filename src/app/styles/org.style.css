@@ -1,15 +1,14 @@
-.profile-image:hover{
-    outline: 3px solid var(--primary-hover-bg);
-    cursor: pointer;
-    
+.profile-image:hover {
+  outline: 3px solid var(--primary-hover-bg);
+  cursor: pointer;
 }
 
-.profile-image:active{
-    outline: 3px solid var(--primary-color);
+.profile-image:active {
+  outline: 3px solid var(--primary-color);
 }
 
-.team-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }

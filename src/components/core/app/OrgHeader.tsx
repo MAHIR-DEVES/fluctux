@@ -10,7 +10,7 @@ export default function OrgHeader() {
     return <header className='h-[64px] fx-secondary-bg w-full fixed top-0 left-0 border-b fx-border-color fx-flex-center z-50'>
         <div className='fx-org-layout-width border-r border-l fx-border-color fx-flex-between-ic'>
             <div className='fx-flex-cl gap-3'>
-                <div className='w-[64px] h-[64px] border-r border-b fx-border-color fx-flex-center fx-third-bg hover:fx-primary-purple-bg cursor-pointer'>
+                <div className='w-[64px] h-[64px] select-none border-r border-b fx-border-color fx-flex-center fx-third-bg hover:fx-primary-purple-bg cursor-pointer'>
                     <FxFavIcon />
                 </div>
                 <div className='fx-flex-center gap-2'>

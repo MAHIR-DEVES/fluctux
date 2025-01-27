@@ -1,0 +1,56 @@
+import { THEME_ICONS } from '@/components/ui/constant'
+import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from 'react'
+
+export default function useThemeSwitcher() {
+    const { theme, setTheme, resolvedTheme } = useTheme();
+    const [activeIndex, setActiveIndex] = useState(0);
+    useEffect(() => {
+        if (resolvedTheme) {
+
+            if (theme === "light") {
+                setActiveIndex(0)
+            } else if (theme === "dark") {
+                setActiveIndex(1)
+            } else {
+                setActiveIndex(2)
+            }
+        }
+    }, [theme, resolvedTheme]);
+
+    const handleChangeAppearanceMode = (index: number) => {
+        if (index === 0) {
+            setTheme("light");
+        } else if (index === 1) {
+            setTheme("dark")
+        }
+        else {
+            setTheme("system");
+        }
+    };
+
+    const ThemeSwitcher = () => (
+        <div className='fx-flex-center w-fit rounded-[50px] border fx-border-color p-[2px]'>
+            <ul className='fx-flex-center w-fit relative'>
+                {
+                    THEME_ICONS.map((item, i) => {
+                        return <li onClick={() => handleChangeAppearanceMode(i)} key={i} className='cursor-pointer hover:border fx-border-color rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center'>
+                            {item.svg}
+                        </li>
+                    })
+                }
+                <span
+                    className="active-theme-mode"
+                    style={{
+                        transform: `translateX(${activeIndex * 100}%)`,
+                    }}
+                ></span>
+            </ul>
+        </div>
+    )
+    return {
+        ThemeSwitcher, theme, resolvedTheme, setTheme
+    }
+}
+
+

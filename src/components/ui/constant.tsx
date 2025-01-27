@@ -1,5 +1,7 @@
+import { ComputerIcon } from "./icons/computer-icon";
 import { GlobeIcon } from "./icons/globe-icon";
 import { LockIcon } from "./icons/lock-icon";
+import { MoonIcon } from "./icons/moon-icon";
 import { ProjectBlueIcon } from "./icons/project-colors/project-blue-icon";
 import { ProjectGreenIcon } from "./icons/project-colors/project-green-icon";
 import { ProjectOrangeIcon } from "./icons/project-colors/project-orange-icon";
@@ -8,6 +10,7 @@ import { ProjectPurpleIcon } from "./icons/project-colors/project-purple-icon";
 import { ProjectRedIcon } from "./icons/project-colors/project-red-icon";
 import { ProjectYellowIcon } from "./icons/project-colors/project-yellow-icon";
 import { SettingsIcon } from "./icons/settings-icon";
+import { SunIcon } from "./icons/sun-icon";
 import { TwoPeopleIcon } from "./icons/two-people-icon";
 import { RadiusType } from "./type";
 
@@ -92,5 +95,18 @@ export const PROJECT_COLORS = [
     value: "--project-orange",
 
     svg: <ProjectOrangeIcon width={24} height={24} />
+  }
+]
+
+
+export const THEME_ICONS = [
+  {
+      svg: <SunIcon />
+  },
+  {
+      svg: <MoonIcon />
+  },
+  {
+      svg: <ComputerIcon width={18} height={18} />
   }
 ]

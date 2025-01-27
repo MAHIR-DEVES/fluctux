@@ -8,12 +8,12 @@
 
   /* backgrounds */
   --background: #ffffff;
-  --secondary-bg: #131313;
+  --secondary-bg: #f3f3f3;
   --third-bg: #131313;
 
   /* text & labels */
   --foreground: #000000;
-  --label-text-color: #b1b1b1;
+  --label-text-color: #747474;
   --secondary-label-text-color: #717171;
 
   /* radius */
@@ -49,11 +49,12 @@
   --project-orange: #ff6f002f;
 
   /* border color */
-  --primary-border-color: #2a2a2a;
+  --primary-border-color: #d8d8d8;
 
   /* hover */
   --primary-purple-hover-bg: #5865f2e4;
-  --primary-hover-bg: #ffffff0f;
+  --primary-hover-bg: #e00303;
+  --secondary-hover-bg: #e4e4e4;
 
   /* content color */
   --content-color: #eaeaea;
@@ -68,37 +69,39 @@
   --secondary-separator-color: white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ffffff;
-    --secondary-bg: #0a0a0a;
-    --third-bg: #111111;
+.dark {
+  --background: #000000;
+  --secondary-bg: #0a0a0a;
+  --third-bg: #111111;
 
-    /* border */
-    --primary-border-color: #2a2a2a;
+  /* border */
+  --primary-border-color: #2a2a2a;
 
-    /* hover */
-    --secondary-hover-bg: #191919;
-    --primary-hover-bg: #ffffff0f;
+  /* hover */
+  --secondary-hover-bg: #191919;
+  --primary-hover-bg: #ffffff0f;
 
-    /* active colors */
-    --active-secondary: #191919;
+  /* active colors */
+  --active-secondary: #191919;
 
-    /* overlay */
-    --overlay-bg-dialog: #000000b6;
+  /* overlay */
+  --overlay-bg-dialog: #000000b6;
 
-    /* separator color */
-    --secondary-separator-color: #2a2a2a;
+  /* separator color */
+  --secondary-separator-color: #2a2a2a;
 
-    /* gradient colors */
-    --gradient-team-header: #5865f232;
-    --gradient-grid-team-header: #5865f232;
-    --gradient-grid-main-header: #ffffff15;
+  /* gradient colors */
+  --gradient-team-header: #5865f232;
+  --gradient-grid-team-header: #5865f232;
+  --gradient-grid-main-header: #ffffff15;
 
-    /* content color */
-    --content-color: #eaeaea;
-  }
+  /* content color */
+  --content-color: #eaeaea;
+
+  /* text & labels */
+  --foreground: #ffffff;
+  --label-text-color: #b1b1b1;
+  --secondary-label-text-color: #717171;
 }
 
 body {
@@ -374,3 +377,20 @@ body {
   display: none !important;
 }
 
+.active-theme-mode {
+  box-shadow: inset 0px 0px 15px #ffffff4e;
+  transition: 0.2s ease-in-out;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border: none;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.light .active-theme-mode {
+  box-shadow: inset 0px 0px 10px #00000041;
+}

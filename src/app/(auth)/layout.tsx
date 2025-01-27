@@ -1,6 +1,6 @@
 "use client"
 import FxButton from "@/components/ui/fxbutton";
-import Logo from "@/components/ui/fxlogo";
+import FxLogo from "@/components/ui/fxlogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
         <div className="fixed top-0 left-0 bg-gradient-to-t from-transparent to-[var(--background)] w-full h-[50px] fx-flex-cl p-3 backdrop-blur-xl">
-          <Logo color="WHITE" size="sm" />
+          <FxLogo size="sm" />
 
         </div>
         <h1 className="text-[25px] font-medium">{h1Title} to Fluctux</h1>
@@ -26,21 +26,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {
           current_path === "login" ?
 
-        <div className="flex justify-center items-center gap-2">
-          <p className="fx-label-color font-medium">New to Fluctux?</p>
-          <Link href={"/signup"}>
-            <FxButton variant="secondary" radius="tablet" size="sm" className="relative rgb-animation font-medium">
-              Create Account
-            </FxButton>
-          </Link>
-        </div>: <div className="flex justify-center items-center gap-2">
-        <p className="fx-label-color font-medium">Already have an account?</p>
-        <Link href={"/login"}>
-            <FxButton variant="primary" radius="tablet" size="sm" className="font-medium pl-[20px] pr-[20px]">
-              Login
-            </FxButton>
-          </Link>
-        </div>
+            <div className="flex justify-center items-center gap-2">
+              <p className="fx-label-color font-medium">New to Fluctux?</p>
+              <Link href={"/signup"}>
+                <FxButton variant="secondary" radius="tablet" size="sm" className="relative rgb-animation font-medium">
+                  Create Account
+                </FxButton>
+              </Link>
+            </div> : <div className="flex justify-center items-center gap-2">
+              <p className="fx-label-color font-medium">Already have an account?</p>
+              <Link href={"/login"}>
+                <FxButton variant="primary" radius="tablet" size="sm" className="font-medium pl-[20px] pr-[20px]">
+                  Login
+                </FxButton>
+              </Link>
+            </div>
         }
 
       </div>

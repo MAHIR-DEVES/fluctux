@@ -1,19 +1,33 @@
-import Image from "next/image";
+"use client"
+import Image, { StaticImageData } from "next/image";
 import React from "react";
-import white_logo from "../../../public/fluctux-white.png";
+import SECONDARY_LOGO from "../../../public/fluctux-white.png";
 import { SizeType } from "@/components/ui/type";
+import PRIMARY_DARK_LOGO from '../../../public/fluctux-logo-transparent.png'
+import PRIMARY_LIGHT_LOGO from '../../../public/fluctux-logo-transparent-light.png'
 
-type LogoType = "WHITE" | "DARK";
+// type LogoThemeType = "WHITE" | "DARK";
+type LogoType = "default" | "primaryDark" | "primaryLight" | "secondary"
+
 
 interface LogoPropsType extends React.ImgHTMLAttributes<HTMLImageElement> {
-  color?: keyof typeof LogoColorAttributes;
+  // color?: keyof typeof LogoColorAttributes;
   size?: keyof typeof logoSize;
+  variant?: keyof typeof logoType
+  className?: string
 }
 
-const LogoColorAttributes: { [key in LogoType]: string } = {
-  WHITE: "invert-0",
-  DARK: "invert",
-};
+// const LogoColorAttributes: { [key in LogoThemeType]: string } = {
+//   WHITE: "invert-0",
+//   DARK: "invert",
+// };
+
+const logoType: { [key in LogoType]: StaticImageData } = {
+  default: PRIMARY_DARK_LOGO,
+  primaryDark: PRIMARY_DARK_LOGO,
+  primaryLight: PRIMARY_LIGHT_LOGO,
+  secondary: SECONDARY_LOGO
+}
 
 const logoSize: { [key in SizeType]: string } = {
   sm: "w-[80px]",
@@ -22,21 +36,45 @@ const logoSize: { [key in SizeType]: string } = {
   xl: "w-[200px]",
 };
 
-export default function Logo({ color, size }: LogoPropsType) {
-  const imageColor = color
-    ? LogoColorAttributes[color]
-    : LogoColorAttributes.WHITE;
+export default function FxLogo({ size, variant, className }: LogoPropsType) {
 
-  const imageSize = size ? logoSize[size] : logoSize.md;
+  // const imageColor = color
+  //   ? LogoColorAttributes[color]
+  //   : LogoColorAttributes.WHITE;
+
+  const imageSize = size ? logoSize[size] : "";
+  const logoVariant = variant ? logoType[variant] : logoType.secondary
 
   return (
-    <Image
-      src={white_logo}
-      width={500}
-      height={500}
-      className={`${imageColor} ${imageSize} object-contain select-none`}
-      alt="fluctux"
-      priority
-    />
+    <>
+      {
+        variant && variant === "default" ? <>
+          <Image
+            src={logoType.primaryLight}
+            width={500}
+            height={500}
+            className={`${imageSize} object-contain select-none ${className} dark:hidden block`}
+            alt="Fluctux"
+            priority
+          />
+          <Image
+            src={logoType.primaryDark}
+            width={500}
+            height={500}
+            className={`${imageSize} object-contain select-none ${className} dark:block hidden`}
+            alt="Fluctux"
+            priority
+          />
+        </> : <Image
+          src={logoVariant}
+          width={500}
+          height={500}
+          className={`invert dark:invert-0 ${imageSize} object-contain select-none ${className}`}
+          alt="Fluctux"
+          priority
+        />
+      }
+
+    </>
   );
 }

@@ -1,13 +1,70 @@
+"use client"
 import FxButton from '@/components/ui/fxbutton'
+import FxInput from '@/components/ui/fxinput'
 import FxOverlayImages from '@/components/ui/fxoverlayimages'
+import FxRadio from '@/components/ui/fxradio'
 import { AddIcon } from '@/components/ui/icons/add-icon'
 import { GroupIcon } from '@/components/ui/icons/group-icon'
 import { LockIcon } from '@/components/ui/icons/lock-icon'
 import TopLoading from '@/components/ui/toploading'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
+import React, { useCallback, useEffect, useState } from 'react'
 
 export default function TeamPage() {
+  const [data, setData] = useState("")
+  const getData = useCallback(async () => {
+    try {
+      const response = await fetch(
+        "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/README.md",
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
+          }
+        }
+      );
+      if (!response.ok) throw new Error("Failed to fetch");
+      const data = await response.json();
+      const content = atob(data.content); // Decode base64 content
+      console.log(content);
+      console.log(data.name);
+      
+
+    } catch (error) {
+      console.error(error.message);
+    }
+  
+  }, []) 
+
+  // get data of folders
+  // const getData = useCallback(async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src",
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
+  //         }
+  //       }
+  //     );
+  //     if (!response.ok) throw new Error("Failed to fetch");
+  //     const data = await response.json();
+  //     // const content = atob(data.content); // Decode base64 content
+  //     // console.log(content);
+  //     console.log(data);
+      
+
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  
+  // }, []) 
+   
+
+  useEffect(() => {
+    getData()
+  }, [getData])
+
   return (
     <div className='w-full'>
       <TopLoading />
@@ -18,7 +75,7 @@ export default function TeamPage() {
         </div>
 
 
-        <div className='max-w-[1200px] w-full fx-flex-between-ic'>
+        <div className='max-w-[1100px] w-full fx-flex-between-ic'>
           <div>
             <div className='fx-flex-cl gap-2'>
               <GroupIcon width={45} height={45} />
@@ -41,16 +98,34 @@ export default function TeamPage() {
         </div>
 
       </div>
-      <div className='w-full fx-flex-center mb-24'>
+      <div className='fx-flex-center'>
+        <div className='team-nav max-w-[1100px] w-full h-[50px] fx-flex-between-ic'>
+          <nav className='w-full fx-flex-cl'>
+            <ul className='fx-flex-cl gap-2'>
+              <Link href={""}>
+                <li className='border p-3 h-[40px] fx-flex-center fx-rounded fx-secondary-bg fx-border-color'>All</li>
+              </Link>
+              <Link href={""}>
+                <li className='border p-3 h-[40px] fx-flex-center fx-rounded fx-secondary-bg fx-border-color'>My Teams</li>
+              </Link>
+            </ul>
+          </nav>
 
-        <div className=' w-fit team-container'>
+          <div className='fx-flex-cr gap-2'>
+            <FxInput variant='primary' className='h-[40px] pl-2 pr-2' radius='primary' />
+
+          </div>
+        </div>
+      </div>
+      <div className='w-full fx-flex-center mb-24 mt-3'>
+        <div className='max-w-[1100px] w-full team-container'>
           {
             Array.from({ length: 5 }).map((item, i) => {
-              return <div key={i} className='team-card max-w-[350px] w-full h-fit rounded-[8px] border fx-border-color fx-primary-bg overflow-hidden'>
+              return <div key={i} className='team-card w-full h-fit rounded-[8px] border fx-border-color fx-primary-bg overflow-hidden'>
                 <div className='p-5 fx-secondary-bg pb-3'>
                   <div>
                     <div className='fx-flex-tl gap-3'>
-                      <Image src={""} width={100} height={100} alt='team-image' className='w-[50px] h-[50px] object-cover object-center border fx-border-color rounded-[8px]' />
+                      {/* <Image src={""} width={100} height={100} alt='team-image' className='w-[50px] h-[50px] object-cover object-center border fx-border-color rounded-[8px]' /> */}
                       <h2 className='text-[25px] font-medium one-line-ellipsis'>Ni Mahins Team</h2>
 
                     </div>
@@ -59,7 +134,7 @@ export default function TeamPage() {
                   </div>
                   <div className='fx-flex-between-ic border-t fx-border-color mt-3 pt-3'>
                     <div className='fx-flex-cl'>
-                      <FxOverlayImages />
+                      {/* <FxOverlayImages /> */}
                       <span className='text-[25px] fx-label-color font-light'>+</span>
                       <span className='fx-label-color pl-1'>900</span>
                       <span className='fx-label-color pl-1'>Contributors</span>

@@ -2,68 +2,15 @@
 import FxButton from '@/components/ui/fxbutton'
 import FxInput from '@/components/ui/fxinput'
 import FxOverlayImages from '@/components/ui/fxoverlayimages'
-import FxRadio from '@/components/ui/fxradio'
 import { AddIcon } from '@/components/ui/icons/add-icon'
 import { GroupIcon } from '@/components/ui/icons/group-icon'
 import { LockIcon } from '@/components/ui/icons/lock-icon'
 import TopLoading from '@/components/ui/toploading'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 
 export default function TeamPage() {
-  const [data, setData] = useState("")
-  const getData = useCallback(async () => {
-    try {
-      const response = await fetch(
-        "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/README.md",
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
-          }
-        }
-      );
-      if (!response.ok) throw new Error("Failed to fetch");
-      const data = await response.json();
-      const content = atob(data.content); // Decode base64 content
-      console.log(content);
-      console.log(data.name);
-      
-
-    } catch (error) {
-      console.error(error.message);
-    }
-  
-  }, []) 
-
-  // get data of folders
-  // const getData = useCallback(async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src",
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
-  //         }
-  //       }
-  //     );
-  //     if (!response.ok) throw new Error("Failed to fetch");
-  //     const data = await response.json();
-  //     // const content = atob(data.content); // Decode base64 content
-  //     // console.log(content);
-  //     console.log(data);
-      
-
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  
-  // }, []) 
-   
-
-  useEffect(() => {
-    getData()
-  }, [getData])
 
   return (
     <div className='w-full'>
@@ -125,7 +72,7 @@ export default function TeamPage() {
                 <div className='p-5 fx-secondary-bg pb-3'>
                   <div>
                     <div className='fx-flex-tl gap-3'>
-                      {/* <Image src={""} width={100} height={100} alt='team-image' className='w-[50px] h-[50px] object-cover object-center border fx-border-color rounded-[8px]' /> */}
+                      <Image src={""} width={100} height={100} alt='team-image' className='w-[50px] h-[50px] object-cover object-center border fx-border-color rounded-[8px]' />
                       <h2 className='text-[25px] font-medium one-line-ellipsis'>Ni Mahins Team</h2>
 
                     </div>
@@ -134,7 +81,7 @@ export default function TeamPage() {
                   </div>
                   <div className='fx-flex-between-ic border-t fx-border-color mt-3 pt-3'>
                     <div className='fx-flex-cl'>
-                      {/* <FxOverlayImages /> */}
+                      <FxOverlayImages />
                       <span className='text-[25px] fx-label-color font-light'>+</span>
                       <span className='fx-label-color pl-1'>900</span>
                       <span className='fx-label-color pl-1'>Contributors</span>

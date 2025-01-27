@@ -19,16 +19,16 @@ export default function GitPage() {
             const content = data
             console.log(content);
             // console.log(data.name);
-            
-            
+
+
             const processedContent = await unified()
-            .use(remarkParse)
-            .use(remarkRehype)
-            .use(rehypeDocument, { title: '👋🌍' })
-            .use(rehypeFormat)
-            .use(rehypeStringify)
-            .process(`${content}`)
-            
+                .use(remarkParse)
+                .use(remarkRehype)
+                .use(rehypeDocument, { title: '👋🌍' })
+                .use(rehypeFormat)
+                .use(rehypeStringify)
+                .process(`${content}`)
+
             setData(processedContent.toString())
 
         } catch (error) {
@@ -72,7 +72,7 @@ export default function GitPage() {
     return (
         <>
             <h1>Github fetch</h1>
-            <div dangerouslySetInnerHTML={{__html: data}} className="prose prose-gray dark:prose-invert">
+            <div dangerouslySetInnerHTML={{ __html: data }} className="prose prose-gray dark:prose-invert">
             </div>
         </>
     )

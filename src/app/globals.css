@@ -12,7 +12,7 @@
   --third-bg: #131313;
 
   /* text & labels */
-  --foreground: #ffffff;
+  --foreground: #000000;
   --label-text-color: #b1b1b1;
   --secondary-label-text-color: #717171;
 
@@ -94,7 +94,10 @@
     /* gradient colors */
     --gradient-team-header: #5865f232;
     --gradient-grid-team-header: #5865f232;
-    --gradient-grid-main-header: #ffffff15 ;
+    --gradient-grid-main-header: #ffffff15;
+
+    /* content color */
+    --content-color: #eaeaea;
   }
 }
 
@@ -109,9 +112,8 @@ body {
 } */
 
 @layer utilities {
-
-  .fx-org-layout-width{
-    @apply max-w-[1500px] w-full
+  .fx-org-layout-width {
+    @apply max-w-[1500px] w-full;
   }
 
   .fx-default-layout {
@@ -202,8 +204,8 @@ body {
   }
 
   /* separator color */
-  .fx-sec-separator-text-color{
-    @apply text-[var(--secondary-separator-color)]
+  .fx-sec-separator-text-color {
+    @apply text-[var(--secondary-separator-color)];
   }
 
   /* flex */
@@ -277,7 +279,6 @@ body {
   .fx-secondary-shadow-t {
     box-shadow: 0 -10px 20px var(--secondary-bg);
   }
-
 }
 
 @layer base {
@@ -369,8 +370,7 @@ body {
   }
 }
 
-.PZLPMy a{
+.PZLPMy a {
   display: none !important;
 }
-
 

@@ -72,7 +72,7 @@ export default function GitPage() {
     return (
         <>
             <h1>Github fetch</h1>
-            <div dangerouslySetInnerHTML={{__html: data}}>
+            <div dangerouslySetInnerHTML={{__html: data}} className="prose prose-gray dark:prose-invert">
             </div>
         </>
     )

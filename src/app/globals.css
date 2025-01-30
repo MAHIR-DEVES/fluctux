@@ -67,6 +67,10 @@
 
   /* separator color */
   --secondary-separator-color: white;
+
+
+  /* scrollbar color */
+  --scrollbar-color: #0a0a0a ;
 }
 
 .dark {
@@ -102,6 +106,9 @@
   --foreground: #ffffff;
   --label-text-color: #b1b1b1;
   --secondary-label-text-color: #717171;
+
+    /* scrollbar color */
+    --scrollbar-color: #7B7B7B ;
 }
 
 body {
@@ -216,7 +223,7 @@ body {
     @apply flex justify-center items-center;
   }
 
-  .fx-flex-ct{
+  .fx-flex-ct {
     @apply flex justify-center items-start;
   }
 
@@ -357,6 +364,12 @@ body {
   animation: topLoader 1.5s ease-in-out infinite;
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color) transparent;
+  scrollbar-gutter: stable;
+}
+
 @keyframes topLoader {
   100% {
     left: 100%;
@@ -398,4 +411,3 @@ body {
 .light .active-theme-mode {
   box-shadow: inset 0px 0px 10px #00000041;
 }
-

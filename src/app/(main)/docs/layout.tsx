@@ -22,7 +22,7 @@ export default function Layout({
 
     return (
         <>
-            <header className='fixed w-full h-[64px] fx-primary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3'>
+            <header className='fixed w-full h-[64px] fx-primary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-50'>
                 <div className='fx-flex-cl gap-3'>
                     <FxLogo className='w-[90px]' variant="default" />
                     <FxSeparator orientation='vertical' size='30px' />
@@ -64,8 +64,8 @@ export default function Layout({
             <div className='fx-flex-ct'>
                 <div className='fx-flex-between-it max-w-[1200px] w-full border border-white gap-5'>
 
-                    <aside className='w-[300px] h-screen overflow-y-scroll sticky top-[64px] fx-primary-bg flex-shrink-0'>
-                        <nav>
+                    <aside className='w-[250px] h-screen  sticky top-[64px] fx-primary-bg flex-shrink-0'>
+                        <nav className='h-[calc(100%-64px)] overflow-y-scroll custom-scrollbar'>
                             <FxButton variant='secondary' className='w-full h-[100px]'>
                                 <span>Open it</span>
                             </FxButton>
@@ -126,7 +126,7 @@ export default function Layout({
                      
                         </nav>
                     </aside>
-                    <main className='w-full border h-[1200px] mt-[64px]'>
+                    <main className='w-full border h-[3200px] mt-[64px]'>
                         {children}
                     </main>
                 </div>

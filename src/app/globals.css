@@ -216,6 +216,10 @@ body {
     @apply flex justify-center items-center;
   }
 
+  .fx-flex-ct{
+    @apply flex justify-center items-start;
+  }
+
   .fx-flex-cr {
     @apply flex justify-end items-center;
   }

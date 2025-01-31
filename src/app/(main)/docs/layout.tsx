@@ -5,7 +5,6 @@ import FxSeparator from '@/components/ui/fxseparator'
 import useThemeSwitcher from '@/app/hooks/useThemeSwitcher'
 import FxButton from '@/components/ui/fxbutton'
 import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
-
 import { SearchIcon } from '@/components/ui/icons/search-icon'
 import { CommandKeyIcon } from '@/components/ui/icons/command-key-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
@@ -67,19 +66,19 @@ export default function Layout({
                     {ThemeSwitcher()}
                 </div>
             </header>
-            <div className='fx-flex-ct'>
-                <div className='fx-flex-between-it max-w-[1200px] w-full  gap-5'>
+            <div className='fx-flex-ct '>
+                <div className='fx-flex-between-it max-w-[1200px] w-full gap-5'>
 
-                    <aside className='w-[250px] h-screen sticky top-[64px] fx-primary-bg flex-shrink-0'>
-                        <nav className='h-[calc(100%-64px)] overflow-y-scroll custom-scrollbar pb-16 pr-2'>
-                            <div className='pt-10 sticky top-[0px] z-10 bg-gradient-to-t from-transparent to-[var(--background)]'>
-                                <FxButton variant='secondary' className='w-full fx-flex-tl gap-2 p-2 mb-3 ' radius='primary' >
-                                    <div className='border fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg'>
+                    <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
+                        <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
+                            
+                                <FxButton variant='secondary' className='w-full sticky top-[0px] z-10 fx-flex-tl gap-2 p-2 mb-3 ' radius='primary' >
+                                    <div className='fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg'>
                                         <DashboardCircleSettingsIcon />
                                     </div>
                                     <span className='font-medium'>Fluctux</span>
                                 </FxButton>
-                            </div>
+                          
                             {
                                 Array.from({ length: 20 }).map((_, i) => {
                                     return <>
@@ -87,7 +86,7 @@ export default function Layout({
                                             <span>Hello world</span>
                                             <LeftArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-200`} />
                                         </button>
-                                        <div className={`ml-2 mt-2 flex flex-col border-l fx-border-color  fx-label-color font-medium transition-all duration-300  ${isOpenFromArray(`${i}`) ? "max-h-[100%] " : "max-h-0 opacity-0"} overflow-hidden`}>
+                                        <div className={`ml-2 mt-2 mb-2 flex flex-col border-l fx-border-color  fx-label-color font-medium transition-all duration-300  ${isOpenFromArray(`${i}`) ? "max-h-[100%] " : "max-h-0 opacity-0"} overflow-hidden`}>
                                             <Link href={""} className='p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative'>
                                                 <span>Hello world</span>
                                                 <span className='absolute left-0 top-0 h-full w-[4px] fx-primary-purple-bg rounded-tr-[50px] rounded-br-[50px]'></span>
@@ -105,7 +104,7 @@ export default function Layout({
 
                         </nav>
                     </aside>
-                    <main className='w-full h-[3200px] mt-[64px] pt-10'>
+                    <main className='w-full h-fit'>
                         {children}
                     </main>
                 </div>

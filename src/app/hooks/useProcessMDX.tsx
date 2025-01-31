@@ -1,21 +1,22 @@
-import { useCallback } from 'react'
 import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 
-export default function useProcessMDX(url: string) {
-    const getData = useCallback(async () => {
+export default function useProcessMDX() {
+
+    const data = async (url: string) => {
         try {
             // "https://raw.githubusercontent.com/gitmahin/graphQL-with-nextjs-ssr/d07d49d5a2546d8d715de75612db1f990b3723cd/README.md"
             const response = await fetch(
-                url, {
-                cache: 'no-cache'
-            }
+                url,
+                {
+                    cache: 'no-cache'
+                }
             );
 
-            if (!response.ok) throw new Error("Failed to fetch");
+            if (!response.ok) return {error: "Error fetching data"}
             const textData = await response.text(); // Use .text() for plain text like README
 
             const processedData = await unified()
@@ -25,14 +26,14 @@ export default function useProcessMDX(url: string) {
                 .use(rehypeStringify)
                 .process(`${textData}`)
 
-            return processedData.toString()
+            return {data: processedData.toString()}
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-            throw new Error("Error fetching and processing MDX content");
+            return {error: "Error processing data"}
         }
 
-    }, [url])
+    }
 
     // get data of folders
     // const getData = useCallback(async () => {
@@ -59,7 +60,7 @@ export default function useProcessMDX(url: string) {
     // }, [])
 
     return {
-        getData
+        data
     }
 }
 

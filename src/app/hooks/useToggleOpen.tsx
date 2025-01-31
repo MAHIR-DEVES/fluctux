@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 
 interface ToggleOpenProps {
-  id: string;
+  id?: string;
   shortcutKey?: string;
 }
 
 export default function useToggleOpen({ id, shortcutKey }: ToggleOpenProps) {
   const [openStates, setOpenStates] = useState<Record<string, boolean>>({});
+  const [openArray, setOpenArray] = useState<{ [key: string]: boolean }>({});
+
+  const handleOpenArray = (openArrayId: string) => {
+    setOpenArray((prev) => ({
+      ...prev,
+      [openArrayId]: !prev[openArrayId],
+    }));
+  }
 
   useEffect(() => {
-    if (!shortcutKey) return;
+    if (!shortcutKey || !id) return;
 
     const down = (e: KeyboardEvent) => {
       if (e.key === shortcutKey && (e.metaKey || e.ctrlKey)) {
@@ -26,16 +34,26 @@ export default function useToggleOpen({ id, shortcutKey }: ToggleOpenProps) {
   }, [shortcutKey, id]);
 
   return {
-    isOpen: !!openStates[id], // Get the state for the specific ID & convert to strict boolean
-    toggle: () =>
+    isOpen: id && !!openStates[id] || false, // Get the state for the specific ID & convert to strict boolean
+    toggle: () => {
+      if (!id) return
       setOpenStates((prev) => ({
         ...prev,
         [id]: !prev[id],
-      })), // toggle function
-    setOpen: (state: boolean) =>
+      }))
+    }, // toggle function
+    setOpen: (state: boolean) => {
+      if (!id) return
       setOpenStates((prev) => ({
         ...prev,
         [id]: state,
-      })), // state setter
+      }))
+    }, // state setter
+    isOpenFromArray: (openArrayId: string) => {
+      return openArray[openArrayId]
+    },
+    openArray,
+    setOpenArray,
+    handleOpenArray
   };
 }

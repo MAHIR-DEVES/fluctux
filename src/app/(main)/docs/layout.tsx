@@ -5,9 +5,10 @@ import FxSeparator from '@/components/ui/fxseparator'
 import useThemeSwitcher from '@/app/hooks/useThemeSwitcher'
 import FxButton from '@/components/ui/fxbutton'
 import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
-import FxInput from '@/components/ui/fxinput'
+
 import { SearchIcon } from '@/components/ui/icons/search-icon'
 import { CommandKeyIcon } from '@/components/ui/icons/command-key-icon'
+import useToggleOpen from '@/app/hooks/useToggleOpen'
 
 
 interface DocLayoutPropsType {
@@ -19,6 +20,7 @@ export default function Layout({
 }: DocLayoutPropsType) {
 
     const { ThemeSwitcher } = useThemeSwitcher()
+    const { openArray, handleOpenArray, isOpenFromArray } = useToggleOpen({})
 
     return (
         <>
@@ -62,71 +64,34 @@ export default function Layout({
                 </div>
             </header>
             <div className='fx-flex-ct'>
-                <div className='fx-flex-between-it max-w-[1200px] w-full border border-white gap-5'>
+                <div className='fx-flex-between-it max-w-[1200px] w-full  gap-5'>
 
                     <aside className='w-[250px] h-screen  sticky top-[64px] fx-primary-bg flex-shrink-0'>
-                        <nav className='h-[calc(100%-64px)] overflow-y-scroll custom-scrollbar'>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                            <FxButton variant='secondary' className='w-full h-[100px]'>
-                                <span>Open it</span>
-                            </FxButton>
-                     
+                        <nav className='h-[calc(100%-64px)] overflow-y-scroll custom-scrollbar pt-5'>
+                            <button className='font-medium' onClick={() => handleOpenArray("1")}>
+                                Hello world
+                            </button>
+                            <div className={`ml-2 flex flex-col border-l fx-border-color pl-5 fx-label-color font-medium transition-all duration-300  ${isOpenFromArray("1") ? "max-h-[100%]" : "max-h-0 opacity-0"} overflow-hidden`}>
+                                <span>Hello world</span>
+                                <span>Hello world</span>
+                                <span>Hello world</span>
+                                <span>Hello world</span>
+                                <span>Hello world</span>
+                            </div>
+
+                            <button className='font-medium' onClick={() => handleOpenArray("2")}>
+                                Hello world 2
+                            </button>
+                            <div className={`ml-2 flex flex-col border-l fx-border-color pl-5 fx-label-color font-medium ${isOpenFromArray("2") ? "h-fit" : "h-0"} overflow-hidden`}>
+                                <span>Hello world 2</span>
+                                <span>Hello world 2</span>
+                                <span>Hello world 2</span>
+                                <span>Hello worl 2d</span>
+                                <span>Hello world 2</span>
+                            </div>
                         </nav>
                     </aside>
-                    <main className='w-full border h-[3200px] mt-[64px]'>
+                    <main className='w-full h-[3200px] mt-[64px]'>
                         {children}
                     </main>
                 </div>

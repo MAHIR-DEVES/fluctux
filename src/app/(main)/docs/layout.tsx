@@ -83,7 +83,7 @@ export default function Layout({
                             {
                                 Array.from({ length: 20 }).map((_, i) => {
                                     return <>
-                                        <button className={`font-medium w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
+                                        <button className={`font-medium hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
                                             <span>Hello world</span>
                                             <LeftArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-200`} />
                                         </button>

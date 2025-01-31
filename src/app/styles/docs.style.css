@@ -1,0 +1,15 @@
+.doc-hide-scrollbar {
+  scrollbar-width: none; /* For Firefox */
+}
+
+.doc-hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.hover\:doc-hide-scrollbar-show:hover {
+  scrollbar-width: thin; /* For Firefox */
+}
+
+.hover\:doc-hide-scrollbar-show:hover::-webkit-scrollbar {
+  display: block; /* For Chrome, Safari, and Opera */
+}

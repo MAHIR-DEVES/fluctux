@@ -50,6 +50,7 @@
 
   /* border color */
   --primary-border-color: #d8d8d8;
+  --primary-purple-border-color-50: #5865f28c ;
 
   /* hover */
   --primary-purple-hover-bg: #5865f2e4;
@@ -68,15 +69,17 @@
   /* separator color */
   --secondary-separator-color: white;
 
-
   /* scrollbar color */
-  --scrollbar-color: #0a0a0a ;
+  --scrollbar-color: #0a0a0a;
+
+  /* transparents */
+  --primary-purple-transparent: #5865f233;
 }
 
 .dark {
   --background: #000000;
   --secondary-bg: #0a0a0a;
-  --third-bg: #111111;
+  --third-bg: #141414;
 
   /* border */
   --primary-border-color: #2a2a2a;
@@ -107,8 +110,8 @@
   --label-text-color: #b1b1b1;
   --secondary-label-text-color: #717171;
 
-    /* scrollbar color */
-    --scrollbar-color: #7B7B7B ;
+  /* scrollbar color */
+  --scrollbar-color: #7b7b7b;
 }
 
 body {
@@ -148,6 +151,10 @@ body {
 
   .fx-primary-purple-bg {
     @apply bg-[var(--primary-color)];
+  }
+
+  .fx-primary-purple-transparent-bg {
+    @apply bg-[var(--primary-purple-transparent)];
   }
 
   /* text & labels */
@@ -211,6 +218,14 @@ body {
 
   .fx-border-color {
     @apply border-[var(--primary-border-color)];
+  }
+
+  .fx-primary-purple-border {
+    @apply border-[var(--primary-color)];
+  }
+
+  .fx-primary-purple-border-50{
+    @apply border-[var(--primary-purple-border-color-50)];
   }
 
   /* separator color */
@@ -293,6 +308,13 @@ body {
   .fx-secondary-shadow-t {
     box-shadow: 0 -10px 20px var(--secondary-bg);
   }
+
+  /* scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) transparent;
+    scrollbar-gutter: stable;
+  }
 }
 
 @layer base {
@@ -362,12 +384,6 @@ body {
   width: 80%;
   top: 0;
   animation: topLoader 1.5s ease-in-out infinite;
-}
-
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-color) transparent;
-  scrollbar-gutter: stable;
 }
 
 @keyframes topLoader {

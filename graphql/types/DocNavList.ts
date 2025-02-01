@@ -1,4 +1,4 @@
-import { extendType, objectType } from "nexus";
+import { extendType, objectType, stringArg } from "nexus";
 import {
   docNavListResolver,
   docNavTreeListResolver,
@@ -31,8 +31,12 @@ export const DocNavListQuery = extendType({
   definition(t) {
     t.nonNull.list.field("docNavList", {
       type: "DocNavItem",
-      async resolve() {
-        return await docNavListResolver();
+      args: {
+        docType: stringArg(),
+      },
+      async resolve(_, args: { docType?: string | null }) {
+        const docType = args.docType ?? "user";
+        return await docNavListResolver(docType);
       },
     });
   },

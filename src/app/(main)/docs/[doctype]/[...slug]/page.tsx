@@ -9,7 +9,7 @@ export default async function DocContentPage({
   const fullSlug = slug.join("/")
 
   const response = await fetch(
-    `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/${doctype}/${fullSlug}`,
+    `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/${doctype}/${fullSlug}.mdx`,
 
   );
 

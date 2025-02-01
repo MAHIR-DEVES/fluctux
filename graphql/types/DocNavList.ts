@@ -2,7 +2,7 @@ import { extendType, objectType } from "nexus";
 import {
   docNavListResolver,
   docNavTreeListResolver,
-} from "../resolvers/docNav.resolver";
+} from "../resolvers/doc.resolver";
 
 const DocNavTreeItem = objectType({
   name: "DocNavTreeItem",

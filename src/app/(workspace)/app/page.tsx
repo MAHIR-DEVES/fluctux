@@ -9,7 +9,7 @@ import { unified } from 'unified'
 
 export default function GitPage() {
     const [data, setData] = useState("")
-    const getData = useCallback(async () => {
+    const getDataa = useCallback(async () => {
         try {
             const response = await fetch(
                 "https://raw.githubusercontent.com/gitmahin/graphQL-with-nextjs-ssr/d07d49d5a2546d8d715de75612db1f990b3723cd/README.md"
@@ -38,28 +38,28 @@ export default function GitPage() {
     }, [])
 
     // get data of folders
-    // const getData = useCallback(async () => {
-    //     try {
-    //         const response = await fetch(
-    //             "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql",
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
-    //                 }
-    //             }
-    //         );
-    //         if (!response.ok) throw new Error("Failed to fetch");
-    //         const data = await response.json();
-    //         // const content = atob(data.content); // Decode base64 content
-    //         // console.log(content);
-    //         console.log(data);
+    const getData = useCallback(async () => {
+        try {
+            const response = await fetch(
+                "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql/resolvers",
+                {
+                    headers: {
+                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
+                    }
+                }
+            );
+            if (!response.ok) throw new Error("Failed to fetch");
+            const data = await response.json();
+            // const content = atob(data.content); // Decode base64 content
+            // console.log(content);
+            console.log(data);
 
 
-    //     } catch (error) {
-    //         console.error(error.message);
-    //     }
+        } catch (error) {
+            console.error(error.message);
+        }
 
-    // }, [])
+    }, [])
 
 
     useEffect(() => {

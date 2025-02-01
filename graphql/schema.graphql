@@ -10,6 +10,9 @@ type DocNavItem {
 
   """List item path"""
   path: String
+
+  """List item type"""
+  type: String
 }
 
 type DocNavTreeItem {
@@ -18,6 +21,9 @@ type DocNavTreeItem {
 
   """Tree list item path"""
   path: String
+
+  """Tree list item type"""
+  type: String
 }
 
 type Query {

@@ -9,6 +9,7 @@ const DocNavTreeItem = objectType({
   definition(t) {
     t.string("name", { description: "Tree list item name" });
     t.string("path", { description: "Tree list item path" });
+    t.string("type", { description: "Tree list item type" });
   },
 });
 
@@ -17,6 +18,7 @@ export const DocNavItem = objectType({
   definition(t) {
     t.string("name", { description: "List item name" });
     t.string("path", { description: "List item path" });
+    t.string("type", { description: "List item type" });
     t.list.field("docNavTreeList", {
       type: DocNavTreeItem,
       async resolve(root) {

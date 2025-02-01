@@ -7,7 +7,7 @@ export const schema = makeSchema({
   outputs: {
     typegen: join(
       process.cwd(),
-      "node-modules",
+      "node_modules",
       "@types",
       "nexus-typegen",
       "index.d.ts"

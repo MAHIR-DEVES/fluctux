@@ -1,4 +1,8 @@
 import { extendType, objectType } from "nexus";
+import {
+  docNavListResolver,
+  docNavTreeListResolver,
+} from "../resolvers/docNav.resolver";
 
 const DocNavTreeItem = objectType({
   name: "DocNavTreeItem",
@@ -16,24 +20,11 @@ export const DocNavItem = objectType({
     t.list.field("docNavTreeList", {
       type: DocNavTreeItem,
       async resolve(root) {
-        const response = await fetch(
-          `https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql/${root.path?.split("/")[2]}`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-            },
-          }
-        );
-        const data = await response.json();
-        return data.map((item: { name: string; path: string }) => ({
-          name: item.name,
-          path: item.path,
-        }));
+        return await docNavTreeListResolver(`${root.path}`);
       },
     });
   },
 });
-
 
 export const DocNavListQuery = extendType({
   type: "Query",
@@ -41,19 +32,7 @@ export const DocNavListQuery = extendType({
     t.nonNull.list.field("docNavList", {
       type: "DocNavItem",
       async resolve() {
-        const response = await fetch(
-          `https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-            },
-          }
-        );
-        const data = await response.json();
-        return data.map((item: { name: string; path: string }) => ({
-          name: item.name,
-          path: item.path,
-        }));
+        return await docNavListResolver();
       },
     });
   },

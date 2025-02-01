@@ -1,11 +1,14 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import React from 'react'
-import FAV_ICON from "../../../public/fluctux-fav-white.png"
-import { SizeType, ThemeType } from './type'
+import FAV_ICON_WHITE from "../../../public/fluctux-fav-white.png"
+import FAV_ICON_BLACK from "../../../public/fluctux-fav-black.png"
+import FAV_ICON_DEFAULT from "../../../public/fluctux-fav-primary.png"
+import { SizeType } from './type'
 
 interface FxFavIconPropsType {
     size?: keyof typeof iconSizeVariants
-    theme?: keyof typeof iconTheme
+    className?: string,
+    variant?: keyof typeof iconVariants
 }
 
 const iconSizeVariants: { [key in SizeType]: string } = {
@@ -15,18 +18,23 @@ const iconSizeVariants: { [key in SizeType]: string } = {
     xl: "w-[80px] h-[80px]"
 }
 
+type IconVariantType = 'light' | 'dark' | 'default'
 
-const iconTheme: { [key in ThemeType]: string } = {
-    dark: "invert-0",
-    light: "invert-1"
+const iconVariants: {[key in IconVariantType ]: StaticImageData} = {
+    light: FAV_ICON_WHITE,
+    dark: FAV_ICON_BLACK,
+    default: FAV_ICON_DEFAULT
+
 }
+
 
 export default function FxFavIcon({
     size,
-    theme
+    className,
+    variant
 }: FxFavIconPropsType) {
+    const iconVariant = variant ? iconVariants[variant]: iconVariants.light
     const sizeVariant = size ? iconSizeVariants[size] : iconSizeVariants.md
-    const themeVariant = theme ? iconTheme[theme] : iconTheme.dark
-    return <Image src={FAV_ICON} priority width={500} height={500} alt='Fluctux Icon' className={`${sizeVariant} ${themeVariant} object-contain object-center`} />
+    return <Image src={iconVariant} priority width={500} height={500} alt='Fluctux Icon' className={`${sizeVariant} object-contain object-center ${className}`} />
 }
 

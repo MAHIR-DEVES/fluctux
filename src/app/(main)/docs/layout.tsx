@@ -10,8 +10,11 @@ import { CommandKeyIcon } from '@/components/ui/icons/command-key-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
 import { LeftArrowIcon } from '@/components/ui/icons/left-arrow-icon'
-import { DashboardCircleSettingsIcon } from '@/components/ui/icons/dashboard-circle-settings-icon'
 import Footer from '@/components/core/Footer'
+import FxRadio from '@/components/ui/fxradio'
+import { DOC_TYPE } from '@/components/ui/constant'
+import FxFavIcon from '@/components/ui/fxfav'
+import { useRouter } from 'next/navigation'
 
 
 interface DocLayoutPropsType {
@@ -24,6 +27,13 @@ export default function Layout({
 
     const { ThemeSwitcher } = useThemeSwitcher()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
+    const router = useRouter()
+
+    const handleDocTypeChange = (value: string) => {
+        console.log(value);
+        router.push(`/docs/${value}/getting-started`)
+        
+    }
 
     return (
         <>
@@ -71,14 +81,16 @@ export default function Layout({
 
                     <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
                         <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
-                            
-                                <FxButton variant='secondary' className='w-full sticky top-[0px] z-10 fx-flex-tl gap-2 p-2 mb-3 ' radius='primary' >
-                                    <div className='fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg'>
-                                        <DashboardCircleSettingsIcon />
-                                    </div>
-                                    <span className='font-medium'>Fluctux</span>
-                                </FxButton>
-                          
+
+                            <FxButton variant='secondary' className='w-full  fx-flex-tl gap-2 p-2 mb-3 ' radius='primary' >
+                                <div className='p-2 rounded-[5px] border fx-primary-purple-border-50'>
+                                    <FxFavIcon size='sm' variant='default' />
+                                </div>
+                                <span className='font-medium'>Fluctux</span>
+                            </FxButton>
+
+                            <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={"user"} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
+
                             {
                                 Array.from({ length: 20 }).map((_, i) => {
                                     return <>

@@ -13,6 +13,8 @@ import { SettingsIcon } from "./icons/settings-icon";
 import { SunIcon } from "./icons/sun-icon";
 import { TwoPeopleIcon } from "./icons/two-people-icon";
 import { RadiusType } from "./type";
+import { CodeIcon } from "./icons/code-icon";
+import { UserIcon } from "./icons/user-icon";
 
 export const ROUNDED_VARIANTS: { [key in RadiusType]: string } = {
   primary: "rounded-[8px]",
@@ -108,5 +110,23 @@ export const THEME_ICONS = [
   },
   {
       svg: <ComputerIcon width={18} height={18} />
+  }
+]
+
+
+export const DOC_TYPE = [
+  {
+    label: 'User',
+    id: 'user',
+    value: 'user',
+    desc: 'Guides for users.',
+    svg: <UserIcon className=""/>
+  },
+  {
+    label: 'Developer',
+    id: 'developer',
+    value: 'developer',
+    desc: 'Guides for developers.',
+    svg: <CodeIcon/>
   }
 ]

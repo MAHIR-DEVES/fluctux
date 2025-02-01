@@ -30,7 +30,10 @@ interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     labelStyles?: string
     onValueChange?: (value: string) => void;
     radius?: keyof typeof ROUNDED_VARIANTS
-    buttonStyles?: string
+    buttonStyles?: string,
+    labelItemStyles?: string,
+    buttonSvgContainerStyles?: string,
+    showDescInButton?: boolean
 }
 
 type RadioButtonType = "custom" | "modern"
@@ -59,7 +62,10 @@ export default function FxRadio({
     labelStyles,
     onValueChange,
     radius = 'tiny',
-    buttonStyles
+    buttonStyles,
+    labelItemStyles,
+    buttonSvgContainerStyles,
+    showDescInButton = false
 }: FxRadioProps) {
     const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,14 +98,29 @@ export default function FxRadio({
                             {children}
                         </div> : items ?
                             <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${buttonStyles}`} radius={radius}>
-                                {
-                                    items.find(item => item.value === selectedValue)?.svg
-                                }
-                                <p>
+                                <div className={`${buttonSvgContainerStyles}`}>
+
                                     {
-                                        items.find(item => item.value === selectedValue)?.label
+                                        items.find(item => item.value === selectedValue)?.svg
                                     }
-                                </p>
+                                </div>
+                                <div className='text-left'>
+
+                                    <p>
+                                        {
+                                            items.find(item => item.value === selectedValue)?.label
+                                        }
+                                    </p>
+                                    {
+                                        showDescInButton &&
+
+                                        <span className='fx-sec-label-color one-line-ellipsis text-[13px]'>
+                                            {
+                                                items.find(item => item.value === selectedValue)?.desc
+                                            }
+                                        </span>
+                                    }
+                                </div>
                             </FxButton> : <div className='leading-5'>
                                 <p className='text-red-600 font-medium'>
                                     No items to display
@@ -115,10 +136,10 @@ export default function FxRadio({
 
                         items ? items.map((item, i) => {
                             return <React.Fragment key={i}>
-                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value ? 'fx-secondary-active-bg' : ''} fx-flex-cl gap-2 p-1 pl-3 pr-3 cursor-pointer  group hover:fx-secondary-hover-bg transition-all  ${labelStyles}`}>
+                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value ? 'fx-secondary-active-bg' : ''} fx-flex-cl gap-2 p-1 cursor-pointer  group hover:fx-secondary-hover-bg transition-all  ${labelStyles}`}>
                                     {
                                         item.svg &&
-                                        <div className='w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0'>
+                                        <div className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${labelItemStyles}`}>
                                             {item.svg}
                                         </div>
                                     }

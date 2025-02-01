@@ -33,19 +33,19 @@ export default async function GitPage() {
 
     // get data of folders
 
-    const response = await fetch(
-        "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql/resolvers",
-        {
-            headers: {
-                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
-            }
-        }
-    );
-    if (!response.ok) throw new Error("Failed to fetch");
-    const data = await response.json();
-    // const content = atob(data.content); // Decode base64 content
-    // console.log(content);
-    console.log(data);
+    // const response = await fetch(
+    //     "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql/resolvers",
+    //     {
+    //         headers: {
+    //             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+    //         }
+    //     }
+    // );
+    // if (!response.ok) throw new Error("Failed to fetch");
+    // const data = await response.json();
+    // // const content = atob(data.content); // Decode base64 content
+    // // console.log(content);
+    // console.log(data);
 
 
 

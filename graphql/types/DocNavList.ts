@@ -17,7 +17,7 @@ export const DocNavItem = objectType({
       type: DocNavTreeItem,
       async resolve(root) {
         const response = await fetch(
-          `https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql/${root.path.split("/")[2]}`,
+          `https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql/${root.path?.split("/")[2]}`,
           {
             headers: {
               Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -33,6 +33,7 @@ export const DocNavItem = objectType({
     });
   },
 });
+
 
 export const DocNavListQuery = extendType({
   type: "Query",

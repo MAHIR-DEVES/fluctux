@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.8",
     "@arcjet/next": "1.0.0-alpha.34",
     "@blocknote/core": "^0.22.0",
     "@blocknote/mantine": "^0.22.0",

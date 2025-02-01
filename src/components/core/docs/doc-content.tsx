@@ -21,13 +21,13 @@ export default function DocContent({ data }: DocContentPropsType) {
             .use(remarkRehype)
             .use(rehypeFormat)
             .use(rehypeStringify)
-            .process(`${data}`)
+            .process(data) // No need to wrap data in a string template
 
         const htmlContent = processedData.toString()
         setContent(htmlContent)
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         processContent()
     }, [content])
 

@@ -3,33 +3,28 @@ import React from 'react'
 
 export default async function GitPage() {
     // const [data, setData] = useState("")
-    // const getDataa = useCallback(async () => {
-    //     try {
-    //         const response = await fetch(
-    //             "https://raw.githubusercontent.com/gitmahin/graphQL-with-nextjs-ssr/d07d49d5a2546d8d715de75612db1f990b3723cd/README.md"
-    //         );
-    //         if (!response.ok) throw new Error("Failed to fetch");
-    //         const data = await response.text(); // Use .text() for plain text like README
-    //         const content = data
-    //         console.log(content);
-    //         // console.log(data.name);
+
+            const response = await fetch(
+                `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/developer/get-started/setup-environment.mdx`
+            );
+            if (!response.ok) throw new Error("Failed to fetch");
+            const data = await response.text(); // Use .text() for plain text like README
+         
+            console.log(data);
+            // console.log(data.name);
 
 
-    //         const processedContent = await unified()
-    //             .use(remarkParse)
-    //             .use(remarkRehype)
-    //             .use(rehypeDocument, { title: '👋🌍' })
-    //             .use(rehypeFormat)
-    //             .use(rehypeStringify)
-    //             .process(`${content}`)
+            // const processedContent = await unified()
+            //     .use(remarkParse)
+            //     .use(remarkRehype)
+            //     .use(rehypeDocument, { title: '👋🌍' })
+            //     .use(rehypeFormat)
+            //     .use(rehypeStringify)
+            //     .process(`${content}`)
 
-    //         setData(processedContent.toString())
+            // setData(processedContent.toString())
 
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
 
-    // }, [])
 
     // get data of folders
 

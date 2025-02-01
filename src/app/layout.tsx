@@ -11,6 +11,7 @@ import "./styles/docs.style.css";
 import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";
+import ApolloClientProvider from "@/components/providers/apollo-client-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,11 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class">
           <Suspense>
-            <SessionClientProvider>{children}</SessionClientProvider>
+            <SessionClientProvider>
+              <ApolloClientProvider>
+                {children}
+              </ApolloClientProvider>
+            </SessionClientProvider>
           </Suspense>
         </ThemeProvider>
       </body>

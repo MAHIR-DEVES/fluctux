@@ -8,7 +8,6 @@ export default function useProcessMDX() {
 
     const data = async (url: string) => {
         try {
-            // "https://raw.githubusercontent.com/gitmahin/graphQL-with-nextjs-ssr/d07d49d5a2546d8d715de75612db1f990b3723cd/README.md"
             const response = await fetch(
                 url,
                 {

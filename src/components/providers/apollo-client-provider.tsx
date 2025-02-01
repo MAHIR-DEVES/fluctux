@@ -1,3 +1,4 @@
+"use client"
 import { apolloClient } from '@/lib/apollo-client'
 import { ApolloProvider } from '@apollo/client'
 import React from 'react'

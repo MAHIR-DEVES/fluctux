@@ -8,20 +8,22 @@ import FxButton from '@/components/ui/fxbutton'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
 import { LeftArrowIcon } from '@/components/ui/icons/left-arrow-icon'
+import { DocNavListType } from '@/app/(main)/docs/[doctype]/layout'
 
 interface DocSidebarPropsType {
-    docType: string
+    docType: string,
+    data: {
+        docNavList: DocNavListType[]
+    }
 }
 
-export default function DocSidebar({docType}: DocSidebarPropsType) {
+export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
     const router = useRouter()
 
     const handleDocTypeChange = (value: string) => {
-        console.log(value);
-        router.push(`/docs/${value}/getting-started`)
-
+        router.push(`/docs/${value}/quickstart`)
     }
 
 
@@ -37,28 +39,30 @@ export default function DocSidebar({docType}: DocSidebarPropsType) {
 
             <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={`${docType}`} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
 
+
             {
-                Array.from({ length: 20 }).map((_, i) => {
-                    return <>
+                data.docNavList.map((navItem, i) => {
+                    return <React.Fragment key={i}>
                         <button className={`font-medium hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
-                            <span>Hello world</span>
+                            <span>{navItem.name.replace("-", " ").replace(/^\w/, c => c.toUpperCase())}</span>
                             <LeftArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-200`} />
                         </button>
+
                         <div className={`ml-2 mt-2 mb-2 flex flex-col border-l fx-border-color  fx-label-color font-medium transition-all duration-300  ${isOpenFromArray(`${i}`) ? "max-h-[100%] " : "max-h-0 opacity-0"} overflow-hidden`}>
-                            <Link href={""} className='p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative'>
-                                <span>Hello world</span>
-                                <span className='absolute left-0 top-0 h-full w-[4px] fx-primary-purple-bg rounded-tr-[50px] rounded-br-[50px]'></span>
-                            </Link>
-                            <Link href={""} className='p-1 pl-5 pr-0 dark:hover:text-white hover:text-black'>
-                                <span >Hello world</span>
-                            </Link>
-                            <Link href={""} className='p-1 pl-5 pr-0 dark:hover:text-white hover:text-black'>
-                                <span >Hello world</span>
-                            </Link>
+                            {
+                                navItem.docNavTreeList.map((navTreeItem, j) => {
+                                    return <Link key={j} href={`${navTreeItem.path.split("/")[5].replace(".mdx", "")}`} className='p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative'>
+                                        <span>{navTreeItem.name.replace("-", " ").replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
+                                        <span className='absolute left-0 top-0 h-full w-[4px] fx-primary-purple-bg rounded-tr-[50px] rounded-br-[50px]'></span>
+                                    </Link>
+                                })
+                            }
                         </div>
-                    </>
+                    </React.Fragment>
                 })
             }
+
+
 
         </nav>
     </aside>

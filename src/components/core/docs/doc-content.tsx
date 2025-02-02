@@ -64,6 +64,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     <TextAlignLeftIcon width={15} height={15} />
                     <h3 className='font-medium'>On this page</h3>
                 </div>
+            
                 <ul className='fx-label-color leading-7'>
                     {
                         anchors.map((item, i) => {

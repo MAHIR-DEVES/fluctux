@@ -1,6 +1,4 @@
 import React from 'react'
-import Footer from '@/components/core/Footer'
-import DocHeader from '@/components/core/docs/doc-header'
 import DocSidebar from '@/components/core/docs/doc-sidebar'
 import { gql } from '@apollo/client'
 import { apolloClient } from '@/lib/apollo-client'
@@ -53,15 +51,13 @@ export default async function Layout({
         fetchPolicy: "no-cache"
     })
 
-    console.log(data);
-    
-    if(!data.docNavList.length) {
+    if (!data.docNavList.length) {
         return notFound();
     }
 
     return (
         <>
-            <DocHeader />
+
             <div className='fx-flex-ct '>
                 <div className='fx-flex-between-it max-w-[1200px] w-full gap-5'>
 
@@ -71,10 +67,11 @@ export default async function Layout({
                     </main>
                 </div>
             </div>
-            <Footer />
+
         </>
 
     )
+
 }
 
 

@@ -12,6 +12,8 @@ import { ThemeProvider } from "next-themes";
 import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";
 import ApolloClientProvider from "@/components/providers/apollo-client-provider";
+import { SkeletonTheme } from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +46,12 @@ export default function RootLayout({
           <Suspense>
             <SessionClientProvider>
               <ApolloClientProvider>
-                {children}
+                <SkeletonTheme
+                  baseColor="var(--skeleton-base-color)"
+                  highlightColor="var(--skeleton-highlightColor)"
+                >
+                  {children}
+                </SkeletonTheme>
               </ApolloClientProvider>
             </SessionClientProvider>
           </Suspense>

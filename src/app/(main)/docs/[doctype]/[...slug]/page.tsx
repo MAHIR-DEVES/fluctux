@@ -8,18 +8,24 @@ export default async function DocContentPage({
   const { slug, doctype } = await params
   const fullSlug = slug.join("/")
 
-  const response = await fetch(
-    `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/${doctype}/${fullSlug}.mdx`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      },
-    }
-  );
+  try {
+    const response = await fetch(
+      `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/${doctype}/${fullSlug}.mdx`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+        cache: "no-cache"
+      }
+    );
 
-  const textData = await response.text(); // Use .text() for plain text like README
+    const textData = await response.text(); // Use .text() for plain text like README
 
-  return <DocContent data={textData} />
+    return <DocContent data={textData} />
+  } catch (error) {
+    throw new Error("Something went wrong")
+  }
+
 }
 
 

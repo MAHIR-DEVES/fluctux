@@ -74,6 +74,10 @@
 
   /* transparents */
   --primary-purple-transparent: #5865f233;
+
+  /* loader */
+  --skeleton-base-color: #0a0a0a;
+  --skeleton-highlightColor: #2d2d2d;
 }
 
 .dark {

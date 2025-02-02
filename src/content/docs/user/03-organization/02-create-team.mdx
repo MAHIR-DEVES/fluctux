@@ -18,7 +18,15 @@ Technology plays a pivotal role in facilitating collaboration among team members
 
 By leveraging these tools, teams can enhance their communication, reduce misunderstandings, and improve overall efficiency.
 
+```javascript
+export default async function DocContentPage({
+  params
+}: { params: Promise<{ slug: string[], doctype: string }> }) {
 
+    const { slug, doctype } = await params
+    const fullSlug = slug.join("/")
+}
+```
 
 ## Best Practices for Effective Collaboration
 

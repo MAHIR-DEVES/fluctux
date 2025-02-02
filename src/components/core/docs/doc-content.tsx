@@ -17,7 +17,10 @@ import { SadIcon } from '@/components/ui/icons/sad-icon'
 import { AngryIcon } from '@/components/ui/icons/angry-icon'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon'
+import FxButton from '@/components/ui/fxbutton'
+import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
 
 interface DocContentPropsType {
     data: string
@@ -25,22 +28,8 @@ interface DocContentPropsType {
 export default function DocContent({ data }: DocContentPropsType) {
     const [content, setContent] = useState("")
     const [anchors, setAnchors] = useState<string[]>([]);
-    const router = useRouter()
-
+    const path_name = usePathname()
     const { prev, next } = useSelector((state: RootState) => state.docPaginate);
-
-    // Handle next and previous navigation
-    const handleNext = () => {
-        if (next) {
-            router.push(`/docs/${next.path.replace("src/content/docs/", "").replace(".mdx", "")}`);
-        }
-    };
-
-    const handlePrev = () => {
-        if (prev) {
-            router.push(`/docs/${prev.path.replace("src/content/docs/", "").replace(".mdx", "")}`);
-        }
-    };
 
 
     const processContent = useCallback(async () => {
@@ -68,6 +57,9 @@ export default function DocContent({ data }: DocContentPropsType) {
 
     useEffect(() => {
         processContent()
+        window.scrollTo({
+            top: 0,
+        });
     }, [processContent])
 
     useEffect(() => {
@@ -96,28 +88,81 @@ export default function DocContent({ data }: DocContentPropsType) {
 
 
             <div className='border-t mt-10 fx-border-color'>
-                <div className='w-full fx-flex-center mt-5'>
-                    <div className='border fx-border-color rounded-[50px] p-1 gap-2 fx-flex-center w-fit'>
-                        <span className='fx-sec-label-color text-[14px] font-medium ml-2'>Was this helpful?</span>
-                        <div className='fx-flex-center w-fit'>
+                <div className='w-full fx-flex-center gap-2 mt-5'>
 
+                    {
+                        prev &&
 
-                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
-                                <StarFaceIcon />
-                            </span>
-                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
-                                <SmileIcon />
-                            </span>
-                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
-                                <SadIcon />
-                            </span>
-                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
-                                <AngryIcon />
-                            </span>
-                        </div>
+                        <Link href={`/docs/${prev?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full'>
+                            <div className='w-full h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2'>
+                                <div className='fx-flex-cl'>
+                                    <RightArrowIcon className='rotate-180' />
+                                    <p className='fx-label-color font-medium text-[15px]'>Previous</p>
+                                </div>
+                                <p className='text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis'>{prev?.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</p>
+                            </div>
+                        </Link>
 
-                    </div>
+                    }
+
+                    {
+                        next &&
+
+                        <Link href={`/docs/${next?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full'>
+                            <div className='w-full h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2'>
+                                <div className='fx-flex-cr'>
+                                    <p className='fx-label-color font-medium text-[15px]'>Next</p>
+                                    <RightArrowIcon />
+                                </div>
+                                <p className='text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis'>{next?.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</p>
+
+                            </div>
+                        </Link>
+                    }
                 </div>
+
+                {
+                    data !== "404: Not Found" &&
+                    <div className='w-full mt-5 border fx-rounded fx-border-color p-3 fx-flex-between-ic gap-3'>
+                        <div className='max-w-[500px] w-full'>
+                            <h4 className='fx-label-color text-[16px] font-medium'>Edit this page on Github?</h4>
+                            <p className='fx-sec-label-color text-[14px] font-medium pt-2'>If you find any mistakes or areas that need updating, feel free to edit and contribute improvements to the documentation!</p>
+                        </div>
+                        <Link href={`https://github.com/gitmahin/fluctux/tree/main/src/content${path_name}.mdx`} target='_blank' >
+                        <FxButton variant='secondary' radius='primary' size='md' className='fx-flex-center gap-2'>
+                        
+                            <span className='font-medium'>Edit</span>
+                            <GithubCircleIcon />
+                        </FxButton>
+                        </Link>
+                    </div>
+                }
+
+                {
+                    data !== "404: Not Found" &&
+                    <div className='w-full fx-flex-center mt-5'>
+                        <div className='border fx-border-color rounded-[50px] p-1 gap-2 fx-flex-center w-fit fx-secondary-bg fx-secondary-hover-bg'>
+                            <span className='fx-sec-label-color text-[14px] font-medium ml-2'>Was this helpful?</span>
+                            <div className='fx-flex-center w-fit'>
+
+
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                    <StarFaceIcon />
+                                </span>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                    <SmileIcon />
+                                </span>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                    <SadIcon />
+                                </span>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                    <AngryIcon />
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                }
             </div>
         </div>
 
@@ -126,18 +171,6 @@ export default function DocContent({ data }: DocContentPropsType) {
                 <div className='fx-flex-cl gap-2 sticky top-0 fx-primary-bg pb-1'>
                     <TextAlignLeftIcon width={15} height={15} />
                     <h3 className='font-medium'>On this page</h3>
-                </div>
-                <p>prev name is {prev?.name}</p>
-                <p>next name is {next?.name}</p>
-
-                {/* Next & Previous Buttons */}
-                <div className="flex justify-between mt-4">
-                    <button onClick={handlePrev} disabled={!prev} className="fx-button">
-                        ← Previous
-                    </button>
-                    <button onClick={handleNext} disabled={!next} className="fx-button">
-                        Next →
-                    </button>
                 </div>
 
                 <ul className='fx-label-color leading-7'>

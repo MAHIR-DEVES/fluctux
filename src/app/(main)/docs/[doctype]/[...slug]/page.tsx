@@ -1,4 +1,5 @@
 import DocContent from '@/components/core/docs/doc-content';
+import { notFound } from 'next/navigation';
 import React from 'react'
 
 export default async function DocContentPage({
@@ -10,7 +11,7 @@ export default async function DocContentPage({
 
   try {
     const response = await fetch(
-      `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/${doctype}/${fullSlug}.mdx`,
+      `${process.env.GITHUB_RAW_CONTENT_API}/src/content/docs/${doctype}/${fullSlug}.mdx`,
       {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,

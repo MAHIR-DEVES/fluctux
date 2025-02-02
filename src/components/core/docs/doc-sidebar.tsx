@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import FxButton from '@/components/ui/fxbutton'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
-import { LeftArrowIcon } from '@/components/ui/icons/left-arrow-icon'
+import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon'
 import { DocNavListType } from '@/types/doc-types'
 import { useDispatch } from 'react-redux'
 import { setPagination } from '@/redux/pagination/docPaginateSlice'
@@ -76,7 +76,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
                                 <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
                                     <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
-                                    <LeftArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
+                                    <RightArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
                                 </button> : <Link key={i} href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
 
                                     <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>

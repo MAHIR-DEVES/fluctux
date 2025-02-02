@@ -1,7 +1,7 @@
 import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
-export const LeftArrowIcon: React.FC<SvgType> = ({
+export const RightArrowIcon: React.FC<SvgType> = ({
     width = SvgSizeInSQR.PRIMARY,
     height = SvgSizeInSQR.PRIMARY,
     className,

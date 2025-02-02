@@ -1,7 +1,13 @@
-import React from 'react'
+"use client"
+import React, { useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
 export default function Loading() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [])
   return (
     <div className='fx-flex-ct gap-5 relative w-full h-full'>
       <div className='w-full mt-[64px] pt-10 overflow-hidden'>

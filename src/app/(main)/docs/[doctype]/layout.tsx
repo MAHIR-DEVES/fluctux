@@ -20,7 +20,7 @@ export interface DocNavListType {
     name: string,
     path: string,
     type: string
-    docNavTreeList: DocNavTreeListType[]
+    docNavTreeList?: DocNavTreeListType[]
 }
 
 const GET_DOC_NAV_LIST = gql`

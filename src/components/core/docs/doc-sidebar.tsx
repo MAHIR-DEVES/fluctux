@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import FxRadio from '@/components/ui/fxradio'
 import { DOC_TYPE } from '@/components/ui/constant'
 import FxFavIcon from '@/components/ui/fxfav'
@@ -18,6 +18,8 @@ interface DocSidebarPropsType {
     }
 }
 
+
+
 export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const path_name = usePathname()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
@@ -26,6 +28,28 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const handleDocTypeChange = (value: string) => {
         router.push(`/docs/${value}/quickstart`)
     }
+
+    // Flatten the docNavList into a single list (excluding directories)
+    const flattenDocs = (list: DocNavListType[]): DocNavListType[] => {
+        return list.flatMap((item) =>
+            item.type === "dir"
+                ? flattenDocs(item.docNavTreeList || [])
+                : [item]
+        );
+    };
+
+    // Generate a flat list of only documents (not directories)
+    const flatDocList = flattenDocs(data.docNavList);
+
+    // Find current document index (excluding directories)
+    const currentIndex = flatDocList.findIndex((navItem) =>
+        path_name.endsWith(navItem.path.replace("src/content/docs/", "").replace(".mdx", ""))
+    );
+
+    // Get previous and next document paths
+    const prevDoc = currentIndex > 0 ? flatDocList[currentIndex - 1] : null;
+    const nextDoc = currentIndex < flatDocList.length - 1 ? flatDocList[currentIndex + 1] : null;
+
 
     return <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
         <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
@@ -36,6 +60,25 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 </div>
                 <span className='font-medium'>Fluctux</span>
             </FxButton>
+
+
+            {/* Next & Previous Buttons */}
+            <div className="flex items-center justify-between p-4 border-t">
+                {prevDoc ? (
+                    <Link href={`/docs/${prevDoc.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
+                        <FxButton variant="secondary">← Previous</FxButton>
+                    </Link>
+                ) : (
+                    <div />
+                )}
+                {nextDoc ? (
+                    <Link href={`/docs/${nextDoc.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
+                        <FxButton variant="secondary">Next →</FxButton>
+                    </Link>
+                ) : (
+                    <div />
+                )}
+            </div>
 
             <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={`${docType}`} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
             {
@@ -59,7 +102,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
                         <div className={`ml-2 flex flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-200 ${isOpenFromArray(`${i}`) ? "max-h-[100%] mt-3 mb-3 " : "max-h-0 opacity-0"} overflow-hidden`}>
                             {
-                                navItem.docNavTreeList.map((navTreeItem, j) => {
+                                navItem.docNavTreeList?.map((navTreeItem, j) => {
                                     return <Link key={j} href={`/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`}>
                                         <span>{navTreeItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
                                         {
@@ -79,6 +122,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
 
         </nav>
+
+
     </aside>
 }
 

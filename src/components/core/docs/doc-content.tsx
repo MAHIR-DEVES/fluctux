@@ -9,6 +9,8 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import { unified } from 'unified'
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from '@rehype-pretty/transformers'
 
 interface DocContentPropsType {
     data: string
@@ -24,6 +26,15 @@ export default function DocContent({ data }: DocContentPropsType) {
             .use(rehypeFormat)
             .use(rehypeStringify)
             .use(rehypeSlug) // Generates IDs automatically
+            .use(rehypePrettyCode, {
+                theme: 'material-theme-ocean',
+                transformers: [
+                    transformerCopyButton({
+                      visibility: 'always',
+                      feedbackDuration: 2_000,
+                    }),
+                  ],
+              })
             .process(data)
 
         const htmlContent = processedData.toString()

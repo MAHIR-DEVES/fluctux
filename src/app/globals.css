@@ -114,6 +114,10 @@
   --scrollbar-color: #7b7b7b;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

@@ -15,6 +15,7 @@ interface DocContentPropsType {
 }
 export default function DocContent({ data }: DocContentPropsType) {
     const [content, setContent] = useState("")
+    const [anchors, setAnchors] = useState<string[]>([]);
 
     const processContent = async () => {
         const processedData = await unified()
@@ -23,7 +24,7 @@ export default function DocContent({ data }: DocContentPropsType) {
             .use(rehypeFormat)
             .use(rehypeStringify)
             .use(rehypeSlug) // Generates IDs automatically
-            .process(data) // No need to wrap data in a string template
+            .process(data) 
 
         const htmlContent = processedData.toString()
         setContent(htmlContent)
@@ -33,6 +34,24 @@ export default function DocContent({ data }: DocContentPropsType) {
         processContent()
     }, [content])
 
+    useEffect(() => {
+        const headingLinks: string[] = []; // Temporary array to hold the anchor labels
+
+        const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        headings.forEach((heading) => {
+            const id = heading.getAttribute("id");
+            if (id) {
+                const formattedText = id
+                    .split("-") // Split the string by "-"
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+                    .join(" "); // Join the words back with spaces
+
+                headingLinks.push(formattedText);
+            }
+        });
+
+        setAnchors(headingLinks); // Set the anchors state with the updated array
+    }, [content])
 
     return <section className='fx-flex-ct gap-5 relative w-full h-full'>
 
@@ -46,9 +65,9 @@ export default function DocContent({ data }: DocContentPropsType) {
                 </div>
                 <ul className='fx-label-color leading-7'>
                     {
-                        Array.from({ length: 70 }).map((_, i) => {
-                            return <Link href={""} key={i}>
-                                <li>Hello world</li>
+                        anchors.map((item, i) => {
+                            return <Link href={`#${item}`} key={i} className='dark:hover:text-white hover:text-black'>
+                                <li>{item}</li>
                             </Link>
 
                         })

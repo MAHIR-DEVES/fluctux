@@ -14,6 +14,7 @@ import { Suspense } from "react";
 import ApolloClientProvider from "@/components/providers/apollo-client-provider";
 import { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import ReduxProvider from "@/components/providers/redux-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +51,9 @@ export default function RootLayout({
                   baseColor="var(--skeleton-base-color)"
                   highlightColor="var(--skeleton-highlightColor)"
                 >
-                  {children}
+                  <ReduxProvider>
+                    {children}
+                  </ReduxProvider>
                 </SkeletonTheme>
               </ApolloClientProvider>
             </SessionClientProvider>

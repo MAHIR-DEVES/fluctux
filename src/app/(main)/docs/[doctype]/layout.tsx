@@ -3,6 +3,7 @@ import DocSidebar from '@/components/core/docs/doc-sidebar'
 import { gql } from '@apollo/client'
 import { apolloClient } from '@/lib/apollo-client'
 import { notFound } from 'next/navigation'
+import { DocNavListType } from '@/types/doc-types'
 
 
 interface DocLayoutPropsType {
@@ -10,18 +11,6 @@ interface DocLayoutPropsType {
     params: Promise<{ doctype: string }>
 }
 
-export interface DocNavTreeListType {
-    name: string,
-    path: string,
-    type: string
-}
-
-export interface DocNavListType {
-    name: string,
-    path: string,
-    type: string
-    docNavTreeList?: DocNavTreeListType[]
-}
 
 const GET_DOC_NAV_LIST = gql`
   query GetDocNavList($docType: String) {

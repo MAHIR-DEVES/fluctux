@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import FxRadio from '@/components/ui/fxradio'
 import { DOC_TYPE } from '@/components/ui/constant'
 import FxFavIcon from '@/components/ui/fxfav'
@@ -8,7 +8,9 @@ import FxButton from '@/components/ui/fxbutton'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
 import { LeftArrowIcon } from '@/components/ui/icons/left-arrow-icon'
-import { DocNavListType } from '@/app/(main)/docs/[doctype]/layout'
+import { DocNavListType } from '@/types/doc-types'
+import { useDispatch } from 'react-redux'
+import { setPagination } from '@/redux/pagination/docPaginateSlice'
 
 
 interface DocSidebarPropsType {
@@ -18,38 +20,41 @@ interface DocSidebarPropsType {
     }
 }
 
-
-
 export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const path_name = usePathname()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
     const router = useRouter()
+    const dispatch = useDispatch()
 
-    const handleDocTypeChange = (value: string) => {
-        router.push(`/docs/${value}/quickstart`)
-    }
+    const handleDocTypeChange = useCallback((value: string) => {
+        router.push(`/docs/${value}/01-get-started/01-quickstart`)
+    }, [router])
 
     // Flatten the docNavList into a single list (excluding directories)
-    const flattenDocs = (list: DocNavListType[]): DocNavListType[] => {
+    const flattenDocs = useCallback((list: DocNavListType[]): DocNavListType[] => {
         return list.flatMap((item) =>
             item.type === "dir"
                 ? flattenDocs(item.docNavTreeList || [])
                 : [item]
         );
-    };
+    }, [])
 
-    // Generate a flat list of only documents (not directories)
-    const flatDocList = flattenDocs(data.docNavList);
 
-    // Find current document index (excluding directories)
-    const currentIndex = flatDocList.findIndex((navItem) =>
-        path_name.endsWith(navItem.path.replace("src/content/docs/", "").replace(".mdx", ""))
-    );
+    useEffect(() => {
+        const flatDocList = flattenDocs(data.docNavList);
 
-    // Get previous and next document paths
-    const prevDoc = currentIndex > 0 ? flatDocList[currentIndex - 1] : null;
-    const nextDoc = currentIndex < flatDocList.length - 1 ? flatDocList[currentIndex + 1] : null;
+        // Find current document index
+        const currentIndex = flatDocList.findIndex((navItem) =>
+            path_name.endsWith(navItem.path.replace("src/content/docs/", "").replace(".mdx", ""))
+        );
+        if (currentIndex !== -1) {
+            dispatch(setPagination({ currentIndex, flatDocList }));
+        } else {
+            // If the document is not found, reset pagination state
+            dispatch(setPagination({ currentIndex: -1, flatDocList: [] }));
+        }
 
+    }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
 
     return <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
         <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
@@ -60,25 +65,6 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 </div>
                 <span className='font-medium'>Fluctux</span>
             </FxButton>
-
-
-            {/* Next & Previous Buttons */}
-            <div className="flex items-center justify-between p-4 border-t">
-                {prevDoc ? (
-                    <Link href={`/docs/${prevDoc.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
-                        <FxButton variant="secondary">← Previous</FxButton>
-                    </Link>
-                ) : (
-                    <div />
-                )}
-                {nextDoc ? (
-                    <Link href={`/docs/${nextDoc.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
-                        <FxButton variant="secondary">Next →</FxButton>
-                    </Link>
-                ) : (
-                    <div />
-                )}
-            </div>
 
             <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={`${docType}`} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
             {

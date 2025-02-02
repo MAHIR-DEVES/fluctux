@@ -15,6 +15,9 @@ import { StarFaceIcon } from '@/components/ui/icons/star-face-icon'
 import { SmileIcon } from '@/components/ui/icons/smile-icon'
 import { SadIcon } from '@/components/ui/icons/sad-icon'
 import { AngryIcon } from '@/components/ui/icons/angry-icon'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
+import { useRouter } from 'next/navigation'
 
 interface DocContentPropsType {
     data: string
@@ -22,6 +25,23 @@ interface DocContentPropsType {
 export default function DocContent({ data }: DocContentPropsType) {
     const [content, setContent] = useState("")
     const [anchors, setAnchors] = useState<string[]>([]);
+    const router = useRouter()
+
+    const { prev, next } = useSelector((state: RootState) => state.docPaginate);
+
+    // Handle next and previous navigation
+    const handleNext = () => {
+        if (next) {
+            router.push(`/docs/${next.path.replace("src/content/docs/", "").replace(".mdx", "")}`);
+        }
+    };
+
+    const handlePrev = () => {
+        if (prev) {
+            router.push(`/docs/${prev.path.replace("src/content/docs/", "").replace(".mdx", "")}`);
+        }
+    };
+
 
     const processContent = useCallback(async () => {
         const processedData = await unified()
@@ -106,6 +126,18 @@ export default function DocContent({ data }: DocContentPropsType) {
                 <div className='fx-flex-cl gap-2 sticky top-0 fx-primary-bg pb-1'>
                     <TextAlignLeftIcon width={15} height={15} />
                     <h3 className='font-medium'>On this page</h3>
+                </div>
+                <p>prev name is {prev?.name}</p>
+                <p>next name is {next?.name}</p>
+
+                {/* Next & Previous Buttons */}
+                <div className="flex justify-between mt-4">
+                    <button onClick={handlePrev} disabled={!prev} className="fx-button">
+                        ← Previous
+                    </button>
+                    <button onClick={handleNext} disabled={!next} className="fx-button">
+                        Next →
+                    </button>
                 </div>
 
                 <ul className='fx-label-color leading-7'>

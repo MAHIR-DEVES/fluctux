@@ -48,7 +48,8 @@ export default async function Layout({
         docNavList: DocNavListType[]
     }>({
         query: GET_DOC_NAV_LIST,
-        variables: { docType: `${doctype}` }
+        variables: { docType: `${doctype}` },
+        fetchPolicy: "no-cache"
     })
 
     return (

@@ -10,7 +10,11 @@ export default async function DocContentPage({
 
   const response = await fetch(
     `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/${doctype}/${fullSlug}.mdx`,
-
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      },
+    }
   );
 
   const textData = await response.text(); // Use .text() for plain text like README

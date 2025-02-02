@@ -43,18 +43,20 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={`${docType}`} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
 
 
+
+
             {
                 data.docNavList.map((navItem, i) => {
                     return <React.Fragment key={i}>
-                        <button className={`font-medium hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
-                            <span>{navItem.name.replace("-", " ").replace(/^\w/, c => c.toUpperCase())}</span>
-                            <LeftArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-200`} />
+                        <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
+                            <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
+                            <LeftArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
                         </button>
 
-                        <div className={`ml-2 mt-2 mb-2 flex flex-col border-l fx-border-color  fx-label-color font-medium transition-all duration-300  ${isOpenFromArray(`${i}`) ? "max-h-[100%] " : "max-h-0 opacity-0"} overflow-hidden`}>
+                        <div className={`ml-2 flex flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-200 ${isOpenFromArray(`${i}`) ? "max-h-[100%] mt-3 mb-3 " : "max-h-0 opacity-0"} overflow-hidden`}>
                             {
                                 navItem.docNavTreeList.map((navTreeItem, j) => {
-                                    return <Link key={j} href={`/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative'>
+                                    return <Link key={j} href={`/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`}>
                                         <span>{navTreeItem.name.replace("-", " ").replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
                                         {
                                             path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) &&
@@ -67,6 +69,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     </React.Fragment>
                 })
             }
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 import { TextAlignLeftIcon } from '@/components/ui/icons/text-allign-left-icon'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
@@ -17,22 +17,23 @@ export default function DocContent({ data }: DocContentPropsType) {
     const [content, setContent] = useState("")
     const [anchors, setAnchors] = useState<string[]>([]);
 
-    const processContent = async () => {
+    const processContent = useCallback(async () => {
         const processedData = await unified()
             .use(remarkParse)
             .use(remarkRehype)
             .use(rehypeFormat)
             .use(rehypeStringify)
             .use(rehypeSlug) // Generates IDs automatically
-            .process(data) 
+            .process(data)
 
         const htmlContent = processedData.toString()
         setContent(htmlContent)
-    }
+   
+    }, [data])
 
     useEffect(() => {
         processContent()
-    }, [content])
+    }, [processContent])
 
     useEffect(() => {
         const headingLinks: string[] = []; // Temporary array to hold the anchor labels

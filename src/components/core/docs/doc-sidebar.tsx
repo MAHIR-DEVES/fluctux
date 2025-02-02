@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import FxRadio from '@/components/ui/fxradio'
 import { DOC_TYPE } from '@/components/ui/constant'
 import FxFavIcon from '@/components/ui/fxfav'
@@ -19,16 +19,13 @@ interface DocSidebarPropsType {
 }
 
 export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
-
+    const path_name = usePathname()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
     const router = useRouter()
 
     const handleDocTypeChange = (value: string) => {
         router.push(`/docs/${value}/quickstart`)
     }
-
-    const path_name = usePathname()
-
 
     return <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
         <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
@@ -41,10 +38,6 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             </FxButton>
 
             <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={`${docType}`} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
-
-
-
-
             {
                 data.docNavList.map((navItem, i) => {
                     return <React.Fragment key={i}>

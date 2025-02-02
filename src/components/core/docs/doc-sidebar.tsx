@@ -57,7 +57,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                             {
                                 navItem.docNavTreeList.map((navTreeItem, j) => {
                                     return <Link key={j} href={`/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`}>
-                                        <span>{navTreeItem.name.replace("-", " ").replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
+                                        <span>{navTreeItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
                                         {
                                             path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) &&
                                             <span className='absolute left-0 top-0 h-full w-[4px] fx-primary-purple-bg rounded-tr-[50px] rounded-br-[50px]'></span>

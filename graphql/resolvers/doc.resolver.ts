@@ -36,9 +36,9 @@ export const docNavListResolver = async (
     },
   });
   const data = await response.json();
-  return data.map((item: GithubListType) => ({
+  return data.length ? data.map((item: GithubListType) => ({
     name: item.name,
     path: item.path,
     type: item.type,
-  }));
+  })): [];
 };

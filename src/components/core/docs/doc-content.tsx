@@ -66,8 +66,8 @@ export default function DocContent({ data }: DocContentPropsType) {
                 <ul className='fx-label-color leading-7'>
                     {
                         anchors.map((item, i) => {
-                            return <Link href={`#${item}`} key={i} className='dark:hover:text-white hover:text-black'>
-                                <li>{item}</li>
+                            return <Link href={`#${item.toLowerCase().replace(/\s+/g, "-")}`} key={i} className='dark:hover:text-white hover:text-black'>
+                                <li className='one-line-ellipsis'>{item}</li>
                             </Link>
 
                         })

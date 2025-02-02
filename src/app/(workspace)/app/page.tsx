@@ -4,13 +4,13 @@ import React from 'react'
 export default async function GitPage() {
     // const [data, setData] = useState("")
 
-            const response = await fetch(
-                `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/developer/get-started/setup-environment.mdx`
-            );
-            if (!response.ok) throw new Error("Failed to fetch");
-            const data = await response.text(); // Use .text() for plain text like README
+            // const response = await fetch(
+            //     `https://raw.githubusercontent.com/gitmahin/fluctux/main/src/content/docs/developer/get-started/setup-environment.mdx`
+            // );
+            // if (!response.ok) throw new Error("Failed to fetch");
+            // const data = await response.text(); // Use .text() for plain text like README
          
-            console.log(data);
+            // console.log(data);
             // console.log(data.name);
 
 

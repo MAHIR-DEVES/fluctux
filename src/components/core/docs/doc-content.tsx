@@ -11,6 +11,10 @@ import rehypeSlug from 'rehype-slug'
 import { unified } from 'unified'
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from '@rehype-pretty/transformers'
+import { StarFaceIcon } from '@/components/ui/icons/star-face-icon'
+import { SmileIcon } from '@/components/ui/icons/smile-icon'
+import { SadIcon } from '@/components/ui/icons/sad-icon'
+import { AngryIcon } from '@/components/ui/icons/angry-icon'
 
 interface DocContentPropsType {
     data: string
@@ -30,16 +34,16 @@ export default function DocContent({ data }: DocContentPropsType) {
                 theme: 'material-theme-ocean',
                 transformers: [
                     transformerCopyButton({
-                      visibility: 'always',
-                      feedbackDuration: 2_000,
+                        visibility: 'always',
+                        feedbackDuration: 2_000,
                     }),
-                  ],
-              })
+                ],
+            })
             .process(data)
 
         const htmlContent = processedData.toString()
         setContent(htmlContent)
-   
+
     }, [data])
 
     useEffect(() => {
@@ -66,8 +70,36 @@ export default function DocContent({ data }: DocContentPropsType) {
     }, [content])
 
     return <section className='fx-flex-ct gap-5 relative w-full h-full'>
+        <div className='mt-[64px] pt-10 w-full'>
 
-        <article dangerouslySetInnerHTML={{ __html: content }} className="prose prose-gray dark:prose-invert w-full mt-[64px] pt-10"></article>
+            <article dangerouslySetInnerHTML={{ __html: content }} className="prose prose-gray dark:prose-invert w-full "></article>
+
+
+            <div className='border-t mt-10 fx-border-color'>
+                <div className='w-full fx-flex-center mt-5'>
+                    <div className='border fx-border-color rounded-[50px] p-1 gap-2 fx-flex-center w-fit'>
+                        <span className='fx-sec-label-color text-[14px] font-medium ml-2'>Was this helpful?</span>
+                        <div className='fx-flex-center w-fit'>
+
+
+                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                <StarFaceIcon />
+                            </span>
+                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                <SmileIcon />
+                            </span>
+                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                <SadIcon />
+                            </span>
+                            <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
+                                <AngryIcon />
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <aside className=' w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px]'>
             <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar hover:doc-hide-scrollbar-show pb-16'>
@@ -75,7 +107,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     <TextAlignLeftIcon width={15} height={15} />
                     <h3 className='font-medium'>On this page</h3>
                 </div>
-            
+
                 <ul className='fx-label-color leading-7'>
                     {
                         anchors.map((item, i) => {

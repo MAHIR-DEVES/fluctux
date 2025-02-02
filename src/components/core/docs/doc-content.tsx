@@ -7,6 +7,7 @@ import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
+import rehypeSlug from 'rehype-slug'
 import { unified } from 'unified'
 
 interface DocContentPropsType {
@@ -21,6 +22,7 @@ export default function DocContent({ data }: DocContentPropsType) {
             .use(remarkRehype)
             .use(rehypeFormat)
             .use(rehypeStringify)
+            .use(rehypeSlug) // Generates IDs automatically
             .process(data) // No need to wrap data in a string template
 
         const htmlContent = processedData.toString()

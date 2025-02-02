@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { LeftArrowIcon } from '@/components/ui/icons/left-arrow-icon'
 import { DocNavListType } from '@/app/(main)/docs/[doctype]/layout'
 
+
 interface DocSidebarPropsType {
     docType: string,
     data: {

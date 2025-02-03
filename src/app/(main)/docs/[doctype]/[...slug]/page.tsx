@@ -1,13 +1,64 @@
 import DocContent from '@/components/core/docs/doc-content';
-import { notFound } from 'next/navigation';
+import { apolloClient } from '@/lib/apollo-client';
+import { DocNavListType } from '@/types/doc-types';
 import React from 'react'
+import { GET_DOC_NAV_LIST } from '../layout';
+
+export async function generateStaticParams() {
+  try {
+
+    const docTypes = ['user', 'developer'];
+
+    const params = await Promise.all(
+      docTypes.map(async (type) => {
+        try {
+          const { data } = await apolloClient.query<{ docNavList: DocNavListType[] }>({
+            query: GET_DOC_NAV_LIST,
+            variables: { docType: type },
+          });
+
+          const extractSlug = (fullPath: string, isDir: boolean) => {
+            const parts = fullPath.split('/');
+            return isDir
+              ? parts.slice(-2).map((part) => part.replace('.mdx', '')) // Get last two segments for directories
+              : [parts.at(-1)?.replace('.mdx', '')]; // Get only the last segment for files
+          };
+
+          return data.docNavList.flatMap((item) => [
+            ...(item.type !== "dir"
+              ? [{ docType: type, slug: extractSlug(item.path, false) }]
+              : []),
+            ...(item.docNavTreeList?.map((treeItem) => ({
+              docType: type,
+              slug: extractSlug(treeItem.path, true),
+            })) || []),
+          ]);
+        } catch (error) {
+          console.error(`GraphQL Fetch Error for docType "${type}":`, error);
+          throw new Error("Error generating static pages");
+        }
+      })
+    );
+
+    return params.flat();
+  } catch (error) {
+    console.error("Error generating static pages:", error);
+    return []; // Prevent build failure
+  }
+}
 
 export default async function DocContentPage({
   params
 }: { params: Promise<{ slug: string[], doctype: string }> }) {
 
   const { slug, doctype } = await params
+
   const fullSlug = slug.join("/")
+
+  // // debugging the results
+  // generateStaticParams().then((params) => {
+  //   console.log(params);
+  // });
 
   try {
     const response = await fetch(
@@ -15,14 +66,14 @@ export default async function DocContentPage({
       {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        },
-        cache: "no-cache"
+        }
       }
     );
 
     const textData = await response.text(); // Use .text() for plain text like README
 
     return <DocContent data={textData} />
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     throw new Error("Something went wrong")
   }

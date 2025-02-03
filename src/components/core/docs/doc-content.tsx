@@ -129,11 +129,11 @@ export default function DocContent({ data }: DocContentPropsType) {
                             <p className='fx-sec-label-color text-[14px] font-medium pt-2'>If you find any mistakes or areas that need updating, feel free to edit and contribute improvements to the documentation!</p>
                         </div>
                         <Link href={`https://github.com/gitmahin/fluctux/tree/main/src/content${path_name}.mdx`} target='_blank' >
-                        <FxButton variant='secondary' radius='primary' size='md' className='fx-flex-center gap-2'>
-                        
-                            <span className='font-medium'>Edit</span>
-                            <GithubCircleIcon />
-                        </FxButton>
+                            <FxButton variant='secondary' radius='primary' size='md' className='fx-flex-center gap-2'>
+
+                                <span className='font-medium'>Edit</span>
+                                <GithubCircleIcon />
+                            </FxButton>
                         </Link>
                     </div>
                 }

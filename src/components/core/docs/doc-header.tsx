@@ -2,14 +2,15 @@
 import useThemeSwitcher from '@/app/hooks/useThemeSwitcher'
 import React from 'react'
 import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
-import { SearchIcon } from '@/components/ui/icons/search-icon'
-import { CommandKeyIcon } from '@/components/ui/icons/command-key-icon'
+
 import FxLogo from '@/components/ui/fxlogo'
 import FxSeparator from '@/components/ui/fxseparator'
 import FxButton from '@/components/ui/fxbutton'
+
+import DocSearchComponent from './doc-search'
+
 export default function DocHeader() {
     const { ThemeSwitcher } = useThemeSwitcher()
-
 
     return <header className='fixed w-full h-[64px] fx-secondary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-50'>
         <div className='fx-flex-cl gap-3'>
@@ -18,16 +19,7 @@ export default function DocHeader() {
             <span className='fx-label-color text-[20px] font-medium'>Docs</span>
         </div>
         <div>
-            <FxButton variant='secondary' className='pl-2 pr-2 h-[35px] fx-flex-between-ic gap-36 fx-third-bg' radius='tablet'>
-                <div className='fx-flex-cl gap-3'>
-                    <SearchIcon />
-                    <span className='fx-sec-label-color'>Search documentation...</span>
-                </div>
-                <div className='fx-flex-cr pr-2 gap-1'>
-                    <CommandKeyIcon width={15} height={15} />
-                    <span className='text-[13px] fx-label-color'>Ctrl+k</span>
-                </div>
-            </FxButton>
+            <DocSearchComponent/>
         </div>
         <div className='fx-flex-cr gap-3'>
 

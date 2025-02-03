@@ -5,9 +5,11 @@ interface IndexDocNavListsType {
   // other properties...
 }
 
+export const DOC_INDEX_NAME = "docs_index";
+
 class Algolia {
   async indexDocNavLists(data: IndexDocNavListsType) {
-    const DOC_INDEX_NAME = "docs_index";
+   
 
     const indexExists = await writeAlgolia.indexExists({
       indexName: DOC_INDEX_NAME,

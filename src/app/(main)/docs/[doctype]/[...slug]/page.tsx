@@ -41,6 +41,7 @@ export async function generateStaticParams() {
       })
     );
 
+    // algolia indexing objects algorithm
     // try {
     //   params.flat().map(async (item) => {
     //     await algolia.indexDocNavLists(

@@ -3,14 +3,33 @@ import { writeAlgolia } from "@/helpers/algolia.helper";
 interface IndexDocNavListsType {
   [key: string]: unknown; // Add this line
   // other properties...
-};
+}
 
 class Algolia {
-  async indexDocNavLists(data: IndexDocNavListsType[]) {
-    return await writeAlgolia.saveObjects({
-      indexName: "docs_index",
-      objects: data,
+  async indexDocNavLists(data: IndexDocNavListsType) {
+    const DOC_INDEX_NAME = "docs_index";
+
+    const indexExists = await writeAlgolia.indexExists({
+      indexName: DOC_INDEX_NAME,
     });
+
+    if (indexExists) {
+      await writeAlgolia.deleteIndex({ indexName: DOC_INDEX_NAME });
+    }
+
+    if (data) {
+      await writeAlgolia.saveObjects({
+        indexName: DOC_INDEX_NAME,
+        objects: [data],
+      });
+
+      await writeAlgolia.setSettings({
+        indexName: DOC_INDEX_NAME,
+        indexSettings: {
+          searchableAttributes: ["label", "slug"],
+        },
+      });
+    }
   }
 }
 

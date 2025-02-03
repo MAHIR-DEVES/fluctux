@@ -34,8 +34,8 @@ export async function generateStaticParams() {
             })) || []),
           ]);
         } catch (error) {
-          console.error(`GraphQL Fetch Error for docType "${type}":`, error);
-          throw new Error("Error generating static pages");
+          console.error(`GraphQL fetch error for docType "${type}":`, error);
+          throw new Error("GraphQL fetch error"); // stop building
         }
       })
     );
@@ -43,7 +43,7 @@ export async function generateStaticParams() {
     return params.flat();
   } catch (error) {
     console.error("Error generating static pages:", error);
-    return []; // Prevent build failure
+    throw new Error("Error generating static pages"); // stop building
   }
 }
 
@@ -73,7 +73,7 @@ export default async function DocContentPage({
     const textData = await response.text(); // Use .text() for plain text like README
 
     return <DocContent data={textData} />
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     throw new Error("Something went wrong")
   }

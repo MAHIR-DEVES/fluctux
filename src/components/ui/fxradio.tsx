@@ -150,7 +150,7 @@ export default function FxRadio({
 
                                             {
                                                 item.label &&
-                                                <span className={`font-medium ${selectedValue === item.value ? 'text-white' : 'fx-label-color'} `}>{item.label}</span>
+                                                <span className={`font-medium ${selectedValue === item.value ? 'text-[var(--foreground)]' : 'fx-label-color'} `}>{item.label}</span>
                                             }
 
                                             {

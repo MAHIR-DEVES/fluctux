@@ -1,1 +1,0 @@
-export const GITHUB_AUTH_DOC_API = "https://api.github.com/repos/gitmahin/fluctux/contents/src/content/docs"

@@ -1,5 +1,3 @@
-import { GITHUB_AUTH_DOC_API } from "../constant";
-
 interface GithubListType {
   name: string;
   path: string;
@@ -10,7 +8,7 @@ export const docNavTreeListResolver = async (
   path: string
 ): Promise<GithubListType[]> => {
   const response = await fetch(
-    `${GITHUB_AUTH_DOC_API}/${path?.split("/")[3]}/${path?.split("/")[4]}`,
+    `${process.env.GITHUB_AUTH_DOC_API}/${path?.split("/")[3]}/${path?.split("/")[4]}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -30,7 +28,7 @@ export const docNavTreeListResolver = async (
 export const docNavListResolver = async (
   docType: string
 ): Promise<GithubListType[]> => {
-  const response = await fetch(`${GITHUB_AUTH_DOC_API}/${docType}`, {
+  const response = await fetch(`${process.env.GITHUB_AUTH_DOC_API}/${docType}`, {
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     },

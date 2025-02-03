@@ -56,6 +56,9 @@ importers:
       '@rehype-pretty/transformers':
         specifier: ^0.13.2
         version: 0.13.2
+      algoliasearch:
+        specifier: ^5.20.0
+        version: 5.20.0
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -194,6 +197,58 @@ importers:
         version: 5.7.3
 
 packages:
+
+  '@algolia/client-abtesting@5.20.0':
+    resolution: {integrity: sha512-YaEoNc1Xf2Yk6oCfXXkZ4+dIPLulCx8Ivqj0OsdkHWnsI3aOJChY5qsfyHhDBNSOhqn2ilgHWxSfyZrjxBcAww==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/client-analytics@5.20.0':
+    resolution: {integrity: sha512-CIT9ni0+5sYwqehw+t5cesjho3ugKQjPVy/iPiJvtJX4g8Cdb6je6SPt2uX72cf2ISiXCAX9U3cY0nN0efnRDw==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/client-common@5.20.0':
+    resolution: {integrity: sha512-iSTFT3IU8KNpbAHcBUJw2HUrPnMXeXLyGajmCL7gIzWOsYM4GabZDHXOFx93WGiXMti1dymz8k8R+bfHv1YZmA==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/client-insights@5.20.0':
+    resolution: {integrity: sha512-w9RIojD45z1csvW1vZmAko82fqE/Dm+Ovsy2ElTsjFDB0HMAiLh2FO86hMHbEXDPz6GhHKgGNmBRiRP8dDPgJg==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/client-personalization@5.20.0':
+    resolution: {integrity: sha512-p/hftHhrbiHaEcxubYOzqVV4gUqYWLpTwK+nl2xN3eTrSW9SNuFlAvUBFqPXSVBqc6J5XL9dNKn3y8OA1KElSQ==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/client-query-suggestions@5.20.0':
+    resolution: {integrity: sha512-m4aAuis5vZi7P4gTfiEs6YPrk/9hNTESj3gEmGFgfJw3hO2ubdS4jSId1URd6dGdt0ax2QuapXufcrN58hPUcw==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/client-search@5.20.0':
+    resolution: {integrity: sha512-KL1zWTzrlN4MSiaK1ea560iCA/UewMbS4ZsLQRPoDTWyrbDKVbztkPwwv764LAqgXk0fvkNZvJ3IelcK7DqhjQ==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/ingestion@1.20.0':
+    resolution: {integrity: sha512-shj2lTdzl9un4XJblrgqg54DoK6JeKFO8K8qInMu4XhE2JuB8De6PUuXAQwiRigZupbI0xq8aM0LKdc9+qiLQA==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/monitoring@1.20.0':
+    resolution: {integrity: sha512-aF9blPwOhKtWvkjyyXh9P5peqmhCA1XxLBRgItT+K6pbT0q4hBDQrCid+pQZJYy4HFUKjB/NDDwyzFhj/rwKhw==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/recommend@5.20.0':
+    resolution: {integrity: sha512-T6B/WPdZR3b89/F9Vvk6QCbt/wrLAtrGoL8z4qPXDFApQ8MuTFWbleN/4rHn6APWO3ps+BUePIEbue2rY5MlRw==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/requester-browser-xhr@5.20.0':
+    resolution: {integrity: sha512-t6//lXsq8E85JMenHrI6mhViipUT5riNhEfCcvtRsTV+KIBpC6Od18eK864dmBhoc5MubM0f+sGpKOqJIlBSCg==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/requester-fetch@5.20.0':
+    resolution: {integrity: sha512-FHxYGqRY+6bgjKsK4aUsTAg6xMs2S21elPe4Y50GB0Y041ihvw41Vlwy2QS6K9ldoftX4JvXodbKTcmuQxywdQ==}
+    engines: {node: '>= 14.0.0'}
+
+  '@algolia/requester-node-http@5.20.0':
+    resolution: {integrity: sha512-kmtQClq/w3vtPteDSPvaW9SPZL/xrIgMrxZyAgsFwrJk0vJxqyC5/hwHmrCraDnStnGSADnLpBf4SpZnwnkwWw==}
+    engines: {node: '>= 14.0.0'}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -1436,6 +1491,10 @@ packages:
 
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
+
+  algoliasearch@5.20.0:
+    resolution: {integrity: sha512-groO71Fvi5SWpxjI9Ia+chy0QBwT61mg6yxJV27f5YFf+Mw+STT75K6SHySpP8Co5LsCrtsbCH5dJZSRtkSKaQ==}
+    engines: {node: '>= 14.0.0'}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -3940,6 +3999,83 @@ packages:
 
 snapshots:
 
+  '@algolia/client-abtesting@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/client-analytics@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/client-common@5.20.0': {}
+
+  '@algolia/client-insights@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/client-personalization@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/client-query-suggestions@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/client-search@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/ingestion@1.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/monitoring@1.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/recommend@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
+
+  '@algolia/requester-browser-xhr@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+
+  '@algolia/requester-fetch@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+
+  '@algolia/requester-node-http@5.20.0':
+    dependencies:
+      '@algolia/client-common': 5.20.0
+
   '@alloc/quick-lru@5.2.0': {}
 
   '@apollo/client@3.12.8(@types/react@19.0.8)(graphql@16.10.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
@@ -5255,6 +5391,22 @@ snapshots:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+
+  algoliasearch@5.20.0:
+    dependencies:
+      '@algolia/client-abtesting': 5.20.0
+      '@algolia/client-analytics': 5.20.0
+      '@algolia/client-common': 5.20.0
+      '@algolia/client-insights': 5.20.0
+      '@algolia/client-personalization': 5.20.0
+      '@algolia/client-query-suggestions': 5.20.0
+      '@algolia/client-search': 5.20.0
+      '@algolia/ingestion': 1.20.0
+      '@algolia/monitoring': 1.20.0
+      '@algolia/recommend': 5.20.0
+      '@algolia/requester-browser-xhr': 5.20.0
+      '@algolia/requester-fetch': 5.20.0
+      '@algolia/requester-node-http': 5.20.0
 
   ansi-regex@5.0.1: {}
 

@@ -3,6 +3,7 @@ import { apolloClient } from '@/lib/apollo-client';
 import { DocNavListType } from '@/types/doc-types';
 import React from 'react'
 import { GET_DOC_NAV_LIST } from '../layout';
+import algolia from '@/services/algolia.service';
 
 export async function generateStaticParams() {
   try {
@@ -40,6 +41,21 @@ export async function generateStaticParams() {
       })
     );
 
+    // try {
+    //   params.flat().map(async (item) => {
+    //     await algolia.indexDocNavLists(
+    //       [{
+    //         label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString(),
+    //         slug: item.slug.join("/"),
+    //         type: item.docType
+  
+    //       }]
+    //     )
+    //   })
+    // } catch (error) {
+    //   throw new Error("Error indexing data to Algolia")
+    // }
+
     return params.flat();
   } catch (error) {
     console.error("Error generating static pages:", error);
@@ -55,10 +71,10 @@ export default async function DocContentPage({
 
   const fullSlug = slug.join("/")
 
-  // // debugging the results
-  // generateStaticParams().then((params) => {
-  //   console.log(params);
-  // });
+  // debugging the results
+  generateStaticParams().then((params) => {
+    console.log(params);
+  });
 
   try {
     const response = await fetch(

@@ -27,7 +27,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const dispatch = useDispatch()
 
     const handleDocTypeChange = useCallback((value: string) => {
-        router.push(`/docs/${value}/01-get-started/01-quickstart`)
+        router.push(`/docs/${value}/01-get-started/01-introduction`)
     }, [router])
 
     // Flatten the docNavList into a single list (excluding directories)

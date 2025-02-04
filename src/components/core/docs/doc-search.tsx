@@ -1,13 +1,26 @@
 "use client"
 import React from 'react'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch';
+import { InstantSearch, SearchBox, Hits, Highlight } from 'react-instantsearch';
 import FxCommandBox from '@/components/ui/fxcommandbox';
 import FxButton from '@/components/ui/fxbutton';
 import { SearchIcon } from '@/components/ui/icons/search-icon';
 import { CommandKeyIcon } from '@/components/ui/icons/command-key-icon';
-import { searchAlgolia } from '@/helpers/algolia.helper';
-import { DOC_INDEX_NAME } from '@/services/algolia.service';
+import { searchAlgolia } from '@/helpers/algolia/search.helper';
+import { DOC_INDEX_NAME } from '@/services/constant';
+import DocCustomRefinementList from '../algolia/doc-custom-refinement';
+
+function Hit({ hit }) {
+    return (
+        <div>
+            <ul>
+                <li>
+                <Highlight attribute="label" hit={hit} />
+                </li>
+            </ul>
+        </div>
+    )
+  }
 
 export default function DocSearchComponent() {
     const { isOpen: isSearchBoxOpen, setOpen: setSearchBoxOpen } = useToggleOpen({
@@ -30,10 +43,13 @@ export default function DocSearchComponent() {
             <div className='w-full h-[50px] border-b fx-border-color sticky top-0 left-0'>
 
             </div>
-            {/* <InstantSearch searchClient={searchAlgolia} indexName={DOC_INDEX_NAME}  >
-                <SearchBox />
-                <Hits />
-            </InstantSearch> */}
+            <InstantSearch searchClient={searchAlgolia} indexName={DOC_INDEX_NAME}  >
+                <SearchBox 
+                  autoFocus={true}
+                />
+                <DocCustomRefinementList attribute='type'  />
+                <Hits hitComponent={Hit} />
+            </InstantSearch>
         </FxCommandBox>
     </>
 }

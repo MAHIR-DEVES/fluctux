@@ -1,11 +1,10 @@
-import { writeAlgolia } from "@/helpers/algolia.helper";
+import { writeAlgolia } from "@/helpers/algolia/write.helper";
+import { DOC_INDEX_NAME } from "./constant";
 
 interface IndexDocNavListsType {
   [key: string]: unknown; // Add this line
   // other properties...
 }
-
-export const DOC_INDEX_NAME = "docs_index";
 
 class Algolia {
   async indexDocNavLists(data: IndexDocNavListsType) {
@@ -29,6 +28,7 @@ class Algolia {
         indexName: DOC_INDEX_NAME,
         indexSettings: {
           searchableAttributes: ["label", "slug"],
+          attributesForFaceting: ['type']
         },
       });
     }

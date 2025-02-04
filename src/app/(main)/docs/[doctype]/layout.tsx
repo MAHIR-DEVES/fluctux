@@ -61,7 +61,7 @@ export default async function Layout({
     return (
         <>
 
-            <div className='fx-flex-ct '>
+            <div className='fx-flex-ct pl-2 pr-2'>
                 <div className='fx-flex-between-it max-w-[1200px] w-full gap-5'>
 
                     <DocSidebar docType={doctype} data={data} />

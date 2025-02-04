@@ -83,6 +83,15 @@ export default function DocContent({ data }: DocContentPropsType) {
 
     return <section className='fx-flex-ct gap-5 relative w-full h-full'>
         <div className='mt-[64px] pt-10 w-full'>
+            <div className='w-fit mb-8'>
+                <span className='fx-label-color font-medium'>
+                    {path_name && path_name.split("/").slice(-3).map((segment, index, arr) =>
+                        index === 0 && segment === "docs"
+                            ? ""
+                            : `${segment.replace(/^\d+-/, "").replace(/-/g, " ").replace(/^\w/, c => c.toUpperCase())}${index < arr.length - 1 ? " / " : ""}`
+                    )}
+                </span>
+            </div>
 
             <article dangerouslySetInnerHTML={{ __html: content }} className="prose prose-gray dark:prose-invert w-full "></article>
 

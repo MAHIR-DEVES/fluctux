@@ -8,7 +8,7 @@ import { SearchIcon } from '@/components/ui/icons/search-icon';
 import { CommandKeyIcon } from '@/components/ui/icons/command-key-icon';
 import { searchAlgolia } from '@/helpers/algolia/search.helper';
 import { DOC_INDEX_NAME } from '@/services/constant';
-import DocCustomRefinementList from '../../algolia/doc-custom-refinement';
+import DocCustomRefinementList from './doc-custom-refinement';
 import Hit from './hit';
 import NoResultsBoundary from './no-results-boundary';
 import NoResults from './no-results';

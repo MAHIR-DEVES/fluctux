@@ -7,7 +7,7 @@ import FxLogo from '@/components/ui/fxlogo'
 import FxSeparator from '@/components/ui/fxseparator'
 import FxButton from '@/components/ui/fxbutton'
 
-import DocSearchComponent from './doc-search'
+import DocSearchComponent from './search/doc-search'
 
 export default function DocHeader() {
     const { ThemeSwitcher } = useThemeSwitcher()

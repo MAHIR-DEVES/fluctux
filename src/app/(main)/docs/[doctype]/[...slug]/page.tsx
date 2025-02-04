@@ -47,7 +47,7 @@ export async function generateStaticParams() {
     //     await algolia.indexDocNavLists(
     //       {
     //         label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString(),
-    //         slug: item.slug.join("/").toString(),
+    //         slug: `${item.docType}/${item.slug.join("/").toString()}`,
     //         type: item.docType.toString()
 
     //       }

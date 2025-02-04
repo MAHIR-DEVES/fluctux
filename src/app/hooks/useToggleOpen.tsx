@@ -20,6 +20,13 @@ export default function useToggleOpen({ id, shortcutKey }: ToggleOpenProps) {
     if (!shortcutKey || !id) return;
 
     const down = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpenStates((prev) => ({
+          ...prev,
+          [id]: false, // Set state to false for the specific ID
+        }));
+      }
+
       if (e.key === shortcutKey && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpenStates((prev) => ({

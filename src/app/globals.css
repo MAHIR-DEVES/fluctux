@@ -14,7 +14,7 @@
   /* text & labels */
   --foreground: #000000;
   --label-text-color: #747474;
-  --secondary-label-text-color: #717171;
+  --secondary-label-text-color: #979797;
 
   /* radius */
   --primary-radius: 8px;
@@ -69,7 +69,7 @@
   --secondary-separator-color: white;
 
   /* scrollbar color */
-  --scrollbar-color: #0a0a0a;
+  --scrollbar-color: #a7a7a7;
 
   /* transparents */
   --primary-purple-transparent: #5865f233;

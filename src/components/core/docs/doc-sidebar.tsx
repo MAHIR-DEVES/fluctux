@@ -11,6 +11,7 @@ import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon'
 import { DocNavListType } from '@/types/doc-types'
 import { useDispatch } from 'react-redux'
 import { setPagination } from '@/redux/pagination/docPaginateSlice'
+import { FLUCTUX_VERSION } from '@/constants/fluctux-version'
 
 
 interface DocSidebarPropsType {
@@ -63,7 +64,10 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <div className='p-2 rounded-[5px] border fx-primary-purple-border-50'>
                     <FxFavIcon size='sm' variant='default' />
                 </div>
-                <span className='font-medium'>Fluctux</span>
+                <div>
+                <p className='font-medium'>Fluctux</p>
+                <p>Version: {FLUCTUX_VERSION}</p>
+                </div>
             </FxButton>
 
             <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px]' initialValue={`${docType}`} closeMenuOnSelect={true} labelItemStyles={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerStyles={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />

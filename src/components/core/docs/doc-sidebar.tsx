@@ -66,7 +66,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 </div>
                 <div className='text-left'>
                 <p className='font-medium'>Fluctux</p>
-                <p className='fx-sec-label-color text-[13px]'>Version: {FLUCTUX_VERSION}</p>
+                <p className='fx-sec-label-color text-[13px]'>v{FLUCTUX_VERSION}</p>
                 </div>
             </FxButton>
 

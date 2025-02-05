@@ -1,1 +1,1 @@
-export const FLUCTUX_VERSION = "1.2.0"
+export const FLUCTUX_VERSION = "1.2.3"

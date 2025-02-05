@@ -61,8 +61,8 @@ export default async function Layout({
     return (
         <>
 
-            <div className='fx-flex-ct pl-2 pr-2'>
-                <div className='fx-flex-between-it max-w-[1200px] w-full gap-5'>
+            <div className='fx-flex-ct pl-2 pr-2 doc-main-layout-wrapper'>
+                <div className='fx-flex-between-it max-w-[1200px] w-full gap-5 doc-main-layout-container'>
 
                     <DocSidebar docType={doctype} data={data} />
                     <main className='w-full h-fit'>

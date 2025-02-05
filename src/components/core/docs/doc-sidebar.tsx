@@ -57,16 +57,16 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
     }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
 
-    return <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
-        <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
+    return <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0 doc-aside-nav'>
+        <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2 pb-16 doc-aside-nav-container'>
 
             <FxButton variant='secondary' className='w-full fx-flex-cl gap-2 p-2 mb-3 ' radius='primary' >
                 <div className='p-2 rounded-[5px] border fx-primary-purple-border-50'>
                     <FxFavIcon size='sm' variant='default' />
                 </div>
                 <div className='text-left'>
-                <p className='font-medium'>Fluctux</p>
-                <p className='fx-sec-label-color text-[13px]'>v{FLUCTUX_VERSION}</p>
+                    <p className='font-medium'>Fluctux</p>
+                    <p className='fx-sec-label-color text-[13px]'>v{FLUCTUX_VERSION}</p>
                 </div>
             </FxButton>
 
@@ -77,11 +77,11 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
                         {
                             navItem.type === "dir" ?
-
                                 <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
                                     <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
                                     <RightArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
-                                </button> : <Link key={i} href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
+                                </button>
+                                : <Link key={i} href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
 
                                     <button className={`font-medium mb-2 hover:fx-primary-purple-transparent-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
                                         <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>

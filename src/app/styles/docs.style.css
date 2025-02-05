@@ -13,3 +13,50 @@
 .hover\:doc-hide-scrollbar-show:hover::-webkit-scrollbar {
   display: block; /* For Chrome, Safari, and Opera */
 }
+
+@media screen and (max-width: 1080px) {
+  .doc-aside-nav {
+    position: fixed !important;
+    top: 0;
+    left: -100%;
+    border-right: 1px solid var(--primary-border-color);
+    z-index: 9;
+    padding-left: 8px;
+  }
+
+  .doc-aside-nav-container {
+    height: calc(100% - 75px) !important;
+  }
+
+  .doc-main-layout-wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .doc-on-this-page-aside{
+    position: fixed;
+    top: 0;
+    right: 100%;
+    background-color: var(--background);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 1px solid var(--primary-border-color);
+  }
+
+  .doc-on-this-page-aside-container{
+    height: calc(100% - 75px) !important;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .doc-pagination{
+    flex-wrap: wrap;
+  }
+
+  .doc-paginate-btn{
+    height: 50px;
+  }
+}

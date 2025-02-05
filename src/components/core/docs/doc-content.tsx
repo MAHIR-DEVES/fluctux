@@ -97,13 +97,13 @@ export default function DocContent({ data }: DocContentPropsType) {
 
 
             <div className='border-t mt-10 fx-border-color'>
-                <div className='w-full fx-flex-center gap-2 mt-5'>
+                <div className='w-full fx-flex-center gap-2 mt-5 doc-pagination'>
 
                     {
                         prev &&
 
                         <Link href={`/docs/${prev?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full'>
-                            <div className='w-full h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2'>
+                            <div className='w-full doc-paginate-btn h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2'>
                                 <div className='fx-flex-cl'>
                                     <RightArrowIcon className='rotate-180' />
                                     <p className='fx-label-color font-medium text-[15px]'>Previous</p>
@@ -116,9 +116,8 @@ export default function DocContent({ data }: DocContentPropsType) {
 
                     {
                         next &&
-
                         <Link href={`/docs/${next?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full'>
-                            <div className='w-full h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2'>
+                            <div className='w-full doc-paginate-btn h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2'>
                                 <div className='fx-flex-cr'>
                                     <p className='fx-label-color font-medium text-[15px]'>Next</p>
                                     <RightArrowIcon />
@@ -153,8 +152,6 @@ export default function DocContent({ data }: DocContentPropsType) {
                         <div className='border fx-border-color rounded-[50px] p-1 gap-2 fx-flex-center w-fit fx-secondary-bg fx-secondary-hover-bg'>
                             <span className='fx-sec-label-color text-[14px] font-medium ml-2'>Was this helpful?</span>
                             <div className='fx-flex-center w-fit'>
-
-
                                 <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-secondary-bg'>
                                     <StarFaceIcon />
                                 </span>
@@ -175,8 +172,8 @@ export default function DocContent({ data }: DocContentPropsType) {
             </div>
         </div>
 
-        <aside className=' w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px]'>
-            <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar hover:doc-hide-scrollbar-show pb-16'>
+        <aside className=' w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px] doc-on-this-page-aside'>
+            <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar hover:doc-hide-scrollbar-show pb-16 doc-on-this-page-aside-container'>
                 <div className='fx-flex-cl gap-2 sticky top-0 fx-primary-bg pb-1'>
                     <TextAlignLeftIcon width={15} height={15} />
                     <h3 className='font-medium'>On this page</h3>

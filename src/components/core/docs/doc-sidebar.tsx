@@ -60,13 +60,13 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     return <aside className='w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0'>
         <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2'>
 
-            <FxButton variant='secondary' className='w-full fx-flex-tl gap-2 p-2 mb-3 ' radius='primary' >
+            <FxButton variant='secondary' className='w-full fx-flex-cl gap-2 p-2 mb-3 ' radius='primary' >
                 <div className='p-2 rounded-[5px] border fx-primary-purple-border-50'>
                     <FxFavIcon size='sm' variant='default' />
                 </div>
-                <div>
+                <div className='text-left'>
                 <p className='font-medium'>Fluctux</p>
-                <p>Version: {FLUCTUX_VERSION}</p>
+                <p className='fx-sec-label-color text-[13px]'>Version: {FLUCTUX_VERSION}</p>
                 </div>
             </FxButton>
 

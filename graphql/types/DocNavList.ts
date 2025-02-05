@@ -4,6 +4,8 @@ import {
   docNavTreeListResolver,
 } from "../resolvers/doc.resolver";
 
+// Extracts name, path, and type from the GitHub query response.
+
 const DocNavTreeItem = objectType({
   name: "DocNavTreeItem",
   definition(t) {

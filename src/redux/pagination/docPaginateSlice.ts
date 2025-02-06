@@ -16,8 +16,6 @@ export const docPaginateSlice = createSlice({
   name: "docPaginate",
   initialState,
   reducers: {
-    // const prevDoc = currentIndex > 0 ? flatDocList[currentIndex - 1] : null;
-    // const nextDoc = currentIndex < flatDocList.length - 1 ? flatDocList[currentIndex + 1] : null;
     setPagination: (
       state,
       action: PayloadAction<{

@@ -6,21 +6,14 @@ import { SizeType } from "@/components/ui/type";
 import PRIMARY_DARK_LOGO from '../../../public/fluctux-logo-transparent.png'
 import PRIMARY_LIGHT_LOGO from '../../../public/fluctux-logo-transparent-light.png'
 
-// type LogoThemeType = "WHITE" | "DARK";
 type LogoType = "default" | "primaryDark" | "primaryLight" | "secondary"
 
 
 interface LogoPropsType extends React.ImgHTMLAttributes<HTMLImageElement> {
-  // color?: keyof typeof LogoColorAttributes;
   size?: keyof typeof logoSize;
   variant?: keyof typeof logoType
   className?: string
 }
-
-// const LogoColorAttributes: { [key in LogoThemeType]: string } = {
-//   WHITE: "invert-0",
-//   DARK: "invert",
-// };
 
 const logoType: { [key in LogoType]: StaticImageData } = {
   default: PRIMARY_DARK_LOGO,
@@ -37,10 +30,6 @@ const logoSize: { [key in SizeType]: string } = {
 };
 
 export default function FxLogo({ size, variant, className }: LogoPropsType) {
-
-  // const imageColor = color
-  //   ? LogoColorAttributes[color]
-  //   : LogoColorAttributes.WHITE;
 
   const imageSize = size ? logoSize[size] : "";
   const logoVariant = variant ? logoType[variant] : logoType.secondary

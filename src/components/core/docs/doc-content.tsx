@@ -2,7 +2,7 @@
 
 import { TextAlignLeftIcon } from '@/components/ui/icons/text-allign-left-icon'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { StarFaceIcon } from '@/components/ui/icons/star-face-icon'
 import { SmileIcon } from '@/components/ui/icons/smile-icon'
 import { SadIcon } from '@/components/ui/icons/sad-icon'
@@ -17,13 +17,14 @@ import { SolidLineIcon } from '@/components/ui/icons/solid-line-icon'
 import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import useProcessMDX from '@/app/hooks/useProcessMDX'
+import useGetAnchors from '@/app/hooks/useGetAnchors'
 
 interface DocContentPropsType {
     data: string
 }
 export default function DocContent({ data }: DocContentPropsType) {
     const { content } = useProcessMDX(data)
-    const [anchors, setAnchors] = useState<string[]>([]);
+    const { anchors } = useGetAnchors(content)
     const path_name = usePathname()
     const { prev, next } = useSelector((state: RootState) => state.docPaginate);
     const { isOpen: isDocOnPageOpen, setOpen: setDocOnPageOpen, toggle: toggleDocOnPageOpen } = useToggleOpen({
@@ -34,28 +35,6 @@ export default function DocContent({ data }: DocContentPropsType) {
         window.scrollTo({
             top: 0,
         });
-    }, [path_name])
-
-    useEffect(() => {
-        const headingLinks: string[] = []; // Temporary array to hold the anchor labels
-
-        const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-        headings.forEach((heading) => {
-            const id = heading.getAttribute("id");
-            if (id) {
-                const formattedText = id
-                    .split("-") // Split the string by "-"
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
-                    .join(" "); // Join the words back with spaces
-
-                headingLinks.push(formattedText);
-            }
-        });
-
-        setAnchors(headingLinks); // Set the anchors state with the updated array
-    }, [content])
-
-    useEffect(() => {
         setDocOnPageOpen(false)
     }, [path_name])
 

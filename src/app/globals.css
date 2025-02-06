@@ -307,6 +307,12 @@ body {
       inset 0 0 0 1px var(--background);
   }
 
+  .shborder-secondary {
+    box-shadow:
+      0 0 0 1px var(--primary-border-color),
+      inset 0 0 0 1px var(--secondary-bg);
+  }
+
   .fx-layout-h-exc-hdr-app {
     height: calc(100vh - 61px);
   }

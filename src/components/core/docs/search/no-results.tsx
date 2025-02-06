@@ -1,5 +1,4 @@
 "use client"
-import FxButton from "@/components/ui/fxbutton";
 import { CodeIcon } from "@/components/ui/icons/code-icon";
 import { RightArrowIcon } from "@/components/ui/icons/right-arrow-icon";
 import { SadIcon } from "@/components/ui/icons/sad-icon";
@@ -11,7 +10,7 @@ export default function NoResults() {
     const { indexUiState } = useInstantSearch();
 
     return (
-        <div className="p-3 w-full h-full fx-flex-center flex-col">
+        <div className="p-3 w-full h-[calc(100%-50px)] fx-flex-center flex-col">
             <div className="fx-flex-center gap-2 max-w-[500px] w-full ">
                 <SadIcon width={24} height={24} className="flex-shrink-0" />
                 <p className="text-[20px] font-medium fx-label-color one-line-ellipsis">
@@ -19,10 +18,14 @@ export default function NoResults() {
                 </p>
             </div>
 
-            <div className="max-w-[500px] w-full mt-10">
+<div className="max-w-[500px] w-full mt-10">
+
+
+            <p className="text-[14px] fx-sec-label-color font-medium">Navigate to:</p>
+            <ul className=" w-full mt-1 border fx-border-color overflow-hidden  fx-rounded">
             {/* Fluctux is an advanced open source work and project management platform where users can join both public & private organizations, collaborate in teams, make friends, and share their daily work—all in one place. */}
                 <Link href={""}>
-                    <FxButton variant="secondary" radius="primary" className="w-full p-3 fx-flex-between-ic gap-3 mt-3">
+                    <li className="w-full p-3 fx-flex-between-ic gap-3 border-b fx-border-color fx-label-color hover:text-[var(--foreground)]  fx-secondary-hover-bg">
                         <div className="fx-flex-cl gap-2">
                             <UserIcon />
                             <p>
@@ -33,10 +36,10 @@ export default function NoResults() {
                         <div className="w-[20px] flex-shrink-0">
                             <RightArrowIcon/>
                         </div>
-                    </FxButton>
+                    </li>
                 </Link>
                 <Link href={""}>
-                    <FxButton variant="secondary" radius="primary" className="w-full p-3 fx-flex-between-ic gap-3 mt-3">
+                    <li className="w-full p-3 fx-flex-between-ic gap-3 fx-label-color hover:text-[var(--foreground)]  fx-secondary-hover-bg">
                         <div className="fx-flex-cl gap-2">
 
                             <CodeIcon />
@@ -48,8 +51,9 @@ export default function NoResults() {
                         <div className="w-[20px] flex-shrink-0">
                             <RightArrowIcon/>
                         </div>
-                    </FxButton>
+                    </li>
                 </Link>
+            </ul>
             </div>
         </div>
     );

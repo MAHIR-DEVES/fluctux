@@ -3,7 +3,6 @@ import ApiResponse from "@/utils/ApiResponse";
 import ArcjetHandler from "@/utils/ArcjetHandler";
 import { NextRequest, NextResponse } from "next/server";
 
-
 const arcjectHandler = new ArcjetHandler({
   VALIDATE_EMAIL: true,
 });

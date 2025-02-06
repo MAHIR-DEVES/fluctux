@@ -2,15 +2,7 @@
 
 import { TextAlignLeftIcon } from '@/components/ui/icons/text-allign-left-icon'
 import Link from 'next/link'
-import React, { useCallback, useEffect, useState } from 'react'
-import rehypeFormat from 'rehype-format'
-import rehypeStringify from 'rehype-stringify'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import rehypeSlug from 'rehype-slug'
-import { unified } from 'unified'
-import rehypePrettyCode from "rehype-pretty-code";
-import { transformerCopyButton } from '@rehype-pretty/transformers'
+import React, { useEffect, useState } from 'react'
 import { StarFaceIcon } from '@/components/ui/icons/star-face-icon'
 import { SmileIcon } from '@/components/ui/icons/smile-icon'
 import { SadIcon } from '@/components/ui/icons/sad-icon'
@@ -24,49 +16,25 @@ import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
 import { SolidLineIcon } from '@/components/ui/icons/solid-line-icon'
 import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
+import useProcessMDX from '@/app/hooks/useProcessMDX'
 
 interface DocContentPropsType {
     data: string
 }
 export default function DocContent({ data }: DocContentPropsType) {
-    const [content, setContent] = useState("")
+    const { content } = useProcessMDX(data)
     const [anchors, setAnchors] = useState<string[]>([]);
     const path_name = usePathname()
     const { prev, next } = useSelector((state: RootState) => state.docPaginate);
-    const {isOpen: isDocOnPageOpen, setOpen: setDocOnPageOpen, toggle: toggleDocOnPageOpen} = useToggleOpen({
+    const { isOpen: isDocOnPageOpen, setOpen: setDocOnPageOpen, toggle: toggleDocOnPageOpen } = useToggleOpen({
         id: "doc-on-the-page"
     })
 
-
-    const processContent = useCallback(async () => {
-        const processedData = await unified()
-            .use(remarkParse)
-            .use(remarkRehype)
-            .use(rehypeFormat)
-            .use(rehypeStringify)
-            .use(rehypeSlug) // Generates IDs automatically
-            .use(rehypePrettyCode, {
-                theme: 'material-theme-ocean',
-                transformers: [
-                    transformerCopyButton({
-                        visibility: 'always',
-                        feedbackDuration: 2_000,
-                    }),
-                ],
-            })
-            .process(data)
-
-        const htmlContent = processedData.toString()
-        setContent(htmlContent)
-
-    }, [data])
-
     useEffect(() => {
-        processContent()
         window.scrollTo({
             top: 0,
         });
-    }, [processContent])
+    }, [path_name])
 
     useEffect(() => {
         const headingLinks: string[] = []; // Temporary array to hold the anchor labels
@@ -87,7 +55,7 @@ export default function DocContent({ data }: DocContentPropsType) {
         setAnchors(headingLinks); // Set the anchors state with the updated array
     }, [content])
 
-    useEffect(() =>{
+    useEffect(() => {
         setDocOnPageOpen(false)
     }, [path_name])
 

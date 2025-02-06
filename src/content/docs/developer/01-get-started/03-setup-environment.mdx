@@ -13,3 +13,13 @@ Before you begin, ensure you have the following installed on your machine:
 ## Step 1: Clone the Repository
 
 First, clone the Fluctux repository from GitHub:
+
+```javascript
+const { content } = useProcessMDX(data)
+    const [anchors, setAnchors] = useState<string[]>([]);
+    const path_name = usePathname()
+    const { prev, next } = useSelector((state: RootState) => state.docPaginate);
+    const { isOpen: isDocOnPageOpen, setOpen: setDocOnPageOpen, toggle: toggleDocOnPageOpen } = useToggleOpen({
+        id: "doc-on-the-page"
+    })
+```

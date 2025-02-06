@@ -1,65 +1,44 @@
+import { useCallback, useEffect, useState } from 'react'
 import rehypeFormat from 'rehype-format'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
+import rehypeSlug from 'rehype-slug'
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from '@rehype-pretty/transformers'
 
-export default function useProcessMDX() {
+export default function useProcessMDX(data: string) {
+    const [content, setContent] = useState("")
+    const processContent = useCallback(async () => {
+        const processedData = await unified()
+            .use(remarkParse)
+            .use(remarkRehype)
+            .use(rehypeFormat)
+            .use(rehypeStringify)
+            .use(rehypeSlug) // Generates IDs automatically
+            .use(rehypePrettyCode, {
+                theme: 'material-theme-ocean',
+                transformers: [
+                    transformerCopyButton({
+                        visibility: 'always',
+                        feedbackDuration: 2_000,
+                    }),
+                ],
+            })
+            .process(data)
 
-    const data = async (url: string) => {
-        try {
-            const response = await fetch(
-                url,
-                {
-                    cache: 'no-cache'
-                }
-            );
+        const htmlContent = processedData.toString()
+        setContent(htmlContent)
 
-            if (!response.ok) return {error: "Error fetching data"}
-            const textData = await response.text(); // Use .text() for plain text like README
+    }, [data])
 
-            const processedData = await unified()
-                .use(remarkParse)
-                .use(remarkRehype)
-                .use(rehypeFormat)
-                .use(rehypeStringify)
-                .process(`${textData}`)
-
-            return {data: processedData.toString()}
-
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (error) {
-            return {error: "Error processing data"}
-        }
-
-    }
-
-    // get data of folders
-    // const getData = useCallback(async () => {
-    //     try {
-    //         const response = await fetch(
-    //             "https://api.github.com/repos/gitmahin/graphQL-with-nextjs-ssr/contents/src/graphql",
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
-    //                 }
-    //             }
-    //         );
-    //         if (!response.ok) throw new Error("Failed to fetch");
-    //         const data = await response.json();
-    //         // const content = atob(data.content); // Decode base64 content
-    //         // console.log(content);
-    //         console.log(data);
-
-
-    //     } catch (error) {
-    //         console.error(error.message);
-    //     }
-
-    // }, [])
+    useEffect(() => {
+        processContent()
+    }, [processContent])
 
     return {
-        data
+        content
     }
 }
 

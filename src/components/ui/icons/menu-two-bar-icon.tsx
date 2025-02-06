@@ -1,0 +1,18 @@
+import React from "react";
+import { SvgSizeInSQR, SvgType } from "./type";
+
+export const MenuTwoBarIcon: React.FC<SvgType> = ({
+
+    width = SvgSizeInSQR.PRIMARY,
+    height = SvgSizeInSQR.PRIMARY,
+    className,
+    ...props
+
+}) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={width}
+        height={height}
+        className={className} viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/1999/xlink" color="#b1b1b1"  {...props}>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3 8.5C3 7.94772 3.44772 7.5 4 7.5L20 7.5C20.5523 7.5 21 7.94772 21 8.5C21 9.05229 20.5523 9.5 20 9.5L4 9.5C3.44772 9.5 3 9.05228 3 8.5Z" fill="#b1b1b1"></path>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3 15.5C3 14.9477 3.44772 14.5 4 14.5L20 14.5C20.5523 14.5 21 14.9477 21 15.5C21 16.0523 20.5523 16.5 20 16.5L4 16.5C3.44772 16.5 3 16.0523 3 15.5Z" fill="#b1b1b1"></path>
+    </svg>
+)

@@ -15,13 +15,22 @@
 }
 
 @media screen and (max-width: 1080px) {
+  .doc-aside-toggle-btn{
+    display: flex;
+  }
   .doc-aside-nav {
+    width: 260px ;
     position: fixed !important;
     top: 0;
-    left: -100%;
+  
     border-right: 1px solid var(--primary-border-color);
     z-index: 9;
     padding-left: 8px;
+    padding-right: 10px;
+  }
+
+  .doc-aside-nav-off{
+    left: -244px;
   }
 
   .doc-aside-nav-container {
@@ -32,18 +41,56 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  .doc-search-button{
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .desktop-doc-search{
+    display: none;
+  }
+
+  .doc-search-button{
+    padding: 0px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .mobile-doc-search{
+    display: flex;
+  }
 }
 
 
 @media screen and (max-width: 800px) {
+
+  .doc-aside-onpage-toggle-btn{
+    display: flex;
+  }
+
+  .doc-aside-loading{
+    display: none;
+  }
   .doc-on-this-page-aside{
-    position: fixed;
-    top: 0;
-    right: 100%;
+    width: 230px;
+    position: fixed !important;
+    right: -215px;
     background-color: var(--background);
-    padding-left: 10px;
+    padding-left: 20px;
     padding-right: 10px;
     border-left: 1px solid var(--primary-border-color);
+    transition: .15s ease-out;
+  }
+
+  .doc-onthispage-aside-open{
+    right: 0;
   }
 
   .doc-on-this-page-aside-container{
@@ -58,5 +105,15 @@
 
   .doc-paginate-btn{
     height: 50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .edit-page-github{
+    flex-wrap: wrap;
+  }
+
+  .edit-page-github-btn{
+    width: 100%;
   }
 }

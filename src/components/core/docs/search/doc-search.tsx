@@ -28,14 +28,17 @@ export default function DocSearchComponent() {
     }, [path_name])
 
     return <>
-        <FxButton onClick={() => setSearchBoxOpen(true)} variant='secondary' className='pl-2 pr-2 h-[35px] fx-flex-between-ic gap-36 fx-third-bg' radius='tablet'>
-            <div className='fx-flex-cl gap-3'>
+        <FxButton onClick={() => setSearchBoxOpen(true)} variant='secondary' className='pl-2 pr-2 h-[35px] fx-flex-between-ic gap-36 fx-third-bg doc-search-button' radius='tablet'>
+            <div className='fx-flex-cl gap-3 desktop-doc-search'>
                 <SearchIcon />
                 <span className='fx-sec-label-color'>Search documentation...</span>
             </div>
-            <div className='fx-flex-cr pr-2 gap-1'>
+            <div className='fx-flex-cr pr-2 gap-1 desktop-doc-search'>
                 <CommandKeyIcon width={15} height={15} />
                 <span className='text-[13px] fx-label-color'>Ctrl+k</span>
+            </div>
+            <div className='hidden mobile-doc-search'>
+                <SearchIcon />
             </div>
         </FxButton>
 

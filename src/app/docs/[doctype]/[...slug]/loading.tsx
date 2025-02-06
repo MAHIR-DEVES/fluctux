@@ -44,7 +44,7 @@ export default function Loading() {
         ))}
       </div>
 
-      <div className=' w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px]'>
+      <div className=' w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px] doc-aside-loading'>
         <div className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar hover:doc-hide-scrollbar-show pb-16'>
           <div className='fx-label-color leading-7'>
             {

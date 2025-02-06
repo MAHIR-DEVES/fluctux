@@ -21,6 +21,9 @@ import { usePathname } from 'next/navigation'
 import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon'
 import FxButton from '@/components/ui/fxbutton'
 import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
+import { SolidLineIcon } from '@/components/ui/icons/solid-line-icon'
+import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
+import useToggleOpen from '@/app/hooks/useToggleOpen'
 
 interface DocContentPropsType {
     data: string
@@ -30,6 +33,9 @@ export default function DocContent({ data }: DocContentPropsType) {
     const [anchors, setAnchors] = useState<string[]>([]);
     const path_name = usePathname()
     const { prev, next } = useSelector((state: RootState) => state.docPaginate);
+    const {isOpen: isDocOnPageOpen, setOpen: setDocOnPageOpen, toggle: toggleDocOnPageOpen} = useToggleOpen({
+        id: "doc-on-the-page"
+    })
 
 
     const processContent = useCallback(async () => {
@@ -81,6 +87,10 @@ export default function DocContent({ data }: DocContentPropsType) {
         setAnchors(headingLinks); // Set the anchors state with the updated array
     }, [content])
 
+    useEffect(() =>{
+        setDocOnPageOpen(false)
+    }, [path_name])
+
     return <section className='fx-flex-ct gap-5 relative w-full h-full'>
         <div className='mt-[64px] pt-10 w-full'>
             <div className='w-fit mb-8'>
@@ -131,13 +141,13 @@ export default function DocContent({ data }: DocContentPropsType) {
 
                 {
                     data !== "404: Not Found" &&
-                    <div className='w-full mt-5 border fx-rounded fx-border-color p-3 fx-flex-between-ic gap-3'>
+                    <div className='w-full mt-5 border fx-rounded fx-border-color p-3 fx-flex-between-ic gap-3 edit-page-github'>
                         <div className='max-w-[500px] w-full'>
                             <h4 className='fx-label-color text-[16px] font-medium'>Edit this page on Github?</h4>
                             <p className='fx-sec-label-color text-[14px] font-medium pt-2'>If you find any mistakes or areas that need updating, feel free to edit and contribute improvements to the documentation!</p>
                         </div>
-                        <Link href={`https://github.com/gitmahin/fluctux/tree/main/src/content${path_name}.mdx`} target='_blank' >
-                            <FxButton variant='secondary' radius='primary' size='md' className='fx-flex-center gap-2'>
+                        <Link href={`https://github.com/gitmahin/fluctux/tree/main/src/content${path_name}.mdx`} target='_blank' className='edit-page-github-btn'>
+                            <FxButton variant='secondary' radius='primary' size='md' className='fx-flex-center gap-2 edit-page-github-btn'>
 
                                 <span className='font-medium'>Edit</span>
                                 <GithubCircleIcon />
@@ -172,7 +182,11 @@ export default function DocContent({ data }: DocContentPropsType) {
             </div>
         </div>
 
-        <aside className=' w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px] doc-on-this-page-aside'>
+        <aside className={`w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px] doc-on-this-page-aside ${isDocOnPageOpen && "doc-onthispage-aside-open"}`}>
+            <div onClick={toggleDocOnPageOpen} className={`w-[15px] hidden absolute left-0 top-0 h-screen justify-center items-center doc-aside-onpage-toggle-btn`}>
+                <SolidLineIcon className={`absolute ${isDocOnPageOpen && "hidden"}`} width={34} height={34} />
+                <ArrowLeftSolidIcon className={`absolute rotate-180 ${!isDocOnPageOpen && "hidden"} `} />
+            </div>
             <nav className='h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar hover:doc-hide-scrollbar-show pb-16 doc-on-this-page-aside-container'>
                 <div className='fx-flex-cl gap-2 sticky top-0 fx-primary-bg pb-1'>
                     <TextAlignLeftIcon width={15} height={15} />
@@ -183,7 +197,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     {
                         anchors.map((item, i) => {
                             return <Link href={`#${item.toLowerCase().replace(/\s+/g, "-")}`} key={i} className='dark:hover:text-white hover:text-black'>
-                                <li className='one-line-ellipsis'>{item}</li>
+                                <li onClick={() => setDocOnPageOpen(false)} className='one-line-ellipsis'>{item}</li>
                             </Link>
 
                         })

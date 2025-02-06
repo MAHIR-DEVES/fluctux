@@ -44,16 +44,15 @@ export async function generateStaticParams() {
     // algolia indexing objects algorithm
     // TODO: Uncomment this logic; otherwise, the docs won't be indexed in Algolia.
     // try {
-    //   params.flat().map(async (item) => {
-    //     await algolia.indexDocNavLists(
-    //       {
-    //         label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString(),
-    //         slug: `${item.docType}/${item.slug.join("/").toString()}`,
-    //         type: item.docType.toString()
+    //   const arrayOfData = params.flat().map((item) => ({
 
-    //       }
-    //     )
-    //   })
+    //     label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString() || "",
+    //     slug: `${item.docType}/${item.slug.join("/").toString()}` || "",
+    //     type: item.docType.toString() || ""
+
+    //   }))
+
+    //   await algolia.indexDocNavLists(arrayOfData)
     //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
     // } catch (error) {
     //   throw new Error("Error indexing data to Algolia")

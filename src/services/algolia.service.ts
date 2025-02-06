@@ -1,15 +1,14 @@
 import { writeAlgolia } from "@/helpers/algolia/write.helper";
 import { DOC_INDEX_NAME } from "./constant";
 
-interface IndexDocNavListsType {
-  [key: string]: unknown; // Add this line
-  // other properties...
+interface IndexDocNavListsType extends Record<string, string> {
+  label: string;
+  slug: string;
+  type: string;
 }
 
 class Algolia {
-  async indexDocNavLists(data: IndexDocNavListsType) {
-   
-
+  async indexDocNavLists(data: IndexDocNavListsType[]) {
     const indexExists = await writeAlgolia.indexExists({
       indexName: DOC_INDEX_NAME,
     });
@@ -21,14 +20,14 @@ class Algolia {
     if (data) {
       await writeAlgolia.saveObjects({
         indexName: DOC_INDEX_NAME,
-        objects: [data],
+        objects: data,
       });
 
       await writeAlgolia.setSettings({
         indexName: DOC_INDEX_NAME,
         indexSettings: {
           searchableAttributes: ["label", "slug"],
-          attributesForFaceting: ['type']
+          attributesForFaceting: ["type"],
         },
       });
     }

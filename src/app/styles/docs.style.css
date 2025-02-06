@@ -44,6 +44,7 @@
 
   .doc-search-button{
     gap: 30px;
+
   }
 }
 
@@ -66,6 +67,42 @@
   .mobile-doc-search{
     display: flex;
   }
+
+  .doc-search-button{
+    gap: 30px;
+    background-color: transparent;
+    border: none;
+  }
+
+
+  .docs-header{
+    justify-content: right;
+    padding-right: 80px;
+  }
+
+  .doc-header-logo{
+    width: 100%;
+  }
+
+  .doc-header-menu-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .doc-header-menu{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    padding: 0px 15px ;
+    width: 220px;
+    justify-content: center;
+    background-color: var(--third-bg);
+    border-left: 1px solid var(--primary-border-color);
+  }
+
+  
+
 }
 
 

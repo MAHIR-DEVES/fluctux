@@ -11,7 +11,7 @@ export default function NoResults() {
     const { indexUiState } = useInstantSearch();
 
     return (
-        <div className="p-3 w-full h-screen fx-flex-center flex-col">
+        <div className="p-3 w-full h-full fx-flex-center flex-col">
             <div className="fx-flex-center gap-2 max-w-[500px] w-full ">
                 <SadIcon width={24} height={24} className="flex-shrink-0" />
                 <p className="text-[20px] font-medium fx-label-color one-line-ellipsis">

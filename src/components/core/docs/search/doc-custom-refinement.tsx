@@ -32,9 +32,9 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
         <>
 
 
-            <ul className='fx-flex-cl gap-2 pl-2'>
+            <ul className='fx-flex-cl gap-2 pl-2 pr-2 overflow-x-auto'>
                 {items.map((item) => (
-                    <li key={item.label} className={`${item.isRefined ? "fx-third-bg text-[var(--foreground)]" : "fx-label-color"} font-medium p-2  pt-1 pb-1 rounded-[5px] `}>
+                    <li key={item.label} className={`${item.isRefined ? "fx-third-bg text-[var(--foreground)]" : "fx-label-color"} font-medium p-2  pt-1 pb-1 rounded-[5px] flex-shrink-0`}>
                         <label className='cursor-pointer flex flex-col justify-center items-start' >
                             <input
                                 className='hidden'

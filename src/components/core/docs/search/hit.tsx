@@ -16,7 +16,7 @@ interface HitProps {
 export default function Hit({ hit }: HitProps) {
     return (
 
-        <ul className='pl-3 pr-3 space-y-6 w-full pt-3'>
+        <div className='pl-3 pr-3  w-full pt-3'>
             <Link href={`/docs/${hit.slug}`} className='w-full'>
 
                 <li className='w-full p-4 fx-third-bg fx-rounded fx-flex-between-ic gap-2  font-medium fx-secondary-hover-bg group'>
@@ -40,7 +40,7 @@ export default function Hit({ hit }: HitProps) {
                     </div>
                 </li>
             </Link>
-        </ul>
+        </div>
 
     )
 }

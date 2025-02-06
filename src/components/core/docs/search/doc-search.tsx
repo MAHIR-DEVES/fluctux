@@ -44,7 +44,7 @@ export default function DocSearchComponent() {
 
         <FxCommandBox
             open={isSearchBoxOpen}
-            className='max-w-[700px] h-[500px] w-full'
+            className='max-w-[700px] h-[500px] w-full p-2'
         >
             <FxButton onClick={() => setSearchBoxOpen(false)} className='absolute right-[10px] top-[10px] z-10 fx-label-color font-medium text-[14px]' variant='secondary' size='sm' radius='primary' >
                 esc
@@ -76,12 +76,14 @@ export default function DocSearchComponent() {
                 </div>
 
                 <NoResultsBoundary fallback={<NoResults />}>
-                    <div className='w-full border-b fx-border-color sticky top-[50px] left-0 h-[70px] fx-flex-cl flex-shrink-0'>
+                    <div className='w-full border-b fx-border-color sticky top-[50px] left-0 h-[70px] fx-flex-cl flex-shrink-0 z-10'>
                         <DocCustomRefinementList sortBy={['name']} attribute='type' />
                     </div>
+                    <div className='h-full'>
 
-                    <div className='overflow-y-auto pb-3'>
+                    <div className='overflow-y-auto h-[calc(100%-120px)] pb-3 bg-transparent border-none'>
                         <Hits hitComponent={Hit} />
+                    </div>
                     </div>
                 </NoResultsBoundary>
             </InstantSearch>

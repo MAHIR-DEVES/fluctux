@@ -1,6 +1,5 @@
 "use client"
-import useThemeSwitcher from '@/app/hooks/useThemeSwitcher'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
 
 import FxLogo from '@/components/ui/fxlogo'
@@ -8,27 +7,35 @@ import FxSeparator from '@/components/ui/fxseparator'
 import FxButton from '@/components/ui/fxbutton'
 
 import DocSearchComponent from './search/doc-search'
+import { MenuTwoBarIcon } from '@/components/ui/icons/menu-two-bar-icon'
+import useToggleOpen from '@/app/hooks/useToggleOpen'
+import { usePathname } from 'next/navigation'
+import { CancelIcon } from '@/components/ui/icons/cancle-icon'
 
 export default function DocHeader() {
-    const { ThemeSwitcher } = useThemeSwitcher()
+    const path_name = usePathname()
+    const { isOpen: isDocHeaderMenuOpen, setOpen: setDocHeaderMenuOpen, toggle: toggleDocHeaderMenu } = useToggleOpen({
+        id: "doc-header-menu"
+    })
 
-    return <header className='fixed w-full h-[64px] fx-secondary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-50'>
-        <div className='fx-flex-cl gap-3'>
+    useEffect(() => {
+        setDocHeaderMenuOpen(false)
+    }, [path_name])
+
+    return <header className='fixed w-full h-[64px] fx-secondary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-50 docs-header'>
+        <div className='fx-flex-cl gap-3 doc-header-logo'>
             <FxLogo className='w-[90px]' variant="default" />
             <FxSeparator orientation='vertical' size='30px' />
             <span className='fx-label-color text-[20px] font-medium'>Docs</span>
         </div>
-        <div>
-            <DocSearchComponent/>
-        </div>
-        <div className='fx-flex-cr gap-3'>
+        <DocSearchComponent />
+        <div className={`fx-flex-cr gap-3 doc-header-menu transition-all duration-150 ease-out ${isDocHeaderMenuOpen ? "right-0" : "right-[-155px]"}`}>
+            <FxButton onClick={toggleDocHeaderMenu} className='w-[35px] h-[35px] rounded-[50%] flex-shrink-0 border-none bg-transparent hidden hover:fx-secondary-bg doc-header-menu-btn'>
+                <MenuTwoBarIcon className={`${isDocHeaderMenuOpen && "hidden"}`} />
+                <CancelIcon className={`${!isDocHeaderMenuOpen && "hidden"}`} />
+            </FxButton>
 
-            <div className="github-btn fx-flex-center w-fit gap-1 group cursor-pointer">
-
-                <GithubCircleIcon width={35} height={35} />
-                <span className='fx-label-color font-medium text-[16px] dark:group-hover:text-white group-hover:text-black'>1.4k</span>
-            </div>
-
+            <GithubCircleIcon width={35} height={35} />
             <FxButton variant='primary' className='w-[100px] h-[35px] fx-flex-center font-medium text-white' radius='tablet'>
                 Sign in
             </FxButton>
@@ -39,8 +46,9 @@ export default function DocHeader() {
           <Image src={""} width={250} height={250} alt='Profile' className='object-cover object-center w-full h-full  border fx-border-color  ' />
       </div> */}
 
-            {ThemeSwitcher()}
         </div>
+
+
     </header>
 }
 

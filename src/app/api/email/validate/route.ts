@@ -4,7 +4,10 @@ import ArcjetHandler from "@/utils/ArcjetHandler";
 import { NextRequest, NextResponse } from "next/server";
 
 const arcjectHandler = new ArcjetHandler({
-  VALIDATE_EMAIL: true,
+  VALIDATE_EMAIL: {
+    enable: true,
+    mode: "LIVE"
+  },
 });
 
 export async function POST(request: NextRequest) {

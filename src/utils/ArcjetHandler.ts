@@ -1,24 +1,60 @@
 import arcjet, {
+  ArcjetBotCategory,
   ArcjetDecision,
+  ArcjetEmailType,
+  ArcjetMode,
   ArcjetNext,
   ArcjetNextRequest,
+  ArcjetWellKnownBot,
   detectBot,
   slidingWindow,
   validateEmail,
 } from "@arcjet/next";
 
+interface SLIDING_WINDOW_Type {
+  enable: boolean;
+  mode?: ArcjetMode;
+  interval?: number;
+  max?: number;
+}
+
+interface DETECT_BOT_Type {
+  enable: boolean;
+  mode?: ArcjetMode;
+  allow?: ArcjetWellKnownBot[] | ArcjetBotCategory[];
+}
+
+interface VALIDATE_EMAIL_Type {
+  enable: boolean;
+  mode?: ArcjetMode;
+  block?: ArcjetEmailType[];
+}
+
 interface ArcjetHandlerConstructorType {
-  SLIDING_WINDOW?: boolean;
-  DETECT_BOT?: boolean;
-  VALIDATE_EMAIL?: boolean;
+  SLIDING_WINDOW?: SLIDING_WINDOW_Type;
+  DETECT_BOT?: DETECT_BOT_Type;
+  VALIDATE_EMAIL?: VALIDATE_EMAIL_Type;
 }
 
 class ArcjetHandler {
   private aj: ArcjetNext<{ email?: string }>;
   constructor({
-    SLIDING_WINDOW = false,
-    DETECT_BOT = false,
-    VALIDATE_EMAIL = false,
+    SLIDING_WINDOW = {
+      enable: false,
+      mode: "DRY_RUN",
+      interval: 300,
+      max: 5,
+    },
+    DETECT_BOT = {
+      enable: false,
+      mode: "DRY_RUN",
+      allow: [],
+    },
+    VALIDATE_EMAIL = {
+      enable: false,
+      mode: "DRY_RUN",
+      block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
+    },
   }: ArcjetHandlerConstructorType) {
     const rules: Exclude<
       ReturnType<
@@ -26,22 +62,21 @@ class ArcjetHandler {
       >,
       false
     >[] = [
-      SLIDING_WINDOW &&
+      SLIDING_WINDOW.enable &&
         slidingWindow({
-          mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-          interval: 300, // tracks requests across a 5min sliding window,
-          max: 5, // allow a maximum of 10 requests
+          mode: SLIDING_WINDOW.mode, // will block requests. Use "DRY_RUN" to log only
+          interval: SLIDING_WINDOW.interval!, // tracks requests across a 5min sliding window,
+          max: SLIDING_WINDOW.max!,
         }),
-      DETECT_BOT &&
+      DETECT_BOT.enable &&
         detectBot({
-          mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-          allow: [], // "allow none" will block all detected bots
+          mode: DETECT_BOT.mode, // will block requests. Use "DRY_RUN" to log only
+          allow: DETECT_BOT.allow || [], // "[] allow none" will block all detected bots
         }),
-      VALIDATE_EMAIL &&
+      VALIDATE_EMAIL.enable &&
         validateEmail({
-          mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-          // block disposable, invalid, and email addresses with no MX records
-          block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
+          mode: VALIDATE_EMAIL.mode, // will block requests. Use "DRY_RUN" to log only
+          block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"], // block disposable, invalid, and email addresses with no MX records
         }),
     ].filter(Boolean) as Exclude<
       ReturnType<
@@ -50,6 +85,7 @@ class ArcjetHandler {
       false
     >[];
 
+    // Initialized Arcjet with the defined rules
     this.aj = arcjet({
       key: process.env.ARCJET_KEY!,
       rules,
@@ -58,12 +94,11 @@ class ArcjetHandler {
 
   async protect(
     req: ArcjetNextRequest,
-    props?: { email: string }
+    props?: { email?: string }
   ): Promise<ArcjetDecision> {
-    if(props) return await this.aj.protect(req, props);
-    return await this.aj.protect(req, {});
+    if (props) return await this.aj.protect(req, props); // If props is provided, pass it to Arcjet
+    return await this.aj.protect(req, {}); // Otherwise, call protect without additional props
   }
-
 }
 
 export default ArcjetHandler;

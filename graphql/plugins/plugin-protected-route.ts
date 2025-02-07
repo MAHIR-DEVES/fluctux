@@ -1,6 +1,6 @@
 import { Plugin } from "graphql-yoga";
 
-export default function useProtectedGraphqlRoute(): Plugin {
+export default function useProtectedRoute(): Plugin {
   return {
     onRequest({ request, fetchAPI, endResponse }) {
       const route = request.url;

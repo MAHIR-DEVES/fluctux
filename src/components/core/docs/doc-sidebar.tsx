@@ -105,7 +105,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                     </Link>
                             }
 
-                            <div className={`ml-2 flex flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-200 ${isOpenFromArray(`${i}`) ? "max-h-[100%] mt-3 mb-3 " : "max-h-0 opacity-0"} overflow-hidden`}>
+                            <div className={`ml-2 flex flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-200 ${isOpenFromArray(`${i}`) ? "max-h-fit mt-3 mb-3 translate-y-0" : "max-h-0 opacity-0 translate-y-[-20px]"} overflow-hidden origin-top`}>
                                 {
                                     navItem.docNavTreeList?.map((navTreeItem, j) => {
                                         return <Link key={j} href={`/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`}>

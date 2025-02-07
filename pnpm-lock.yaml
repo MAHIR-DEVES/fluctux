@@ -26,6 +26,24 @@ importers:
       '@blocknote/xl-multi-column':
         specifier: ^0.22.0
         version: 0.22.0(@tiptap/pm@2.11.3)(@types/hast@3.0.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@escape.tech/graphql-armor-character-limit':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@escape.tech/graphql-armor-cost-limit':
+        specifier: ^2.4.0
+        version: 2.4.0
+      '@escape.tech/graphql-armor-max-aliases':
+        specifier: ^2.6.0
+        version: 2.6.0
+      '@escape.tech/graphql-armor-max-depth':
+        specifier: ^2.4.0
+        version: 2.4.0
+      '@escape.tech/graphql-armor-max-directives':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@escape.tech/graphql-armor-max-tokens':
+        specifier: ^2.5.0
+        version: 2.5.0
       '@firecms/neat':
         specifier: ^0.3.0
         version: 0.3.0(three@0.172.0)
@@ -392,6 +410,33 @@ packages:
   '@envelop/types@5.0.0':
     resolution: {integrity: sha512-IPjmgSc4KpQRlO4qbEDnBEixvtb06WDmjKfi/7fkZaryh5HuOmTtixe1EupQI5XfXO8joc3d27uUZ0QdC++euA==}
     engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-character-limit@2.3.0':
+    resolution: {integrity: sha512-k622KEnBgMXMXkwntCVmD3I9MDQjeJ0CjqeU2yV2Sh87MP9uf1QFVDeMUr9siGq9yUHTQojkHt3NN/TOh6gQWw==}
+    engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-cost-limit@2.4.0':
+    resolution: {integrity: sha512-B1s95ZFG1Xv4RtkQxpSe/tkFP2b0Cprvt8ZDnY7NddjRoI5kHy5aQt6n3g0erB9eMKXm17e0h+TcurMhVSTaPw==}
+    engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-max-aliases@2.6.0':
+    resolution: {integrity: sha512-9dwRC5+dl986byBD9QRYRUrLALa7awpUe4aIM1j7StZHGJgmYRj3LZaWQM3JyI8j2FXg4rqBC4FJAiVYpRyWqw==}
+    engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-max-depth@2.4.0':
+    resolution: {integrity: sha512-4sQkvPITjkSW4mReGyBT5A4qFkBTzyK9HGOLm8Rrte/JrulVAsokK8HWDr/2Yw0KqSFBMCAmy575YMaYoTHLvQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-max-directives@2.3.0':
+    resolution: {integrity: sha512-8tCJ5pymEOp6niKqqyWdiiuY2GDaei02FNj2Vx0dg/1uCnJbUcOZoL7YaAW6W7e3raY2kOWTK2wF4L/KY+fINw==}
+    engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-max-tokens@2.5.0':
+    resolution: {integrity: sha512-XypQs0NELYwmz/Mx9wVjw1riI3bvZyU2Ya4BnV0AIFLd9UYYl0BzuI4BSR46t5V2Sh73ePl6Ru1jj5rb4nfVOw==}
+    engines: {node: '>=18.0.0'}
+
+  '@escape.tech/graphql-armor-types@0.7.0':
+    resolution: {integrity: sha512-RHxyyp6PDgS6NAPnnmB6JdmUJ6oqhpSHFbsglGWeCcnNzceA5AkQFpir7VIDbVyS8LNC1xhipOtk7f9ycrIemQ==}
 
   '@eslint-community/eslint-utils@4.4.1':
     resolution: {integrity: sha512-s3O3waFUrMV8P/XaF/+ZTp1X9XBZW1a4B97ZnjQF2KYWaFD2A8KyFBsrsfSjEmjn3RGWAIuvlneuZm3CUK3jbA==}
@@ -4485,6 +4530,53 @@ snapshots:
   '@envelop/types@5.0.0':
     dependencies:
       tslib: 2.8.1
+
+  '@escape.tech/graphql-armor-character-limit@2.3.0':
+    dependencies:
+      graphql: 16.10.0
+    optionalDependencies:
+      '@envelop/core': 5.0.3
+      '@escape.tech/graphql-armor-types': 0.7.0
+
+  '@escape.tech/graphql-armor-cost-limit@2.4.0':
+    dependencies:
+      graphql: 16.10.0
+    optionalDependencies:
+      '@envelop/core': 5.0.3
+      '@escape.tech/graphql-armor-types': 0.7.0
+
+  '@escape.tech/graphql-armor-max-aliases@2.6.0':
+    dependencies:
+      graphql: 16.10.0
+    optionalDependencies:
+      '@envelop/core': 5.0.3
+      '@escape.tech/graphql-armor-types': 0.7.0
+
+  '@escape.tech/graphql-armor-max-depth@2.4.0':
+    dependencies:
+      graphql: 16.10.0
+    optionalDependencies:
+      '@envelop/core': 5.0.3
+      '@escape.tech/graphql-armor-types': 0.7.0
+
+  '@escape.tech/graphql-armor-max-directives@2.3.0':
+    dependencies:
+      graphql: 16.10.0
+    optionalDependencies:
+      '@envelop/core': 5.0.3
+      '@escape.tech/graphql-armor-types': 0.7.0
+
+  '@escape.tech/graphql-armor-max-tokens@2.5.0':
+    dependencies:
+      graphql: 16.10.0
+    optionalDependencies:
+      '@envelop/core': 5.0.3
+      '@escape.tech/graphql-armor-types': 0.7.0
+
+  '@escape.tech/graphql-armor-types@0.7.0':
+    dependencies:
+      graphql: 16.10.0
+    optional: true
 
   '@eslint-community/eslint-utils@4.4.1(eslint@9.19.0(jiti@1.21.7))':
     dependencies:

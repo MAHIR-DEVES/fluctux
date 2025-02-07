@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch';
+import { InstantSearch, SearchBox } from 'react-instantsearch';
 import FxCommandBox from '@/components/ui/fxcommandbox';
 import FxButton from '@/components/ui/fxbutton';
 import { SearchIcon } from '@/components/ui/icons/search-icon';
@@ -13,6 +13,7 @@ import Hit from './hit';
 import NoResultsBoundary from './no-results-boundary';
 import NoResults from './no-results';
 import { usePathname } from 'next/navigation';
+import { InfiniteHits } from './infinite-hit';
 
 
 export default function DocSearchComponent() {
@@ -82,7 +83,7 @@ export default function DocSearchComponent() {
                     <div className='h-full'>
 
                     <div className='overflow-y-auto h-[calc(100%-120px)] pb-3 bg-transparent border-none'>
-                        <Hits hitComponent={Hit} />
+                        <InfiniteHits hitComponent={Hit} />
                     </div>
                     </div>
                 </NoResultsBoundary>

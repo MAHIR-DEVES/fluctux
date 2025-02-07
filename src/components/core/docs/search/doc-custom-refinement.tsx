@@ -19,7 +19,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
 
     const handleCheckboxChange = (value: string) => {
         // Uncheck all items first
-        items.forEach(item => {
+        items.map(item => {
             if (item.isRefined) {
                 refine(item.value); // Uncheck the currently refined item
             }

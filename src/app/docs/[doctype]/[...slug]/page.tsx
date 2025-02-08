@@ -1,6 +1,6 @@
 import DocContent from '@/components/core/docs/doc-content';
 import { apolloClient } from '@/lib/apollo-client';
-import { DocNavListType } from '@/types/doc-types';
+import { DocNavListType } from '@/types/doc.types';
 import React from 'react'
 import { GET_DOC_NAV_LIST } from '../layout';
 import algolia from '@/services/algolia.service';

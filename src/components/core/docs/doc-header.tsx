@@ -11,6 +11,7 @@ import { MenuTwoBarIcon } from '@/components/ui/icons/menu-two-bar-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import { usePathname } from 'next/navigation'
 import { CancelIcon } from '@/components/ui/icons/cancle-icon'
+import Link from 'next/link'
 
 export default function DocHeader() {
     const path_name = usePathname()
@@ -35,10 +36,12 @@ export default function DocHeader() {
                 <CancelIcon className={`${!isDocHeaderMenuOpen && "hidden"}`} />
             </FxButton>
 
-            <GithubCircleIcon width={35} height={35} />
-            <FxButton variant='primary' className='w-[100px] h-[35px] fx-flex-center font-medium text-white' radius='tablet'>
-                Sign in
-            </FxButton>
+            <GithubCircleIcon width={35} height={35} color='var(--foreground)' />
+            <Link href={"/login"}>
+                <FxButton variant='primary' className='w-[100px] h-[35px] fx-flex-center font-medium text-white' radius='tablet'>
+                    Sign in
+                </FxButton>
+            </Link>
 
             {/* auth by session */}
             {/* <div className='group hover:outline outline-[3px] cursor-pointer outline-[var(--secondary-hover-bg)]  w-[35px] h-[35px] overflow-hidden rounded-[50%] flex-shrink-0'>

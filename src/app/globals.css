@@ -77,6 +77,9 @@
   /* loader */
   --skeleton-base-color: #0a0a0a;
   --skeleton-highlightColor: #2d2d2d;
+
+  /* svg */
+  --svg-default-color: #b1b1b1 ;
 }
 
 .dark {
@@ -133,6 +136,10 @@ body {
 @layer utilities {
   .fx-org-layout-width {
     @apply max-w-[1500px] w-full;
+  }
+
+  .fx-layout-max-1200{
+    @apply max-w-[1200px] w-full;
   }
 
   .fx-default-layout {

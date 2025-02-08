@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
-import { RequestStatusType } from "@/types/user-types";
+import { RequestStatusType } from "@/types/user.types";
 
 export interface FriendRequestType extends Document {
     sender_id: UserType;

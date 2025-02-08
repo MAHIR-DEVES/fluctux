@@ -111,7 +111,7 @@ export default function SignUpPage() {
             radius="primary"
           >
             <p className="font-medium fx-label-color">Discord</p>
-            <DiscordIcon width={25} height={25} />
+            <DiscordIcon width={25} height={25} color="var(--primary-color)" />
           </FxButton>
         </div>
       </>

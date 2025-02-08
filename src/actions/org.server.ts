@@ -8,8 +8,8 @@ import Org from "@/mongo/org/org.model";
 import OrgMember from "@/mongo/org/orgMember.model";
 import OrgMemberRequest from "@/mongo/org/orgMemberRequest.model";
 import User from "@/mongo/user/user.model";
-import { OrgMemberRoleType, OrgVisibilityType } from "@/types/org-types";
-import { RequestStatusType } from "@/types/user-types";
+import { OrgMemberRoleType, OrgVisibilityType } from "@/types/org.types";
+import { RequestStatusType } from "@/types/user.types";
 
 export async function createNewOrg(data: {
   org_thumbnail: string;

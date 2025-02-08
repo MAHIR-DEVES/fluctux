@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
-import { DateOfBirthType, GenderType, NumberType, SocialLinkType, SocialMediaType, VisibilityType } from "@/types/user-types";
+import { DateOfBirthType, GenderType, NumberType, SocialLinkType, SocialMediaType, VisibilityType } from "@/types/user.types";
 
 export interface UserBasicInfoType extends Document {
   user: UserType;

@@ -32,12 +32,7 @@ export default function useProcessMDX(data: string) {
         const htmlContent = processedData.toString()
         const cleanHtml = sanitizeHtml(htmlContent, {
             allowedAttributes: {
-                'h1': ['id', 'style'],
-                'h2': ['id', 'style'],
-                'h3': ['id', 'style'],
-                'h4': ['id', 'style'],
-                'h5': ['id', 'style'],
-                'h6': ['id', 'style'],
+                '*' : ['id', 'style'],
             },
             allowedIframeHostnames: ['www.youtube.com']
         });

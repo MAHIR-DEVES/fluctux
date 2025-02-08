@@ -39,7 +39,7 @@ export function InfiniteHits({ hitComponent: HitComponent, ...props }: { hitComp
         {
           Object.keys(groupedHits).map((title, i) => (
             <React.Fragment key={i}>
-              <div className={`pl-3 text-[16px] font-medium ${i === 0 ? "mt-3": "mt-7"}`}>
+              <div className={`pl-3 text-[16px] font-medium ${i === 0 ? "mt-2": "mt-7"}`}>
                 {title.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}
               </div>
               {

@@ -29,22 +29,22 @@ export default function useThemeSwitcher() {
         }
     };
 
-    const ThemeSwitcher = () => (
+    const ThemeSwitcher: React.FC = () => (
         <div className='fx-flex-center w-fit rounded-[50px] border fx-border-color p-[2px]'>
             <ul className='fx-flex-center w-fit relative'>
                 {
                     THEME_ICONS.map((item, i) => {
-                        return <li onClick={() => handleChangeAppearanceMode(i)} key={i} className='cursor-pointer hover:border fx-border-color rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center'>
+                        return <li onClick={() => handleChangeAppearanceMode(i)} key={i} className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center fx-secondary-hover-bg ${activeIndex === i && "fx-third-bg"}`}>
                             {item.svg}
                         </li>
                     })
                 }
-                <span
+                {/* <span
                     className="active-theme-mode"
                     style={{
                         transform: `translateX(${activeIndex * 100}%)`,
                     }}
-                ></span>
+                ></span> */}
             </ul>
         </div>
     )

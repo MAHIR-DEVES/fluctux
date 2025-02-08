@@ -80,16 +80,16 @@ export default function Footer() {
                 </ul>
             </div>
           </div>
-          <div className='w-full fx-flex-between-ic mt-10'>
+          <div className='w-full fx-flex-between-ic mt-16'>
             <span className='fx-label-color'>&copy; {currentYear} Fluctux</span>
             <div className='fx-flex-center gap-3'>
               <GithubCircleIcon width={24} height={24} className='cursor-pointer' />
               <XLogoIcon width={22} height={22} className='cursor-pointer' />
               <DiscordIcon width={27} height={27} className='cursor-pointer' />
             </div>
-            <div>
-              {ThemeSwitcher()}
-            </div>
+            
+              <ThemeSwitcher/>
+            
           </div>
         </div>
       </div>

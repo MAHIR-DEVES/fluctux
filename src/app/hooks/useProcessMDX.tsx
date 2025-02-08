@@ -7,7 +7,6 @@ import { unified } from 'unified'
 import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from '@rehype-pretty/transformers'
-import sanitizeHtml from 'sanitize-html';
 
 export default function useProcessMDX(data: string) {
     const [content, setContent] = useState("")
@@ -30,13 +29,7 @@ export default function useProcessMDX(data: string) {
             .process(data)
 
         const htmlContent = processedData.toString()
-        const cleanHtml = sanitizeHtml(htmlContent, {
-            allowedAttributes: {
-                '*' : ['id', 'style'],
-            },
-            allowedIframeHostnames: ['www.youtube.com']
-        });
-        setContent(cleanHtml)
+        setContent(htmlContent)
 
     }, [data])
 

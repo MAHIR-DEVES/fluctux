@@ -23,7 +23,7 @@ export const ROUNDED_VARIANTS: { [key in RadiusType]: string } = {
   tiny: "rounded-[5px]"
 }
 
-export const PROJECT_STATUS_ITEMS = [
+export const PROJECT_VISIBILITY_OPTIONS = [
   {
     label: "Public",
     desc: " Anyone can see this project",
@@ -48,6 +48,37 @@ export const PROJECT_STATUS_ITEMS = [
   {
     label: 'Custom',
     desc: " Only you and selected people can see this project",
+    id: 'custom',
+    value: 'custom',
+    svg: <SettingsIcon />
+  }
+]
+
+export const ORG_VISIBILITY_OPTIONS = [
+  {
+    label: "Public",
+    desc: " Anyone can view.",
+    id: "public",
+    value: "public",
+    svg: <GlobeIcon />
+  },
+  {
+    label: "Private",
+    desc: " Only you can view.",
+    id: "private",
+    value: "private",
+    svg: <LockIcon />
+  },
+  {
+    label: 'Friends',
+    desc: " Only you and friends view.",
+    id: 'friends',
+    value: 'friends',
+    svg: <TwoPeopleIcon />
+  },
+  {
+    label: 'Custom',
+    desc: " Only you and selected people view.",
     id: 'custom',
     value: 'custom',
     svg: <SettingsIcon />

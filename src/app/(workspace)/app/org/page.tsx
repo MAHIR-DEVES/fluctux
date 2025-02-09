@@ -4,6 +4,7 @@ import { HouseTwoIcon } from '@/components/ui/icons/house-two-icon'
 import { LockIcon } from '@/components/ui/icons/lock-icon'
 import { ThreeDotIcon } from '@/components/ui/icons/three-dot-icon'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export default function OrgMainPage() {
@@ -12,12 +13,14 @@ export default function OrgMainPage() {
 
             <div className='w-full fx-flex-between-ic p-3 border-b fx-border-color'>
                 <h1 className='text-[25px] font-medium'>Organizations</h1>
+                <Link href={"/app/org/new"}>
                 <FxButton variant='primary' size='md' radius='primary' className='font-medium text-[16px] fx-flex-center gap-2'>
                     <HouseTwoIcon />
                     <span>
                         Create New
                     </span>
                 </FxButton>
+                </Link>
             </div>
 
             <section className='fx-rounded overflow-hidden border fx-border-color mt-5'>

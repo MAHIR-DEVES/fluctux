@@ -60,7 +60,7 @@
   --content-color: #eaeaea;
 
   /* active colors */
-  --active-secondary: #ffffff0f;
+  --active-secondary: #0000000e;
 
   /* overlay */
   --overlay-bg-dialog: #0000008e;
@@ -69,7 +69,7 @@
   --secondary-separator-color: white;
 
   /* scrollbar color */
-  --scrollbar-color: #a7a7a7;
+  --scrollbar-color: #c0c0c0;
 
   /* transparents */
   --primary-purple-transparent: #5865f22b;
@@ -116,7 +116,7 @@
   --secondary-label-text-color: #717171;
 
   /* scrollbar color */
-  --scrollbar-color: #7b7b7b;
+  --scrollbar-color: #474747;
 }
 
 html{
@@ -445,4 +445,8 @@ body {
 
 .light .active-theme-mode {
   box-shadow: inset 0px 0px 10px #00000041;
+}
+
+.dark .invert-fav{
+  filter: invert(1);
 }

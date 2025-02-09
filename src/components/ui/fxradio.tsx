@@ -30,9 +30,9 @@ interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     labelStyles?: string
     onValueChange?: (value: string) => void;
     radius?: keyof typeof ROUNDED_VARIANTS
-    buttonStyles?: string,
-    labelItemStyles?: string,
-    buttonSvgContainerStyles?: string,
+    buttonClass?: string,
+    labelIconContainerClass?: string,
+    buttonSvgContainerClass?: string,
     showDescInButton?: boolean
 }
 
@@ -62,9 +62,9 @@ export default function FxRadio({
     labelStyles,
     onValueChange,
     radius = 'tiny',
-    buttonStyles,
-    labelItemStyles,
-    buttonSvgContainerStyles,
+    buttonClass,
+    labelIconContainerClass,
+    buttonSvgContainerClass,
     showDescInButton = false
 }: FxRadioProps) {
     const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
@@ -97,8 +97,8 @@ export default function FxRadio({
                         <div onClick={() => setOpen(true)}>
                             {children}
                         </div> : items ?
-                            <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${buttonStyles}`} radius={radius}>
-                                <div className={`${buttonSvgContainerStyles}`}>
+                            <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${buttonClass}`} radius={radius}>
+                                <div className={`${buttonSvgContainerClass}`}>
 
                                     {
                                         items.find(item => item.value === selectedValue)?.svg
@@ -139,7 +139,7 @@ export default function FxRadio({
                                 <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value ? 'fx-secondary-active-bg' : ''} fx-flex-cl gap-2 p-1 cursor-pointer  group hover:fx-secondary-hover-bg transition-all  ${labelStyles}`}>
                                     {
                                         item.svg &&
-                                        <div className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${labelItemStyles}`}>
+                                        <div className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${labelIconContainerClass}`}>
                                             {item.svg}
                                         </div>
                                     }

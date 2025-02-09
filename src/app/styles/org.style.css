@@ -1,5 +1,5 @@
 .profile-image:hover {
-  outline: 3px solid var(--primary-hover-bg);
+  outline: 3px solid var(--secondary-hover-bg);
   cursor: pointer;
 }
 

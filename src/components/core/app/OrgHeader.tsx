@@ -11,7 +11,7 @@ export default function OrgHeader() {
         <div className='fx-org-layout-width border-r border-l fx-border-color fx-flex-between-ic'>
             <div className='fx-flex-cl gap-3'>
                 <div className='w-[64px] h-[64px] select-none border-r border-b fx-border-color fx-flex-center fx-third-bg hover:fx-primary-purple-bg cursor-pointer'>
-                    <FxFavIcon />
+                    <FxFavIcon variant='dark' className='invert-fav' />
                 </div>
                 <div className='fx-flex-center gap-2'>
                     <div className='fx-flex-center cursor-pointer flex-shrink-0 w-[160px] gap-2 border fx-border-color fx-secondary-hover-bg rounded-[8px] p-1 pl-2 pr-2 fx-third-bg'>
@@ -19,9 +19,9 @@ export default function OrgHeader() {
                         <span className='font-medium text-[16px] one-line-ellipsis'>Fluctux Team</span>
                     </div>
                     <span className='text-[30px] fx-sec-separator-text-color font-light'>/</span>
-                    <div className='fx-flex-between-ic max-w-[130px] w-fit gap-2'>
+                    <div className='fx-flex-between-ic max-w-[130px] w-fit gap-2 group'>
                         <span className='text-[16px] fx-label-color one-line-ellipsis'>My Project</span>
-                        <FxButton className='fx-flex-center p-[6px] pl-[2px] pr-[2px] border-none bg-transparent' variant='secondary' radius='tiny'>
+                        <FxButton className='fx-flex-center p-[6px] pl-[2px] pr-[2px] border-none bg-transparent group-hover:bg-[var(--secondary-hover-bg)]' variant='secondary' radius='tiny'>
                             <ChevronsUpDown color='var(--secondary-label-text-color)' size={20} />
                         </FxButton>
                     </div>

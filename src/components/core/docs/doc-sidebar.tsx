@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import FxRadio from '@/components/ui/fxradio'
 import { DOC_TYPE } from '@/components/ui/constant'
 import FxFavIcon from '@/components/ui/fxfav'
@@ -14,6 +14,7 @@ import { setPagination } from '@/redux/pagination/docPaginateSlice'
 import { FLUCTUX_VERSION } from '@/constants/fluctux-version'
 import { SolidLineIcon } from '@/components/ui/icons/solid-line-icon'
 import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
+import { lessonKey } from './constant'
 
 
 interface DocSidebarPropsType {
@@ -31,6 +32,12 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     })
     const router = useRouter()
     const dispatch = useDispatch()
+
+    const chapterKey = "chapter" ;
+
+    
+
+    const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
 
     const handleDocTypeChange = useCallback((value: string) => {
@@ -66,10 +73,45 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
     }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
 
+
+
+    const handleOpenChapter = (index: number) => {
+        console.log("rendering chapter");
+        
+        handleOpenArray(`${index}`)
+        const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
+        if (!isOpenFromArray(`${index}`)) {
+            // Add the index if it's not present
+            const updatedChapters = [...storedChapters, index];
+            localStorage.setItem(chapterKey, JSON.stringify(updatedChapters));
+        } else {
+            // Remove the index if it's already present
+            const updatedChapters = storedChapters.filter((ch: number) => ch !== index);
+            localStorage.setItem(chapterKey, JSON.stringify(updatedChapters));
+        }
+    }
+
+    useEffect(() => {
+        const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
+        if(!Array.isArray(storedChapters)) return
+        storedChapters && storedChapters.map((item: number) => handleOpenArray(`${item}`) )
+    }, [data])
+
+
+    useEffect(() => {
+        const lesson = localStorage.getItem(lessonKey);
+        if (lesson && lessons.current[lesson]) {
+
+            setTimeout(() => {
+                lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
+        }
+    }, [data, path_name])
+
     return <>
         <aside className={`w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}>
             <div onClick={docAsideToggleOpen} className={`w-[15px] hidden absolute right-0 top-0 h-screen justify-center items-center doc-aside-toggle-btn`}>
-                
+
                 <SolidLineIcon className={`absolute ${isDocAsideOpen && "hidden"}`} width={34} height={34} />
                 <ArrowLeftSolidIcon className={`absolute ${!isDocAsideOpen && "hidden"} `} />
             </div>
@@ -85,14 +127,14 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     </div>
                 </FxButton>
 
-                <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonClass='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium' items={DOC_TYPE} layoutStyle='w-[230px]' labelStyles='w-full rounded-[5px] hover:bg-[var(--primary-purple-transparent)_!important] ' initialValue={`${docType}`} closeMenuOnSelect={true} labelIconContainerClass={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerClass={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
+                <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonClass='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium' items={DOC_TYPE} layoutClass='w-[230px]' activeLabelClass='hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]' labelStyles='w-full rounded-[5px] hover:fx-third-bg' initialValue={`${docType}`} closeMenuOnSelect={true} labelIconContainerClass={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerClass={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
                 {
                     data.docNavList.map((navItem, i) => {
                         return <React.Fragment key={i}>
 
                             {
                                 navItem.type === "dir" ?
-                                    <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
+                                    <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenChapter(i)}>
                                         <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
                                         <RightArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
                                     </button>
@@ -108,7 +150,10 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                             <div className={`ml-2 flex flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-200 ${isOpenFromArray(`${i}`) ? "max-h-fit mt-3 mb-3 translate-y-0" : "max-h-0 opacity-0 translate-y-[-20px]"} overflow-hidden origin-top`}>
                                 {
                                     navItem.docNavTreeList?.map((navTreeItem, j) => {
-                                        return <Link key={j} href={`/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`}>
+                                        const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`
+                                        return <Link key={j} ref={el => { lessons.current[slug] = el }} href={slug} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`} onClick={() => {
+                                            localStorage.setItem(lessonKey, slug)
+                                        }}>
                                             <span>{navTreeItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
                                             {
                                                 path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) &&
@@ -121,14 +166,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                         </React.Fragment>
                     })
                 }
-
-
-
-
-
             </nav>
-
-
         </aside>
     </>
 }

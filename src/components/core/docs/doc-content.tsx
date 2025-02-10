@@ -18,6 +18,7 @@ import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import useProcessMDX from '@/app/hooks/useProcessMDX'
 import useGetAnchors from '@/app/hooks/useGetAnchors'
+import { lessonKey } from './constant'
 
 interface DocContentPropsType {
     data: string
@@ -59,7 +60,9 @@ export default function DocContent({ data }: DocContentPropsType) {
                     {
                         prev &&
 
-                        <Link href={`/docs/${prev?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full'>
+                        <Link href={`/docs/${prev?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full' onClick={() => {
+                            localStorage.setItem(lessonKey, path_name)
+                        }}>
                             <div className='w-full doc-paginate-btn h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2'>
                                 <div className='fx-flex-cl'>
                                     <RightArrowIcon className='rotate-180' />
@@ -73,7 +76,9 @@ export default function DocContent({ data }: DocContentPropsType) {
 
                     {
                         next &&
-                        <Link href={`/docs/${next?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full'>
+                        <Link href={`/docs/${next?.path.replace("src/content/docs/", "").replace(".mdx", "")}`} className='w-full' onClick={() => {
+                            localStorage.setItem(lessonKey, path_name)
+                        }}>
                             <div className='w-full doc-paginate-btn h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2'>
                                 <div className='fx-flex-cr'>
                                     <p className='fx-label-color font-medium text-[15px]'>Next</p>

@@ -13,7 +13,7 @@ import React from 'react'
 export default function TeamPage() {
 
   return (
-    <div className='w-full'>
+    <div className='w-full pt-[64px]'>
       <TopLoading />
       <div className='w-full h-[300px] bg-gradient-to-t relative from-[var(--background)] to-[var(--gradient-team-header)] fx-flex-center'>
 
@@ -37,10 +37,8 @@ export default function TeamPage() {
               <AddIcon />
               <span>
                 Create Team
-
               </span>
             </FxButton>
-
           </div>
         </div>
 
@@ -50,16 +48,16 @@ export default function TeamPage() {
           <nav className='w-full fx-flex-cl'>
             <ul className='fx-flex-cl gap-2'>
               <Link href={""}>
-                <li className='border p-3 h-[40px] fx-flex-center fx-rounded fx-secondary-bg fx-border-color'>All</li>
+                <li className='border p-3 h-[40px] fx-flex-center fx-rounded font-medium fx-label-color fx-secondary-bg fx-border-color'>All</li>
               </Link>
               <Link href={""}>
-                <li className='border p-3 h-[40px] fx-flex-center fx-rounded fx-secondary-bg fx-border-color'>My Teams</li>
+                <li className='border p-3 h-[40px] fx-flex-center fx-rounded font-medium fx-label-color fx-secondary-bg fx-border-color'>My Teams</li>
               </Link>
             </ul>
           </nav>
 
           <div className='fx-flex-cr gap-2'>
-            <FxInput variant='primary' className='h-[40px] pl-2 pr-2' radius='primary' />
+            <FxInput variant='primary' className='h-[40px] pl-2 pr-2' radius='primary' placeholder='Search Teams...' />
 
           </div>
         </div>
@@ -69,17 +67,21 @@ export default function TeamPage() {
           {
             Array.from({ length: 5 }).map((item, i) => {
               return <div key={i} className='team-card w-full h-fit rounded-[8px] border fx-border-color fx-primary-bg overflow-hidden'>
-                <div className='p-5 fx-secondary-bg pb-3'>
+                <div className=' fx-secondary-bg pb-3'>
                   <div>
-                    <div className='fx-flex-tl gap-3'>
-                      <Image src={""} width={100} height={100} alt='team-image' className='w-[50px] h-[50px] object-cover object-center border fx-border-color rounded-[8px]' />
-                      <h2 className='text-[25px] font-medium one-line-ellipsis'>Ni Mahins Team</h2>
+                    <div >
 
+                      <Image src={""} width={500} height={500} className='w-full h-[100px] object-cover object-top border fx-border-color' alt='cover-image' />
+
+                      <div className='fx-flex-cl gap-3 p-5 pb-0 pt-0 relative'>
+                        <Image src={""} width={100} height={100} alt='team-image' className='w-[60px] absolute bottom-[0px] h-[60px] object-cover object-center border fx-border-color rounded-[8px]' />
+                        <h2 className='text-[20px] font-medium one-line-ellipsis translate-x-[70px] translate-y-[3px]'>Ni Mahins Team</h2>
+                      </div>
                     </div>
 
-                    <p className='two-line-ellipsis text-[15px] fx-label-color mt-3 h-[45px]'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente enim itaque sunt quod, corrupti vel praesentium architecto corporis rerum voluptatem magnam voluptas minus ullam deserunt ratione at iste! Accusamus veritatis et distinctio dolor quo accusantium dolore tempora similique voluptas saepe? Possimus animi officia tempora non saepe consequuntur quia hic exercitationem.</p>
+                    <p className='two-line-ellipsis p-5 pt-0 text-[15px] fx-label-color mt-3 h-[45px]'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente enim itaque sunt quod, corrupti vel praesentium architecto corporis rerum voluptatem magnam voluptas minus ullam deserunt ratione at iste! Accusamus veritatis et distinctio dolor quo accusantium dolore tempora similique voluptas saepe? Possimus animi officia tempora non saepe consequuntur quia hic exercitationem.</p>
                   </div>
-                  <div className='fx-flex-between-ic border-t fx-border-color mt-3 pt-3'>
+                  <div className='fx-flex-between-ic p-5 border-t fx-border-color mt-3 pt-3 pb-0'>
                     <div className='fx-flex-cl'>
                       <FxOverlayImages />
                       <span className='text-[25px] fx-label-color font-light'>+</span>

@@ -33,7 +33,7 @@ export default function CreateNewOrgPage() {
 
             <div className='mt-10 border fx-border-color fx-flex-between-ic rounded-[10px] p-1 pl-3'>
               <span className='fx-label-color font-medium'>Visibility</span>
-              <FxRadio items={ORG_VISIBILITY_OPTIONS} initialValue='public' buttonType='modern' layoutStyle="w-[280px]" closeMenuOnSelect={true} labelStyles='rounded-[5px] w-full h-[80px] pl-3 pr-3' radius='primary' align="end" buttonClass="w-fit p-2 pl-3 pr-3 gap-2 fx-flex-center font-medium" />
+              <FxRadio items={ORG_VISIBILITY_OPTIONS} initialValue='public' activeLabelClass='border fx-border-color fx-third-bg' buttonType='modern' layoutClass="w-[280px]" closeMenuOnSelect={true} labelStyles='rounded-[5px] w-full h-[80px] pl-3 pr-3 hover:fx-third-bg' radius='primary' align="end" buttonClass="w-fit p-2 pl-3 pr-3 gap-2 fx-flex-center font-medium" />
             </div>
 
             <div className='mt-10 mb-10 w-full border-t fx-border-color'>

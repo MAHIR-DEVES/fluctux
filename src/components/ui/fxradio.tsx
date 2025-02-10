@@ -23,7 +23,7 @@ interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     align?: 'start' | 'center' | 'end',
     buttonType?: keyof typeof radioButton
     items: ItemType[],
-    layoutStyle?: string,
+    layoutClass?: string,
     initialValue?: string,
     closeMenuOnSelect?: boolean,
     alignItems?: keyof typeof alignItemsVariant,
@@ -34,6 +34,7 @@ interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     labelIconContainerClass?: string,
     buttonSvgContainerClass?: string,
     showDescInButton?: boolean
+    activeLabelClass?: string
 }
 
 type RadioButtonType = "custom" | "modern"
@@ -55,7 +56,7 @@ export default function FxRadio({
     align = 'center',
     buttonType = 'custom',
     items,
-    layoutStyle,
+    layoutClass,
     initialValue,
     closeMenuOnSelect = false,
     alignItems = 'vertical',
@@ -65,7 +66,8 @@ export default function FxRadio({
     buttonClass,
     labelIconContainerClass,
     buttonSvgContainerClass,
-    showDescInButton = false
+    showDescInButton = false,
+    activeLabelClass = "fx-third-bg"
 }: FxRadioProps) {
     const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -131,12 +133,12 @@ export default function FxRadio({
                 }
             </PopoverTrigger>
             <PopoverContent align={align}>
-                <div className={`flex ${alignItemVariant} w-[200px] border fx-border-color rounded-[7px] p-1 fx-secondary-bg ${layoutStyle}`}>
+                <div className={`flex ${alignItemVariant} w-[200px] border fx-border-color rounded-[8px] p-1 fx-secondary-bg ${layoutClass}`}>
                     {
 
                         items ? items.map((item, i) => {
                             return <React.Fragment key={i}>
-                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value ? 'fx-secondary-active-bg' : ''} fx-flex-cl gap-2 p-1 cursor-pointer  group hover:fx-secondary-hover-bg transition-all  ${labelStyles}`}>
+                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value && `${activeLabelClass}`} fx-flex-cl gap-2 p-1 cursor-pointer  group  transition-all  ${labelStyles}`}>
                                     {
                                         item.svg &&
                                         <div className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${labelIconContainerClass}`}>

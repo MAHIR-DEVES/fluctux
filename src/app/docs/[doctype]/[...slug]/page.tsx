@@ -3,7 +3,7 @@ import { apolloClient } from '@/lib/apollo-client';
 import { DocNavListType } from '@/types/doc.types';
 import React from 'react'
 import { GET_DOC_NAV_LIST } from '../layout';
-import algolia from '@/services/algolia.service';
+import DocGraphql from '@/components/core/docs/doc-graphql';
 
 export async function generateStaticParams() {
   try {
@@ -77,6 +77,8 @@ export default async function DocContentPage({
   generateStaticParams().then((params) => {
     console.log(params);
   });
+
+  if(`${doctype}/${slug[0]}` === "developer/graphql") return <DocGraphql/>
 
   try {
     const response = await fetch(

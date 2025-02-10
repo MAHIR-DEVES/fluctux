@@ -9,17 +9,17 @@ import React from 'react'
 export default function CreateNewOrgPage() {
   return (
     <div className='w-full fx-flex-center h-screen'>
-      <div className='border-l border-r fx-border-color max-w-[600px] w-full flex-shrink-0 h-full overflow-y-auto pt-[64px]'>
+      <div className='border-l border-r fx-border-color max-w-[600px] w-full flex-shrink-0 h-full overflow-y-auto hide-scrollbar pt-[64px]'>
         <div className='font-medium text-[17px] w-full p-3 border-b fx-border-color sticky top-0 backdrop-blur-md z-[1]'>
           Create New Organization
         </div>
-        <div className='w-full fx-flex-center pt-16'>
+        <div className='w-full fx-flex-center pt-14'>
           <div className='max-w-[450px] w-full'>
             <div>
               <p className='fx-label-color font-medium text-[15px]'>Name Your Organization</p>
               <FxInput variant='primary' radius='primary' className='p-2 pl-3 pr-3 mt-1 w-full font-medium' />
             </div>
-            <div className='mt-3 relative '>
+            <div className='mt-3 relative'>
               <p className='fx-label-color font-medium text-[15px]'>Organization URL</p>
               <span className='absolute top-[34px] left-3 fx-label-color'>org/</span>
               <FxInput variant='primary' radius='primary' className='p-2 pl-12 pr-3 mt-1 w-full font-medium' />

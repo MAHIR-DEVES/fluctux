@@ -50,10 +50,10 @@
 
   /* border color */
   --primary-border-color: #d8d8d8;
-  --primary-purple-border-color-50: #5865f28c ;
+  --primary-purple-border-color-50: #4c58d6 ;
 
   /* hover */
-  --primary-purple-hover-bg: #5865f2e4;
+  --primary-purple-hover-bg: #4c58d6;
   --secondary-hover-bg: #e4e4e4;
   --primary-hover-bg: #eaeaea ;
 
@@ -78,6 +78,9 @@
 
   /* svg */
   --svg-default-color: #b1b1b1 ;
+  
+  /* buttons */
+  --button-primary-disabled: #14183a;
 }
 
 .dark {

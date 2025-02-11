@@ -1,15 +1,26 @@
 import { ORG_VISIBILITY_OPTIONS } from '@/components/ui/constant'
 import { FxButton, FxInput, FxRadio } from '@/components/ui'
-import { BlankIcon, CodeIcon } from '@/components/ui/icons'
-
+import { ArrowRightStrokeIcon, BlankIcon, CodeIcon } from '@/components/ui/icons'
 import React from 'react'
+
 
 export default function CreateNewOrgPage() {
   return (
     <div className='w-full fx-flex-center h-screen'>
       <div className='border-l border-r fx-border-color max-w-[600px] w-full flex-shrink-0 h-full overflow-y-auto hide-scrollbar pt-[64px]'>
-        <div className='font-medium text-[17px] w-full p-3 border-b fx-border-color sticky top-0 backdrop-blur-md z-[1]'>
-          Create New Organization
+        <div className='font-medium text-[17px] w-full p-3 border-b fx-border-color sticky top-0 backdrop-blur-md z-[1] fx-flex-between-ic'>
+          <span>
+
+            Create New Organization
+          </span>
+
+          <FxButton className='px-7 py-2 font-medium fx-flex-center gap-2' radius='primary'>
+            <span>
+              Create
+            </span>
+            <ArrowRightStrokeIcon color='#ffffff'/>
+
+          </FxButton>
         </div>
         <div className='w-full fx-flex-center pt-14'>
           <div className='max-w-[450px] w-full'>
@@ -52,7 +63,7 @@ export default function CreateNewOrgPage() {
                 <p className='fx-label-color text-[15px] font-medium mt-5 mb-5'>Choose A Template</p>
                 <label htmlFor="template-2" className='fx-flex-cl gap-3 border fx-border-color p-3 fx-rounded cursor-pointer'>
                   <div className='pl-3 pr-3'>
-                    <CodeIcon/>
+                    <CodeIcon />
                   </div>
                   <div>
                     <p className='text-[15px] font-medium'>Software Development</p>
@@ -64,9 +75,8 @@ export default function CreateNewOrgPage() {
 
             </div>
 
-            <FxButton variant='primary' className='w-full p-3 font-medium mt-5 sticky bottom-3' radius='primary'>
-              Create
-            </FxButton>
+
+
           </div>
         </div>
 

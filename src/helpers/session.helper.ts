@@ -1,11 +1,10 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 import { getServerSession } from "next-auth"
 
-const serverSession = async () =>{
+export const serverSession = async () =>{
     const session = await getServerSession(authOptions)
-    if(!session){
-        return false
-    }
+    if(!session) return false
+
 
     const user = {
         _id: session.user._id,
@@ -14,5 +13,3 @@ const serverSession = async () =>{
 
     return user
 }
-
-export default serverSession

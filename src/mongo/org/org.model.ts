@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "../user/user.model";
-import { OrgStatusType, OrgVisibilityType } from "@/mongo/types/org.types";
+import { OrgStatusType, OrgVisibilityType } from "@/mongo/types";
 
 export interface OrgType extends Document {
   org_thumbnail: string;

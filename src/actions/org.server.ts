@@ -2,7 +2,6 @@
 
 import { MEMBER_ADDED, ORG_CREATED, REQUEST_SENT } from "@/constants";
 import { ERROR } from "@/constants/error";
-import serverSession from "@/helpers/session.helper";
 import connDb from "@/lib/db.conn";
 import Org from "@/mongo/org/org.model";
 import OrgMember from "@/mongo/org/orgMember.model";
@@ -10,30 +9,11 @@ import OrgMemberRequest from "@/mongo/org/orgMemberRequest.model";
 import User from "@/mongo/user/user.model";
 import { OrgMemberRoleType, OrgVisibilityType } from "@/mongo/types/org.types";
 import { RequestStatusType } from "@/mongo/types/user.types";
+import { serverSession } from "@/helpers";
+import { CreateOrganizationDataType, orgranization } from "@/services/organization";
 
-export async function createNewOrg(data: {
-  org_name: string;
-  org_slug: string;
-  org_visibility: OrgVisibilityType;
-  category: string;
-}) {
-  try {
-    const user = await serverSession();
-    if (!user) {
-      return { error: ERROR.UNAUTHORIZED_USER };
-    }
-
-    await connDb();
-    const newOrganization = new Org({
-      ...data,
-      admin: user._id,
-    });
-
-    await newOrganization.save();
-    return { message: ORG_CREATED };
-  } catch (error) {
-    return { error: ERROR.INTERNAL_SERVER_ERROR };
-  }
+export async function createNewOrg(data: CreateOrganizationDataType) {
+  return orgranization.createNewOrg(data)
 }
 
 export async function sendOrgMemberRequest(data: {

@@ -15,7 +15,7 @@ export default function CreateNewOrgPage() {
           </span>
 
           <FxButton className='px-7 py-2 font-medium fx-flex-center gap-2' radius='primary'>
-            <span>
+            <span className='text-white'>
               Create
             </span>
             <ArrowRightStrokeIcon color='#ffffff'/>

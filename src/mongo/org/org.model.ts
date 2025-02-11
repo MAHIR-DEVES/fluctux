@@ -6,6 +6,7 @@ export interface OrgType extends Document {
   org_thumbnail: string;
   org_name: string;
   org_description: string;
+  org_slug: string;
   org_visibility: OrgVisibilityType;
   admin: UserType;
   tags: string[];
@@ -20,7 +21,6 @@ const org_schema: Schema<OrgType> = new Schema(
   {
     org_thumbnail: {
       type: String,
-      required: true,
     },
     org_name: {
       type: String,
@@ -28,6 +28,11 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     org_description: {
       type: String,
+    },
+    org_slug: {
+      type: String,
+      unique: true,
+      required: true,
     },
     org_visibility: {
       type: String,
@@ -42,11 +47,9 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     tags: {
       type: [String],
-      required: true,
     },
     category: {
       type: String,
-      required: true,
     },
     country: {
       type: String,

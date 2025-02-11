@@ -1,11 +1,7 @@
 "use client"
 import useReactForm from "@/app/hooks/useReactForm";
-import FxButton from "@/components/ui/fxbutton";
-import FxInput from "@/components/ui/fxinput";
-import FxSeparator from "@/components/ui/fxseparator";
-import { DiscordIcon } from "@/components/ui/icons/discord-icon";
-import { GithubIcon } from "@/components/ui/icons/github-icon";
-import { GoogleIcon } from "@/components/ui/icons/google-icon";
+import { FxButton, FxInput, FxSeparator } from "@/components/ui";
+import { DiscordIcon, GithubIcon, GoogleIcon } from "@/components/ui/icons";
 import { userZodSchema } from "@/zod/user/user.zod";
 import Link from "next/link";
 import React from "react";

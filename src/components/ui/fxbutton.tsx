@@ -2,6 +2,7 @@
 import { SizeType } from "@/components/ui/type";
 import React from "react";
 import { ROUNDED_VARIANTS } from "./constant";
+import { cn } from "@/lib/utils";
 
 interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
@@ -9,6 +10,8 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: keyof typeof buttonVariants; // Optional `variant` prop for predefined styles
   radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof buttonSizes;
+  disabled?: boolean,
+  loading?: boolean
 }
 
 type ButtonVariantType = "primary" | "secondary"
@@ -33,6 +36,8 @@ export function FxButton({
   variant,
   size,
   radius,
+  disabled = false,
+  loading = false,
   ...props
 }: FxButtonProps) {
   const buttonVariant = variant ? buttonVariants[variant] : "";
@@ -40,7 +45,8 @@ export function FxButton({
   const roundedVariant = radius ? ROUNDED_VARIANTS[radius]: ""
   return (
     <button
-      className={`${buttonVariant} ${buttonSize} ${roundedVariant} ${className} `}
+      disabled={disabled || loading}
+      className={cn(buttonVariant, buttonSize, roundedVariant, className)}
       {...props}
     >
       {children}

@@ -6,7 +6,7 @@ import { footerMainData, legalData, planData, resourcesData, workManagementData 
 import { DiscordIcon, GithubCircleIcon, XLogoIcon } from '../ui/icons';
 import { FxFavIcon } from '../ui';
 
-export default function Footer() {
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { ThemeSwitcher } = useThemeSwitcher()
   return (

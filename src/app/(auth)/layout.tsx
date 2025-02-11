@@ -1,6 +1,5 @@
 "use client"
-import FxButton from "@/components/ui/fxbutton";
-import FxLogo from "@/components/ui/fxlogo";
+import { FxButton, FxLogo } from "@/components/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";

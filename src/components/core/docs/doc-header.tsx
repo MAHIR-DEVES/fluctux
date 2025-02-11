@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { FxButton, FxLogo, FxSeparator } from '@/components/ui'
 import { CancelIcon, GithubCircleIcon, MenuTwoBarIcon } from '@/components/ui/icons'
 
-export const DocHeader = () => {
+export default function DocHeader()  {
     const path_name = usePathname()
     const { isOpen: isDocHeaderMenuOpen, setOpen: setDocHeaderMenuOpen, toggle: toggleDocHeaderMenu } = useToggleOpen({
         id: "doc-header-menu"

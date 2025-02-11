@@ -1,5 +1,1 @@
-export * from './doc-content'
-export * from './doc-graphql'
-export * from './doc-header'
-export * from './doc-sidebar'
 export * from './type'

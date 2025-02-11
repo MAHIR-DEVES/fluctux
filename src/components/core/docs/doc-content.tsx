@@ -15,7 +15,7 @@ import { FxButton } from '@/components/ui'
 interface DocContentPropsType {
     data: string
 }
-export const DocContent = ({ data }: DocContentPropsType) => {
+export default function DocContent({ data }: DocContentPropsType) {
     const { content } = useProcessMDX(data)
     const { anchors } = useGetAnchors(content)
     const path_name = usePathname()
@@ -25,9 +25,11 @@ export const DocContent = ({ data }: DocContentPropsType) => {
     })
 
     useEffect(() => {
+
         window.scrollTo({
             top: 0,
         });
+
         setDocOnPageOpen(false)
     }, [path_name])
 

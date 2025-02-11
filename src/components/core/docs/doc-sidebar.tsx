@@ -20,7 +20,7 @@ interface DocSidebarPropsType {
     }
 }
 
-export const DocSidebar = ({ docType, data }: DocSidebarPropsType) => {
+export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
     const path_name = usePathname()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
     const { isOpen: isDocAsideOpen, setOpen: setDocAsideOpen, toggle: docAsideToggleOpen } = useToggleOpen({
@@ -37,6 +37,8 @@ export const DocSidebar = ({ docType, data }: DocSidebarPropsType) => {
 
 
     const handleDocTypeChange = useCallback((value: string) => {
+        localStorage.removeItem(lessonKey);
+        localStorage.removeItem(chapterKey)
         router.push(`/docs/${value}/01-get-started/01-introduction`)
     }, [router])
 
@@ -102,7 +104,7 @@ export const DocSidebar = ({ docType, data }: DocSidebarPropsType) => {
                 lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 500);
         }
-    }, [data, path_name])
+    }, [data])
 
     return <>
         <aside className={`w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}>

@@ -17,7 +17,7 @@ const fetcher = async (graphQLParams) => {
     return response.json();
 };
 
-export const DocGraphiQl = () => {
+export default function DocGraphiQl(){
     return <div className='h-screen pt-[64px]'>
         <GraphiQL className='h-screen' fetcher={fetcher} />
     </div>

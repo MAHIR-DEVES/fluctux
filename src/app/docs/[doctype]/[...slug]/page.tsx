@@ -1,7 +1,10 @@
 import { apolloClient } from '@/lib/apollo-client';
 import React from 'react'
 import { GET_DOC_NAV_LIST } from '../layout';
-import { DocContent, DocGraphiQl, DocNavListType } from '@/components/core/docs';
+
+import { DocNavListType } from '@/components/core/docs';
+import DocGraphiQl from '@/components/core/docs/doc-graphql';
+import DocContent from '@/components/core/docs/doc-content';
 
 
 export async function generateStaticParams() {

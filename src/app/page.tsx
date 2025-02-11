@@ -1,5 +1,5 @@
 "use client";
-import Header from "@/components/core/Header";
+import { Header } from "@/components/core";
 import { NeatConfig, NeatGradient } from "@firecms/neat";
 import { useEffect, useRef } from "react";
 
@@ -56,7 +56,6 @@ export default function Home() {
     <>
 
       <Header />
-
 
       <div className="w-full fx-flex-center flex-col absolute top-0">
        

@@ -1,19 +1,13 @@
 "use client"
 import React, { useEffect } from 'react'
-import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
-
-import FxLogo from '@/components/ui/fxlogo'
-import FxSeparator from '@/components/ui/fxseparator'
-import FxButton from '@/components/ui/fxbutton'
-
 import DocSearchComponent from './search/doc-search'
-import { MenuTwoBarIcon } from '@/components/ui/icons/menu-two-bar-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import { usePathname } from 'next/navigation'
-import { CancelIcon } from '@/components/ui/icons/cancle-icon'
 import Link from 'next/link'
+import { FxButton, FxLogo, FxSeparator } from '@/components/ui'
+import { CancelIcon, GithubCircleIcon, MenuTwoBarIcon } from '@/components/ui/icons'
 
-export default function DocHeader() {
+export const DocHeader = () => {
     const path_name = usePathname()
     const { isOpen: isDocHeaderMenuOpen, setOpen: setDocHeaderMenuOpen, toggle: toggleDocHeaderMenu } = useToggleOpen({
         id: "doc-header-menu"

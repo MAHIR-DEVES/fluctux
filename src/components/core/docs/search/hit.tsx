@@ -1,6 +1,6 @@
 "use client"
-import { GridIcon } from '@/components/ui/icons/grid-icon';
-import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon';
+
+import { GridIcon, RightArrowIcon } from '@/components/ui/icons';
 import Link from 'next/link';
 import { Highlight } from 'react-instantsearch';
 

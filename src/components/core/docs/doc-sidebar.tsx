@@ -1,20 +1,16 @@
 "use client"
 import React, { useCallback, useEffect, useRef } from 'react'
-import FxRadio from '@/components/ui/fxradio'
 import { DOC_TYPE } from '@/components/ui/constant'
-import FxFavIcon from '@/components/ui/fxfav'
 import { usePathname, useRouter } from 'next/navigation'
-import FxButton from '@/components/ui/fxbutton'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
-import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon'
-import { DocNavListType } from '@/types/doc.types'
 import { useDispatch } from 'react-redux'
 import { setPagination } from '@/redux/pagination/docPaginateSlice'
 import { FLUCTUX_VERSION } from '@/constants/fluctux-version'
-import { SolidLineIcon } from '@/components/ui/icons/solid-line-icon'
-import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
 import { lessonKey } from './constant'
+import { DocNavListType } from './type'
+import { ArrowLeftSolidIcon, RightArrowIcon, SolidLineIcon } from '@/components/ui/icons'
+import { FxButton, FxFavIcon, FxRadio } from '@/components/ui'
 
 
 interface DocSidebarPropsType {
@@ -24,7 +20,7 @@ interface DocSidebarPropsType {
     }
 }
 
-export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
+export const DocSidebar = ({ docType, data }: DocSidebarPropsType) => {
     const path_name = usePathname()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
     const { isOpen: isDocAsideOpen, setOpen: setDocAsideOpen, toggle: docAsideToggleOpen } = useToggleOpen({

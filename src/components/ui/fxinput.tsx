@@ -25,7 +25,7 @@ const inputSizes: { [key in SizeType]: string } = {
     xl: "p-4 pl-5 pr-5",
 };
 
-export default function FxInput({
+export function FxInput({
   className,
   variant,
   radius,

@@ -1,12 +1,10 @@
 "use client"
 import React from 'react'
-import { GithubCircleIcon } from '../ui/icons/github-circle-icon';
 import useThemeSwitcher from '@/app/hooks/useThemeSwitcher';
-import { XLogoIcon } from '../ui/icons/x-logo-icon';
-import { DiscordIcon } from '../ui/icons/discord-icon';
-import FxFavIcon from '../ui/fxfav';
 import Link from 'next/link';
-import { footerMainData, legalData, planData, resourcesData, workManagementData } from '@/constants/footer-constants';
+import { footerMainData, legalData, planData, resourcesData, workManagementData } from '@/constants';
+import { DiscordIcon, GithubCircleIcon, XLogoIcon } from '../ui/icons';
+import { FxFavIcon } from '../ui';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

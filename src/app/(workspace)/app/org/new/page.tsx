@@ -1,9 +1,7 @@
 import { ORG_VISIBILITY_OPTIONS } from '@/components/ui/constant'
-import FxButton from '@/components/ui/fxbutton'
-import FxInput from '@/components/ui/fxinput'
-import FxRadio from '@/components/ui/fxradio'
-import { BlankIcon } from '@/components/ui/icons/blank-icon'
-import { CodeIcon } from '@/components/ui/icons/code-icon'
+import { FxButton, FxInput, FxRadio } from '@/components/ui'
+import { BlankIcon, CodeIcon } from '@/components/ui/icons'
+
 import React from 'react'
 
 export default function CreateNewOrgPage() {

@@ -28,7 +28,7 @@ const iconVariants: {[key in IconVariantType ]: StaticImageData} = {
 }
 
 
-export default function FxFavIcon({
+export function FxFavIcon({
     size,
     className,
     variant

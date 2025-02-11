@@ -26,7 +26,7 @@ const textAreaVariants: {[key in TextAreaVariantType]: string} = {
 }
 
 
-export default function FxTextArea({
+export function FxTextArea({
     className,
     resize,
     radius,

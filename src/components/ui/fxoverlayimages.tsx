@@ -5,7 +5,7 @@ interface FxOverlayImagesPropsType {
     images?: string[];
 }
 
-export default function FxOverlayImages({ images }: FxOverlayImagesPropsType) {
+export function FxOverlayImages({ images }: FxOverlayImagesPropsType) {
     const defaultImages = images && images.length && images;
 
     return (

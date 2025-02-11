@@ -27,7 +27,7 @@ const buttonSizes: { [key in SizeType]: string } = {
   xl: "p-3 pl-10 pr-10",
 };
 
-export default function FxButton({
+export function FxButton({
   className,
   children,
   variant,

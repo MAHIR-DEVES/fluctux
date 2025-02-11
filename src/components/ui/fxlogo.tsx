@@ -29,7 +29,7 @@ const logoSize: { [key in SizeType]: string } = {
   xl: "w-[200px]",
 };
 
-export default function FxLogo({ size, variant, className }: LogoPropsType) {
+export function FxLogo({ size, variant, className }: LogoPropsType) {
 
   const imageSize = size ? logoSize[size] : "";
   const logoVariant = variant ? logoType[variant] : logoType.secondary

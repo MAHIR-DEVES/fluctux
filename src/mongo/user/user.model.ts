@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcryptjs";
 import UserBasicInfo from "./userBasicInfo.model";
 import UserAddress from "./userAddress.model";
-import { AuthProviderType, UserRoleType, UserStatusType } from "@/types/user.types";
+import { AuthProviderType, UserRoleType, UserStatusType } from "@/mongo/types/user.types";
 
 export interface UserType extends Document {
   avatar: string;

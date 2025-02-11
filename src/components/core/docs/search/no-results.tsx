@@ -1,8 +1,6 @@
 "use client"
-import { CodeIcon } from "@/components/ui/icons/code-icon";
-import { RightArrowIcon } from "@/components/ui/icons/right-arrow-icon";
-import { SadIcon } from "@/components/ui/icons/sad-icon";
-import { UserIcon } from "@/components/ui/icons/user-icon";
+
+import { CodeIcon, RightArrowIcon, SadIcon, UserIcon } from "@/components/ui/icons";
 import Link from "next/link";
 import { useInstantSearch } from "react-instantsearch";
 

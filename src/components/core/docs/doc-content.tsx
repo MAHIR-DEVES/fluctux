@@ -1,29 +1,21 @@
 "use client"
 
-import { TextAlignLeftIcon } from '@/components/ui/icons/text-allign-left-icon'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
-import { StarFaceIcon } from '@/components/ui/icons/star-face-icon'
-import { SmileIcon } from '@/components/ui/icons/smile-icon'
-import { SadIcon } from '@/components/ui/icons/sad-icon'
-import { AngryIcon } from '@/components/ui/icons/angry-icon'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { usePathname } from 'next/navigation'
-import { RightArrowIcon } from '@/components/ui/icons/right-arrow-icon'
-import FxButton from '@/components/ui/fxbutton'
-import { GithubCircleIcon } from '@/components/ui/icons/github-circle-icon'
-import { SolidLineIcon } from '@/components/ui/icons/solid-line-icon'
-import { ArrowLeftSolidIcon } from '@/components/ui/icons/arrow-left-solid-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import useProcessMDX from '@/app/hooks/useProcessMDX'
 import useGetAnchors from '@/app/hooks/useGetAnchors'
 import { lessonKey } from './constant'
+import { AngryIcon, ArrowLeftSolidIcon, GithubCircleIcon, RightArrowIcon, SadIcon, SmileIcon, SolidLineIcon, StarFaceIcon, TextAlignLeftIcon } from '@/components/ui/icons'
+import { FxButton } from '@/components/ui'
 
 interface DocContentPropsType {
     data: string
 }
-export default function DocContent({ data }: DocContentPropsType) {
+export const DocContent = ({ data }: DocContentPropsType) => {
     const { content } = useProcessMDX(data)
     const { anchors } = useGetAnchors(content)
     const path_name = usePathname()
@@ -68,7 +60,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                                     <RightArrowIcon className='rotate-180' />
                                     <p className='fx-label-color font-medium text-[15px]'>Previous</p>
                                 </div>
-                                <p className='text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis'>{prev?.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</p>
+                                <p className='text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis'>{prev?.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, (c: string) => c.toUpperCase()).replace(".mdx", "")}</p>
                             </div>
                         </Link>
 
@@ -84,7 +76,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                                     <p className='fx-label-color font-medium text-[15px]'>Next</p>
                                     <RightArrowIcon />
                                 </div>
-                                <p className='text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis'>{next?.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</p>
+                                <p className='text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis'>{next?.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, (c: string) => c.toUpperCase()).replace(".mdx", "")}</p>
 
                             </div>
                         </Link>

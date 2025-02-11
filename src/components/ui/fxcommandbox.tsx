@@ -12,7 +12,7 @@ interface FxCommandBoxProps {
 }
 
 
-export default function FxCommandBox({ children, open, className, containerClasses }: FxCommandBoxProps) {
+export function FxCommandBox({ children, open, className, containerClasses }: FxCommandBoxProps) {
     return <CommandDialog open={open} className={`bg-transparent border-none p-[0px] ${className}`}>
         <div className={`border fx-border-color rounded-[10px] fx-secondary-bg h-full w-full relative overflow-hidden ${containerClasses}`}>
             {children}

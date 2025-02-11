@@ -5,9 +5,10 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import FxButton from './fxbutton';
+
 import useToggleOpen from '@/app/hooks/useToggleOpen';
 import { ROUNDED_VARIANTS } from './constant';
+import { FxButton } from './fxbutton';
 
 interface ItemType {
     label?: string,
@@ -50,7 +51,7 @@ const alignItemsVariant: { [key in AlignItemsType]: string } = {
     vertical: 'flex-col justify-center items-start'
 }
 
-export default function FxRadio({
+export function FxRadio({
     className,
     children,
     align = 'center',

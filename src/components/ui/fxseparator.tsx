@@ -23,7 +23,7 @@ const GapAttributes: { [key in SizeType]: string } = {
   xl: "40px",
 };
 
-export default function FxSeparator({
+export function FxSeparator({
   orientation,
   color,
   gap,

@@ -1,22 +1,20 @@
 "use server";
 
+import { MEMBER_ADDED, ORG_CREATED, REQUEST_SENT } from "@/constants";
 import { ERROR } from "@/constants/error";
-import { MEMBER_ADDED, ORG_CREATED, REQUEST_SENT } from "@/constants/events";
 import serverSession from "@/helpers/session.helper";
 import connDb from "@/lib/db.conn";
 import Org from "@/mongo/org/org.model";
 import OrgMember from "@/mongo/org/orgMember.model";
 import OrgMemberRequest from "@/mongo/org/orgMemberRequest.model";
 import User from "@/mongo/user/user.model";
-import { OrgMemberRoleType, OrgVisibilityType } from "@/types/org.types";
-import { RequestStatusType } from "@/types/user.types";
+import { OrgMemberRoleType, OrgVisibilityType } from "@/mongo/types/org.types";
+import { RequestStatusType } from "@/mongo/types/user.types";
 
 export async function createNewOrg(data: {
-  org_thumbnail: string;
   org_name: string;
-  org_description: string;
+  org_slug: string;
   org_visibility: OrgVisibilityType;
-  tags: string[];
   category: string;
 }) {
   try {

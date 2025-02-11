@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
-import { VisibilityType } from "@/types/user.types";
+import { VisibilityType } from "@/mongo/types/user.types";
 
 export interface AddressType extends Document {
   user: UserType;

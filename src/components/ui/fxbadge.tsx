@@ -38,7 +38,7 @@ const badgeVariants: { [key in BadgeVariantTypes]: string } = {
     "pl-2 pr-2 rounded-[20px] border text-[12px] fx-border-color fx-secondary-bg text-[var(--badge-pink-fg)]",
 };
 
-export default function FxBadge({
+export function FxBadge({
   className,
   variant,
   children,

@@ -1,9 +1,8 @@
 import React from 'react'
-import DocSidebar from '@/components/core/docs/doc-sidebar'
 import { gql } from '@apollo/client'
 import { apolloClient } from '@/lib/apollo-client'
 import { notFound } from 'next/navigation'
-import { DocNavListType } from '@/types/doc.types'
+import { DocNavListType, DocSidebar } from '@/components/core/docs'
 
 
 interface DocLayoutPropsType {

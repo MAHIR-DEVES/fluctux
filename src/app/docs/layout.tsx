@@ -1,4 +1,5 @@
-import DocHeader from '@/components/core/docs/doc-header'
+
+import { DocHeader } from '@/components/core/docs'
 import Footer from '@/components/core/Footer'
 import React from 'react'
 

@@ -1,12 +1,10 @@
-import FxButton from '@/components/ui/fxbutton'
-import FxFavIcon from '@/components/ui/fxfav'
-import { ActivityIcon } from '@/components/ui/icons/activity-icon'
-import { NotificationIcon } from '@/components/ui/icons/notification-icon'
+import { FxButton, FxFavIcon } from '@/components/ui'
+import { ActivityIcon, NotificationIcon } from '@/components/ui/icons'
 import { ChevronsUpDown } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
-export default function OrgHeader() {
+export const OrgHeader = () => {
     return <header className='h-[64px] fx-secondary-bg w-full fixed top-0 left-0 border-b fx-border-color fx-flex-center z-50'>
         <div className='fx-org-layout-width border-r border-l fx-border-color fx-flex-between-ic'>
             <div className='fx-flex-cl gap-3'>

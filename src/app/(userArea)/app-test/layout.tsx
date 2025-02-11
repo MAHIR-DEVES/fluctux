@@ -1,5 +1,5 @@
-import AppHeader from "@/components/core/app/AppHeader";
-import AppSidebar from "@/components/core/app/sidebars/AppSidebar";
+import AppHeader from "@/components/core/workspace/AppHeader";
+import AppSidebar from "@/components/core/workspace/sidebars/AppSidebar";
 import React from "react";
 
 interface AppLayoutProps {

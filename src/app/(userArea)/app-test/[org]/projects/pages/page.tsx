@@ -1,4 +1,4 @@
-import PageList from '@/components/core/app/PageList'
+import PageList from '@/components/core/workspace/PageList'
 import React from 'react'
 
 const initialData = [

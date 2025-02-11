@@ -7,7 +7,7 @@ import { ForwardIcon } from "@/components/ui/icons/forward-icon";
 import { LockIcon } from "@/components/ui/icons/lock-icon";
 import { UnlockIcon } from "@/components/ui/icons/unlock-icon";
 import { NavigationIcon } from "@/components/ui/icons/navigation-icon";
-import AddToFavourite from "@/components/core/app/AddToFavourite";
+import AddToFavourite from "@/components/core/workspace/AddToFavourite";
 
 export default function ManagePage() {
   const [locked, setLocked] = useState(false);

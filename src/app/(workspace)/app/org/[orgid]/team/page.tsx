@@ -1,11 +1,7 @@
 "use client"
-import FxButton from '@/components/ui/fxbutton'
-import FxInput from '@/components/ui/fxinput'
-import FxOverlayImages from '@/components/ui/fxoverlayimages'
-import { AddIcon } from '@/components/ui/icons/add-icon'
-import { GroupIcon } from '@/components/ui/icons/group-icon'
-import { LockIcon } from '@/components/ui/icons/lock-icon'
-import TopLoading from '@/components/ui/toploading'
+
+import { FxButton, FxInput, FxOverlayImages, TopLoading } from '@/components/ui'
+import { AddIcon, GroupIcon, LockIcon } from '@/components/ui/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'

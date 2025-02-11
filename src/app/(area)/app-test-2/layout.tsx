@@ -1,4 +1,4 @@
-import Sidebar from '@/components/core/app/sidebars/Sidebar'
+import Sidebar from '@/components/core/workspace/sidebars/Sidebar'
 import Logo from '@/components/ui/fxlogo'
 import React from 'react'
 

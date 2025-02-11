@@ -1,5 +1,5 @@
 'use client'
-import AddToFavourite from '@/components/core/app/AddToFavourite';
+import AddToFavourite from '@/components/core/workspace/AddToFavourite';
 import FxButton from '@/components/ui/fxbutton';
 import { ForwardIcon } from '@/components/ui/icons/forward-icon';
 import React from 'react'

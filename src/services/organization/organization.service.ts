@@ -5,6 +5,8 @@ import Org from "@/mongo/org/org.model";
 import ApiResponse from "@/utils/ApiResponse";
 import { CreateOrganizationDataType } from "./type";
 import ApiError from "@/utils/ApiError";
+import { createOrgZodSchema } from "@/zod/organization";
+import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
 
 class Orgranization {
   async createNewOrg(data: CreateOrganizationDataType) {
@@ -13,6 +15,14 @@ class Orgranization {
 
       if (!authorizedUser) {
         return { error: ERROR.UNAUTHORIZED_USER };
+      }
+
+      const senitizedData = createOrgZodSchema.safeParse(data);
+
+      if (!senitizedData.success) {
+        const error = senitizedData.error.format();
+        const zodErrors = getFormattedZodErrors(error);
+        return { error: zodErrors };
       }
 
       await connDb();
@@ -40,7 +50,7 @@ class Orgranization {
       };
     } catch (error) {
       // TODO: testing
-      return {error: new ApiError(500, "INTERNAL SERVER ERROR", false) }
+      return { error: new ApiError(500, "INTERNAL SERVER ERROR", false) };
     }
   }
 }

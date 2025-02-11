@@ -7,6 +7,8 @@ export enum OrgStatusType {
 export enum OrgVisibilityType {
   PUBLIC = "PUBLIC",
   PRIVATE = "PRIVATE",
+  FRIENDS = "FRIENDS",
+  CUSTOM = "CUSTOM"
 }
 
 export enum OrgMemberRoleType {

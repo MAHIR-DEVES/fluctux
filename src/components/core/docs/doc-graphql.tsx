@@ -19,7 +19,6 @@ const fetcher = async (graphQLParams) => {
 
 export default function DocGraphql() {
     return <div className='h-screen pt-[64px]'>
-
         <GraphiQL className='h-screen' fetcher={fetcher} />
     </div>
 

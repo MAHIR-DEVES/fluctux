@@ -78,7 +78,7 @@ export default async function DocContentPage({
     console.log(params);
   });
 
-  if(`${doctype}/${slug[0]}` === "developer/graphql") return <DocGraphql/>
+  if(slug.includes("graphql")) return <DocGraphql/>
 
   try {
     const response = await fetch(

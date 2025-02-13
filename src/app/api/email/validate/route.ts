@@ -18,8 +18,10 @@ export async function POST(request: NextRequest) {
   });
 
   if (decision.isDenied()) {
+    console.log(decision);
+    
     return NextResponse.json(
-      new ApiError(403, `${decision.reason}`, false)
+      new ApiError(403, "Error in email", false, undefined , [decision.reason])
     );
   }
 

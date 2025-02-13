@@ -41,18 +41,18 @@ class ArcjetHandler {
   constructor({
     SLIDING_WINDOW = {
       enable: false,
-      mode: "DRY_RUN",
+      mode: "DRY_RUN", // "DRY_RUN" to log only. use "LIVE" to block request
       interval: 300,
       max: 5,
     },
     DETECT_BOT = {
       enable: false,
-      mode: "DRY_RUN",
-      allow: [],
+      mode: "DRY_RUN", // "DRY_RUN" to log only. use "LIVE" to block request
+      allow: [], // "[] allow none" will block all detected bots
     },
     VALIDATE_EMAIL = {
       enable: false,
-      mode: "DRY_RUN",
+      mode: "DRY_RUN", // "DRY_RUN" to log only. use "LIVE" to block request
       block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"],
     },
   }: ArcjetHandlerConstructorType) {
@@ -64,13 +64,13 @@ class ArcjetHandler {
     >[] = [
       SLIDING_WINDOW.enable &&
         slidingWindow({
-          mode: SLIDING_WINDOW.mode, // will block requests. Use "DRY_RUN" to log only
-          interval: SLIDING_WINDOW.interval!, // tracks requests across a 5min sliding window,
+          mode: SLIDING_WINDOW.mode,
+          interval: SLIDING_WINDOW.interval!,
           max: SLIDING_WINDOW.max!,
         }),
       DETECT_BOT.enable &&
         detectBot({
-          mode: DETECT_BOT.mode, // will block requests. Use "DRY_RUN" to log only
+          mode: DETECT_BOT.mode,
           allow: DETECT_BOT.allow || [], // "[] allow none" will block all detected bots
         }),
       VALIDATE_EMAIL.enable &&

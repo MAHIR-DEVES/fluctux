@@ -9,6 +9,7 @@ import { createOrgZodSchema } from "@/zod/organization";
 import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
 
 class Orgranization {
+
   async createNewOrg(data: CreateOrganizationDataType) {
     try {
       const authorizedUser = await serverSession();
@@ -53,6 +54,9 @@ class Orgranization {
       return { error: new ApiError(500, "INTERNAL SERVER ERROR", false) };
     }
   }
+
+  
+
 }
 
 export const orgranization = new Orgranization();

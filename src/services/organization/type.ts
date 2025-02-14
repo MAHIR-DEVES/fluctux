@@ -10,7 +10,8 @@ export interface CreateNewTeamDataType {
     team_name: string;
     team_desc: string;
     team_avatar: string;
-    team_type: string; //TODO: it should be enum
+    team_category: string; //TODO: it should be enum
     isHidden: boolean;
     team_visibility: string; //TODO: it should be enum
 }
+

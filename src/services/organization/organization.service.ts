@@ -3,7 +3,7 @@ import { serverSession } from "@/helpers";
 import connDb from "@/lib/db.conn";
 import Org from "@/mongo/org/org.model";
 import ApiResponse from "@/utils/ApiResponse";
-import { CreateOrganizationDataType } from "./type";
+import { CreateNewTeamDataType, CreateOrganizationDataType } from "./type";
 import ApiError from "@/utils/ApiError";
 import { createOrgZodSchema } from "@/zod/organization";
 import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
@@ -53,6 +53,10 @@ class Orgranization {
       // TODO: testing
       return { error: new ApiError(500, "INTERNAL SERVER ERROR", false) };
     }
+  }
+
+  async createNewTeam(data: CreateNewTeamDataType) {
+    
   }
 
   

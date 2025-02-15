@@ -23,15 +23,7 @@ export function InfiniteHits({ hitComponent: HitComponent, ...props }: { hitComp
     }
   }, [isLastPage, showMore]);
 
-  const groupedHits = hits.reduce((acc, hit) => {
-    const { slug } = hit;
-    const title = slug.split("/")[1]
-    if (!acc[title]) {
-      acc[title] = [];
-    }
-    acc[title].push(hit);
-    return acc;
-  }, {} as { [key: string]: typeof hits });
+  const groupedHits = Object.groupBy(hits, hit => hit.slug.split("/")[1])
 
   return (
     <div className="ais-InfiniteHits">
@@ -39,11 +31,11 @@ export function InfiniteHits({ hitComponent: HitComponent, ...props }: { hitComp
         {
           Object.keys(groupedHits).map((title, i) => (
             <React.Fragment key={i}>
-              <div className={`pl-3 text-[16px] font-medium ${i === 0 ? "mt-2": "mt-7"}`}>
+              <div className={`pl-3 text-[16px] font-medium ${i === 0 ? "mt-2" : "mt-7"}`}>
                 {title.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}
               </div>
               {
-                groupedHits[title].map((hit) => (
+                groupedHits && groupedHits[title]?.map((hit) => (
                   <div key={hit.objectID} className="ais-InfiniteHits-item">
                     <HitComponent hit={hit} />
                   </div>

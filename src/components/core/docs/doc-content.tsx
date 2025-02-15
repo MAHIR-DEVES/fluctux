@@ -108,16 +108,16 @@ export default function DocContent({ data }: DocContentPropsType) {
                         <div className='border fx-border-color rounded-[50px] p-1 gap-2 fx-flex-center w-fit fx-secondary-bg'>
                             <span className='fx-sec-label-color text-[14px] font-medium ml-2'>Was this helpful?</span>
                             <div className='fx-flex-center w-fit'>
-                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-third-bg hover:border fx-border-color'>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color'>
                                     <StarFaceIcon />
                                 </span>
-                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-third-bg hover:border fx-border-color'>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color'>
                                     <SmileIcon />
                                 </span>
-                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-third-bg hover:border fx-border-color'>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color'>
                                     <SadIcon />
                                 </span>
-                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:fx-third-bg hover:border fx-border-color'>
+                                <span className='rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color'>
                                     <AngryIcon />
                                 </span>
                             </div>

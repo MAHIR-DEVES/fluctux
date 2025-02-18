@@ -1,4 +1,4 @@
-import { ERROR } from "@/constants";
+import { ERROR, ErrorCodes } from "@/constants";
 import { serverSession } from "@/helpers";
 import connDb from "@/lib/db.conn";
 import Org from "@/mongo/org/org.model";
@@ -7,10 +7,10 @@ import { CreateNewTeamDataType, CreateOrganizationDataType } from "./type";
 import ApiError from "@/utils/ApiError";
 import { createOrgZodSchema } from "@/zod/organization";
 import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
-import { User as SessionUserType } from "next-auth";
+import { User as UserSessionType } from "next-auth";
 
 class Orgranization {
-  private authorizedUser: SessionUserType | null = null;
+  private authorizedUser: UserSessionType | null = null;
   constructor() {
     this.authorize();
   }
@@ -18,7 +18,7 @@ class Orgranization {
   async authorize() {
     const session = await serverSession();
     if (!session) return;
-    this.authorizedUser = (await serverSession()) as SessionUserType;
+    this.authorizedUser = (await serverSession()) as UserSessionType;
   }
 
   async createNewOrg(data: CreateOrganizationDataType) {
@@ -54,13 +54,15 @@ class Orgranization {
         message: new ApiResponse(
           200,
           "Organization created successfully",
-          null,
+          {
+            _id: newOrg._id ,
+          },
           true
         ),
       };
     } catch (error) {
       // TODO: testing
-      return { error: new ApiError(500, "INTERNAL SERVER ERROR", false) };
+      return { error: new ApiError(500, ErrorCodes.INTERNAL_SERVER_ERROR , false, "" , [ERROR.INTERNAL_SERVER_ERROR]) };
     }
   }
 

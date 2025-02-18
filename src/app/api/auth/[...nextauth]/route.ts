@@ -10,8 +10,14 @@ type RouteContext = {
 };
 
 const arcjetHandler = new ArcjetHandler({
-  SLIDING_WINDOW: true,
-  DETECT_BOT: true,
+  SLIDING_WINDOW: {
+    enable: true,
+    mode: "LIVE",
+  },
+  DETECT_BOT: {
+    enable: true,
+    mode: "LIVE",
+  },
 })
 
 const ajProtectedPOST = async (req: Request, context: RouteContext) => {

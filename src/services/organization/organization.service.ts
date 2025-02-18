@@ -7,14 +7,23 @@ import { CreateNewTeamDataType, CreateOrganizationDataType } from "./type";
 import ApiError from "@/utils/ApiError";
 import { createOrgZodSchema } from "@/zod/organization";
 import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
+import { User as SessionUserType } from "next-auth";
 
 class Orgranization {
+  private authorizedUser: SessionUserType | null = null;
+  constructor() {
+    this.authorize();
+  }
+
+  async authorize() {
+    const session = await serverSession();
+    if (!session) return;
+    this.authorizedUser = (await serverSession()) as SessionUserType;
+  }
 
   async createNewOrg(data: CreateOrganizationDataType) {
     try {
-      const authorizedUser = await serverSession();
-
-      if (!authorizedUser) {
+      if (!this.authorizedUser) {
         return { error: ERROR.UNAUTHORIZED_USER };
       }
 
@@ -36,7 +45,7 @@ class Orgranization {
 
       const newOrg = new Org({
         ...data,
-        admin: authorizedUser._id,
+        admin: this.authorizedUser._id,
       });
 
       await newOrg.save();
@@ -55,12 +64,7 @@ class Orgranization {
     }
   }
 
-  async createNewTeam(data: CreateNewTeamDataType) {
-    
-  }
-
-  
-
+  async createNewTeam(data: CreateNewTeamDataType) {}
 }
 
 export const orgranization = new Orgranization();

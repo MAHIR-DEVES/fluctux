@@ -55,14 +55,18 @@ class Orgranization {
           200,
           "Organization created successfully",
           {
-            _id: newOrg._id ,
+            _id: newOrg._id,
           },
           true
         ),
       };
     } catch (error) {
       // TODO: testing
-      return { error: new ApiError(500, ErrorCodes.INTERNAL_SERVER_ERROR , false, "" , [ERROR.INTERNAL_SERVER_ERROR]) };
+      return {
+        error: new ApiError(500, ErrorCodes.INTERNAL_SERVER_ERROR, false, "", [
+          ERROR.INTERNAL_SERVER_ERROR,
+        ]),
+      };
     }
   }
 

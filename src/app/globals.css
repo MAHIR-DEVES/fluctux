@@ -220,6 +220,11 @@ body {
     outline: 2px solid var(--primary-border-color);
   }
 
+  .outline-fxInput{
+    outline: 1px solid var(--primary-color)
+    
+  }
+
   /* link */
   .fx-link-color {
     @apply text-[var(--link-color)];
@@ -331,6 +336,15 @@ body {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-color) transparent;
     scrollbar-gutter: stable;
+  }
+
+  .workspace-exclude-header {
+    @apply pt-[64px]
+  }
+
+  .outline-fxInput{
+    outline: 2px solid var(--primary-color);
+
   }
 }
 

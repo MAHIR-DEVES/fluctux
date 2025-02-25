@@ -93,7 +93,7 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
         const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
         if(!Array.isArray(storedChapters)) return
         storedChapters && storedChapters.map((item: number) => handleOpenArray(`${item}`) )
-    }, [data])
+    }, [])
 
 
     useEffect(() => {

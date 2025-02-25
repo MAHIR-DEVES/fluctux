@@ -34,8 +34,8 @@ export const buttonStyling: ButtonStylingType = {
 }
 
 export const getButtonStyling = (variant?: ButtonVariant, size?: SizeType, disabled: boolean = false) => {
-    let tempVariant = variant && buttonStyling[variant] || buttonStyling["primary"]
-    let tempSize = size && buttonSizes[size] || ""
-    let tempStyledButton = `${tempVariant.default} ${disabled ? tempVariant.disabled : tempVariant.hover} ${tempSize}`
+    const tempVariant = variant && buttonStyling[variant] || buttonStyling["primary"]
+    const tempSize = size && buttonSizes[size] || ""
+    const tempStyledButton = `${tempVariant.default} ${disabled ? tempVariant.disabled : tempVariant.hover} ${tempSize}`
     return tempStyledButton
 }

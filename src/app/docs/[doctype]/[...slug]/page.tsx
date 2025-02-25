@@ -88,9 +88,9 @@ export default async function DocContentPage({
   const fullSlug = slug.join("/")
 
   // debugging the results
-  generateStaticParams().then((params) => {
-    console.log(params);
-  });
+  // generateStaticParams().then((params) => {
+  //   console.log(params);
+  // });
 
   try {
     const response = await fetch(

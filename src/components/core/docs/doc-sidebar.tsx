@@ -104,7 +104,7 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
                 lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 500);
         }
-    }, [data])
+    }, [])
 
     return <>
         <aside className={`w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}>

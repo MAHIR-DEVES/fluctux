@@ -41,9 +41,9 @@ export default async function Layout({
     children, params
 }: DocLayoutPropsType) {
     // debugging the results
-    generateStaticParams().then((params) => {
-        console.log(params);
-    });
+    // generateStaticParams().then((params) => {
+    //     console.log(params);
+    // });
 
     const { doctype } = await params
     const { data } = await apolloClient.query<{

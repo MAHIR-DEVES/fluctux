@@ -27,15 +27,15 @@ const GET_DOC_NAV_LIST = gql`
   }
 `
 
-export async function generateStaticParams() {
-    const docTypes = ['user', 'developer'];
+// export async function generateStaticParams() {
+//     const docTypes = ['user', 'developer'];
 
-    return docTypes.map((type) => {
-        return {
-            docType: type
-        }
-    })
-}
+//     return docTypes.map((type) => {
+//         return {
+//             docType: type
+//         }
+//     })
+// }
 
 export default async function Layout({
     children, params

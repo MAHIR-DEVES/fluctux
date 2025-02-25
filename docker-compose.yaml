@@ -5,17 +5,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: fluctux-web
     ports:
       - "3001:3000"
 
   mongoDb:
     image: mongo
+    container_name: fluctux-database
     ports:
       - "27017:27017"
     volumes:
       - fluctux-database:/data/db
 
-
 volumes:
   fluctux-database:
-

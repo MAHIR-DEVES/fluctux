@@ -65,7 +65,7 @@ class ArcjetHandler {
       SLIDING_WINDOW.enable &&
         slidingWindow({
           mode: SLIDING_WINDOW.mode,
-          interval: SLIDING_WINDOW.interval!,
+          interval: SLIDING_WINDOW?.interval || 300,
           max: SLIDING_WINDOW.max!,
         }),
       DETECT_BOT.enable &&

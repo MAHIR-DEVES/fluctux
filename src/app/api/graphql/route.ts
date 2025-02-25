@@ -16,34 +16,34 @@ interface NextContext {
 const { handleRequest } = createYoga<NextContext>({
   schema,
 
-  plugins: [
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useDisableIntrospection({
-      isDisabled: () => process.env.NODE_ENV === "production",
-    }),
-    maxDepthPlugin({
-      n: 3,
-    }),
-    costLimitPlugin({
-      maxCost: 50, // Default: 5000
-      objectCost: 2, // Default: 2
-      scalarCost: 1, // Default: 1
-      depthCostFactor: 1.5, // Default: 1.5
-      ignoreIntrospection: true, // Default: true
-    }),
-    maxAliasesPlugin({
-      n: 2, // Number of aliases allowed | Default: 15
-    }),
-    maxDirectivesPlugin({
-      n: 2, // Number of directives allowed | Default: 50
-    }),
-    characterLimitPlugin({
-      maxLength: 1000, // Number of characters allowed | Default: 15000
-    }),
-    maxTokensPlugin({
-      n: 1000,
-    }),
-  ],
+  // plugins: [
+  //   // eslint-disable-next-line react-hooks/rules-of-hooks
+  //   useDisableIntrospection({
+  //     isDisabled: () => process.env.NODE_ENV === "production",
+  //   }),
+  //   maxDepthPlugin({
+  //     n: 3,
+  //   }),
+  //   costLimitPlugin({
+  //     maxCost: 50, // Default: 5000
+  //     objectCost: 2, // Default: 2
+  //     scalarCost: 1, // Default: 1
+  //     depthCostFactor: 1.5, // Default: 1.5
+  //     ignoreIntrospection: true, // Default: true
+  //   }),
+  //   maxAliasesPlugin({
+  //     n: 2, // Number of aliases allowed | Default: 15
+  //   }),
+  //   maxDirectivesPlugin({
+  //     n: 2, // Number of directives allowed | Default: 50
+  //   }),
+  //   characterLimitPlugin({
+  //     maxLength: 1000, // Number of characters allowed | Default: 15000
+  //   }),
+  //   maxTokensPlugin({
+  //     n: 1000,
+  //   }),
+  // ],
 
   context: async ({ request }) => {
     // get custom header value

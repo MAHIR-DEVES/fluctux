@@ -5,6 +5,7 @@ import { ForwardIcon } from '@/components/ui/icons/forward-icon';
 import React from 'react'
 import TextareaAutosize from "react-textarea-autosize";
 
+
 export default function TablePage() {
   return (
     <section className='w-full'>

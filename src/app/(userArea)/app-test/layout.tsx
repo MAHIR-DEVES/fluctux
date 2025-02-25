@@ -6,8 +6,12 @@ interface AppLayoutProps {
   children: React.ReactNode;
   params: Promise<{
     org: string
+    
   }>
+
 }
+
+
 
 export default async function Layout({ children }: AppLayoutProps) {
 

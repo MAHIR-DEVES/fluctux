@@ -10,11 +10,12 @@ interface FxInputProps
   size?: keyof typeof inputSizes;
 }
 
-type InputVariantType = "primary" | "secondary";
+type InputVariantType = "primary" | "secondary" | "outline";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary: "border fx-border-color fx-secondary-bg focus:fx-input-outline",
   secondary: "border fx-border-color bg-transparent",
+  outline: ""
 };
 
 

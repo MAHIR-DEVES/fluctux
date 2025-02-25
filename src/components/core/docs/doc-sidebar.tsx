@@ -28,13 +28,8 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
     })
     const router = useRouter()
     const dispatch = useDispatch()
-
     const chapterKey = "chapter" ;
-
-    
-
     const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
-
 
     const handleDocTypeChange = useCallback((value: string) => {
         localStorage.removeItem(lessonKey);
@@ -92,14 +87,13 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
     useEffect(() => {
         const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
         if(!Array.isArray(storedChapters)) return
-        storedChapters && storedChapters.map((item: number) => handleOpenArray(`${item}`) )
+        storedChapters.map((item: number) => handleOpenArray(`${item}`) )
     }, [])
 
 
     useEffect(() => {
         const lesson = localStorage.getItem(lessonKey);
         if (lesson && lessons.current[lesson]) {
-
             setTimeout(() => {
                 lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 500);
@@ -138,7 +132,7 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
                                     </button>
                                     : <Link key={i} href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
 
-                                        <button className={`font-medium mb-2 hover:fx-primary-purple-transparent-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px]  ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)]"}`} onClick={() => handleOpenArray(`${i}`)}>
+                                        <button className={`font-medium mb-2 hover:fx-primary-purple-transparent-bg hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenArray(`${i}`)}>
                                             <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
 
                                         </button>

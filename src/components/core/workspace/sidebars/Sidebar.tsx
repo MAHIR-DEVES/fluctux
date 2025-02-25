@@ -1,5 +1,5 @@
 "use client"
-import FxButton from '@/components/ui/fxbutton'
+import {FxButton} from '@/components/ui/fxbutton'
 import { AddIcon } from '@/components/ui/icons/add-icon'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,12 +12,10 @@ import {
 } from "@/components/ui/collapsible";
 import { SettingsIcon } from '@/components/ui/icons/settings-icon'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
-import FxCommandBox from '@/components/ui/fxcommandbox'
-import FxInput from '@/components/ui/fxinput'
-import FxTextArea from '@/components/ui/fxtextarea'
-import FxRadio from '@/components/ui/fxradio'
-import { PROJECT_COLORS, PROJECT_STATUS_ITEMS } from '@/components/ui/constant'
+
+import { PROJECT_COLORS} from '@/components/ui/constant'
 import { CancelIcon } from '@/components/ui/icons/cancle-icon'
+import { FxCommandBox, FxInput, FxRadio, FxTextArea } from '@/components/ui'
 
 
 export default function Sidebar() {
@@ -71,8 +69,8 @@ export default function Sidebar() {
                 </div>
                 <div className='h-[45px] w-full border-t fx-border-color bottom-0 absolute left-0 fx-secondary-bg fx-secondary-shadow-t fx-flex-between-ic p-1 z-10'>
                     <div className='fx-flex-cl gap-1'>
-                        <FxRadio onValueChange={handleValueChange} align='start' alignItems='vertical' buttonType='modern' buttonStyles='fx-flex-center gap-2 p-[5px] w-[120px] fx-third-bg' items={PROJECT_STATUS_ITEMS} layoutStyle='max-w-[250px] w-full' labelStyles='w-full rounded-[5px]' initialValue={"public"} closeMenuOnSelect={true} />
-                        <FxRadio onValueChange={handleColorValue} align='start' alignItems='horizontal' buttonType='modern' buttonStyles='w-[35px] h-[35px] rounded-[5px] fx-flex-center fx-third-bg' radius='tablet' items={PROJECT_COLORS} layoutStyle='max-w-[250px] w-full gap-2' labelStyles='w-fit rounded-[50px] p-[0px] pl-[0px] pr-[0px]' initialValue={"--project-purple"} closeMenuOnSelect={true} />
+                        <FxRadio items={[]} onValueChange={handleValueChange} align='start' alignItems='vertical' buttonType='modern' buttonClass='fx-flex-center gap-2 p-[5px] w-[120px] fx-third-bg' layoutClass='max-w-[250px] w-full' labelStyles='w-full rounded-[5px]' initialValue={"public"} closeMenuOnSelect={true} />
+                        <FxRadio onValueChange={handleColorValue} align='start' alignItems='horizontal' buttonType='modern' buttonClass='w-[35px] h-[35px] rounded-[5px] fx-flex-center fx-third-bg' radius='tablet' items={PROJECT_COLORS} layoutClass='max-w-[250px] w-full gap-2' labelStyles='w-fit rounded-[50px] p-[0px] pl-[0px] pr-[0px]' initialValue={"--project-purple"} closeMenuOnSelect={true} />
                     </div>
                     <div >
                         <FxButton variant='primary' className='p-[5px] pl-[30px] pr-[30px] font-medium' radius='tiny'>

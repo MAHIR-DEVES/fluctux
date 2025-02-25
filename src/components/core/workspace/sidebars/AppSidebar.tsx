@@ -19,8 +19,6 @@ import { cn } from "@/lib/utils";
 // import FxButton from "@/components/ui/fxbutton";
 // import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import FxSeparator from "@/components/ui/fxseparator";
-import FxBadge from "@/components/ui/fxbadge";
 import { HomeIcon } from "@/components/ui/icons/home-icon";
 import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
 import { ActivityIcon } from "@/components/ui/icons/activity-icon";
@@ -29,6 +27,7 @@ import { TaskIcon } from "@/components/ui/icons/task-icon";
 import { SheetIcon } from "@/components/ui/icons/sheet-icon";
 import { IssueIcon } from "@/components/ui/icons/issue-icon";
 import { PageIcon } from "@/components/ui/icons/page-icon";
+import { FxBadge, FxSeparator } from "@/components/ui";
 
 const frameworks = [
   {

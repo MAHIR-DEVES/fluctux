@@ -12,7 +12,7 @@ interface DocLayoutPropsType {
 }
 
 
-export const GET_DOC_NAV_LIST = gql`
+const GET_DOC_NAV_LIST = gql`
   query GetDocNavList($docType: String) {
     docNavList(docType: $docType) {
       name,

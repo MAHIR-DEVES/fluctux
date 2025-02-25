@@ -25,9 +25,8 @@ import { DeleteIcon } from "@/components/ui/icons/delete-icon";
 import { GlobeIcon } from "@/components/ui/icons/globe-icon";
 import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
 import { CircleUserIcon } from "@/components/ui/icons/circle-user-icon";
-import FxButton from "@/components/ui/fxbutton";
-import FxInput from "@/components/ui/fxinput";
 import SelectAssignees from "./SelectAssignees";
+import { FxButton, FxInput } from "@/components/ui";
 
 interface Assign {
   value: string;

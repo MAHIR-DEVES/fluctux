@@ -1,11 +1,23 @@
 import { apolloClient } from '@/lib/apollo-client';
 import React from 'react'
-import { GET_DOC_NAV_LIST } from '../layout';
-
 import { DocNavListType } from '@/components/core/docs';
-import DocGraphiQl from '@/components/core/docs/doc-graphql';
 import DocContent from '@/components/core/docs/doc-content';
+import { gql } from '@apollo/client';
 
+const GET_DOC_NAV_LIST = gql`
+  query GetDocNavList($docType: String) {
+    docNavList(docType: $docType) {
+      name,
+      path,
+      type,
+      docNavTreeList {
+        name,
+        type,
+        path
+      }
+    }
+  }
+`
 
 export async function generateStaticParams() {
   try {
@@ -79,8 +91,6 @@ export default async function DocContentPage({
   generateStaticParams().then((params) => {
     console.log(params);
   });
-
-  if(slug.includes("graphql")) return <DocGraphiQl/>
 
   try {
     const response = await fetch(

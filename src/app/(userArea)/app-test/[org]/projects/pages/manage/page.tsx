@@ -2,12 +2,12 @@
 import TextareaAutosize from "react-textarea-autosize";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
-import FxButton from "@/components/ui/fxbutton";
 import { ForwardIcon } from "@/components/ui/icons/forward-icon";
 import { LockIcon } from "@/components/ui/icons/lock-icon";
 import { UnlockIcon } from "@/components/ui/icons/unlock-icon";
 import { NavigationIcon } from "@/components/ui/icons/navigation-icon";
 import AddToFavourite from "@/components/core/workspace/AddToFavourite";
+import { FxButton } from "@/components/ui";
 
 export default function ManagePage() {
   const [locked, setLocked] = useState(false);

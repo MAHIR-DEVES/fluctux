@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
 
+  // TODO: for docker image. otherwise comment this
+  // output: "standalone",
+
   images: {
     remotePatterns: [
       {

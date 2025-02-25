@@ -1,6 +1,6 @@
 'use client'
 import AddToFavourite from '@/components/core/workspace/AddToFavourite';
-import FxButton from '@/components/ui/fxbutton';
+import { FxButton } from '@/components/ui';
 import { ForwardIcon } from '@/components/ui/icons/forward-icon';
 import React from 'react'
 import TextareaAutosize from "react-textarea-autosize";

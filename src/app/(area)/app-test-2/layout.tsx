@@ -1,5 +1,5 @@
 import Sidebar from '@/components/core/workspace/sidebars/Sidebar'
-import Logo from '@/components/ui/fxlogo'
+import { FxLogo } from '@/components/ui'
 import React from 'react'
 
 interface LayoutProps {
@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
         <>
             <div className='w-full border-b fx-border-color fx-secondary-bg fixed top-0 left-0'>
                 <div className='fx-flex-between-ic h-[60px] fx-dlayout-padding w-full'>
-                    <Logo size='sm' />
+                    <FxLogo size='sm' />
                 </div>
             </div>
 

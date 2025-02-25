@@ -2,7 +2,7 @@
 import 'graphiql/graphiql.min.css';
 import { GraphiQL } from 'graphiql'
 
-const fetcher = async (graphQLParams) => {
+const fetcher = async (graphQLParams: any) => {
     const response = await fetch(
         'http://localhost:3000/api/graphql',
         {

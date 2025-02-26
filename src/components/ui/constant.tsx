@@ -161,3 +161,30 @@ export const DOC_TYPE = [
     svg: <CodeIcon/>
   }
 ]
+
+
+export const TEAM_VISIBILITY_OPTIONS = [
+  {
+    label: "Public",
+    desc: " Anyone can view.",
+    id: "public",
+    value: "public",
+    svg: <GlobeIcon />
+  },
+  {
+    label: "Private",
+    desc: " Only you can view.",
+    id: "private",
+    value: "private",
+    svg: <LockIcon />
+  },
+]
+
+
+export const TEAM_CATEGORIES = [
+  "Software Team",
+  "Marketing Team",
+  "Design Team",
+  "Sales Team",
+  "Product Team",
+];

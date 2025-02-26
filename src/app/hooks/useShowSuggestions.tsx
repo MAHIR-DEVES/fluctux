@@ -10,7 +10,7 @@ export default function useShowSuggestions({
 }: UseShowSuggestionsPropsType) {
     const [inputValue, setInputValue] = useState("");
     const [filteredSuggestions, setFilteredSuggestions] = useState<string[] | []>([]);
-    const {isOpen: showSuggestions, setOpen: setShowSuggestions } = useToggleOpen({ id: "category-suggestions" })
+    const { isOpen: showSuggestions, setOpen: setShowSuggestions } = useToggleOpen({ id: "category-suggestions" })
     const [activeIndex, setActiveIndex] = useState<number>(-1);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -30,8 +30,6 @@ export default function useShowSuggestions({
             setShowSuggestions(false);
         }
     };
-
-
 
     const handleSuggestionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -78,7 +76,6 @@ export default function useShowSuggestions({
         filteredSuggestions,
         showSuggestions,
         handleSelectSuggestion
-        
     }
 }
 

@@ -1,17 +1,18 @@
 "use client"
+import useToggleOpen from '@/app/hooks/useToggleOpen';
 import { FxButton, FxInput, FxRadio, TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/components/ui'
+import FxSuggestionInput from '@/components/ui/fx-suggestion-input';
 import { ArrowLeftSolidIcon } from '@/components/ui/icons';
 import React, { useState } from 'react'
 
 export default function NewTeamPage() {
   const [inputValue, setInputValue] = useState("");
   const [filteredCategories, setFilteredCategories] = useState<string[] | null>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const { isOpen: showSuggestions, setOpen: setShowSuggestions } = useToggleOpen({ id: "category-suggestions" })
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
-
     // Filter categories based on input
     if (value) {
       const filtered = TEAM_CATEGORIES.filter((category: string) =>
@@ -42,33 +43,19 @@ export default function NewTeamPage() {
         <h1 className='text-[25px] font-semibold'>Create New Team</h1>
         <div className='mt-10'>
           <div>
-
             <FxInput variant='outline' label='Team Name' className='w-full px-4 py-3 placeholder:fx-sec-label-color' radius='tiny' placeholder='e.g. My Team' />
           </div>
 
           <div className='mt-7 relative'>
-
-
             <FxInput variant='outline' label='Team Category' className='w-full px-4 py-3 placeholder:fx-sec-label-color' radius='tiny' placeholder='e.g. Software Team' value={inputValue} onChange={handleCategoryChange} />
 
             <FxButton onClick={handleShowAllCategories} variant='secondary' radius='circle' className='rotate-[270deg] w-[30px] h-[30px] fx-flex-center absolute right-3 top-[50%] translate-y-[-50%]'>
-              <ArrowLeftSolidIcon/>
+              <ArrowLeftSolidIcon />
             </FxButton>
 
             {/* Suggestions Dropdown */}
-            {showSuggestions && filteredCategories && filteredCategories.length > 0 && (
-              <ul className="absolute w-[250px] border fx-border-color fx-secondary-bg shadow-lg mt-1 rounded-md z-10 max-h-[300px] overflow-y-auto">
-                {filteredCategories?.map((category: string) => (
-                  <li
-                    key={category}
-                    className="px-4 py-2 hover:fx-third-bg cursor-pointer fx-label-color hover:text-[var(--foreground)]"
-                    onClick={() => handleSelectCategory(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <FxSuggestionInput showSuggestions={showSuggestions} filteredSuggestions={filteredCategories || []} onSelect={handleSelectCategory} />
+
           </div>
 
           <div className='mt-7'>

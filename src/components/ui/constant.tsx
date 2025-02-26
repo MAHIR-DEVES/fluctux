@@ -187,4 +187,12 @@ export const TEAM_CATEGORIES = [
   "Design Team",
   "Sales Team",
   "Product Team",
+  "Product Team",
+  "Product Team",
+  "Product Team",
+  "Product Team",
+  "Product Team",
+  "Product Team",
+  "Product Team",
+  "Product Team",
 ];

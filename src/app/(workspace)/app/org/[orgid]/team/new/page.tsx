@@ -1,41 +1,12 @@
 "use client"
-import useToggleOpen from '@/app/hooks/useToggleOpen';
+import useShowSuggestions from '@/app/hooks/useShowSuggestions';
 import { FxButton, FxInput, FxRadio, TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/components/ui'
 import FxSuggestionInput from '@/components/ui/fx-suggestion-input';
 import { ArrowLeftSolidIcon } from '@/components/ui/icons';
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function NewTeamPage() {
-  const [inputValue, setInputValue] = useState("");
-  const [filteredCategories, setFilteredCategories] = useState<string[] | null>([]);
-  const { isOpen: showSuggestions, setOpen: setShowSuggestions } = useToggleOpen({ id: "category-suggestions" })
-
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInputValue(value);
-    // Filter categories based on input
-    if (value) {
-      const filtered = TEAM_CATEGORIES.filter((category: string) =>
-        category.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredCategories(filtered);
-      setShowSuggestions(true);
-    } else {
-      setFilteredCategories([]);
-      setShowSuggestions(false);
-    }
-
-  };
-
-  const handleSelectCategory = (category: string) => {
-    setInputValue(category);
-    setShowSuggestions(false); // Hide dropdown
-  };
-
-  const handleShowAllCategories = () => {
-    setShowSuggestions(!showSuggestions)
-    setFilteredCategories(TEAM_CATEGORIES)
-  }
+  const {activeIndex, handleKeyDown, handleShowAllSuggestions, handleSuggestionChange, filteredSuggestions, showSuggestions, inputValue, handleSelectSuggestion} = useShowSuggestions({data: TEAM_CATEGORIES})
 
   return (
     <div className='w-full fx-flex-center workspace-exclude-header'>
@@ -47,14 +18,14 @@ export default function NewTeamPage() {
           </div>
 
           <div className='mt-7 relative'>
-            <FxInput variant='outline' label='Team Category' className='w-full px-4 py-3 placeholder:fx-sec-label-color' radius='tiny' placeholder='e.g. Software Team' value={inputValue} onChange={handleCategoryChange} />
+            <FxInput variant='outline' label='Team Category' className='w-full px-4 py-3 placeholder:fx-sec-label-color' radius='tiny' placeholder='e.g. Software Team' value={inputValue} onChange={handleSuggestionChange} onKeyDown={handleKeyDown} />
 
-            <FxButton onClick={handleShowAllCategories} variant='secondary' radius='circle' className='rotate-[270deg] w-[30px] h-[30px] fx-flex-center absolute right-3 top-[50%] translate-y-[-50%]'>
+            <FxButton onClick={handleShowAllSuggestions} variant='secondary' radius='circle' className={`rotate-[270deg] w-[30px] h-[30px] fx-flex-center absolute right-3 top-[50%] translate-y-[-50%] ${filteredSuggestions?.length > 0 && showSuggestions && "fx-primary-purple-bg fx-hover-primary-purple-bg"} `}>
               <ArrowLeftSolidIcon />
             </FxButton>
 
             {/* Suggestions Dropdown */}
-            <FxSuggestionInput showSuggestions={showSuggestions} filteredSuggestions={filteredCategories || []} onSelect={handleSelectCategory} />
+            <FxSuggestionInput showSuggestions={showSuggestions} filteredSuggestions={filteredSuggestions || []} onSelect={handleSelectSuggestion} activeIndex={activeIndex} />
 
           </div>
 

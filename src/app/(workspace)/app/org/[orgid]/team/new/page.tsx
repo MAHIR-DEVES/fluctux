@@ -1,12 +1,16 @@
 "use client"
+import useImagePreview from '@/app/hooks/useImagePreview';
 import useShowSuggestions from '@/app/hooks/useShowSuggestions';
 import { FxButton, FxInput, FxRadio, TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/components/ui'
 import FxSuggestionInput from '@/components/ui/fx-suggestion-input';
-import { ArrowLeftSolidIcon } from '@/components/ui/icons';
+import { ArrowLeftSolidIcon, DeleteIcon, ImageIcon } from '@/components/ui/icons';
+import Image from 'next/image';
 import React from 'react'
 
 export default function NewTeamPage() {
-  const {activeIndex, handleKeyDown, handleShowAllSuggestions, handleSuggestionChange, filteredSuggestions, showSuggestions, inputValue, handleSelectSuggestion} = useShowSuggestions({data: TEAM_CATEGORIES})
+  const { activeIndex, handleKeyDown, handleShowAllSuggestions, handleSuggestionChange, filteredSuggestions, showSuggestions, inputValue, handleSelectSuggestion } = useShowSuggestions({ data: TEAM_CATEGORIES })
+
+  const { imagePreview, handleRemoveImage, handleImageChange } = useImagePreview()
 
   return (
     <div className='w-full fx-flex-center workspace-exclude-header'>
@@ -14,6 +18,34 @@ export default function NewTeamPage() {
         <h1 className='text-[25px] font-semibold'>Create New Team</h1>
         <div className='mt-10'>
           <div>
+            <label htmlFor="team-cover-image">
+              <div className='w-full fx-flex-center cursor-pointer relative border fx-border-color h-[120px] rounded-t-[10px] overflow-hidden'>
+                {imagePreview ? (
+                  <>
+                    <Image src={imagePreview} width={600} height={200} alt='team' className='object-cover object-center w-full h-full' />
+                    <FxButton onClick={(e) => {
+                      e.preventDefault()
+                      handleRemoveImage()
+                    }} variant='secondary' className='absolute bottom-2 right-2 w-[30px] h-[30px] fx-flex-center' radius="circle">
+                      <DeleteIcon width={16} height={16} />
+                    </FxButton>
+                  </>
+                )
+                  : <ImageIcon width={24} height={24} />
+                }
+              </div>
+            </label>
+            <input type="file" accept="image/png, image/jpeg" onChange={handleImageChange} alt="upload" id='team-cover-image' className='hidden' />
+
+            <label htmlFor="team-logo" className="relative" >
+              <div className='border fx-flex-center cursor-pointer absolute -top-[40px] left-5 fx-secondary-bg fx-border-color rounded-[8px] w-[80px] h-[80px]'>
+              <ImageIcon width={24} height={24} />
+              </div>
+            </label>
+            <input type="file" accept="image/png, image/jpeg" alt="upload" id='team-logo' className='hidden' />
+          </div>
+
+          <div className='mt-20'>
             <FxInput variant='outline' label='Team Name' className='w-full px-4 py-3 placeholder:fx-sec-label-color' radius='tiny' placeholder='e.g. My Team' />
           </div>
 

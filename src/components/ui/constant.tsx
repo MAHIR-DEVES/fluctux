@@ -182,17 +182,17 @@ export const TEAM_VISIBILITY_OPTIONS = [
 
 
 export const TEAM_CATEGORIES = [
-  "Software Team",
-  "Marketing Team",
-  "Design Team",
-  "Sales Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
-  "Product Team",
+  "Software",
+  "Marketing",
+  "Design",
+  "Sales",
+  "Product",
+  "Operations",
+  "Customer Support",
+  "Human Resources",
+  "Legal",
+  "Finance",
+  "IT",
+  "Data Science",
+  "Business"
 ];

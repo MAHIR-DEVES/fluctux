@@ -59,6 +59,7 @@ export default function useShowSuggestions({
     const handleShowAllSuggestions = () => {
         setShowSuggestions(!showSuggestions)
         setFilteredSuggestions(data)
+        setActiveIndex(-1)
     }
 
     // Close dropdown if clicked outside

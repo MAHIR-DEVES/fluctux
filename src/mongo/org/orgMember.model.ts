@@ -27,7 +27,7 @@ const orgMemberSchema: Schema<OrgMemberType> = new Schema({
     role: {
         type: String,
         enum: OrgMemberRoleType,
-        default: OrgMemberRoleType.MEMBER,
+        default: OrgMemberRoleType.FOLLOWER,
     },
     status: {
         type: String,

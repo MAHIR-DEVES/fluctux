@@ -14,7 +14,7 @@ export enum OrgVisibilityType {
 export enum OrgMemberRoleType {
     MANAGER = "MANAGER",
     TEAM = "TEAM",
-    MEMBER = "MEMBER",
+    FOLLOWER = "FOLLOWER",
 }
 
 export enum OrgMemberStatusType {

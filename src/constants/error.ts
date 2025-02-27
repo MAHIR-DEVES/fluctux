@@ -4,6 +4,7 @@ export enum ErrorCodes {
   "INVITATION_NOT_FOUND" = "INVITATION_NOT_FOUND",
   "USER_NOT_FOUND" = "USER_NOT_FOUND",
   "INVALID_REQUEST" = "INVALID_REQUEST",
+  "NOT_ACCEPTABLE" = "NOT_ACCEPTABLE",
 }
 
 export enum HTTPErrorCodes {
@@ -82,5 +83,10 @@ export const ERROR: {
     title: "Invalid Request",
     message: "The request made is invalid.",
     statusCode: HTTPErrorCodes.BAD_REQUEST,
+  },
+  [ErrorCodes.NOT_ACCEPTABLE]: {
+    title: "Not Acceptable",
+    message: "The request made is not acceptable.",
+    statusCode: HTTPErrorCodes.NOT_ACCEPTABLE,
   },
 };

@@ -1,4 +1,8 @@
 import { OrgVisibilityType } from "@/mongo/types";
+import { ApiErrorType } from "@/utils/ApiError";
+import { ApiResponseType } from "@/utils/ApiResponse";
+
+export type OrgResponseType = { message: ApiResponseType } | { error: ApiErrorType };
 
 export interface CreateOrganizationDataType {
     org_name?: string;

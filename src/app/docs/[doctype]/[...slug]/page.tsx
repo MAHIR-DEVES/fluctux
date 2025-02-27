@@ -56,27 +56,27 @@ export async function generateStaticParams() {
       })
     );
 
-    // if (process.env.NODE_ENV === "production") {
-    //   // algolia indexing objects algorithm
-    //   try {
-    //     const arrayOfData = params.flat().map((item) => ({
+    if (process.env.NODE_ENV === "production") {
+      // algolia indexing objects algorithm
+      try {
+        const arrayOfData = params.flat().map((item) => ({
 
-    //       label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString() || "",
-    //       slug: `${item.docType}/${item.slug.join("/").toString()}` || "",
-    //       type: item.docType.toString() || ""
+          label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString() || "",
+          slug: `${item.docType}/${item.slug.join("/").toString()}` || "",
+          type: item.docType.toString() || ""
 
-    //     }))
+        }))
 
-    //     const uniqueData = Array.from(new Map(arrayOfData.map((item) => [item.slug, item])).values());
-    //     console.log("Unique Data being indexed:", uniqueData);
+        const uniqueData = Array.from(new Map(arrayOfData.map((item) => [item.slug, item])).values());
+        console.log("Unique Data being indexed:", uniqueData);
 
-    //     await algolia.indexDocNavLists(uniqueData)
-    //     console.log("Data successfully indexed to Algolia")
-    //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    //   } catch (error) {
-    //     throw new Error("Error indexing data to Algolia")
-    //   }
-    // }
+        await algolia.indexDocNavLists(uniqueData)
+        console.log("Data successfully indexed to Algolia")
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        throw new Error("Error indexing data to Algolia")
+      }
+    }
 
     return params.flat();
   } catch (error) {

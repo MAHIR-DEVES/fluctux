@@ -1,6 +1,5 @@
 "use client"
 import React, { useCallback, useEffect, useRef } from 'react'
-import { DOC_TYPE } from '@/components/ui/constant'
 import { usePathname, useRouter } from 'next/navigation'
 import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
@@ -11,6 +10,7 @@ import { lessonKey } from './constant'
 import { DocNavListType } from './type'
 import { ArrowLeftSolidIcon, RightArrowIcon, SolidLineIcon } from '@/components/ui/icons'
 import { FxButton, FxFavIcon, FxRadio } from '@/components/ui'
+import { DOC_TYPE } from '@/constants/docs'
 
 
 interface DocSidebarPropsType {

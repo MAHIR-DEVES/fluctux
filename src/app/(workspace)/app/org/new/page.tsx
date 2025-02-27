@@ -1,5 +1,5 @@
 "use client"
-import { ORG_VISIBILITY_OPTIONS } from '@/components/ui/constant'
+
 import { FxButton, FxInput, FxRadio } from '@/components/ui'
 import { ArrowRightStrokeIcon } from '@/components/ui/icons'
 import React, { useEffect } from 'react'
@@ -9,6 +9,7 @@ import { createOrgZodSchema } from '@/zod/organization'
 import { OrgVisibilityType } from '@/mongo/types'
 import { z } from 'zod'
 import { createOrganization } from '@/actions/org.server'
+import { ORG_VISIBILITY_OPTIONS } from '@/constants/workspace'
 
 export default function CreateNewOrgPage() {
 

@@ -1,16 +1,15 @@
 import { Organization } from "./organization.service";
+import { User as UserSessionType } from "next-auth";
 
-class OrgTeam extends Organization {
-  constructor() {
-    super();
+export class OrgTeam extends Organization {
+  constructor(session: UserSessionType | null) {
+    super(session);
   }
 
   async createNewTeam() {
-    if(!this.authorizedUser){
+    if(!this.session){
       return
     }
     // TODO: create new team
   }
 }
-
-export const orgTeam = new OrgTeam()

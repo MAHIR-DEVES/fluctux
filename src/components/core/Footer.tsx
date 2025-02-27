@@ -2,7 +2,7 @@
 import React from 'react'
 import useThemeSwitcher from '@/app/hooks/useThemeSwitcher';
 import Link from 'next/link';
-import { footerMainData, legalData, planData, resourcesData, workManagementData } from '@/constants';
+import { FOOTER_MAIN_ITEMS, LEGAL_ITEMS, PLAN_ITEMS, RESOURCES_ITEMS, WORK_MANAGEMENT_ITEMS } from '@/constants/footer';
 import { DiscordIcon, GithubCircleIcon, XLogoIcon } from '../ui/icons';
 import { FxFavIcon } from '../ui';
 
@@ -19,7 +19,7 @@ export const Footer = () => {
               <FxFavIcon variant='default' />
               <ul className='fx-label-color mt-3 leading-8'>
                 {
-                  footerMainData.map((item, i) => {
+                  FOOTER_MAIN_ITEMS.map((item, i) => {
                     return <Link href={`${item.slug}`} key={i}>
                       <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
                     </Link>
@@ -29,53 +29,53 @@ export const Footer = () => {
             </div>
 
             <div className='w-fit'>
-                <p className='text-[16px] font-medium'>Work Management</p>
-                <ul className='fx-label-color mt-3 leading-8'>
-                  {
-                    workManagementData.map((item, i) => {
-                      return <Link href={`${item.slug}`} key={i}>
-                        <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
-                      </Link>
-                    })
-                  }
-                </ul>
+              <p className='text-[16px] font-medium'>Work Management</p>
+              <ul className='fx-label-color mt-3 leading-8'>
+                {
+                  WORK_MANAGEMENT_ITEMS.map((item, i) => {
+                    return <Link href={`${item.slug}`} key={i}>
+                      <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
+                    </Link>
+                  })
+                }
+              </ul>
             </div>
             <div className='w-fit'>
-                <p className='text-[16px] font-medium'>Resources</p>
-                <ul className='fx-label-color mt-3 leading-8'>
-                  {
-                    resourcesData.map((item, i) => {
-                      return <Link href={`${item.slug}`} key={i}>
-                        <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
-                      </Link>
-                    })
-                  }
-                </ul>
+              <p className='text-[16px] font-medium'>Resources</p>
+              <ul className='fx-label-color mt-3 leading-8'>
+                {
+                  RESOURCES_ITEMS.map((item, i) => {
+                    return <Link href={`${item.slug}`} key={i}>
+                      <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
+                    </Link>
+                  })
+                }
+              </ul>
             </div>
 
             <div className='w-fit'>
-                <p className='text-[16px] font-medium'>Plans</p>
-                <ul className='fx-label-color mt-3 leading-8'>
-                  {
-                    planData.map((item, i) => {
-                      return <Link href={`${item.slug}`} key={i}>
-                        <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
-                      </Link>
-                    })
-                  }
-                </ul>
+              <p className='text-[16px] font-medium'>Plans</p>
+              <ul className='fx-label-color mt-3 leading-8'>
+                {
+                  PLAN_ITEMS.map((item, i) => {
+                    return <Link href={`${item.slug}`} key={i}>
+                      <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
+                    </Link>
+                  })
+                }
+              </ul>
             </div>
             <div className='w-fit'>
-                <p className='text-[16px] font-medium'>Legal</p>
-                <ul className='fx-label-color mt-3 leading-8'>
-                  {
-                    legalData.map((item, i) => {
-                      return <Link href={`${item.slug}`} key={i}>
-                        <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
-                      </Link>
-                    })
-                  }
-                </ul>
+              <p className='text-[16px] font-medium'>Legal</p>
+              <ul className='fx-label-color mt-3 leading-8'>
+                {
+                  LEGAL_ITEMS.map((item, i) => {
+                    return <Link href={`${item.slug}`} key={i}>
+                      <li className='hover:text-[var(--primary-color)] text-[15px] font-medium'>{item.label}</li>
+                    </Link>
+                  })
+                }
+              </ul>
             </div>
           </div>
           <div className='w-full fx-flex-between-ic mt-16'>
@@ -85,9 +85,9 @@ export const Footer = () => {
               <XLogoIcon width={22} height={22} className='cursor-pointer' />
               <DiscordIcon width={27} height={27} className='cursor-pointer' />
             </div>
-            
-              <ThemeSwitcher/>
-            
+
+            <ThemeSwitcher />
+
           </div>
         </div>
       </div>

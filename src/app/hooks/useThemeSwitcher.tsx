@@ -1,4 +1,4 @@
-import { THEME_ICONS } from '@/components/ui/constant'
+import { THEME_ICONS } from '@/constants/global';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react'
 

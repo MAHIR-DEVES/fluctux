@@ -1,6 +1,6 @@
 "use server";
 
-import { MEMBER_ADDED, REQUEST_SENT } from "@/constants";
+import { MEMBER_ADDED, REQUEST_SENT } from "@/constants/events";
 import { ERROR } from "@/constants/error";
 import OrgMember from "@/mongo/org/orgMember.model";
 import OrgMemberRequest from "@/mongo/org/orgMemberRequest.model";
@@ -8,9 +8,13 @@ import User from "@/mongo/user/user.model";
 import { OrgMemberRoleType } from "@/mongo/types/org.types";
 import { RequestStatusType } from "@/mongo/types/user.types";
 import { serverSession } from "@/helpers";
-import { CreateOrganizationDataType, organization } from "@/services/organization";
+import { CreateOrganizationDataType, Organization } from "@/services/organization";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
 export async function createOrganization(data: CreateOrganizationDataType) {
+  const session = await getServerSession(authOptions)
+  const organization = new Organization(session && session.user);
   return organization.createNewOrg(data)
 }
 

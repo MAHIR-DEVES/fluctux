@@ -1,5 +1,5 @@
-import { ERROR, ErrorCodes, HTTPErrorCodes, ORG_CREATED } from "@/constants";
-import { serverSession } from "@/helpers";
+import { ERROR, ErrorCodes, HTTPErrorCodes } from "@/constants/error";
+import { ORG_CREATED } from "@/constants/events";
 import connDb from "@/lib/db.conn";
 import Org from "@/mongo/org/org.model";
 import ApiResponse from "@/utils/ApiResponse";
@@ -9,37 +9,22 @@ import { createOrgZodSchema } from "@/zod/organization";
 import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
 import { User as UserSessionType } from "next-auth";
 import { HTTPSuccessCodes } from "@/constants/success";
+import { internalServerError, unauthorizedError } from "@/helpers/errorHandler";
 
 
 export class Organization {
-  protected authorizedUser: UserSessionType | null = null;
+  protected session: UserSessionType | null = null;
 
-  constructor() {
-    this.authorize();
+  constructor(session: UserSessionType | null) {
+    this.session = session;
   }
-
-  async authorize() {
-    // TODO: uncomment
-    const session = await serverSession();
-    if (!session) return
-    this.authorizedUser = (await serverSession()) as UserSessionType;
-  }
-
 
   async createNewOrg(data: CreateOrganizationDataType) {
     try {
       // TODO: uncomment
-      // if (!this.authorizedUser) {
-      //   return {
-      //     error: JSON.parse(
-      //       JSON.stringify(
-      //         new ApiError(HTTPErrorCodes.UNAUTHORIZED, ErrorCodes.UNAUTHORIZED_USER, false, "", [
-      //           ERROR.UNAUTHORIZED_USER,
-      //         ])
-      //       )
-      //     ),
-      //   }
-      // }
+      if (!this.session) {
+        return unauthorizedError()
+      }
 
       const sanitizedData = createOrgZodSchema.safeParse(data);
 
@@ -72,7 +57,7 @@ export class Organization {
       const newOrg = new Org({
         ...data,
         admin:
-          (this.authorizedUser && this.authorizedUser._id) ||
+          (this.session && this.session._id) ||
           "66d61f647fadea5bd3aec0c2",
       });
 
@@ -94,21 +79,7 @@ export class Organization {
       };
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      return {
-        error: JSON.parse(
-          JSON.stringify(
-            new ApiError(
-              HTTPErrorCodes.INTERNAL_SERVER_ERROR,
-              ErrorCodes.INTERNAL_SERVER_ERROR,
-              false,
-              "",
-              [ERROR.INTERNAL_SERVER_ERROR]
-            )
-          )
-        ),
-      };
+      return internalServerError()
     }
   }
 }
-
-export const organization = new Organization();

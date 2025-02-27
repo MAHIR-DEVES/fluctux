@@ -1,9 +1,10 @@
 "use client"
 import useImagePreview from '@/app/hooks/useImagePreview';
 import useShowSuggestions from '@/app/hooks/useShowSuggestions';
-import { FxButton, FxInput, FxRadio, TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/components/ui'
+import { FxButton, FxInput, FxRadio } from '@/components/ui'
 import FxSuggestionInput from '@/components/ui/fx-suggestion-input';
 import { ArrowLeftSolidIcon, DeleteIcon, ImageIcon } from '@/components/ui/icons';
+import { TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/constants/workspace';
 import Image from 'next/image';
 import React from 'react'
 

@@ -8,7 +8,7 @@ import useReactForm from '@/app/hooks/useReactForm'
 import { createOrgZodSchema } from '@/zod/organization'
 import { OrgVisibilityType } from '@/mongo/types'
 import { z } from 'zod'
-import { createNewOrg } from '@/actions/org.server'
+import { createOrganization } from '@/actions/org.server'
 
 export default function CreateNewOrgPage() {
 
@@ -27,7 +27,7 @@ export default function CreateNewOrgPage() {
 
   const onSubmit = async (data: z.infer<typeof createOrgZodSchema>) => {
     try {
-      const response = await createNewOrg(data)
+      const response = await createOrganization(data)
       const { error, message } = response
       console.log(message);
       console.log(error);

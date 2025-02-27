@@ -10,18 +10,21 @@ import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
 import { User as UserSessionType } from "next-auth";
 import { HTTPSuccessCodes } from "@/constants/success";
 
-class Organization {
-  private authorizedUser: UserSessionType | null = null;
+
+export class Organization {
+  protected authorizedUser: UserSessionType | null = null;
+
   constructor() {
     this.authorize();
   }
 
   async authorize() {
     // TODO: uncomment
-    // const session = await serverSession();
-    // if (!session) return;
-    // this.authorizedUser = (await serverSession()) as UserSessionType;
+    const session = await serverSession();
+    if (!session) return
+    this.authorizedUser = (await serverSession()) as UserSessionType;
   }
+
 
   async createNewOrg(data: CreateOrganizationDataType) {
     try {
@@ -105,10 +108,6 @@ class Organization {
         ),
       };
     }
-  }
-
-  async createNewTeam() {
-    // TODO: create new team
   }
 }
 

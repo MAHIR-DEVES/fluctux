@@ -67,7 +67,10 @@ export async function generateStaticParams() {
 
         }))
 
-        await algolia.indexDocNavLists(arrayOfData)
+        const uniqueData = Array.from(new Map(arrayOfData.map((item) => [item.slug, item])).values());
+        console.log("Unique Data being indexed:", uniqueData);
+
+        await algolia.indexDocNavLists(uniqueData)
         console.log("Data successfully indexed to Algolia")
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {

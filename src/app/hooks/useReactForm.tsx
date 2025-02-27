@@ -13,6 +13,7 @@ export default function useReactForm<T extends z.ZodTypeAny>({
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm<z.infer<T>>({
         resolver: zodResolver(ZOD_SCHEMA)
@@ -21,6 +22,7 @@ export default function useReactForm<T extends z.ZodTypeAny>({
     return {
         register,
         handleSubmit,
+        setValue,
         errors
     }
 }

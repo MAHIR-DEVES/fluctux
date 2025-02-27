@@ -10,10 +10,10 @@ import User from "@/mongo/user/user.model";
 import { OrgMemberRoleType, OrgVisibilityType } from "@/mongo/types/org.types";
 import { RequestStatusType } from "@/mongo/types/user.types";
 import { serverSession } from "@/helpers";
-import { CreateOrganizationDataType, orgranization } from "@/services/organization";
+import { CreateOrganizationDataType, organization } from "@/services/organization";
 
 export async function createNewOrg(data: CreateOrganizationDataType) {
-  return orgranization.createNewOrg(data)
+  return organization.createNewOrg(data)
 }
 
 export async function sendOrgMemberRequest(data: {

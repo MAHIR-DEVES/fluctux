@@ -6,9 +6,8 @@ import React from 'react'
 
 export default function OrgMainPage() {
     return (
-        <>
-
-            <div className='w-full fx-flex-between-ic p-3 border-b fx-border-color'>
+        <div className='workspace-exclude-header'>
+            <div className='w-full fx-flex-between-ic p-3 border-b fx-border-color '>
                 <h1 className='text-[25px] font-medium'>Organizations</h1>
                 <Link href={"/app/org/new"}>
                 <FxButton variant='primary' size='md' radius='primary' className='font-medium text-[16px] fx-flex-center gap-2'>
@@ -56,7 +55,7 @@ export default function OrgMainPage() {
                 
             </section>
 
-        </>
+        </div>
     )
 }
 

@@ -59,28 +59,28 @@ export const ORG_VISIBILITY_OPTIONS = [
     label: "Public",
     desc: " Anyone can view.",
     id: "public",
-    value: "public",
+    value: "PUBLIC",
     svg: <GlobeIcon />
   },
   {
     label: "Private",
     desc: " Only you can view.",
     id: "private",
-    value: "private",
+    value: "PRIVATE",
     svg: <LockIcon />
   },
   {
     label: 'Friends',
     desc: " Only you and friends view.",
     id: 'friends',
-    value: 'friends',
+    value: 'FRIENDS',
     svg: <TwoPeopleIcon />
   },
   {
     label: 'Custom',
     desc: " Only you and selected people view.",
     id: 'custom',
-    value: 'custom',
+    value: 'CUSTOM',
     svg: <SettingsIcon />
   }
 ]

@@ -16,7 +16,7 @@ export default function NewTeamPage() {
     <div className='w-full fx-flex-center workspace-exclude-header'>
       <div className='max-w-[600px] w-full my-24 px-3'>
         <h1 className='text-[25px] font-semibold'>Create New Team</h1>
-        <div className='mt-10'>
+        <div className='mt-5'>
           <div>
             <label htmlFor="team-cover-image">
               <div className='w-full fx-flex-center cursor-pointer relative border fx-border-color h-[120px] rounded-t-[10px] overflow-hidden'>
@@ -39,7 +39,7 @@ export default function NewTeamPage() {
 
             <label htmlFor="team-logo" className="relative" >
               <div className='border fx-flex-center cursor-pointer absolute -top-[40px] left-5 fx-secondary-bg fx-border-color rounded-[8px] w-[80px] h-[80px]'>
-              <ImageIcon width={24} height={24} />
+                <ImageIcon width={24} height={24} />
               </div>
             </label>
             <input type="file" accept="image/png, image/jpeg" alt="upload" id='team-logo' className='hidden' />

@@ -3,13 +3,13 @@ import { serverSession } from "@/helpers";
 import connDb from "@/lib/db.conn";
 import Org from "@/mongo/org/org.model";
 import ApiResponse from "@/utils/ApiResponse";
-import { CreateNewTeamDataType, CreateOrganizationDataType } from "./type";
+import { CreateOrganizationDataType } from "./type";
 import ApiError from "@/utils/ApiError";
 import { createOrgZodSchema } from "@/zod/organization";
 import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
 import { User as UserSessionType } from "next-auth";
 
-class Orgranization {
+class Organization {
   private authorizedUser: UserSessionType | null = null;
   constructor() {
     this.authorize();
@@ -27,10 +27,10 @@ class Orgranization {
         return { error: ERROR.UNAUTHORIZED_USER };
       }
 
-      const senitizedData = createOrgZodSchema.safeParse(data);
+      const sanitizedData = createOrgZodSchema.safeParse(data);
 
-      if (!senitizedData.success) {
-        const error = senitizedData.error.format();
+      if (!sanitizedData.success) {
+        const error = sanitizedData.error.format();
         const zodErrors = getFormattedZodErrors(error);
         return { error: zodErrors };
       }
@@ -60,6 +60,7 @@ class Orgranization {
           true
         ),
       };
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       // TODO: testing
       return {
@@ -70,7 +71,9 @@ class Orgranization {
     }
   }
 
-  async createNewTeam(data: CreateNewTeamDataType) {}
+  async createNewTeam() {
+    // TODO: create new team
+  }
 }
 
-export const orgranization = new Orgranization();
+export const organization = new Organization();

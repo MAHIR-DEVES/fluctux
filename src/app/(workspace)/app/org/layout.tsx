@@ -13,7 +13,7 @@ export default function Layout({
     return (
         <div>
             <OrgHeader />
-            <section className='w-full '>
+            <section className='w-full'>
                 <div className='fx-org-layout-width mx-auto fx-border-color h-full w-full'>
                     {children}
                 </div>

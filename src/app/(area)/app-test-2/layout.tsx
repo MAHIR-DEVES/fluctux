@@ -1,4 +1,4 @@
-import Sidebar from '@/components/core/workspace/sidebars/Sidebar'
+
 import { FxLogo } from '@/components/ui'
 import React from 'react'
 
@@ -16,7 +16,7 @@ export default function Layout({ children }: LayoutProps) {
             </div>
 
             <div className='fx-flex-tr w-full mt-[61px]'>
-                <Sidebar />
+             
                 <div className='fx-flex-center app-children-layout'>
                     {children}
                 </div>

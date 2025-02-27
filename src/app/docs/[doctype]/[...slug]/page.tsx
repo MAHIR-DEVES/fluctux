@@ -68,14 +68,12 @@ export async function generateStaticParams() {
         }))
 
         await algolia.indexDocNavLists(arrayOfData)
+        console.log("Data successfully indexed to Algolia")
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         throw new Error("Error indexing data to Algolia")
       }
     }
-
-
-
 
     return params.flat();
   } catch (error) {
@@ -93,9 +91,11 @@ export default async function DocContentPage({
   const fullSlug = slug.join("/")
 
   // debugging the results
-  // generateStaticParams().then((params) => {
-  //   console.log(params);
-  // });
+  if (process.env.NODE_ENV === "development") {
+    generateStaticParams().then((params) => {
+      console.log(params);
+    });
+  }
 
   try {
     const response = await fetch(

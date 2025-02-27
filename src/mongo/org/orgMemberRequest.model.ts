@@ -35,7 +35,7 @@ const orgMemberRequestSchema: Schema<OrgMemberRequestType> = new Schema({
     requested_role: {
         type: String,
         enum: OrgMemberRoleType,
-        default: OrgMemberRoleType.MEMBER,
+        default: OrgMemberRoleType.FOLLOWER,
     },
 }, {
     timestamps: true,

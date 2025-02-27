@@ -1,4 +1,4 @@
-interface ApiErrorType {
+export interface ApiErrorType {
     status: number;
     success: boolean;
     message: string;

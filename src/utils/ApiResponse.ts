@@ -1,4 +1,4 @@
-interface ApiResponseType {
+export interface ApiResponseType {
     status: number;
     message: string;
     data: unknown;

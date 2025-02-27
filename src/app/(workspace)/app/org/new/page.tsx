@@ -10,7 +10,6 @@ import { z } from 'zod'
 import { createOrganization } from '@/actions/org.server'
 import { ORG_VISIBILITY_OPTIONS } from '@/constants/workspace'
 import { toast } from "sonner"
-import { OrgResponseType } from '@/services/organization'
 
 export default function CreateNewOrgPage() {
 
@@ -29,7 +28,7 @@ export default function CreateNewOrgPage() {
     try {
       const response = await createOrganization(data)
 
-      const { error, message } = response as OrgResponseType
+      const { error, message } = response
 
       if (error) {
         console.log(error)

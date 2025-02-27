@@ -9,6 +9,7 @@ import { OrgVisibilityType } from '@/mongo/types'
 import { z } from 'zod'
 import { createOrganization } from '@/actions/org.server'
 import { ORG_VISIBILITY_OPTIONS } from '@/constants/workspace'
+import { toast } from "sonner"
 
 export default function CreateNewOrgPage() {
 
@@ -31,9 +32,13 @@ export default function CreateNewOrgPage() {
 
       if (error) {
         console.log(error)
+        toast.warning("Error creating organization", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
+        })
       }
 
       console.log(message)
+
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
@@ -43,7 +48,7 @@ export default function CreateNewOrgPage() {
 
   return (
     <div className='w-full fx-flex-center workspace-exclude-header'>
-      <div className='max-w-[600px] w-full my-24 px-3'>
+      <div className='max-w-[600px] w-full my-24 px-3 '>
         <h1 className='text-[25px] font-semibold'>Create New Organization</h1>
         <form onSubmit={handleSubmit(onSubmit)} className='mt-10'>
           <div>

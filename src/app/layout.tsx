@@ -9,12 +9,10 @@ import "./styles/org.style.css";
 import "./styles/main.style.css";
 import "./styles/docs.style.css";
 import { ThemeProvider } from "next-themes";
-import SessionClientProvider from "@/components/providers/session-provider";
 import { Suspense } from "react";
-import ApolloClientProvider from "@/components/providers/apollo-client-provider";
 import { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
-import ReduxProvider from "@/components/providers/redux-provider";
+import GlobalWrappers from "@/components/providers/global-wrappers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,18 +43,14 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class">
           <Suspense>
-            <SessionClientProvider>
-              <ApolloClientProvider>
-                <SkeletonTheme
-                  baseColor="var(--skeleton-base-color)"
-                  highlightColor="var(--skeleton-highlightColor)"
-                >
-                  <ReduxProvider>
-                    {children}
-                  </ReduxProvider>
-                </SkeletonTheme>
-              </ApolloClientProvider>
-            </SessionClientProvider>
+            <GlobalWrappers>
+              <SkeletonTheme
+                baseColor="var(--skeleton-base-color)"
+                highlightColor="var(--skeleton-highlightColor)"
+              >
+                {children}
+              </SkeletonTheme>
+            </GlobalWrappers>
           </Suspense>
         </ThemeProvider>
       </body>

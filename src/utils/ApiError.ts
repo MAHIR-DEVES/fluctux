@@ -10,6 +10,8 @@ class ApiError extends Error implements ApiErrorType {
     status: number;
     success: boolean;
     errors: unknown[];
+    message: string;
+    stack?: string | undefined;
 
     constructor (
         status: number,

@@ -1,7 +1,7 @@
-export const ACCOUNT_CREATED = "Account Created";
+export const ACCOUNT_CREATED = "Account Created Successfully";
 
 // Organization Events
-export const ORG_CREATED = "Organization Created"
+export const ORG_CREATED = "Organization Created Successfully"
 export const ORG_DELETED = "Organization Deleted"
 export const MEMBER_ADDED = "Member Added"
 export const REQUEST_SENT = "Request Sent"

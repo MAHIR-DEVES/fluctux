@@ -25,9 +25,13 @@ export default function CreateNewOrgPage() {
   }, [setValue])
 
 
-  const onSubmit = (data: z.infer<typeof createOrgZodSchema>) => {
+  const onSubmit = async (data: z.infer<typeof createOrgZodSchema>) => {
     try {
-      createNewOrg(data)
+      const response = await createNewOrg(data)
+      const { error, message } = response
+      console.log(message);
+      console.log(error);
+      
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       window.alert("error")

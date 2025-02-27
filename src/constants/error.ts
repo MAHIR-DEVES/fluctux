@@ -6,7 +6,7 @@ export enum ErrorCodes {
   "INVALID_REQUEST" = "INVALID_REQUEST"
 }
 
-export enum HTTPcodes {
+export enum HTTPErrorCodes {
   "BAD_REQUEST" = 400,
   "UNAUTHORIZED" = 401,
   "PAYMENT_REQUIRED" = 402,
@@ -60,27 +60,27 @@ export const ERROR: {
     title: "Something went wrong",
     message:
       "There might be a technical issue. We are working on resolving it. Please try again later.",
-    statusCode: HTTPcodes.INTERNAL_SERVER_ERROR,
+    statusCode: HTTPErrorCodes.INTERNAL_SERVER_ERROR,
   },
   [ErrorCodes.UNAUTHORIZED_USER]: {
     title: "Unauthorized Access",
     message:
       "You do not have the necessary permissions to access this resource.",
-    statusCode: HTTPcodes.UNAUTHORIZED,
+    statusCode: HTTPErrorCodes.UNAUTHORIZED,
   },
   [ErrorCodes.INVITATION_NOT_FOUND]: {
     title: "Invitation Not Found",
     message: "The invitation you are looking for does not exist.",
-    statusCode: HTTPcodes.NOT_FOUND,
+    statusCode: HTTPErrorCodes.NOT_FOUND,
   },
   [ErrorCodes.USER_NOT_FOUND]: {
     title: "User Not Found",
     message: "The user you are looking for does not exist.",
-    statusCode: HTTPcodes.NOT_FOUND,
+    statusCode: HTTPErrorCodes.NOT_FOUND,
   },
   [ErrorCodes.INVALID_REQUEST]: {
     title: "Invalid Request",
     message: "The request made is invalid.",
-    statusCode: HTTPcodes.BAD_REQUEST,
+    statusCode: HTTPErrorCodes.BAD_REQUEST,
   },
 };

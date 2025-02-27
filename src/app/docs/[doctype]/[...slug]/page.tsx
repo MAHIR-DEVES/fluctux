@@ -83,6 +83,7 @@ export async function generateStaticParams() {
     console.error("Error generating static pages:", error);
     throw new Error("Error generating static pages"); // stop building
   }
+
 }
 
 export default async function DocContentPage({

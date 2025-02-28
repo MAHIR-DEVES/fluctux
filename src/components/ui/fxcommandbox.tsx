@@ -18,8 +18,6 @@ export function FxCommandBox({ children, open, className, containerClasses }: Fx
             {children}
         </div>
     </CommandDialog>
-
-
 }
 
 

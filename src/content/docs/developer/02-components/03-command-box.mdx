@@ -1,0 +1,51 @@
+# Command Box: `FxCommandBox`
+
+The `FxCommandBox` component is a wrapper for the `CommandDialog` UI component. It provides a customizable command dialog box with a background, border, and overflow behavior. You can use it to display a command interface with customizable content and styling.
+
+## Props
+
+| Prop              | Type               | Description                                                                                       |
+|-------------------|--------------------|---------------------------------------------------------------------------------------------------|
+| `children`        | `React.ReactNode`   | The content inside the command box (e.g., text, buttons, inputs).                                 |
+| `open`            | `boolean`           | Controls whether the `CommandDialog` is open. If `true`, the dialog will be visible. Default is `false`. |
+| `className`       | `string`            | Additional custom CSS class names to apply to the `CommandDialog` wrapper.                        |
+| `containerClasses`| `string`            | Custom CSS class names to apply to the container inside the dialog.                               |
+
+## Usage Example
+
+```tsx
+import React, { useState } from 'react';
+import { FxCommandBox } from './FxCommandBox';
+import useToggleOpen from '@/app/hooks/useToggleOpen'
+
+export default function App() {
+
+    // Toggle the command box open/close
+    const {isOpen, toggle: toggleCommandBox} = useToggleOpen({id: "command-box"})
+
+    return (
+        <div>
+            <button onClick={toggleCommandBox} className="toggle-button">
+                {isOpen ? 'Close Command Box' : 'Open Command Box'}
+            </button>
+
+            <FxCommandBox open={isOpen} className="custom-class" containerClasses="custom-container">
+                <p>This is the content of the command box</p>
+            </FxCommandBox>
+        </div>
+    );
+}
+```
+*Learn more about [useToggleOpen](/docs/developer/04-custom-hooks/04-useToggleOpen) hook*
+
+### Styling
+
+- **CommandDialog**: The outer dialog has a transparent background and no border by default. You can customize it with the `className` prop.
+- **Container**: The inner container has a border, rounded corners, and a secondary background color (`fx-secondary-bg`). It can be further customized with the `containerClasses` prop.
+
+---
+
+### Notes
+
+- The `open` prop determines if the `CommandDialog` should be visible or not. If set to `true`, the command box will appear; otherwise, it will be hidden.
+- You can pass any content inside the `FxCommandBox` using the `children` prop.

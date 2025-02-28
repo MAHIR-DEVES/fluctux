@@ -8,7 +8,7 @@ interface FxSuggestionInputPropsType {
     activeIndex: number
 }
 
-export default function FxSuggestionInput(
+export function FxSuggestionInput(
     {
         showSuggestions = false,
         filteredSuggestions = [],

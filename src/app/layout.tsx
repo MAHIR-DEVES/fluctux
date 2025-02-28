@@ -8,6 +8,7 @@ import "./styles/auth.style.css";
 import "./styles/org.style.css";
 import "./styles/main.style.css";
 import "./styles/docs.style.css";
+import "./styles/alert.style.css";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";

@@ -1,0 +1,52 @@
+# `useReactForm` Hook
+
+The `useReactForm` hook simplifies form handling with validation using `react-hook-form` and `zod`. It integrates `zod` schemas for validation and provides utilities for handling form submissions and managing form state.
+
+## Parameters
+
+### `UseReactFormPropsType`
+| Param Name     | Type                      | Description                                                     |
+|----------------|---------------------------|-----------------------------------------------------------------|
+| `ZOD_SCHEMA`   | `T extends z.ZodTypeAny`   | The `zod` schema used for validating form data.                 |
+
+## Return Value
+
+The hook returns an object containing the following properties:
+
+| Property        | Type                              | Description                                                                 |
+|-----------------|-----------------------------------|-----------------------------------------------------------------------------|
+| `register`      | `ReturnType<typeof useForm['register']>` | A function used to register form inputs, making them part of the form state. |
+| `handleSubmit`  | `typeof useForm['handleSubmit']`  | A function to handle form submission, with validation using the Zod schema. |
+| `setValue`      | `typeof useForm['setValue']`      | A function to manually set the value of a form input.                       |
+| `errors`        | `z.infer<T>`                      | The errors object containing validation errors for form fields.             |
+
+## Usage
+
+```tsx
+import { z } from 'zod';
+import { useReactForm } from '@/app/hooks';
+
+const schema = z.object({
+  name: z.string().min(2, 'Name is required'),
+  email: z.string().email('Invalid email address'),
+});
+
+const MyForm = () => {
+  const { register, handleSubmit, errors } = useReactForm({ ZOD_SCHEMA: schema });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register('name')} />
+      {errors.name && <span>{errors.name.message}</span>}
+
+      <input {...register('email')} />
+      {errors.email && <span>{errors.email.message}</span>}
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+};

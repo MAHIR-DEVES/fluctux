@@ -1,0 +1,12 @@
+# `useProcessMDX` Hook
+
+## Overview
+
+The `useProcessMDX` hook is designed to process and transform Markdown (MDX) data into HTML. It uses a series of utilities from the `unified` ecosystem to parse, format, and transform the provided Markdown content, including enabling GitHub-flavored Markdown (GFM) support, syntax highlighting, code copy buttons, and automatic generation of slugs for headers.
+
+## Usage
+
+```tsx
+import useProcessMDX from '@/app/hooks/useProcessMDX'
+const { content } = useProcessMDX(data)
+```

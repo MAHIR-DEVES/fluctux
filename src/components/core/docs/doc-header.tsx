@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect } from 'react'
 import DocSearchComponent from './search/doc-search'
-import useToggleOpen from '@/app/hooks/useToggleOpen'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { FxButton, FxLogo, FxSeparator } from '@/components/ui'
 import { CancelIcon, GithubCircleIcon, MenuTwoBarIcon } from '@/components/ui/icons'
+import { useToggleOpen } from '@/app/hooks'
 
 export default function DocHeader()  {
     const path_name = usePathname()

@@ -6,9 +6,9 @@ interface UseReactFormPropsType <T extends z.ZodTypeAny> {
     ZOD_SCHEMA: T
 }
 
-export default function useReactForm<T extends z.ZodTypeAny>({
+export const useReactForm = <T extends z.ZodTypeAny>({
     ZOD_SCHEMA
-}: UseReactFormPropsType<T>) {
+}: UseReactFormPropsType<T>) => {
 
     const {
         register,

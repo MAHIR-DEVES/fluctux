@@ -9,7 +9,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from '@rehype-pretty/transformers'
 import remarkGfm from 'remark-gfm'
 
-export default function useProcessMDX(data: string) {
+export const useProcessMDX = (data: string) => {
     const [content, setContent] = useState("")
     const processContent = useCallback(async () => {
         const processedData = await unified()

@@ -1,7 +1,6 @@
 "use client"
 import React, { useCallback, useEffect, useRef } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import useToggleOpen from '@/app/hooks/useToggleOpen'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { setPagination } from '@/redux/pagination/docPaginateSlice'
@@ -11,6 +10,7 @@ import { DocNavListType } from './type'
 import { ArrowLeftSolidIcon, RightArrowIcon, SolidLineIcon } from '@/components/ui/icons'
 import { FxButton, FxFavIcon, FxPopupRadio } from '@/components/ui'
 import { DOC_TYPE } from '@/constants/docs'
+import { useToggleOpen } from '@/app/hooks'
 
 
 interface DocSidebarPropsType {

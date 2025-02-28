@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function useImagePreview(){
+export const useImagePreview = () => {
 
     const [imagePreview, setImagePreview] = useState<string>("");
     const [file, setFile] = useState<File | null>(null);

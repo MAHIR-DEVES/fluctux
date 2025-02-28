@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import useToggleOpen from "./useToggleOpen";
+import { useToggleOpen } from "./useToggleOpen";
 
 interface UseShowSuggestionsPropsType {
     data: string[] | []
 }
 
-export default function useShowSuggestions({
+export const useShowSuggestions = ({
     data
-}: UseShowSuggestionsPropsType) {
+}: UseShowSuggestionsPropsType) => {
     const [inputValue, setInputValue] = useState("");
     const [filteredSuggestions, setFilteredSuggestions] = useState<string[] | []>([]);
     const { isOpen: showSuggestions, setOpen: setShowSuggestions } = useToggleOpen({ id: "category-suggestions" })

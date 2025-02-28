@@ -5,7 +5,7 @@ interface ToggleOpenProps {
   shortcutKey?: string;
 }
 
-export default function useToggleOpen({ id, shortcutKey }: ToggleOpenProps) {
+export const useToggleOpen = ({ id, shortcutKey }: ToggleOpenProps) => {
   const [openStates, setOpenStates] = useState<Record<string, boolean>>({});
   const [openArray, setOpenArray] = useState<{ [key: string]: boolean }>({});
 

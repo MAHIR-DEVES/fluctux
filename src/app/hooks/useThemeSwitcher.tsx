@@ -2,7 +2,7 @@ import { THEME_ICONS } from '@/constants/global';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react'
 
-export default function useThemeSwitcher() {
+export const useThemeSwitcher = () => {
     const { theme, setTheme, resolvedTheme } = useTheme();
     const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {

@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
-import useThemeSwitcher from '@/app/hooks/useThemeSwitcher';
 import Link from 'next/link';
 import { FOOTER_MAIN_ITEMS, LEGAL_ITEMS, PLAN_ITEMS, RESOURCES_ITEMS, WORK_MANAGEMENT_ITEMS } from '@/constants/footer';
 import { DiscordIcon, GithubCircleIcon, XLogoIcon } from '../ui/icons';
 import { FxFavIcon } from '../ui';
+import { useThemeSwitcher } from '@/app/hooks';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

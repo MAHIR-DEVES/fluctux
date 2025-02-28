@@ -5,12 +5,11 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { usePathname } from 'next/navigation'
-import useToggleOpen from '@/app/hooks/useToggleOpen'
-import useProcessMDX from '@/app/hooks/useProcessMDX'
-import useGetAnchors from '@/app/hooks/useGetAnchors'
+import { useProcessMDX } from '@/app/hooks/useProcessMDX'
 import { lessonKey } from './constant'
 import { AngryIcon, ArrowLeftSolidIcon, GithubCircleIcon, RightArrowIcon, SadIcon, SmileIcon, SolidLineIcon, StarFaceIcon, TextAlignLeftIcon } from '@/components/ui/icons'
 import { FxButton } from '@/components/ui'
+import { useGetAnchors, useToggleOpen } from '@/app/hooks'
 
 interface DocContentPropsType {
     data: string

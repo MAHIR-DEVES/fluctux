@@ -5,10 +5,9 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-
-import useToggleOpen from '@/app/hooks/useToggleOpen';
 import { ROUNDED_VARIANTS } from './constant';
 import { FxButton } from './fxbutton';
+import { useToggleOpen } from '@/app/hooks';
 
 interface ItemType {
     label?: string,

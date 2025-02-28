@@ -1,5 +1,6 @@
 "use client"
-import useReactForm from "@/app/hooks/useReactForm";
+
+import { useReactForm } from "@/app/hooks";
 import { FxButton, FxInput, FxSeparator } from "@/components/ui";
 import { DiscordIcon, GithubIcon, GoogleIcon } from "@/components/ui/icons";
 import { userZodSchema } from "@/zod/user/user.zod";

@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect } from 'react'
-import useToggleOpen from '@/app/hooks/useToggleOpen'
 import { InstantSearch, SearchBox } from 'react-instantsearch';
 import { searchAlgolia } from '@/helpers/algolia/search.helper';
 import { DOC_INDEX_NAME } from '@/services/constant';
@@ -12,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import { InfiniteHits } from './infinite-hit';
 import { FxButton, FxCommandBox } from '@/components/ui';
 import { CommandKeyIcon, SearchIcon } from '@/components/ui/icons';
+import { useToggleOpen } from '@/app/hooks';
 
 
 export default function DocSearchComponent() {

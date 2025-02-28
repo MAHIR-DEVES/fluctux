@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-export default function useGetAnchors(content: string) {
+export const useGetAnchors = (content: string) => {
     const [anchors, setAnchors] = useState<string[]>([]);
     useEffect(() => {
         const headingLinks: string[] = []; // Temporary array to hold the anchor labels

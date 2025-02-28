@@ -1,0 +1,24 @@
+# Separator: `FxSeparator`
+
+The `FxSeparator` component is a customizable separator (divider) that allows for horizontal or vertical orientation with options for color, gap, size, and children content overlay
+
+## Usage
+
+```tsx
+<FxSeparator orientation="horizontal" gap="xl">
+    <span className="fx-label-color fx-primary-bg pl-2 pr-2">
+        Or
+    </span>
+</FxSeparator>
+```
+
+## Props
+
+| Prop          | Type                                    | Default                         | Description                                       |
+|---------------|-----------------------------------------|---------------------------------|---------------------------------------------------|
+| `orientation` | `"vertical" \| "horizontal"`            | `"horizontal"`                  | Defines the separator orientation.                |
+| `color`       | `string`                                | `"var(--primary-border-color)"` | Sets the color of the separator.                  |
+| `gap`         | `"sm" \| "md" \| "lg" \| "xl"`          | `undefined`                     | Defines the margin around the separator.          |
+| `size`        | `string`                                | `undefined`                     | Custom width of the separator (e.g., `50%`, `100px`). |
+| `children`    | `React.ReactNode`                       | `undefined`                     | Content displayed over the separator.             |
+| `...props`    | `React.HTMLAttributes<HTMLDivElement>`  | `undefined`                     | Additional HTML div attributes.                   |

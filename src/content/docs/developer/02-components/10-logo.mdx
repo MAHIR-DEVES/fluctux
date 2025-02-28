@@ -1,0 +1,21 @@
+# Logo: `FxLogo`
+
+`FxLogo` supports different logo versions based on the theme (light/dark) and allows for responsive sizing. The component can display different logo images depending on the variant and size, and includes support for `dark` mode by switching between light and dark logos.
+
+## Usage
+
+```tsx
+<FxLogo size="md" variant="primaryLight" className="custom-class" />
+```
+
+## Props
+
+| Prop Name  | Type                                | Description                                                                                                                                     | Default Value  |
+|------------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| `size`     | `keyof typeof logoSize`             | Defines the size of the logo. Available options: `sm` (80px), `md` (120px), `lg` (150px), `xl` (200px).                                           | `""` (No size applied) |
+| `variant`  | `keyof typeof logoType`             | Defines the variant of the logo. Available options: `default`, `primaryDark`, `primaryLight`, `secondary`.                                        | `secondary`    |
+| `className`| `string`                            | A custom class name for additional styling of the logo image.                                                                                   | `""` (No custom class)  |
+
+### Dark Mode:
+
+The component has built-in support for `dark` mode. When the `variant` is set to `default`, it will render the light logo in light mode and the dark logo in dark mode using Tailwind's `dark` mode utilities (`dark:block`, `dark:hidden`).

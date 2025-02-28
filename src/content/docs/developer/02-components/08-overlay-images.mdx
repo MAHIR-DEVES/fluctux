@@ -1,0 +1,37 @@
+# Overlay Images: `FxOverlayImages`
+
+`FxOverlayImages` is a React functional component designed for rendering a set of overlay images. It accepts an optional array of image URLs and displays them in a circular format, layered on top of each other with slight offset positions. If no images are provided, it will fall back to displaying default placeholder images.
+
+## Usage
+
+```tsx
+const images = [
+    "/path/to/image1.jpg", 
+    "/path/to/image2.jpg", 
+    "/path/to/image3.jpg"
+]
+
+<FxOverlayImages images={images} />
+```
+
+## Props
+
+### `images` (optional)
+- **Type**: `string[]`
+- **Description**: An optional array of image URLs to display in the overlay. If provided, only the first three images will be displayed.
+- **Default**: `[]` (Empty array)
+
+## Component Structure
+
+### Wrapper (`div`)
+
+- A container that holds the images with a fixed width of 75px and height of 30px. The images are absolutely positioned inside this container.
+
+### Image Rendering
+
+- If the `images` prop is provided, it will display up to 3 images. The images will be rendered as circular (rounded) elements with a 30px diameter.
+- Each image is stacked with a slight horizontal offset to create a layered effect.
+
+### Fallback State
+
+- If no images are provided (`images` is `undefined` or empty), the component will display three placeholder images in different background colors (`red`, `blue`, `yellow`), each stacked with a slight offset.

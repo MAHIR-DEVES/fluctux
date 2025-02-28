@@ -2,6 +2,21 @@
 
 The `FxTextArea` component is a customizable text area. It supports different size, variant, and radius styles, making it flexible for various use cases.
 
+## Usage
+
+```tsx
+import { FxTextArea } from '@/components/ui'
+
+<FxTextArea
+  variant="primary"
+  size="lg"
+  radius="primary"
+  resize={false}
+  placeholder="Enter your text here"
+  className="custom-textarea"
+/>
+```
+
 ## `FxTextArea` Props
 
 | Prop Name   | Type                                               | Description                                                                                         | Default Value     |
@@ -13,15 +28,3 @@ The `FxTextArea` component is a customizable text area. It supports different si
 | `variant`   | `"primary"` \| `"secondary"`                         | Determines the visual style of the text area. Options: `"primary"`, `"secondary"`.                  | `"secondary"`     |
 | `...props`  | `React.TextareaHTMLAttributes<HTMLTextAreaElement>` | Any other props for the `<textarea>` element (e.g., `placeholder`, `onChange`, `value`).             | `undefined`       |
 
-## Example Usage
-
-```tsx
-<FxTextArea
-  variant="primary"
-  size="lg"
-  radius="primary"
-  resize={false}
-  placeholder="Enter your text here"
-  className="custom-textarea"
-/>
-```

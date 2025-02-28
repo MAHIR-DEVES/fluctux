@@ -76,7 +76,21 @@ export default function CreateNewOrgPage() {
           </div>
 
           <div className='mt-7'>
-            <FxRadio onValueChange={handleVisibilityChange} items={ORG_VISIBILITY_OPTIONS} initialValue='PUBLIC' activeLabelClass='border border-[var(--primary-color)] ' buttonType='modern' layoutClass="w-[280px]" closeMenuOnSelect={true} labelStyles='rounded-[5px] w-full h-[80px] pl-3 pr-3 hover:fx-third-bg' radius='tiny' align="start" buttonClass="w-fit px-3 py-2 gap-2 fx-flex-center font-medium" />
+            <FxRadio
+              onValueChange={handleVisibilityChange}
+              items={ORG_VISIBILITY_OPTIONS}
+              initialValue='PUBLIC'
+              classNames={{
+                activeLabel: 'border border-[var(--primary-color)] ',
+                layout: "w-[280px]",
+                label: 'rounded-[5px] w-full h-[80px] pl-3 pr-3 hover:fx-third-bg',
+                button: "w-fit px-3 py-2 gap-2 fx-flex-center font-medium"
+              }}
+              buttonType='modern'
+              closeMenuOnSelect={true}
+              radius='tiny'
+              align="start"
+            />
             <p>{errors.org_visibility && errors.org_visibility?.message}</p>
           </div>
 

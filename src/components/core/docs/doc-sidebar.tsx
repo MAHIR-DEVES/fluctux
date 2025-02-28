@@ -20,7 +20,7 @@ interface DocSidebarPropsType {
     }
 }
 
-export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
+export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const path_name = usePathname()
     const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
     const { isOpen: isDocAsideOpen, setOpen: setDocAsideOpen, toggle: docAsideToggleOpen } = useToggleOpen({
@@ -28,7 +28,7 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
     })
     const router = useRouter()
     const dispatch = useDispatch()
-    const chapterKey = "chapter" ;
+    const chapterKey = "chapter";
     const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
     const handleDocTypeChange = useCallback((value: string) => {
@@ -70,7 +70,7 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
 
     const handleOpenChapter = (index: number) => {
         console.log("rendering chapter");
-        
+
         handleOpenArray(`${index}`)
         const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
         if (!isOpenFromArray(`${index}`)) {
@@ -86,8 +86,8 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
 
     useEffect(() => {
         const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
-        if(!Array.isArray(storedChapters)) return
-        storedChapters.map((item: number) => handleOpenArray(`${item}`) )
+        if (!Array.isArray(storedChapters)) return
+        storedChapters.map((item: number) => handleOpenArray(`${item}`))
     }, [])
 
 
@@ -119,7 +119,25 @@ export default function DocSidebar ({ docType, data }: DocSidebarPropsType) {
                     </div>
                 </FxButton>
 
-                <FxRadio onValueChange={handleDocTypeChange} align='start' alignItems='vertical' buttonType='modern' buttonClass='fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium' items={DOC_TYPE} layoutClass='w-[230px]' activeLabelClass='hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]' labelStyles='w-full rounded-[5px] hover:fx-third-bg' initialValue={`${docType}`} closeMenuOnSelect={true} labelIconContainerClass={"fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg"} buttonSvgContainerClass={'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'} showDescInButton={true} />
+                <FxRadio
+                    onValueChange={handleDocTypeChange}
+                    align='start'
+                    classNames={{
+                        button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium',
+                        activeLabel: 'hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]',
+                        label: 'w-full rounded-[5px] hover:fx-third-bg',
+                        layout: 'w-[230px]',
+                        labelIconContainer: "fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg",
+                        buttonSvgContainer: 'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'
+                    }}
+                    alignItems='vertical'
+                    buttonType='modern'
+                    items={DOC_TYPE}
+                    initialValue={`${docType}`}
+                    closeMenuOnSelect={true}
+                    showDescInButton={true}
+                />
+                
                 {
                     data.docNavList.map((navItem, i) => {
                         return <React.Fragment key={i}>

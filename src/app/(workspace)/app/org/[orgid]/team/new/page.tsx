@@ -63,7 +63,21 @@ export default function NewTeamPage() {
           </div>
 
           <div className='mt-7'>
-            <FxRadio items={TEAM_VISIBILITY_OPTIONS} initialValue='public' activeLabelClass='border border-[var(--primary-color)] ' buttonType='modern' layoutClass="w-[250px]" closeMenuOnSelect={true} labelStyles='rounded-[5px] w-full h-[60px] pl-3 pr-3 hover:fx-third-bg' radius='tiny' align="start" buttonClass="w-fit px-3 py-2 gap-2 fx-flex-center font-medium" />
+            <FxRadio
+              items={TEAM_VISIBILITY_OPTIONS}
+              initialValue='public'
+              classNames={{
+                activeLabel: 'border border-[var(--primary-color)]',
+                layout: "w-[250px]",
+                label: 'rounded-[5px] w-full h-[60px] pl-3 pr-3 hover:fx-third-bg',
+                button: "w-fit px-3 py-2 gap-2 fx-flex-center font-medium"
+              }}
+              buttonType='modern'
+              closeMenuOnSelect={true}
+              radius='tiny'
+              align="start"
+
+            />
           </div>
 
           <FxButton variant='primary' className='w-full mt-7 py-2 font-medium fx-flex-center gap-2' radius='tiny'>

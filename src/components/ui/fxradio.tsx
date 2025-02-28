@@ -18,24 +18,28 @@ interface ItemType {
     svg?: React.ReactNode
 }
 
+interface ClassNamesTypes {
+    activeLabel?: string,
+    buttonSvgContainer?: string,
+    labelIconContainer?: string,
+    button?: string,
+    label?: string,
+    layout?: string,
+}
+
 interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string,
     children?: React.ReactNode,
     align?: 'start' | 'center' | 'end',
     buttonType?: keyof typeof radioButton
     items: ItemType[],
-    layoutClass?: string,
     initialValue?: string,
     closeMenuOnSelect?: boolean,
     alignItems?: keyof typeof alignItemsVariant,
-    labelStyles?: string
-    onValueChange?: (value: string) => void;
-    radius?: keyof typeof ROUNDED_VARIANTS
-    buttonClass?: string,
-    labelIconContainerClass?: string,
-    buttonSvgContainerClass?: string,
-    showDescInButton?: boolean
-    activeLabelClass?: string
+    onValueChange?: (value: string) => void,
+    radius?: keyof typeof ROUNDED_VARIANTS,
+    showDescInButton?: boolean,
+    classNames?: ClassNamesTypes,
 }
 
 type RadioButtonType = "custom" | "modern"
@@ -57,18 +61,20 @@ export function FxRadio({
     align = 'center',
     buttonType = 'custom',
     items,
-    layoutClass,
     initialValue,
     closeMenuOnSelect = false,
     alignItems = 'vertical',
-    labelStyles,
     onValueChange,
     radius = 'tiny',
-    buttonClass,
-    labelIconContainerClass,
-    buttonSvgContainerClass,
     showDescInButton = false,
-    activeLabelClass = "fx-third-bg"
+    classNames = {
+        activeLabel: "fx-third-bg",
+        buttonSvgContainer: "",
+        labelIconContainer: "",
+        button: "",
+        label: "",
+        layout: "",
+    }
 }: FxRadioProps) {
     const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,8 +106,8 @@ export function FxRadio({
                         <div onClick={() => setOpen(true)}>
                             {children}
                         </div> : items ?
-                            <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${buttonClass}`} radius={radius}>
-                                <div className={`${buttonSvgContainerClass}`}>
+                            <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${classNames.button}`} radius={radius}>
+                                <div className={`${classNames.buttonSvgContainer}`}>
 
                                     {
                                         items.find(item => item.value === selectedValue)?.svg
@@ -134,15 +140,15 @@ export function FxRadio({
                 }
             </PopoverTrigger>
             <PopoverContent align={align}>
-                <div className={`flex ${alignItemVariant} w-[200px] border fx-border-color rounded-[8px] p-1 fx-secondary-bg ${layoutClass}`}>
+                <div className={`flex ${alignItemVariant} w-[200px] border fx-border-color rounded-[8px] p-1 fx-secondary-bg ${classNames.layout}`}>
                     {
 
                         items ? items.map((item, i) => {
                             return <React.Fragment key={i}>
-                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value && `${activeLabelClass}`} fx-flex-cl gap-2 p-1 cursor-pointer  group  transition-all  ${labelStyles}`}>
+                                <label htmlFor={`radio-${item.id}`} className={` ${selectedValue === item.value && `${classNames.activeLabel}`} fx-flex-cl gap-2 p-1 cursor-pointer  group  transition-all  ${classNames.label}`}>
                                     {
                                         item.svg &&
-                                        <div className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${labelIconContainerClass}`}>
+                                        <div className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${classNames.labelIconContainer}`}>
                                             {item.svg}
                                         </div>
                                     }

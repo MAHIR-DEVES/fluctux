@@ -16,8 +16,6 @@ export default function SignUpPage() {
     console.log(data.fname);
     console.log(data.lname);
     console.log(data.email);
-
-
   }
 
   return (

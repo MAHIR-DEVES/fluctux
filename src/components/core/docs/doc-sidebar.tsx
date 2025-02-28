@@ -33,7 +33,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
     const handleDocTypeChange = useCallback((value: string) => {
         localStorage.removeItem(lessonKey);
-        localStorage.removeItem(chapterKey)
+        localStorage.removeItem(chapterKey);
         router.push(`/docs/${value}/01-get-started/01-introduction`)
     }, [router])
 
@@ -69,8 +69,6 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
 
     const handleOpenChapter = (index: number) => {
-        console.log("rendering chapter");
-
         handleOpenArray(`${index}`)
         const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
         if (!isOpenFromArray(`${index}`)) {
@@ -137,11 +135,10 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     closeMenuOnSelect={true}
                     showDescInButton={true}
                 />
-                
+
                 {
                     data.docNavList.map((navItem, i) => {
                         return <React.Fragment key={i}>
-
                             {
                                 navItem.type === "dir" ?
                                     <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenChapter(i)}>

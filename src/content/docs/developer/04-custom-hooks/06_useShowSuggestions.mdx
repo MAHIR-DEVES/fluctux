@@ -1,0 +1,89 @@
+# `useShowSuggestions` Hook
+
+The `useShowSuggestions` hook manages the state and logic for showing, filtering, and selecting suggestions in a searchable dropdown. It handles input changes, keyboard navigation, and hiding or showing suggestions based on user interactions.
+
+## Parameters
+
+### `UseShowSuggestionsPropsType`
+| Param Name | Type          | Description                                                                 |
+|------------|---------------|-----------------------------------------------------------------------------|
+| `data`     | `string[] | []` | An array of strings (categories) to be displayed as suggestions in the dropdown. |
+
+## Return Value
+
+The hook returns an object with the following properties:
+
+| Property                | Type                          | Description                                                                 |
+|-------------------------|-------------------------------|-----------------------------------------------------------------------------|
+| `handleShowAllSuggestions` | `() => void`                  | A function to toggle the visibility of the suggestions dropdown.              |
+| `inputValue`            | `string`                       | The current value of the input field.                                        |
+| `handleKeyDown`         | `(e: React.KeyboardEvent) => void` | A function to handle keyboard events (Arrow keys, Enter, Escape).            |
+| `handleSuggestionChange` | `(e: React.ChangeEvent) => void` | A function to handle changes to the input value and filter suggestions.      |
+| `activeIndex`           | `number`                       | The index of the currently active suggestion for keyboard navigation.        |
+| `filteredSuggestions`   | `string[] | []`                | An array of filtered suggestions based on the input value.                   |
+| `showSuggestions`       | `boolean`                      | A boolean indicating whether the suggestions dropdown is open.               |
+| `handleSelectSuggestion` | `(category: string) => void`   | A function to select a suggestion and set it as the input value.             |
+
+## Usage
+
+```tsx
+import { useShowSuggestions } from '@/app/hooks';
+
+// Destructuring the values returned by the useShowSuggestions hook
+const { 
+    activeIndex, 
+    handleKeyDown, 
+    handleShowAllSuggestions, 
+    handleSuggestionChange, 
+    filteredSuggestions, 
+    showSuggestions, 
+    inputValue, 
+    handleSelectSuggestion 
+} = useShowSuggestions({ data: TEAM_CATEGORIES });
+
+<div className='relative'>
+    {/* Input field for team category with placeholder and custom styles */}
+    <FxInput 
+        variant='outline' 
+        label='Team Category' 
+        className='w-full px-4 py-3 placeholder:fx-sec-label-color' 
+        radius='tiny' 
+        placeholder='e.g. Software Team' 
+        value={inputValue} 
+        onChange={handleSuggestionChange} 
+        onKeyDown={handleKeyDown} 
+    />
+
+    {/* Button to toggle visibility of the suggestions dropdown */}
+    <FxButton 
+        onClick={handleShowAllSuggestions} 
+        variant='secondary' 
+        radius='circle' 
+        className={`rotate-[270deg] w-[30px] h-[30px] fx-flex-center absolute right-3 top-[50%] translate-y-[-50%] ${filteredSuggestions?.length > 0 && showSuggestions && "fx-primary-purple-bg fx-hover-primary-purple-bg"} `}>
+        <ArrowLeftSolidIcon />
+    </FxButton>
+
+    {/* Suggestions dropdown that shows when showSuggestions is true */}
+    <FxSuggestionInput 
+        showSuggestions={showSuggestions} 
+        filteredSuggestions={filteredSuggestions || []} 
+        onSelect={handleSelectSuggestion} 
+        activeIndex={activeIndex} 
+    />
+</div>
+```
+
+## Notes
+
+- The hook handles keyboard events such as:
+  - **ArrowDown**: Navigate down through the filtered suggestions.
+  - **ArrowUp**: Navigate up through the filtered suggestions.
+  - **Enter**: Select the active suggestion.
+  - **Escape**: Close the suggestions dropdown.
+
+- The hook filters the suggestions based on the input value and hides the dropdown if there is no input or no matching suggestions.
+
+- The dropdown closes when clicked outside of the input field.
+
+
+

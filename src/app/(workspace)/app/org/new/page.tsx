@@ -1,6 +1,6 @@
 "use client"
 
-import { FxButton, FxInput, FxRadio } from '@/components/ui'
+import { FxButton, FxInput, FxPopupRadio } from '@/components/ui'
 import { ArrowRightStrokeIcon } from '@/components/ui/icons'
 import React, { useEffect } from 'react'
 import useReactForm from '@/app/hooks/useReactForm'
@@ -76,7 +76,7 @@ export default function CreateNewOrgPage() {
           </div>
 
           <div className='mt-7'>
-            <FxRadio
+            <FxPopupRadio
               onValueChange={handleVisibilityChange}
               items={ORG_VISIBILITY_OPTIONS}
               initialValue='PUBLIC'

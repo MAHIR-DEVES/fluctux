@@ -1,0 +1,105 @@
+# Popup Radio: `FxPopupRadio`
+
+The FxPopupRadio component is a Popup radio button implementation in React with a popover-based UI. It allows you to display radio options with custom labels, descriptions, and icons, and handles state changes when an option is selected.
+
+## Features
+- Button styles (e.g., "none" and "modern" styles)
+- Optional descriptions for each radio option
+- Display icons alongside labels for each radio option
+- State management to handle value selection
+- Popover UI to display radio options on click
+- Supports custom styles and layout
+
+## Props
+
+| Prop Name            | Type                                          | Description                                                                                                                                                           |
+|----------------------|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `className`          | `string`                                      | Additional class names to apply to the component.                                                                                                                     |
+| `children`           | `React.ReactNode`                             | Custom content to display in the radio button trigger.                                                                                                                |
+| `align`              | `'start'` \| `'center'` \| `'end'`                 | Controls the alignment of the button content. Default is `'center'`.                                                                                                 |
+| `buttonType`         | `'none'` \| `'modern'`                         | Determines the button style. Options are `'none'` (default) and `'modern'`.                                                                                        |
+| `items`              | `ItemType[]`                                  | An array of radio items. Each item contains a label, description, id, value, and optional SVG icon.                                                                |
+| `initialValue`       | `string`                                      | The initial selected value of the radio button.                                                                                                                       |
+| `closeMenuOnSelect`  | `boolean`                                     | When true, the popover menu will close automatically when a value is selected. Default is `false`.                                                                  |
+| `alignItems`         | `'horizontal'` \| `'vertical'`                  | Defines the layout of the radio items. Options are `'horizontal'` and `'vertical'`. Default is `'vertical'`.                                                        |
+| `onValueChange`      | `(value: string) => void`                     | Callback function that is triggered when a value is selected. It passes the selected value.                                                                         |
+| `radius`             | `keyof typeof ROUNDED_VARIANTS`               | Defines the border radius of the button. Options are `'tiny'`, `'small'`, `'medium'`, etc. Default is `'tiny'`.                                                      |
+| `showDescInButton`   | `boolean`                                     | When true, displays the description of the selected item inside the button. Default is `false`.                                                                     |
+| `classNames`         | `ClassNamesType`                             | Custom CSS class overrides for various parts of the component (e.g., active label, button, layout, etc.).                                                           |
+
+## ItemType Interface
+
+| Field Name | Type              | Description                                         |
+|-------------|-------------------|-----------------------------------------------------|
+| `label`    | `string`          | The label of the radio item.                        |
+| `desc`     | `string`          | The description of the radio item.                  |
+| `id`       | `string`          | A unique identifier for the radio item.             |
+| `value`    | `string`          | The value associated with the radio item.           |
+| `svg`      | `React.ReactNode` | Optional SVG icon to display alongside the label.   |
+
+
+## ClassNamesTypes props
+
+| Prop Name               | Type   | Description                                                       |
+|-------------------------|--------|-------------------------------------------------------------------|
+| `activeLabel`           | string | Class name applied when an item is selected. Default: `"fx-third-bg"`. |
+| `buttonSvgContainer`    | string | Class name applied to the container for the SVG icon (if any).   |
+| `labelIconContainer`    | string | Class name applied to the container for the icon.                |
+| `button`                | string | Class name for the button itself.                                |
+| `label`                 | string | Class name for the label text.                                   |
+| `layout`                | string | Class name applied to the container of the radio options.        |
+
+## Behavior
+
+- The component uses a Popover for displaying the radio options, which is triggered by clicking on the button.
+- The popover shows a list of radio options (provided via the `items` prop), and allows the user to select one.
+- When an option is selected, the component updates the internal state (`selectedValue`) and triggers the `onValueChange` callback (if provided).
+- The selected value is displayed on the button, and the description is optionally shown if `showDescInButton` is `true`.
+- The popover automatically closes when a value is selected, if the `closeMenuOnSelect` prop is set to `true`.
+
+---
+
+## Example
+```tsx
+import { FxPopupRadio } from '@/components/ui'
+
+const DOC_TYPE = [
+    {
+        label: 'User',
+        id: 'user',
+        value: 'user',
+        desc: 'Guides for users.',
+        svg: <UserIcon />
+    },
+    {
+        label: 'Developer',
+        id: 'developer',
+        value: 'developer',
+        desc: 'Guides for developers.',
+        svg: <CodeIcon />
+    }
+]
+
+const handleDocTypeChange = (value: string) => {
+    console.log('Selected value:', value);
+}
+
+<FxPopupRadio
+    onValueChange={handleDocTypeChange}
+    align='start'
+    classNames={{
+        button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium',
+        activeLabel: 'hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]',
+        label: 'w-full rounded-[5px] hover:fx-third-bg',
+        layout: 'w-[230px]',
+        labelIconContainer: "fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg",
+        buttonSvgContainer: 'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'
+    }}
+    alignItems='vertical'
+    buttonType='modern'
+    items={DOC_TYPE}
+    initialValue={`${docType}`}
+    closeMenuOnSelect={true}
+    showDescInButton={true}
+/>
+```

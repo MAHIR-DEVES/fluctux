@@ -18,7 +18,7 @@ interface ItemType {
     svg?: React.ReactNode
 }
 
-interface ClassNamesTypes {
+interface ClassNamesType {
     activeLabel?: string,
     buttonSvgContainer?: string,
     labelIconContainer?: string,
@@ -27,7 +27,7 @@ interface ClassNamesTypes {
     layout?: string,
 }
 
-interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface FxPopupRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string,
     children?: React.ReactNode,
     align?: 'start' | 'center' | 'end',
@@ -39,14 +39,14 @@ interface FxRadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
     onValueChange?: (value: string) => void,
     radius?: keyof typeof ROUNDED_VARIANTS,
     showDescInButton?: boolean,
-    classNames?: ClassNamesTypes,
+    classNames?: ClassNamesType,
 }
 
-type RadioButtonType = "custom" | "modern"
+type RadioButtonType = "none" | "modern"
 type AlignItemsType = 'horizontal' | 'vertical'
 
 const radioButton: { [key in RadioButtonType]: string } = {
-    custom: "custom",
+    none: "none",
     modern: "modern"
 }
 
@@ -55,11 +55,11 @@ const alignItemsVariant: { [key in AlignItemsType]: string } = {
     vertical: 'flex-col justify-center items-start'
 }
 
-export function FxRadio({
+export function FxPopupRadio({
     className,
     children,
     align = 'center',
-    buttonType = 'custom',
+    buttonType = 'none',
     items,
     initialValue,
     closeMenuOnSelect = false,
@@ -75,7 +75,7 @@ export function FxRadio({
         label: "",
         layout: "",
     }
-}: FxRadioProps) {
+}: FxPopupRadioProps) {
     const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value;
@@ -83,7 +83,7 @@ export function FxRadio({
         onValueChange?.(newValue);
     };
 
-    const uiButton = buttonType ? radioButton[buttonType] : radioButton.custom;
+    const uiButton = buttonType ? radioButton[buttonType] : radioButton.none;
     const alignItemVariant = alignItems ? alignItemsVariant[alignItems] : alignItemsVariant.vertical
 
     const { isOpen, setOpen } = useToggleOpen({
@@ -102,7 +102,7 @@ export function FxRadio({
         <Popover open={isOpen} onOpenChange={setOpen} >
             <PopoverTrigger asChild>
                 {
-                    uiButton === 'custom' ?
+                    uiButton === 'none' ?
                         <div onClick={() => setOpen(true)}>
                             {children}
                         </div> : items ?
@@ -135,7 +135,7 @@ export function FxRadio({
                                     No items to display
 
                                 </p>
-                                <span className='fx-sec-label-color text-[14px]'>FxRadio</span>
+                                <span className='fx-sec-label-color text-[14px]'>FxPopupRadio</span>
                             </div>
                 }
             </PopoverTrigger>

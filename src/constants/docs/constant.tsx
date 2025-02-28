@@ -6,7 +6,7 @@ export const DOC_TYPE = [
     id: 'user',
     value: 'user',
     desc: 'Guides for users.',
-    svg: <UserIcon className="" />
+    svg: <UserIcon />
   },
   {
     label: 'Developer',

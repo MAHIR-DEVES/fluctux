@@ -9,7 +9,7 @@ import { FLUCTUX_VERSION } from '@/constants/fluctux-version'
 import { lessonKey } from './constant'
 import { DocNavListType } from './type'
 import { ArrowLeftSolidIcon, RightArrowIcon, SolidLineIcon } from '@/components/ui/icons'
-import { FxButton, FxFavIcon, FxRadio } from '@/components/ui'
+import { FxButton, FxFavIcon, FxPopupRadio } from '@/components/ui'
 import { DOC_TYPE } from '@/constants/docs'
 
 
@@ -119,7 +119,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     </div>
                 </FxButton>
 
-                <FxRadio
+                <FxPopupRadio
                     onValueChange={handleDocTypeChange}
                     align='start'
                     classNames={{

@@ -1,7 +1,7 @@
 "use client"
 import useImagePreview from '@/app/hooks/useImagePreview';
 import useShowSuggestions from '@/app/hooks/useShowSuggestions';
-import { FxButton, FxInput, FxRadio } from '@/components/ui'
+import { FxButton, FxInput, FxPopupRadio } from '@/components/ui'
 import FxSuggestionInput from '@/components/ui/fx-suggestion-input';
 import { ArrowLeftSolidIcon, DeleteIcon, ImageIcon } from '@/components/ui/icons';
 import { TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/constants/workspace';
@@ -63,7 +63,7 @@ export default function NewTeamPage() {
           </div>
 
           <div className='mt-7'>
-            <FxRadio
+            <FxPopupRadio
               items={TEAM_VISIBILITY_OPTIONS}
               initialValue='public'
               classNames={{

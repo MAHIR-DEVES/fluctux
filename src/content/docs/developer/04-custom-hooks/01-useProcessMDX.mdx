@@ -10,3 +10,58 @@ The `useProcessMDX` hook is designed to process and transform Markdown (MDX) dat
 import { useProcessMDX } from '@/app/hooks'
 const { content } = useProcessMDX(data)
 ```
+
+## Parameters
+
+| Param Name | Type   | Description                                                       |
+|------------|--------|-------------------------------------------------------------------|
+| `data`     | `string` | The raw Markdown (MDX) content to be processed and transformed into HTML. |
+
+## Return Value
+
+The hook returns an object with the following structure:
+
+| Property  | Type   | Description                                                   |
+|-----------|--------|---------------------------------------------------------------|
+| `content` | `string` | The processed HTML content after applying the transformations. |
+
+## Processing Steps
+
+The hook performs the following transformations on the provided Markdown content:
+
+1. **Parsing**:
+   - `remark-parse` is used to parse the raw Markdown into a syntax tree.
+
+2. **GitHub Flavored Markdown (GFM)**:
+   - `remark-gfm` enables support for GitHub-flavored Markdown, such as tables, strikethroughs, task lists, and more.
+
+3. **Markdown to HTML (Rehype)**:
+   - `remark-rehype` converts the Markdown syntax tree into an HTML syntax tree.
+
+4. **Formatting**:
+   - `rehype-format` automatically formats the HTML to ensure proper indentation and consistency.
+
+5. **Slug Generation**:
+   - `rehype-slug` automatically generates IDs for headers, making it easier to link directly to sections of the document.
+
+6. **Syntax Highlighting and Code Copy Button**:
+   - `rehype-pretty-code` adds syntax highlighting to code blocks using the `material-theme-ocean` theme and adds a copy button for each code block.
+   - `transformerCopyButton` enables the copy button with `always` visibility and a feedback duration of 2 seconds after a successful copy.
+
+7. **Stringifying**:
+   - `rehype-stringify` converts the processed HTML syntax tree back into a string.
+
+## Dependencies
+
+The following libraries are used by the `useProcessMDX` hook:
+
+- **unified**: A powerful and flexible text processor used for transforming the Markdown content.
+- **remark-parse**: Markdown parser.
+- **remark-gfm**: GitHub Flavored Markdown (GFM) support.
+- **remark-rehype**: Converts the Markdown syntax tree to an HTML syntax tree.
+- **rehype-format**: Automatically formats the HTML.
+- **rehype-stringify**: Converts the HTML syntax tree back into a string.
+- **rehype-slug**: Generates slugs for headers.
+- **rehype-pretty-code**: Adds syntax highlighting and a copy button to code blocks.
+- **@rehype-pretty/transformers**: Provides the `transformerCopyButton` used for the copy button functionality.
+

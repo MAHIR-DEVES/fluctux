@@ -20,65 +20,12 @@ This will render a primary button with medium size.
 | `disabled`  | `boolean`                                 | If `true`, the button will be disabled and non-interactive. Default is `false`.                                |
 | `loading`   | `boolean`                                 | If `true`, the button will be in a loading state, typically used for showing a spinner. Default is `false`.    |
 
-### `ButtonVariant` Type
-
-The `variant` prop allows you to set the visual style of the button. It accepts the following values:
-
-- **`"primary"`**: A primary button with a distinct color scheme.
-- **`"secondary"`**: A secondary button with a border and subtle background.
-
----
-
-### `SizeType` Type
-
-The `size` prop adjusts the size of the button, controlling the padding. Available values are:
-
-- **`"sm"`**: Small button.
-- **`"md"`**: Medium button (default).
-- **`"lg"`**: Large button.
-- **`"xl"`**: Extra Large button.
-
----
-
-### Styling
-
-#### Button Styling
-
-The styling of the button is determined based on the `variant` and `size` props, as well as the `disabled` or `loading` states.
-
-- **Primary Variant:**
-  - **default**: `"fx-primary-purple-bg cursor-pointer border-none"`
-  - **hover**: `"fx-hover-primary-purple-bg"`
-  - **disabled**: `"fx-sec-label-color cursor-not-allowed !bg-[var(--button-primary-disabled)] border fx-border-color"`
-
-- **Secondary Variant:**
-  - **default**: `"border fx-border-color fx-secondary-bg cursor-pointer"`
-  - **hover**: `"fx-secondary-hover-bg"`
-  - **disabled**: `"fx-sec-label-color cursor-not-allowed fx-secondary-bg border fx-border-color"`
-
----
-
-#### Button Sizes
-
-The `size` prop controls the button's padding, which affects its visual size:
-
-- **`sm`**: `"py-1 px-3"`
-- **`md`**: `"py-2 px-4"` (default)
-- **`lg`**: `"py-3 px-5"`
-- **`xl`**: `"py-3 px-10"`
-
----
-
-#### Rounded Corners
-
-The button can also have rounded corners, controlled by the `radius` prop. The rounding options are stored in the `ROUNDED_VARIANTS` object.
-
 ## Example: Full Button with Custom Props
 ```tsx
 <FxButton
   variant="secondary"
   size="lg"
-  radius="rounded-lg"
+  radius="tiny"
   disabled={false}
   loading={false}
   className="my-custom-class"

@@ -1,0 +1,49 @@
+# Input: `FxInput`
+
+`FxInput` is a customizable input component designed to handle various input field types. It supports different variants, sizes, and rounded corner options, and it can be styled according to your needs. The input also features an optional label and supports various HTML input attributes.
+
+## Usage
+
+```tsx
+import { FxInput } from './FxInput';
+
+<FxInput
+  variant="primary"
+  size="md"
+  radius="sm"
+  placeholder="Enter text here"
+/>
+```
+## Props
+
+| Prop Name   | Type                                             | Description                                                                                                    | Default Value   |
+|-------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------|
+| `className` | `string`                                         | Additional class names to apply custom styling.                                                                | `undefined`     |
+| `variant`   | `"primary"` \| `"secondary"` \| `"outline"`      | Defines the style variant of the input. Available options: `"primary"`, `"secondary"`, `"outline"`.            | `"primary"`     |
+| `radius`    | `keyof typeof ROUNDED_VARIANTS`                  | Defines the rounding style of the input corners.                                                               | `undefined`     |
+| `size`      | `"sm"` \| `"md"` \| `"lg"` \| `"xl"`             | Specifies the size of the input, which affects the padding. Available options: `"sm"`, `"md"`, `"lg"`, `"xl"`. | `"md"`          |
+| `label`     | `string`                                         | The label text for the input field.                                                                            | `"Label"`       |
+| `...props`  | `React.InputHTMLAttributes<HTMLInputElement>`    | Any additional props such as `value`, `placeholder`, `onChange`, etc., that are passed to the input element.   | `undefined`     |
+
+## Behavior
+- When the `variant` is set to `"outline"`, the input is wrapped in a `div` with a floating label effect. The label appears inside the input field and moves above the input when it is focused.
+
+- For other variants (`"primary"` and `"secondary"`), the label is not part of the input field and is typically placed outside the input component, behaving like a standard input field.
+
+## Example
+```tsx
+<FxInput
+  variant="outline"
+  label="Enter your name"
+  size="md"
+  radius="sm"
+  placeholder="Name"
+/>
+```
+
+## Notes
+
+- The input field supports all standard HTML input attributes, including value, onChange, placeholder, type, etc.
+
+- The label prop is useful for adding a description to the input field, and it will float inside the input for the "outline" variant.
+

@@ -7,12 +7,14 @@ import { unified } from 'unified'
 import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from '@rehype-pretty/transformers'
+import remarkGfm from 'remark-gfm'
 
 export default function useProcessMDX(data: string) {
     const [content, setContent] = useState("")
     const processContent = useCallback(async () => {
         const processedData = await unified()
             .use(remarkParse)
+            .use(remarkGfm)
             .use(remarkRehype)
             .use(rehypeFormat)
             .use(rehypeStringify)

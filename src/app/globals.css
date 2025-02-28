@@ -462,3 +462,27 @@ body {
 .dark .invert-fav{
   filter: invert(1);
 }
+
+.prose code::before, .prose code::after {
+  content: none; /* Remove the backtick or any unwanted content before the code */
+}
+
+/* Ensure the code block styling is applied without extra formatting */
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: #ffffff17;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.light .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: #00000015;
+}
+
+pre code {
+  background-color: transparent !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+}

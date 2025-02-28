@@ -2,6 +2,51 @@
 
 The FxPopupRadio component is a Popup radio button implementation in React with a popover-based UI. It allows you to display radio options with custom labels, descriptions, and icons, and handles state changes when an option is selected.
 
+## Usage
+```tsx
+import { FxPopupRadio } from '@/components/ui'
+
+const DOC_TYPE = [
+    {
+        label: 'User',
+        id: 'user',
+        value: 'user',
+        desc: 'Guides for users.',
+        svg: <UserIcon />
+    },
+    {
+        label: 'Developer',
+        id: 'developer',
+        value: 'developer',
+        desc: 'Guides for developers.',
+        svg: <CodeIcon />
+    }
+]
+
+const handleDocTypeChange = (value: string) => {
+    console.log('Selected value:', value);
+}
+
+<FxPopupRadio
+    onValueChange={handleDocTypeChange}
+    align='start'
+    classNames={{
+        button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium',
+        activeLabel: 'hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]',
+        label: 'w-full rounded-[5px] hover:fx-third-bg',
+        layout: 'w-[230px]',
+        labelIconContainer: "fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg",
+        buttonSvgContainer: 'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'
+    }}
+    alignItems='vertical'
+    buttonType='modern'
+    items={DOC_TYPE}
+    initialValue={`${docType}`}
+    closeMenuOnSelect={true}
+    showDescInButton={true}
+/>
+```
+
 ## Features
 - Button styles (e.g., "none" and "modern" styles)
 - Optional descriptions for each radio option
@@ -56,50 +101,3 @@ The FxPopupRadio component is a Popup radio button implementation in React with 
 - When an option is selected, the component updates the internal state (`selectedValue`) and triggers the `onValueChange` callback (if provided).
 - The selected value is displayed on the button, and the description is optionally shown if `showDescInButton` is `true`.
 - The popover automatically closes when a value is selected, if the `closeMenuOnSelect` prop is set to `true`.
-
----
-
-## Example
-```tsx
-import { FxPopupRadio } from '@/components/ui'
-
-const DOC_TYPE = [
-    {
-        label: 'User',
-        id: 'user',
-        value: 'user',
-        desc: 'Guides for users.',
-        svg: <UserIcon />
-    },
-    {
-        label: 'Developer',
-        id: 'developer',
-        value: 'developer',
-        desc: 'Guides for developers.',
-        svg: <CodeIcon />
-    }
-]
-
-const handleDocTypeChange = (value: string) => {
-    console.log('Selected value:', value);
-}
-
-<FxPopupRadio
-    onValueChange={handleDocTypeChange}
-    align='start'
-    classNames={{
-        button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium',
-        activeLabel: 'hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]',
-        label: 'w-full rounded-[5px] hover:fx-third-bg',
-        layout: 'w-[230px]',
-        labelIconContainer: "fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg",
-        buttonSvgContainer: 'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'
-    }}
-    alignItems='vertical'
-    buttonType='modern'
-    items={DOC_TYPE}
-    initialValue={`${docType}`}
-    closeMenuOnSelect={true}
-    showDescInButton={true}
-/>
-```

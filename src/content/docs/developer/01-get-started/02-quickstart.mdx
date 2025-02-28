@@ -1,0 +1,56 @@
+# Quickstart Guide for Developers
+
+Welcome to Fluctux! Follow these simple steps to get started with the project. By the end of this guide, you will have a local environment set up and be ready to start writing code.
+
+## Prerequisites
+
+Before starting, make sure you have the following installed on your machine:
+
+- **Docker:** [Download Docker](https://www.docker.com/get-started)
+- **pnpm:** [Install pnpm](https://pnpm.io/)
+
+If you do not have pnpm installed, follow the instructions below:
+
+### Installing pnpm
+1. First, install Node.js (if it's not already installed). You can download it from [here](https://nodejs.org/en).
+2. To install pnpm, you can use npm (which comes with Node.js). Run the following command in your terminal:
+    ```shell
+    npm install -g pnpm
+    ```
+3. After installation, verify that pnpm is installed correctly by checking its version:
+    ```shell
+    pnpm -v
+    ```
+
+## Steps to Get Started
+1. **Clone the Repository**
+
+    First, clone the project from GitHub by running the following command in your terminal:
+    ```shell
+    git clone https://github.com/gitmahin/fluctux.git
+    ```
+    Change into the project directory:
+    ```shell
+    cd fluctux
+    ```
+2. **Start the Project with Docker**
+
+    Once inside the project directory, use Docker to set up the necessary environment. Run the following command:
+    ```shell
+    docker compose up -d
+    ```
+    This will automatically build and start all the necessary containers, including the backend and frontend environments, allowing you to get started with development immediately.
+
+3. **Install Dependencies with pnpm**
+
+    After the Docker containers are up and running, you'll need to install the project dependencies. Run the following command to install the required packages:
+    ```shell
+    pnpm install
+    ```
+    This will install all the necessary dependencies for the project.
+
+
+## You're Ready to Start!
+Now that everything is set up, you can start writing code! To contribute to the project, simply make changes to the files, and Docker will handle the rest.
+
+Let’s start coding! Happy hacking! ✨

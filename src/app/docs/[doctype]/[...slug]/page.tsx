@@ -91,7 +91,6 @@ export default async function DocContentPage({
 }: { params: Promise<{ slug: string[], doctype: string }> }) {
 
   const { slug, doctype } = await params
-
   const fullSlug = slug.join("/")
 
   // debugging the results

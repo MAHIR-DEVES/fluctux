@@ -10,17 +10,37 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Database
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+
+      # Base URI
+      NEXT_PUBLIC_API_BASE_URI: ${{ secrets.NEXT_PUBLIC_API_BASE_URI }}
+
+      # NextAuth
+      AUTHJS_SECRET: ${{ secrets.AUTHJS_SECRET }}
+
+      # Github
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_RAW_CONTENT_API: ${{ secrets.GITHUB_RAW_CONTENT_API }}
+      GITHUB_AUTH_DOC_API: ${{ secrets.GITHUB_AUTH_DOC_API }}
+
+      # Algolia
+      NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+      NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_API }}
+      ALGOLIA_WRITE_API: ${{ secrets.ALGOLIA_WRITE_API }}
+
+      # Arcjet
+      ARCJET_KEY: ${{ secrets.ARCJET_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build
+      - name: Build Image
         run: docker build -t dockermahin/fluctux:latest .
 
       - name: Push Image
         run: |
           docker login -u dokermahin -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
           docker push dockermahin/fluctux:latest
-
-
-

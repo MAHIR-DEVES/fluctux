@@ -11,7 +11,6 @@ interface DocLayoutPropsType {
     params: Promise<{ doctype: string }>
 }
 
-
 const GET_DOC_NAV_LIST = gql`
   query GetDocNavList($docType: String) {
     docNavList(docType: $docType) {
@@ -26,7 +25,6 @@ const GET_DOC_NAV_LIST = gql`
     }
   }
 `
-
 export async function generateStaticParams() {
     const docTypes = ['user', 'developer'];
 

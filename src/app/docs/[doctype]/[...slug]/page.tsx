@@ -103,10 +103,10 @@ export default async function DocContentPage({
 
   try {
     const response = await fetch(
-      `${process.env.GITHUB_RAW_CONTENT_API}/src/content/docs/${doctype}/${fullSlug}.mdx`,
+      `${process.env.GH_RAW_CONTENT_API}/src/content/docs/${doctype}/${fullSlug}.mdx`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          Authorization: `Bearer ${process.env.GH_TOKEN}`,
         }
       }
     );

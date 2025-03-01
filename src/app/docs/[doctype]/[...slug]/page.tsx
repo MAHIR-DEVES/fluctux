@@ -86,6 +86,7 @@ export async function generateStaticParams() {
 
 }
 
+
 export default async function DocContentPage({
   params
 }: { params: Promise<{ slug: string[], doctype: string }> }) {
@@ -100,7 +101,7 @@ export default async function DocContentPage({
     });
   }
 
-  
+
   try {
     const response = await fetch(
       `${process.env.GH_RAW_CONTENT_API}/src/content/docs/${doctype}/${fullSlug}.mdx`,

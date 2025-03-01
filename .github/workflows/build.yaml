@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "fluctux/**"
-      - "fluctux/*"
+      - "*"
+      - "**"
 
 jobs:
   build:

@@ -15,15 +15,15 @@ jobs:
       MONGO_URI: ${{ secrets.MONGO_URI }}
 
       # Base URI
-      NEXT_PUBLIC_API_BASE_URI: ${{ secrets.NEXT_PUBLIC_API_BASE_URI }}
+      NEXT_PUBLIC_API_BASE_URI: ${{ vars.NEXT_PUBLIC_API_BASE_URI }}
 
       # NextAuth
       AUTHJS_SECRET: ${{ secrets.AUTHJS_SECRET }}
 
       # Github
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_RAW_CONTENT_API: ${{ secrets.GITHUB_RAW_CONTENT_API }}
-      GITHUB_AUTH_DOC_API: ${{ secrets.GITHUB_AUTH_DOC_API }}
+      GITHUB_RAW_CONTENT_API: ${{ vars.GITHUB_RAW_CONTENT_API }}
+      GITHUB_AUTH_DOC_API: ${{ vars.GITHUB_AUTH_DOC_API }}
 
       # Algolia
       NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}

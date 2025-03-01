@@ -69,5 +69,5 @@ jobs:
 
       - name: Push Image
         run: |
-          docker login -u dokermahin -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          docker login -u dockermahin -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
           docker push dockermahin/fluctux:latest

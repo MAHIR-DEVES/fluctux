@@ -54,7 +54,8 @@ jobs:
           echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
 
       - name: Build Image
-        run: docker build -t dockermahin/fluctux:latest \
+        run: | 
+          docker build -t dockermahin/fluctux:latest \
             --build-arg MONGO_URI=${MONGO_URI} \
             --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
             --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \

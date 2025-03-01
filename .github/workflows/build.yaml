@@ -22,9 +22,9 @@ jobs:
       AUTHJS_SECRET: ${{ secrets.AUTHJS_SECRET }}
 
       # Github
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      GITHUB_RAW_CONTENT_API: ${{ vars.GH_RAW_CONTENT_API }}
-      GITHUB_AUTH_DOC_API: ${{ vars.GH_AUTH_DOC_API }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_RAW_CONTENT_API: ${{ vars.GH_RAW_CONTENT_API }}
+      GH_AUTH_DOC_API: ${{ vars.GH_AUTH_DOC_API }}
 
       # Algolia
       NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}

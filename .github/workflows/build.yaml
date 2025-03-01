@@ -34,6 +34,10 @@ jobs:
       # Arcjet
       ARCJET_KEY: ${{ secrets.ARCJET_KEY }}
 
+      # Docker
+      DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
+      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -69,5 +73,5 @@ jobs:
 
       - name: Push Image
         run: |
-          docker login -u dockermahin -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
-          docker push dockermahin/fluctux:latest
+          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
+          docker push ${DOCKER_USERNAME}/fluctux:latest

@@ -46,7 +46,7 @@ importers:
         version: 2.5.0
       '@firecms/neat':
         specifier: ^0.3.0
-        version: 0.3.0(three@0.125.0)
+        version: 0.3.0(three@0.137.0)
       '@graphiql/toolkit':
         specifier: ^0.11.1
         version: 0.11.1(@types/node@20.17.16)(graphql@16.10.0)
@@ -201,8 +201,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
       three:
-        specifier: ^0.125.0
-        version: 0.125.0
+        specifier: ^0.137.0
+        version: 0.137.0
       three.js:
         specifier: ^0.77.1
         version: 0.77.1
@@ -4407,8 +4407,8 @@ packages:
   three.js@0.77.1:
     resolution: {integrity: sha512-lVMYlBXhhHlZtsF+cQdev6WCm2fSWs3I+A6Z63j6TBmkVXOYgdo9AUCRemfsw5mllqWx23VubJ5Qt8/uWKQpJA==}
 
-  three@0.125.0:
-    resolution: {integrity: sha512-qL36qUGsPQ/Ofo/RZdXwHwM7A8wzUSAIyawtjIebJSPvounUQeneSqxI0aBY2iwKpseGy+RUtj3C5f/z4poyXw==}
+  three@0.137.0:
+    resolution: {integrity: sha512-rzSDhia6cU35UCy6y+zEEws6vSgytfHqFMSaBvUcySgzwvDO6vETyswtSNi/+aVqJw8WLMwyT1mlQQ1T/dxxOA==}
 
   three@0.77.0:
     resolution: {integrity: sha512-YWEp8ahs2l+6fAFVbanLVQoSBwVq5jDct3nZdBSHHXb5I/w5oy/LCMAzIOAguKWclRqcjR4W1BeP5QBnftGbpA==}
@@ -5167,9 +5167,9 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@firecms/neat@0.3.0(three@0.125.0)':
+  '@firecms/neat@0.3.0(three@0.137.0)':
     dependencies:
-      three: 0.125.0
+      three: 0.137.0
 
   '@floating-ui/core@1.6.9':
     dependencies:
@@ -9986,7 +9986,7 @@ snapshots:
     dependencies:
       three: 0.77.0
 
-  three@0.125.0: {}
+  three@0.137.0: {}
 
   three@0.77.0: {}
 

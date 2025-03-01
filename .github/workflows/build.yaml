@@ -47,14 +47,24 @@ jobs:
           echo "ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API}"
           echo "ARCJET_KEY=${ARCJET_KEY}"
           echo "MONGO_URI=${MONGO_URI}"
-          echo "GITHUB_TOKEN=${GH_TOKEN}"
-          echo "GITHUB_RAW_CONTENT_API=${GH_RAW_CONTENT_API}"
-          echo "GITHUB_AUTH_DOC_API=${GH_AUTH_DOC_API}"
+          echo "GH_TOKEN=${GH_TOKEN}"
+          echo "GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API}"
+          echo "GH_AUTH_DOC_API=${GH_AUTH_DOC_API}"
           echo "NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}"
           echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
 
       - name: Build Image
-        run: docker build -t dockermahin/fluctux:latest .
+        run: docker build -t dockermahin/fluctux:latest \
+            --build-arg MONGO_URI=${MONGO_URI} \
+            --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
+            --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
+            --build-arg NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID} \
+            --build-arg NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API} \
+            --build-arg ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API} \
+            --build-arg ARCJET_KEY=${ARCJET_KEY} \
+            --build-arg GH_TOKEN=${GH_TOKEN} \
+            --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
+            --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} .
 
       - name: Push Image
         run: |

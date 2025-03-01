@@ -101,6 +101,7 @@ export default async function DocContentPage({
     });
   }
 
+  
   try {
     const response = await fetch(
       `${process.env.GH_RAW_CONTENT_API}/src/content/docs/${doctype}/${fullSlug}.mdx`,

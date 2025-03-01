@@ -25,7 +25,48 @@ COPY . .
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+# app url
+ARG NEXT_PUBLIC_API_BASE_URI
+
+# database uri
+ARG MONGO_URI
+
+# github credentials
+ARG GITHUB_ID
+ARG GITHUB_SECRET
+
+# google credentials
+ARG GOOGLE_CLIENT_ID
+ARG GOOGLE_CLIENT_SECRET
+
+# discord credentials
+ARG DISCORD_CLIENT_ID
+ARG DISCORD_CLIENT_SECRET
+
+# nextAuth secret
+ARG AUTHJS_SECRET
+
+# resend api key for email
+ARG RESEND_API_KEY
+
+# arcjet validation
+ARG ARCJET_KEY
+
+# algolia apis
+ARG NEXT_PUBLIC_ALGOLIA_APPLICATION_ID
+ARG NEXT_PUBLIC_ALGOLIA_SEARCH_API
+ARG ALGOLIA_WRITE_API
+
+# Github Token
+ARG GH_TOKEN
+ARG GH_RAW_CONTENT_API
+ARG GH_AUTH_DOC_API
+
+# JWT
+ARG JWT_SECRET_GRAPHQL
 
 RUN \
   if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
@@ -38,7 +79,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
-# ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -58,5 +99,5 @@ ENV PORT=3000
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/config/next-config-js/output
-ENV HOSTNAME="0.0.0.0"
+ARG HOSTNAME
 CMD ["node", "server.js"]

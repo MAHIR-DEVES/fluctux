@@ -54,18 +54,7 @@ jobs:
           echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
 
       - name: Build Image
-        run: | 
-          docker build -t dockermahin/fluctux:latest \
-            -e MONGO_URI=${MONGO_URI} \
-            -e NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
-            -e AUTHJS_SECRET=${AUTHJS_SECRET} \
-            -e NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID} \
-            -e NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API} \
-            -e ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API} \
-            -e ARCJET_KEY=${ARCJET_KEY} \
-            -e GH_TOKEN=${GH_TOKEN} \
-            -e GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
-            -e GH_AUTH_DOC_API=${GH_AUTH_DOC_API} .
+        run: docker build -t dockermahin/fluctux:latest .
 
       - name: Push Image
         run: |

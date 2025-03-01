@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "src/**"
+      - "fluctux/**"
+      - "fluctux/*"
 
 jobs:
   build:
@@ -36,6 +37,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Debug Environment Variables
+        run: |
+          echo "ALGOLIA_APP_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}"
+          echo "NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI}"
+          echo "AUTHJS_SECRET=${AUTHJS_SECRET}"
+          echo "GITHUB_TOKEN=${GITHUB_TOKEN}"
+          echo "GITHUB_RAW_CONTENT_API=${GITHUB_RAW_CONTENT_API}"
+          echo "GITHUB_AUTH_DOC_API=${GITHUB_AUTH_DOC_API}"
+          echo "NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}"
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
+          echo "ARCJET_KEY=${ARCJET_KEY}"
+          echo "MONGO_URI=${MONGO_URI}"
+          echo "GITHUB_TOKEN=${GITHUB_TOKEN}"
+          echo "GITHUB_RAW_CONTENT_API=${GITHUB_RAW_CONTENT_API}"
+          echo "GITHUB_AUTH_DOC_API=${GITHUB_AUTH_DOC_API}"
+          echo "NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}"
+          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
+          echo "ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API}"
 
       - name: Build Image
         run: docker build -t dockermahin/fluctux:latest .

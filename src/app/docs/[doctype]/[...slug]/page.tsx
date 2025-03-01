@@ -51,7 +51,7 @@ export async function generateStaticParams() {
           ]);
         } catch (error) {
           console.error(`GraphQL fetch error for docType "${type}":`, error);
-          throw new Error("GraphQL fetch error"); // stop building
+          return []
         }
       })
     );

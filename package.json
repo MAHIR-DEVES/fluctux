@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "license": "MIT",
   "dependencies": {
     "@apollo/client": "^3.12.8",
     "@arcjet/next": "1.0.0-alpha.34",

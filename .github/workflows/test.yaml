@@ -2,7 +2,7 @@ name: Fluctux CI
 
 on:
   push:
-    branches: ["fix/**"]
+    branches: ["fix/**", "fix"]
 
 jobs:
   Test:

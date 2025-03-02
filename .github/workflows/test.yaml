@@ -1,7 +1,7 @@
 name: Fluctux Test
 
 on:
-  push:
+  pull_request: 
     branches: ["fix/**", "fix"]
 
 jobs:

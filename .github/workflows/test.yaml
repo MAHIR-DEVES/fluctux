@@ -1,4 +1,4 @@
-name: Fluctux CI
+name: Fluctux Test
 
 on:
   push:

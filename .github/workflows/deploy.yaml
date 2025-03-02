@@ -38,6 +38,9 @@ jobs:
       DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
       DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
 
+      # Branch
+      NEXT_PUBLIC_BRANCH: ${{ vars.NEXT_PUBLIC_BRANCH }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -54,7 +57,8 @@ jobs:
             --build-arg ARCJET_KEY=${ARCJET_KEY} \
             --build-arg GH_TOKEN=${GH_TOKEN} \
             --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
-            --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} .
+            --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} \
+            --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} .
 
       - name: Push Image
         run: |

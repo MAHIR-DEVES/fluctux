@@ -65,6 +65,9 @@ ARG GH_AUTH_DOC_API
 # JWT
 ARG JWT_SECRET_GRAPHQL
 
+# Branch
+ARG NEXT_PUBLIC_BRANCH
+
 RUN \
   if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
   else echo "Lockfile not found." && exit 1; \

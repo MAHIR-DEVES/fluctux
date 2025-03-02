@@ -1,0 +1,53 @@
+name: Fluctux Test
+
+on:
+  push:
+    branches: ["fix/**", "fix"]
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    env:
+      # Database
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+
+      # Base URI
+      NEXT_PUBLIC_API_BASE_URI: ${{ vars.NEXT_PUBLIC_API_BASE_URI }}
+
+      # NextAuth
+      AUTHJS_SECRET: ${{ secrets.AUTHJS_SECRET }}
+
+      # Github
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_RAW_CONTENT_API: ${{ vars.GH_RAW_CONTENT_API }}
+      GH_AUTH_DOC_API: ${{ vars.GH_AUTH_DOC_API }}
+
+      # Algolia
+      NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+      NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API }}
+      ALGOLIA_WRITE_API: ${{ secrets.ALGOLIA_WRITE_API }}
+
+      # Arcjet
+      ARCJET_KEY: ${{ secrets.ARCJET_KEY }}
+
+      # Docker
+      DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
+      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Fluctux Image
+        run: |
+            docker build -t fluctux \
+            --build-arg MONGO_URI=${MONGO_URI} \
+            --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
+            --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
+            --build-arg NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID} \
+            --build-arg NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API} \
+            --build-arg ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API} \
+            --build-arg ARCJET_KEY=${ARCJET_KEY} \
+            --build-arg GH_TOKEN=${GH_TOKEN} \
+            --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
+            --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} .

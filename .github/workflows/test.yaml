@@ -36,7 +36,7 @@ jobs:
       DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
 
       # Branch
-      NEXT_PUBLIC_BRANCH: fix
+      NEXT_PUBLIC_BRANCH: contributing
 
     steps:
       - name: Checkout

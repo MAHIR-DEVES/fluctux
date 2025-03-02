@@ -57,7 +57,7 @@ export async function generateStaticParams() {
     );
 
     if (process.env.NODE_ENV === "production") {
-      if(process.env.NEXT_PUBLIC_BRANCH !== "main") return
+      if(process.env.NEXT_PUBLIC_BRANCH !== "main") return []
       // algolia indexing objects algorithm
       try {
         const arrayOfData = params.flat().map((item) => ({

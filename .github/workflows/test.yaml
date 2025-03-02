@@ -1,15 +1,11 @@
-name: Fluctux CI/CD
+name: Fluctux CI
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - "*"
-      - "**"
+    branches: ["fix/**"]
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
     env:
       # Database
@@ -40,11 +36,11 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Build Image
+      - name: Build Fluctux Image
         run: |
-          docker build -t dockermahin/fluctux:latest \
+            docker build -t fluctux \
             --build-arg MONGO_URI=${MONGO_URI} \
             --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
             --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
@@ -55,8 +51,3 @@ jobs:
             --build-arg GH_TOKEN=${GH_TOKEN} \
             --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
             --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} .
-
-      - name: Push Image
-        run: |
-          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
-          docker push ${DOCKER_USERNAME}/fluctux:latest

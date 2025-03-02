@@ -1,4 +1,4 @@
-name: Fluctux CI
+name: Fluctux CI/CD
 
 on:
   push:

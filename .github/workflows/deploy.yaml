@@ -42,21 +42,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Debug Environment Variables
-        run: |
-          echo "NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI}"
-          echo "AUTHJS_SECRET=${AUTHJS_SECRET}"
-          echo "NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}"
-          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
-          echo "ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API}"
-          echo "ARCJET_KEY=${ARCJET_KEY}"
-          echo "MONGO_URI=${MONGO_URI}"
-          echo "GH_TOKEN=${GH_TOKEN}"
-          echo "GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API}"
-          echo "GH_AUTH_DOC_API=${GH_AUTH_DOC_API}"
-          echo "NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}"
-          echo "NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}"
-
       - name: Build Image
         run: |
           docker build -t dockermahin/fluctux:latest \
